@@ -1,0 +1,44 @@
+.bpopup {
+    display: none;
+    /*box-shadow: 0 0 10px #c8c8c8;*/
+    /*-moz-box-shadow: 0 0 10px #c8c8c8;*/
+    /*-webkit-box-shadow: 0 0 10px #c8c8c8;*/
+    /*behavior: url(pie/PIE.php);*/
+    /*!*background: #fff;*!*/
+    /*width: 600px*/
+}
+.bpopup .popup_title {
+    /*line-height: 30px;*/
+    /*font-size: 14px;*/
+    /*padding: 0 15px;*/
+    /*letter-spacing: .05em;*/
+    /*color: #494949;*/
+    /*background: #c9e84a;*/
+    /*font-family: Cabin, sans-serif;*/
+    /*font-weight: 400;*/
+    /*text-transform: uppercase*/
+}
+.bpopup .popup_content {
+    /*padding: 15px 17px 17px*/
+}
+.bpopup .close_popup_btn {
+    /*display: inline-block;*/
+    /**display: inline;*/
+    /*zoom: 1;*/
+    /*width: 12px!important;*/
+    /*height: 13px;*/
+    /*background: url(../images/popup-close.png) no-repeat!important;*/
+    /*right: 17px;*/
+    /*top: 7px;*/
+    /*z-index: 1000;*/
+    /*position: absolute;*/
+    /*border: 0!important;*/
+    /*border-radius: 0;*/
+    /*cursor: pointer*/
+}
+.bpopup.big_pop {
+    /*width: 655px*/
+}
+.bpopup.big_pop .popup_content {
+    /*padding: 27px 30px 20px*/
+}

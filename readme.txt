@@ -1,4 +1,3 @@
-# spinkx-content-marketing
 === Spinkx Content Marketing ===
 Contributors: spinkx
 Donate link: www.spinkx.com
@@ -19,7 +18,7 @@ Spinkx is a Free Plugin & also has a few paid Features.
 
 
 Features:
-
+ 
 = 1. Increase User Engagement =
 On WordPress sites, the most interactive element is the sidebar. It gives audience a quick look into other exciting articles that they will be interested in reading. This engages your audience, enticing them to stay on your site longer. User Engagement is vital, and our plug-in allows you to display stories on your side bar that your audience may want to read.
 
@@ -27,22 +26,22 @@ On WordPress sites, the most interactive element is the sidebar. It gives audien
 With Spinkx, your content, can now reach out to newer readers on another bloggers sidebar, who uses Spinkx plugin as well. This helps in more visibility opportunities of your stories & increased visitors to your site. You accumulate points when you allow displaying other users content in your sidebar widget & then use those points to boost your own pots as per your category targeting. Envision, a visitor on other blog site who sees your article featuring on the blog’s side bar and clicks on it. Congratulations, you just got yourself a new visitor. This Feature is meant to be entirely FREE, therefore it is not meant for advertising purpose, but only to grow your audience.
 
 = 3. Monetise & Run your own Targeted Advertising Campaigns =
-When you have enough visitors you can leverage on running ads and earn revenue. The number of visitors on your site is directly proportional to revenue earned.
-Any user of this plugin can run a campaign for themselves or for their CLIENTS. Despite the number of users you may have on your site, the entire network of Spinkx, contributes to fulfilling the need of the clients demand for Visibility or Clicks. In doing so - the Click or the Impression given by other Spinkx users Site for displaying campaign, earns the money. Similarly when you allow to show ad campaigns, you earn money as well. Please note that this is a community driven activity, we only defines rules & standards as it should be. All money for running campaign must be deposited into your own Spinkx Wallet.
+When you have enough visitors you can leverage on running ads and earn revenue. The number of visitors on your site is directly proportional to revenue earned. 
+Any user of this plugin can run a campaign for themselves or for their CLIENTS. Despite the number of users you may have on your site, the entire network of Spinkx, contributes to fulfilling the need of the clients demand for Visibility or Clicks. In doing so - the Click or the Impression given by other Spinkx users Site for displaying campaign, earns the money. Similarly when you allow to show ad campaigns, you earn money as well. Please note that this is a community driven activity, we only defines rules & standards as it should be. All money for running campaign must be deposited into your own Spinkx Wallet. 
 
 = 4. Content - Variation Headlines =
 It is noticed by as experienced content creators & market analysts that a content can be have multiple Headlines, Image & Description, however there was no way to do so… When you use Spinkx - you can  go to Content Playlist > Click on Variation Headlines & give your post a NEW Headline, IMAGE & Description. NB your post must have more images to show up and add to Variation Headlines. These then show up on your own websites Sidebar & if Boosted it shows on other Websites Sidebar also. The INTELLIGENCE lies that the plugin is design to get you more clicks & users to your website, so it Automatically promotes Stories & Variation Headlines with high CTR or Engagement Rate and slows down the non performing ones in the global Boosted Space.
 
 = 5. Upcoming Features =
 Video Promotion, Social Share, Front End Analytics
-
+ 
 
 A few notes about the sections above:
 
 **NB- Spinkx Plugin is designed to track any BOT activity, Fake Clicks & Impression to advertisements or boosted posts. We ONLY track real users & thus the accuracy & performance of your Posts & advertising in our network. We Reserve the right to BAN any such BOT based activity or any provocative & obscene content from our network. You may do what ever you may like with what ever content in your own sites sidebar - no restriction or ban on them. And FREE to use for life. We do not deactivate this features if you don’t buy or pay for the plugin. However the expenses of running content analytics for your site still costs us money to run on our servers.**
 
 *   The Spinkx Sidebars is completely customisable as per your choice, in terms of design & categories of content allowed.
-*   It is at your discretion & allowance completely to show a fellow bloggers post on your sidebar or switch off the feature entirely.
+*   It is at your discretion & allowance completely to show a fellow bloggers post on your sidebar or switch off the feature entirely. 
 *   Similarly the feature to show native advertisements on your side bar can be off or on as per your choice
 *   You can even block, specific URL’s, Words or Categories to display on your sidebar.
 *   All ad campaigns are manually verified by our TEAM before they go live.
@@ -50,7 +49,7 @@ A few notes about the sections above:
 
 We provide FREE TRAINING to all who want to use this plugin for Professional Use. Kindly get in touch with us through our Facebook Page or Website - www.spinkx.com
 
-Detailed usage of the plugin, training & Videos are available on your website.
+Detailed usage of the plugin, training & Videos are available on your website. 
 
 == Installation ==
 
@@ -73,7 +72,7 @@ This section describes how to install the plugin and get it working.
 
 = What happens after 30 days of FREE trial of all Features? =
 
-None of the features are blocked after the Trial, except for being able to BOOST your own posts or Transferring revenue earned to your bank account. You can continue to accumulate points & revenue. But you will be able to use those features after a purchase.
+None of the features are blocked after the Trial, except for being able to BOOST your own posts or Transferring revenue earned to your bank account. You can continue to accumulate points & revenue. But you will be able to use those features after a purchase. 
 
 = Can i use this plugin only to for my Sidebar widget & Not boost posts & earn revenue. =
 

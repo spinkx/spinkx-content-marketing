@@ -1,0 +1,32 @@
+﻿/*------------------------------------------------*/
+@-ms-viewport {
+	width: device-width;
+}
+@viewport {
+	width: device-width;
+}
+/*------------------------------------------------*/
+#al_brnd_content {
+	padding:0;
+	margin-bottom: 50px;
+}
+#infscr-loading {
+	bottom: -45px;
+	clear: both;
+	overflow: hidden;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+/*------------------------------------------------*/
+@media all and ( max-width: 4000px ) {
+	.al_article {
+		max-width: 100%;
+	}
+}
+@media (max-width: 500px){
+ .al_article {
+    width: calc( 50% - 10px ) !important;
+}
+}
+/*------------------------------------------------*/
