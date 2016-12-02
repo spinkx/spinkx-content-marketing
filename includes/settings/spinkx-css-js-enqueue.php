@@ -281,6 +281,10 @@ function spinkx_cont_campaign_set_css_js() {
 	// wp_enqueue_script( 'jquery-ui-js', $js_url . 'jquery-ui.js' );
 	wp_enqueue_script( 'form-validator-js', esc_url( '//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js' ) );
 	wp_enqueue_script( 'jquery-countdown-js', $js_url . 'jquery.countdown.min.js' );
+	// jQuery
+	wp_enqueue_script('jquery');
+// This will enqueue the Media Uploader script
+	wp_enqueue_media();
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
 	$custom_js = ' var client_url = "' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '";';
 	$custom_js .= ' jQuery(document).ready(function() {

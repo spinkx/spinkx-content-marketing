@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly		
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
 $css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/css/' );
 $css_output = ".small .modal-body { overflow-y: auto; height:600px; padding: 0; }
@@ -14,6 +14,7 @@ $css_output = ".small .modal-body { overflow-y: auto; height:600px; padding: 0; 
 	.pheading {	font-size: 11px; font-weight: 700; padding-top: 6px; text-transform: uppercase; height: 30px;  vertical-align: middle; color: cornflowerblue;
 	}
 	.sub-heading { display: inline-block; max-width: 100%; margin-bottom: 5px; font-weight: 600;  font-size: 10px; line-height: 28px; }
+	.info-heading { max-width: 100%; margin-bottom: 5px; font-weight: 400;  font-size: 8px; margin-left:5px; }
 	.upload-image-button { display: inline-block; max-width: 100%; margin-bottom: 5px; font-weight: 200; font-size: 10px !important; line-height: 20px; 		font-family: 'Open Sans' !important; border: 1px solid #e3e3e3; border-radius: 4px !important; background-color: #f6f7f9; }
 	.form-group select { width: 40%; font-family: 'Open Sans'; font-size: 10px; font-weight: 700; height: 24px; }
 	.form-group .single-line-select { width:30%; }
@@ -34,6 +35,7 @@ wp_enqueue_script( 'jquery-dateFormat-js', $js_url . 'jquery-dateFormat.min.js' 
 wp_enqueue_script( 'jquery-moment-js', $js_url . 'moment.js' );
 wp_enqueue_script( 'jquery-datetimepicker-js', $js_url . 'bootstrap-datetimepicker.js' );
 wp_enqueue_script( 'jquery-bootstrap-js', $js_url . 'bootstrap.min.js' );
+	wp_enqueue_media();
 	$from_date = helperClass::getFilterVar( 'from_date' );
 	$to_date = helperClass::getFilterVar( 'to_date' );
 
@@ -232,21 +234,14 @@ wp_enqueue_script( 'jquery-bootstrap-js', $js_url . 'bootstrap.min.js' );
 	wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 $post = helperClass::getFilterPost();
 if ( isset( $post['add_camp'] ) ) {
-	//$files = helperClass::getFilterFiles();
-	$uploadedfile = $_FILES['uploaded_image'];
-	$upload_overrides = array( 'test_form' => false );
-	$movefile = wp_handle_upload( $uploadedfile, $upload_overrides, wp_upload_dir() );
-	if ( $movefile && ! isset( $movefile['error'] ) ) {
-		$post['ad_image_url'] = $movefile['url'];
+		if( $post['image_attachment_id'] > 0) {
+			$image_attributes = wp_get_attachment_image_src( $post['image_attachment_id'], 'medium' );
+			$post['ad_image_url'] = $image_attributes[0];
+		}
 		$post['access_key'] = $settings['license_code'];
 		$post['site_id'] = $settings['site_id'];
 		$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign/create';
 		$response = helperClass::doCurl($url, $post);
-		//print_r($response);
-	} else {
-		echo $movefile['error'];
-	}
-
 }
 ?>
 <div class="tab-contents">
@@ -285,12 +280,12 @@ if ( isset( $post['add_camp'] ) ) {
 					<div>
 						<div class="form-group cls-padding-left">
 							<label class="sub-heading">Campaign Name</label><br/>
-							<input type="text" name="campaign_display_name" data-validation="required" data-validation-error-msg="Enter the display name for your Ad">
+							<input type="text" name="campaign_display_name" data-validation="required" data-validation-error-msg="Enter a display name for your Campaign">
 						</div>
 
 						<div class="form-group cls-padding-left">
 							<label class="sub-heading">Landing Page URL</label><br/>
-							<input type="text" name="website_url" data-validation="required url" data-validation-error-msg="Enter the landing page URL">
+							<input type="text" name="website_url" data-validation="required url" data-validation-error-msg="Enter your landing page URL">
 						</div>
 
 						<div class="form-group cls-padding-left">
@@ -303,17 +298,22 @@ if ( isset( $post['add_camp'] ) ) {
 
 
 						<div class="form-group cls-padding-left">
+							<div style="width:32%;">
 							<label class="sub-heading">Image</label>
 							<input type="file" name="uploaded_image" id="uploaded-image" style="display: none" />
-							<button class="upload-image-button" id="btn_upload_image" name="image_upload">Upload Image</button>
+							<button id="upload_image_button" class="upload-image-button" id="btn_upload_image" name="image_upload">Upload Image</button>
+							<input type='hidden' name='image_attachment_id' id='image_attachment_id' value='<?php echo get_option( 'media_selector_attachment_id' ); ?>'>
+							</div>
+							<div class="info-heading" style="display: none"> (Image size - max 700kb.<br/>Image Width - min 250 px  max 400 px<br/>Image height - min 200 px  max 500 px)</div>
 						</div>
+
 						<div class="form-group cls-padding-left">
 							<label class="sub-heading">Headline</label><br/>
 							<input type="text" name="campaign_title" id="headline">
 						</div>
 						<div class="form-group cls-padding-left">
 							<label class="sub-heading">Text</label><br/>
-							<textarea  name="campaign_description" id="campaign_description" maxlength="100" data-validation="required" data-validation-error-msg="Please give description"></textarea>
+							<textarea  name="campaign_description" id="campaign_description" maxlength="100" data-validation="required" data-validation-error-msg="Please provide description of your campaign"></textarea>
 						</div>
 						<div class="form-group cls-padding-left">
 							<label class="sub-heading">Call to action</label>
@@ -484,7 +484,7 @@ if ( isset( $post['add_camp'] ) ) {
 										</div>
 
 									</div><br/>
-									<p class="pheading" align="center">You'll spend up to <i class="fa <?php echo $currencyClass?>"></i><span id="calculated_budget">0.00 </span> total.</p>
+									<p class="pheading" align="center">You will spend a Total of <i class="fa <?php echo $currencyClass?>"></i><span id="calculated_budget">0.00 </span> .</p>
 								</div>
 							</div>
 
@@ -511,8 +511,8 @@ if ( isset( $post['add_camp'] ) ) {
 
 						<div class="SPINKX_preview_fg grid-item grid-item--height" style="width: 200px ! important; height: auto; overflow: scroll; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-width: 1px; border-style: solid; border-color: rgb(216, 216, 216); border-radius: 10px; margin-bottom: 8px; position: absolute; transition-property: transform, opacity; transition-duration: 0.4s; display: none">		<!-- block Start -->
 
-							<div class="boost_img" style="position: relative;">
-								<img style=" height: auto; max-width: 100%; width:100%; vertical-align: middle; display:none" src="" alt="" />
+							<div class="boost_img image-preview-wrapper" style="position: relative;">
+								<img style=" height: auto; max-width: 100%; width:100%; vertical-align: middle; display:none" src="" alt="" id="image-preview" />
 								<span class="pull-right" style="font-size: 8px;color: grey;position: absolute;bottom: 1px;left:2px;display: none">sponsored</span>
 							</div>
 							<div id="campaign_name" style="font-size: 8px; line-height: 8px; font-weight: 700; margin-bottom: 0px; margin-top:5px;margin-left:12px; color: grey; font-family: 'Open Sans'; display: block;"></div>
@@ -558,3 +558,5 @@ if ( isset( $post['add_camp'] ) ) {
 	echo $output;
 ?>
 </div></div>
+<?php
+	add_action( 'admin_footer', 'spinkx_media_selector_print_scripts' );
