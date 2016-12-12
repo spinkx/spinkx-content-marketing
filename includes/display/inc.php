@@ -54,7 +54,7 @@ $is_ajax = helperClass::getFilterVar( 'is_ajax', INPUT_REQUEST );
 if ( $is_ajax ) {
 	$is_ajax = null;
 } else {
-	wp_enqueue_script( 'pixel-js', $ajxrequrl . '/wp-content/plugins/spinkx-server/assets/js/spinkxut.js' );
+	wp_enqueue_script( 'pixel-js', $ajxrequrl . '/spinkxut.js' );
 }
 $settings = get_option( SPINKX_CONT_LICENSE );
 $settings = maybe_unserialize( $settings );
@@ -89,9 +89,12 @@ if ( $unique_dynamic_id ) {
 	$widget_array['unique_id'] = $unique_dynamic_id;
 }
 $user_agent = helperClass::getFilterVar( 'HTTP_USER_AGENT', INPUT_SERVER);
-$widget_array['post_src_id'] = $post->ID;
+$widget_array['post_src_id'] = (isset( $post ) && $post->ID )?$post->ID:0;
 $widget_array['user_agent'] = $user_agent;
-$catArray = get_the_category( $post->ID );
+$catArray = array();
+if(isset( $post ) && $post->ID) {
+	$catArray = get_the_category($post->ID);
+}
 $categories = array();
 foreach ( $catArray as $key => $cat ) {
 	$categories[] = $cat->cat_name;

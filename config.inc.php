@@ -9,7 +9,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly	
 
-define( 'SPINKX_VERSION', '1.1.0' );
+define( 'SPINKX_VERSION', '1.1.1' );
 define( 'SPINKX_OPERATION_MODE', 1 );
 define( 'SPINKX_SERVER_BASEURL', 'https://api.spinkx.com' );
 define( 'SPINKX_CONT_LICENSE', 'spinkx_content_license_update' );
