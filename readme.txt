@@ -96,8 +96,8 @@ YES ! We support you in all your Endeavours with respect to this plugin or Wordp
 5. Widget Design & Display Settings
 
 == Changelog ==
-= 1.1.0 =
+= 1.1.1 =
 
-* Release date: November 24, 2016
+* Release date: December 12, 2016
 
 Initial release

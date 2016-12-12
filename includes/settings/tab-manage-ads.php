@@ -140,7 +140,7 @@ wp_enqueue_script( 'jquery-bootstrap-js', $js_url . 'bootstrap.min.js' );
 		var utm_campaign = $("input[name=\"campaign_display_name\"]").val();
 		$("#campaign_name").html(utm_campaign);
 		utm_source = "spinkx";
-		$("input[name=\"utm_code\"]").val("?utm_source="+utm_source+"&utm_medium=native-cpc&utm_campaign="+utm_campaign);
+		$("input[name=\"utm_code\"]").val("?utm_source="+utm_source+"&utm_medium=campaign&utm_campaign="+utm_campaign);
 		$(".SPINKX_preview_fg").show();
 	});
 	$("#payment-method-button").addClass("btn").addClass("btn-primary");
@@ -431,7 +431,7 @@ if ( isset( $post['add_camp'] ) ) {
 
 							</div>
 						<div>
-							<div class="heading" st>Budget</div>
+							<div class="heading">Budget</div>
 							<div class="form-group cls-padding-left">            <!--optimise -->
 								<label class="sub-heading" >Optimise for:</label>
 								<select name="optimise_for" style="width:50%" id="optimise_for">

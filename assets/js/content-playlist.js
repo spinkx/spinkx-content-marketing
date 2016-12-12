@@ -863,3 +863,148 @@ function boost_submit(formObj) {
         }
     });
 }
+
+function getAttachmentDataVideo(buttonObj, ishook) {
+    ishook = typeof ishook !== 'undefined' ? ishook : false;
+    if(jQuery('.addhook_form').length) {
+        console.log("Add Hook form already exists in DOM ");
+        return;
+    }
+    if(ishook){
+        var post_id = jQuery(buttonObj).parents('tr').attr('parent_post_id');
+    }else{
+        var post_id = jQuery(buttonObj).parents('tr').attr('global_pid');
+    }
+    if(ishook) { jQuery(buttonObj).parents('tr').css('display', 'none'); }
+    var div = jQuery("<ul></ul>");
+    var addhook_form = '<td> \
+            <div id="addhook_videoform_'+post_id+'" class="addhook_videoform form-group"><form name="frm_addhook_videoform_'+post_id+'" onsubmit="event.preventDefault(); return submitVideoVariationForm(this);" method="post" class="frm_addhook_form" id="frm_addhook_form_'+post_id+'" enctype="multipart/form-data" data-ishook='+ishook+'>\
+                <div class="addhook_choose_video"><div id="div_YouTube'+post_id+'"><img  id="addhook_image_src_'+post_id+'" /></div></div> \
+                <div class="addhook_title" style="width: auto"><input class="form-control video_url" placeholder="Video URL" id="addhook_video_url_'+post_id+'" name="video_url" /></div> \
+                <div class="addhook_title"><input class="form-control" placeholder="Video Title" id="addhook_video_title_'+post_id+'" name="title"/></div> \
+                <div class="addhook_excerpt"><textarea id="addhook_video_excerpt_'+post_id+'" class="form-control" placeholder="Add your Video Description ..." name="excerpt"></textarea></div>  \
+                <button  type="submit" class="btn btn-primary btn-sm"  style="float:right; margin-top:42px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
+                <button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn btn-warning btn-sm"  style="float:right; margin:42px 10px 0 0; border-radius:0;  color:#fff; ">Cancel</button>\
+                </form></div> \
+                </td>\
+                <td>\
+                </td>';
+    jQuery(buttonObj).parents('tr').after('<tr>'+addhook_form+'</tr>');
+
+
+    if(ishook){
+        var title = jQuery(buttonObj).parents('tr').find(".playlist_post_title").html();
+        var desc = jQuery(buttonObj).parents('tr').find(".playlist_post_desc p").html();
+        var video_url = jQuery(buttonObj).parents('tr').find(".playlist_img iframe").prop("src");
+        jQuery("#addhook_video_title_"+post_id).val(title);
+        jQuery("#addhook_video_excerpt_"+post_id).html(desc);
+        videoArr = video_url.split('/');
+        video_id = videoArr[videoArr.length - 1];
+        videoArr = video_id.split('?');
+        video_id = videoArr[0];
+        jQuery("#addhook_video_url_"+post_id).val(video_id);
+        vid = 'div_YouTube' + post_id;
+        onYouTubeIframeAPIReady(vid, video_id );
+
+    }
+    // to show overlay over hook image selector
+    var jQueryoverlay = jQuery('<div id="addhook_images_overlay"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></div>');
+    jQuery(".addhook_each_photo span")
+        .mouseenter(function(){
+
+            jQuery(this).append(jQueryoverlay.show());
+
+        })
+        .mouseleave(function(){
+            jQueryoverlay.hide();
+        });
+
+
+
+}
+jQuery(document).on('change','.video_url',function(){
+    var tid = jQuery(this).attr('id');
+    tidArr = tid.split('_');
+    var vid = 'div_YouTube' + tidArr[tidArr.length-1];
+    var video_id = jQuery(this).val();
+    if(jQuery('#'+vid).length && jQuery('#'+vid).parent().find('iframe').length > 0) {
+        jQuery("#"+vid).attr("src", "https://www.youtube.com/embed/"+video_id);
+    } else {
+        onYouTubeIframeAPIReady(vid, video_id );
+    }
+
+});
+
+function onYouTubeIframeAPIReady(id, video_id, is_edit) {
+    var player;
+    player = new YT.Player(id, {
+        videoId: video_id,     // THE VIDEO ID.
+        width: 560,
+        height: 316,
+        playerVars: {
+            'autoplay': 0,
+            'controls': 1,
+            'showinfo': 0,
+            'modestbranding': 0,
+            'loop': 0,
+            'fs': 0,
+            'cc_load_policty': 0,
+            'wmode': 'opaque',
+            'iv_load_policy': 3
+        },
+        events: {
+            'onReady': function (e) {
+                e.target.mute();
+                e.target.setVolume(50);      // YOU CAN SET VALUE TO 100 FOR MAX VOLUME.
+            }
+        }
+    });
+
+}
+function submitVideoVariationForm(formObj) {
+    jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+    var formData = new FormData(formObj);
+    formData.append('site_id',  g_site_id);
+    var idArr = jQuery(formObj).attr('id').split("_");
+    var post_id = idArr[idArr.length - 1];
+    if( jQuery(formObj).data("ishook")) {
+        // If hook update then add hook_id as POST param
+        formData.append("hook_id", jQuery(formObj).data("ishook") );
+    }
+    formData.append('parent_post_id', post_id);
+    var title = jQuery("#addhook_video_title_"+post_id).val();
+    var img = jQuery("#addhook_video_url_"+post_id);
+    var excerpt = jQuery("#addhook_video_excerpt_"+post_id).val();
+    formData.append('image_url',img.prop('src'));
+    formData.append('type','video');
+    formData.append('image_aid',img.attr('data-id'));
+    formData.append('action','spinkx_cont_save_hook');
+    if(g_site_id && title &&  img  &&  excerpt) {
+        jQuery.ajax({
+            url : ajaxurl,
+            data : formData,
+            type : 'POST',
+            enctype: 'multipart/form-data',
+            cache:false,
+            contentType: false,
+            processData: false,
+            success : function(data){
+                //console.log(data);
+                if(data == 'success') {
+                    jQuery('#bpopup_ajax_loading').bPopup().close();
+                    window.location.reload();
+                }
+            },
+            failure : function(data){
+                jQuery('#bpopup_ajax_loading').bPopup().close();
+            }
+        });
+    }
+    else{
+        jQuery.growl.error({ message: "One of the fields is empty !",
+            location: 'tr',
+            size: 'large' });
+        console.log("one of the fields is empty");
+    }
+    return false;
+}

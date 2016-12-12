@@ -24,7 +24,7 @@ function register_spinkx_client_main_menu() {
 		'manage_options',
 		'spinkx-site-register.php',
 		'spinkx_register_site',
-		plugin_dir_url( 'spinkx-content-marketing' ) . 'spinkx-content-marketing/assets/images/spinkx-ico.svg' ,
+		plugins_url( '../../assets/images/spinkx-ico.svg', __FILE__ ) ,
 	'2.56' );
 
 	add_submenu_page(
@@ -95,7 +95,7 @@ function site_spinkx_client_main_menu() {
 		'manage_options',
 		'spinkx-site-register.php',
 		'spinkx_register_site',
-		plugin_dir_url( 'spinkx-content-marketing' ) . 'spinkx-content-marketing/assets/images/spinkx-ico.svg' ,
+		plugins_url( '../../assets/images/spinkx-ico.svg', __FILE__ ) ,
 	'2.56' );
 
 	add_submenu_page(

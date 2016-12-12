@@ -79,9 +79,34 @@ wp_enqueue_style( 'select2-css', $css_url . 'select2.css' );
 wp_enqueue_style( 'bootstrap-datetimepicker-css', $css_url . 'bootstrap-datetimepicker.css' );
 $css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/bpopup/' );
 
-$css_output = "";
+$css_output = "	.small .modal-body { overflow-y: auto; height:600px; padding: 0; }
+	#boostmodal2 .modal-dialog {	width:940px; height:700px; font-family: 'Open Sans'; }
+	.modal-footer{ margin-top: 0; }
+	.form-group{ text-align: left; }
+	#left_div_modal_body { float: left; width: 400px; height: 100%; margin-left: 0; }
+	.cls-padding-left { padding-left: 15px; }
+	#right_div_modal_body {	width:538px; margin: 0 auto; text-align: left; height: 100%; padding: 5px 10%; background-color: silver; }
+	.heading { width: 100%; background-color: #f6f7f9; border-top: 1px #e3e3e3 solid; border-bottom: 1px #e3e3e3 solid; font-size: 11px; font-weight: 700;
+		margin: 15px 0; padding-top: 6px; text-transform: uppercase; padding-left: 20px; height: 30px; vertical-align: middle; }
+	.pheading {	font-size: 11px; font-weight: 700; padding-top: 6px; text-transform: uppercase; height: 30px;  vertical-align: middle; color: cornflowerblue;
+	}
+	.sub-heading { display: inline-block; max-width: 100%; margin-bottom: 5px; font-weight: 600;  font-size: 10px; line-height: 28px; }
+	.info-heading { max-width: 100%; margin-bottom: 5px; font-weight: 400;  font-size: 8px; margin-left:5px; }
+	.upload-image-button { display: inline-block; max-width: 100%; margin-bottom: 5px; font-weight: 200; font-size: 10px !important; line-height: 20px; 		font-family: 'Open Sans' !important; border: 1px solid #e3e3e3; border-radius: 4px !important; background-color: #f6f7f9; }
+	.form-group select { width: 40%; font-family: 'Open Sans'; font-size: 10px; font-weight: 700; height: 24px; }
+	.form-group .single-line-select { width:30%; }
+	.form-group { margin-bottom: 7px; }
+	.form-group input[type=\"text\"], textarea { font-size: 10px !important; font-family: 'Open Sans' !important; width: 94%; border-color: #e3e3e3; box-shadow: none; }
+	.select2-container-multi input[type=\"text\"] { border-color: #e3e3e3 !important;  box-shadow: none !important; font-family: 'Open Sans' !important; height: 25px !important; }
+	.select2-container-multi .select2-choices { min-height:25px !important; background: none !important; border-color: #e3e3e3 !important; box-shadow: none !important; font-family: 'Open Sans' !important;  height: 25px !important; font-size: 10px; font-weight: 600; }
+	#getlifetime .dropdown-menu { font-size: 10px !important; left: -10px !important; }
+	.select2-container { width: 90% !important; }
+	.btn-primary, #payment-method-button { font-family: 'Open Sans' !important; font-size: 11px !important; font-weight: 700 !important; }
+	.btn-primary:hover { background-color: #469fa1; }
+	#payment-method-button { background-color: #0170b6 !important; }
+	.rTableHead, .rTableCell { text-align: left !important; }";
 wp_enqueue_style( 'bpopup-css', $css_url . 'bpopup.css' );
-//wp_add_inline_style( 'bpopup-css', $css_output );
+wp_add_inline_style( 'bpopup-css', $css_output );
 $js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
 wp_enqueue_script( 'jquery-dateFormat', $js_url . 'jquery-dateFormat.min.js' );
 wp_enqueue_script( 'jquery-moment', $js_url . 'moment.js' );
@@ -178,7 +203,7 @@ $=jQuery;
 		var utm_campaign = $("input[name=\"campaign_display_name\"]").val();
 		$("#campaign_name").html(utm_campaign);
 		utm_source = "spinkx";
-		$("input[name=\"utm_code\"]").val("?utm_source="+utm_source+"&utm_medium=native-cpc&utm_campaign="+utm_campaign);
+		$("input[name=\"utm_code\"]").val("?utm_source="+utm_source+"&utm_medium=campaign&utm_campaign="+utm_campaign);
 		$(".SPINKX_preview_fg").show();
 	});
 	$("#payment-method-button").addClass("btn").addClass("btn-primary");
@@ -334,32 +359,7 @@ wp_enqueue_script( 'jquery-select2', $js_url . 'select2.min.js' );
 wp_add_inline_script( 'jquery-select2', $custom_js );
 
 ?><style>
-	.small .modal-body { overflow-y: auto; height:600px; padding: 0; }
-	#boostmodal2 .modal-dialog {	width:940px; height:700px; font-family: 'Open Sans'; }
-	.modal-footer{ margin-top: 0; }
-	.form-group{ text-align: left; }
-	#left_div_modal_body { float: left; width: 400px; height: 100%; margin-left: 0; }
-	.cls-padding-left { padding-left: 15px; }
-	#right_div_modal_body {	width:538px; margin: 0 auto; text-align: left; height: 100%; padding: 5px 10%; background-color: silver; }
-	.heading { width: 100%; background-color: #f6f7f9; border-top: 1px #e3e3e3 solid; border-bottom: 1px #e3e3e3 solid; font-size: 11px; font-weight: 700;
-		margin: 15px 0; padding-top: 6px; text-transform: uppercase; padding-left: 20px; height: 30px; vertical-align: middle; }
-	.pheading {	font-size: 11px; font-weight: 700; padding-top: 6px; text-transform: uppercase; height: 30px;  vertical-align: middle; color: cornflowerblue;
-	}
-	.sub-heading { display: inline-block; max-width: 100%; margin-bottom: 5px; font-weight: 600;  font-size: 10px; line-height: 28px; }
-	.info-heading { max-width: 100%; margin-bottom: 5px; font-weight: 400;  font-size: 8px; margin-left:5px; }
-	.upload-image-button { display: inline-block; max-width: 100%; margin-bottom: 5px; font-weight: 200; font-size: 10px !important; line-height: 20px; 		font-family: 'Open Sans' !important; border: 1px solid #e3e3e3; border-radius: 4px !important; background-color: #f6f7f9; }
-	.form-group select { width: 40%; font-family: 'Open Sans'; font-size: 10px; font-weight: 700; height: 24px; }
-	.form-group .single-line-select { width:30%; }
-	.form-group { margin-bottom: 7px; }
-	.form-group input[type="text"], textarea { font-size: 10px !important; font-family: 'Open Sans' !important; width: 94%; border-color: #e3e3e3; box-shadow: none; }
-	.select2-container-multi input[type="text"] { border-color: #e3e3e3 !important;  box-shadow: none !important; font-family: 'Open Sans' !important; height: 25px !important; }
-	.select2-container-multi .select2-choices { min-height:25px !important; background: none !important; border-color: #e3e3e3 !important; box-shadow: none !important; font-family: 'Open Sans' !important;  height: 25px !important; font-size: 10px; font-weight: 600; }
-	#getlifetime .dropdown-menu { font-size: 10px !important; left: -10px !important; }
-	.select2-container { width: 90% !important; }
-	.btn-primary, #payment-method-button { font-family: 'Open Sans' !important; font-size: 11px !important; font-weight: 700 !important; }
-	.btn-primary:hover { background-color: #469fa1; }
-	#payment-method-button { background-color: #0170b6 !important; }
-	.rTableHead, .rTableCell { text-align: left !important; }
+
 </style>
 
 <div id="c_form2">
@@ -401,7 +401,7 @@ wp_add_inline_script( 'jquery-select2', $custom_js );
 										<label class="sub-heading">Image</label>
 										<input type="file" name="uploaded_image" id="uploaded-image" style="display: none" />
 										<button id="upload_image_button" class="upload-image-button" id="btn_upload_image" name="image_upload">Upload Image</button>
-										<input type='hidden' name='image_attachment_id' id='image_attachment_id' value='<?php echo get_option( 'media_selector_attachment_id' ); ?>'>
+										<input type='hidden' name='image_attachment_id' id='image_attachment_id' value=''>
 									</div>
 									<div class="info-heading" style="display: none"> (Image size - max 700kb.<br/>Image Width - min 250 px  max 400 px<br/>Image height - min 200 px  max 500 px)</div>
 								</div>
@@ -692,4 +692,4 @@ wp_add_inline_script( 'jquery-select2', $custom_js );
 	});
 </script>
 <?php
-	add_action( 'admin_footer', 'spinkx_media_selector_print_scripts' );
+ add_action( 'admin_footer', 'spinkx_media_selector_print_scripts' );

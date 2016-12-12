@@ -116,6 +116,7 @@ $custom_js .= 'var todaydate = start;
             }
 		}); 
 	});';
+wp_enqueue_script( 'jquery-youtubeapi', 'https://www.youtube.com/iframe_api' );
 wp_enqueue_script( 'jquery-daterange-picker', '//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js' );
 wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 ?>
@@ -297,8 +298,8 @@ wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 		});
 		$('#buy_point').change(function(){
 			var points = $(this).val();
-			console.log(points);
-			console.log(g_site_id);
+			//console.log(points);
+			//console.log(g_site_id);
 			$.ajax({
 				url : spinkx_server_baseurl + '/wp-json/spnx/v1/site/get-point-price',
 				type : "post",

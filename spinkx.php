@@ -14,7 +14,7 @@ Plugin URI: www.spinkx.com
 Description: Helps you manage your Spinkx account and tune settings from within your Wordpress Blog !
 Author: SPINKX
 Author URI: www.spinkx.com
-Version: 1.1.0
+Version: 1.1.1
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -555,10 +555,8 @@ function spinkx_cont_constant_update() {
 }
 add_action('init', 'spinkx_cont_constant_update');
 
-function spinkx_media_selector_print_scripts() {
-
+function spinkx_media_selector_print_scripts( ) {
 	$my_saved_attachment_post_id = get_option( 'media_selector_attachment_id', 0 );
-
 	?><script type='text/javascript'>
 
 		jQuery( document ).ready( function( $ ) {
@@ -620,6 +618,7 @@ function spinkx_media_selector_print_scripts() {
 	</script><?php
 
 }
+
 add_action( 'admin_head', 'spinkx_cont_icon_css' );
 add_action( 'admin_enqueue_scripts', 'spinkx_cont_js_var' );
 add_action( 'wp_ajax_spinkx_cont_get_dashbaord_statics', 'spinkx_cont_get_dashbaord_statics' );

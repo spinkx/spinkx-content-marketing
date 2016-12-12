@@ -26,6 +26,7 @@ wp_enqueue_style( 'al-unit-responsive', $css_url . 'unit-static-styles.css' );
 wp_enqueue_script( 'jquery' );
 wp_enqueue_script( 'masonry' );
 wp_enqueue_script( 'infinitescroll-js', $js_url . 'jquery.infinitescroll.min.js' );
+
 //wp_localize_script( 'infinitescroll-js', 'spinkx_cont', array( 'admin_ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 wp_enqueue_script( 'visible-js', $js_url . 'jquery.visible.min.js' );
 // below: for checking if user is actively viewing that tab
@@ -35,6 +36,7 @@ wp_enqueue_script( 'time-js', $js_url . 'timeme.js' );
 wp_add_inline_script( 'time-js', 'TimeMe.setIdleDurationInSeconds(30);
 	TimeMe.setCurrentPageName("sx_widget");
 	TimeMe.initialize();' );
+wp_enqueue_script( 'jquery-youtubeapi', 'https://www.youtube.com/iframe_api' );
 $unique_dynamic_id = helperClass::getFilterVar( 'unique_id', INPUT_REQUEST);
 $ifm_pge = helperClass::getFilterVar('ifm_pge', INPUT_REQUEST, FILTER_VALIDATE_INT);
 
