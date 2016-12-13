@@ -1,18 +1,17 @@
 === Spinkx Content Marketing ===
 Contributors: spinkx
-Donate link: www.spinkx.com
-Tags: content marketing, advertising, native advertising, revenue, monetisation, traffic, SEO, content distribution, sidebar, trending stories, ctr, cpm, pinterest style, analytics, tracking, masonry, user engagement, widgets, sidebar widget, infinity sidebar, headlines, A:B testing, video, video marketing, share, comment, like, campaigns, create advertisement, deep content analytics, engaging content, multisite
+Tags: Content Marketing, Content Distribution, Free Traffic Exchange, Monetisation, Advertising, Affiliate Marketing, Campaigns, Backlinks, SEO Backlinks, Revenue, Sidebar Widget, Pinterest Style Widget, Content Analytics, Masonry Side, User Engagement, Infinity Footer, Variation Headlines, A:B testing, Video Widget, Video Marketing, Social Share, Multisite, Native Advertising.
 Requires at least: 4.0
-Tested up to: 4.6.1
-Stable tag: 4.6.1
+Tested up to: 4.7
+Stable tag: 4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Distribute your content to get more traffic to your website, accumulate points & monetise your blog. Native ads.
+A true content marketing plugin with Free Traffic Exchange, Monetisation, Variation Headlines, Backlinks for SEO, Content Analytics, Campaign Module.
 
 == Description ==
 
-Spinkx has been designed by a team of content marketing experts with an intention to Support & Empower the Wordpress Blogger Community around the World. Content creators can now build a career in the industry and monetise their sites exclusively over the WordPress Platform. We have simplified earning money for your blog, and by boosting your content at your discretion, to get more users to your Website. Our world class tools and strategy is increasing free traffic every minute, resulting into visibility of your content around the world.
+Spinkx Plugin for WordPress, has been designed by a team of content marketing experts with an intend to Empower the Blogger Community around the World. Content creators can now build a profitable business by getting their blog popular & earn revenue. Get Free Traffic to grow your Audience base in real time, Monetise much better with high CTR ads & increase their Website SEO & Alexa Rank by creating Backlinks in real time over the Spinkx Network participating Sites.
 
 Spinkx is a Free Plugin & also has a few paid Features.
 
@@ -20,7 +19,7 @@ Spinkx is a Free Plugin & also has a few paid Features.
 Features:
  
 = 1. Increase User Engagement =
-On WordPress sites, the most interactive element is the sidebar. It gives audience a quick look into other exciting articles that they will be interested in reading. This engages your audience, enticing them to stay on your site longer. User Engagement is vital, and our plug-in allows you to display stories on your side bar that your audience may want to read.
+On WordPress sites, the most interactive element is the sidebar. It gives audience a quick look into other exciting articles that they will be interested in reading. This engages your audience, enticing them to stay on your site longer. User Engagement is vital, and our plug-in allows you to display stories on your side bar that your audience may want to read. On an average you can increase your user engagement by upto 30%, which in return increases your page views by 30% or more, reduces your current bounce rate by 60% and also make you accumulate credit points (to free boost your posts) and money form native ads or affiliate marketing. More page views means more revenue, either form Spinkx Sponsored Content or even Google Adsense.
 
 = 2. Grow Your Audience =
 With Spinkx, your content, can now reach out to newer readers on another bloggers sidebar, who uses Spinkx plugin as well. This helps in more visibility opportunities of your stories & increased visitors to your site. You accumulate points when you allow displaying other users content in your sidebar widget & then use those points to boost your own pots as per your category targeting. Envision, a visitor on other blog site who sees your article featuring on the blog’s side bar and clicks on it. Congratulations, you just got yourself a new visitor. This Feature is meant to be entirely FREE, therefore it is not meant for advertising purpose, but only to grow your audience.
@@ -38,7 +37,7 @@ Video Promotion, Social Share, Front End Analytics
 
 A few notes about the sections above:
 
-**NB- Spinkx Plugin is designed to track any BOT activity, Fake Clicks & Impression to advertisements or boosted posts. We ONLY track real users & thus the accuracy & performance of your Posts & advertising in our network. We Reserve the right to BAN any such BOT based activity or any provocative & obscene content from our network. You may do what ever you may like with what ever content in your own sites sidebar - no restriction or ban on them. And FREE to use for life. We do not deactivate this features if you don’t buy or pay for the plugin. However the expenses of running content analytics for your site still costs us money to run on our servers.**
+** NB- Spinkx Plugin is designed to track any BOT activity, Fake Clicks & Impression to advertisements or boosted posts. We ONLY track real users & thus the accuracy & performance of your Posts & advertising in our network. We Reserve the right to BAN any such BOT based activity or any provocative & obscene content from our network. You may do what ever you may like with what ever content in your own sites sidebar - no restriction or ban on them. And FREE to use for life. We do not deactivate this features if you don’t buy or pay for the plugin. However the expenses of running content analytics for your site still costs us money to run on our servers.**
 
 *   The Spinkx Sidebars is completely customisable as per your choice, in terms of design & categories of content allowed.
 *   It is at your discretion & allowance completely to show a fellow bloggers post on your sidebar or switch off the feature entirely. 
@@ -55,7 +54,7 @@ Detailed usage of the plugin, training & Videos are available on your website.
 
 This section describes how to install the plugin and get it working.
 
-1. Upload the plugin files to the `/wp-content/plugins/spinkx-client-wp` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/spinkx-content-marketing` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Register your Site on “My Site” & fill in accurately your website category, geography, age limit of content & language of your site.
 4. Go to Widget Design & Copy the Short code - which should look like this - [ spinkx id=”xx” ]
@@ -72,7 +71,7 @@ This section describes how to install the plugin and get it working.
 
 = What happens after 30 days of FREE trial of all Features? =
 
-None of the features are blocked after the Trial, except for being able to BOOST your own posts or Transferring revenue earned to your bank account. You can continue to accumulate points & revenue. But you will be able to use those features after a purchase. 
+None of the features are blocked after the Trial, except for being able to BOOST your own posts or Transferring revenue earned to your bank account. You can continue to accumulate points & revenue. But you will be able to use those features only after a purchase. (Exceptions are always there)
 
 = Can i use this plugin only to for my Sidebar widget & Not boost posts & earn revenue. =
 
@@ -98,6 +97,6 @@ YES ! We support you in all your Endeavours with respect to this plugin or Wordp
 == Changelog ==
 = 1.1.1 =
 
-* Release date: December 12, 2016
+* Release date: December 13, 2016
 
 Initial release
