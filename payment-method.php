@@ -113,7 +113,8 @@ function spinkx_cont_payment_method_list( $atts, $content = null ) {
 		} elseif ( 3 === intval( $atts['flag'] ) ) {
 			$shortcode_output = '<span class="sub-heading"><sup>*</sup>You do not need to add money if you already have money in your SPINKX wallet.&nbsp; &nbsp;<button id="payment-method-button">Add Money to wallet</button></span>';
 		} else {
-			$shortcode_output = '<button id="payment-method-button">Pay Now</button>';
+			$shortcode_output = '<button id="payment-method-button" class="btn-primary pbuy-now" style="    color: #fff;
+    background-color: #0170B9;">Buy Now</button>';
 		}
 		$after_transaction = '';
 		if(2 === intval( $atts['flag'] )) {

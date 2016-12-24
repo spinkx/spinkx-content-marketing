@@ -17,6 +17,7 @@ function spinkx_cont_icon_css() {
 		max-width: 65%;
 		filter: alpha(opacity=60);
 	} </style>';
+
 }
 
 /**
@@ -96,9 +97,12 @@ function spinkx_cont_common_css_js( $page  ) {
 	 * JS Loading
 	 */
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
+	wp_enqueue_script( 'smooch-js', $js_url .'smooch.min.js' );
+	wp_add_inline_script('smooch-js', "Smooch.init({ appToken: 'aa9cksz2rzpy071aqxhe31yvs' });");
 	wp_enqueue_script( 'jquery-ui-js', $js_url . 'jquery-ui.js' );
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
 	wp_enqueue_script( 'bootstrap-js', $js_url . 'bootstrap.min.js' );
+
 
 	if ( $page !== 'spinkx_options' ) {
 		wp_enqueue_script( 'select2-js', $js_url . 'select2.min.js' );
@@ -126,7 +130,9 @@ function spinkx_cont_registration_css_js() {
 	$custom_css = ' .modal-body { height: 320px; overflow: auto; } 	
 	.modal-backdrop { background-color: #fff; }
 	.modal-backdrop.fade.in	{ opacity: .8; }
-	.select2-container-multi .select2-choices { width:initial; }';
+	.select2-container-multi .select2-choices { width:initial; }
+	.buy-msg { display: block; font-weight: 600; font-size:11px; border: 1px solid ##F1F1F1; background: #dde5ec; width: 254px; float: right;
+    text-align: right; border-radius: 5px; padding:5px; margin-top:10px; }';
 	wp_add_inline_style( 'master', $custom_css );
 }
 

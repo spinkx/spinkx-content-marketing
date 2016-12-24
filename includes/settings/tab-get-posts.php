@@ -15,9 +15,13 @@ if ( $from_date && $to_date  ) {
 	$data = helperClass::doCurl( $url, $post );
 
 	$data = json_decode( $data );
+
 	if ( isset( $data->date ) ) {
 		$todaydate = $data->date;
+		$temp_today_date = strtotime('-30 days', $todaydate);
+		$todaydate = $temp_today_date;
 		$enddate = $data->date;
+
 	} else {
 		echo isset( $data->msg ) ? $data->msg : '';
 		exit;
@@ -94,7 +98,11 @@ $custom_js .= 'var todaydate = start;
 	"lengthMenu": [10, 20, 50, 100],
 	"bFilter": false,
 	"ordering": false,
-	"bSort": false
+	"bSort": false,
+	"language": {
+            "zeroRecords": "Only Posts from last 6 months and with Featured image, will show in this list and can be promoted in the sidebar. You may re-publish your articles to a recent date to make them appear in the content playlist with featured  image already set.",
+           
+        }
 
 	});
 	jQuery(".site-cat-multiple").select2();
@@ -204,14 +212,46 @@ wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 				</div>
 				<div class="modal-footer">
 					<a href="javascript::void(0)" id="buy-more-point" style="float: left">Buy More Point</a>
+
 					<button class='btn btn-danger' data-dismiss='modal' aria-hidden='true'>Cancel</button>
 					<input type="submit" class='btn btn-success' value="Boost Post" />
-
 				</div>
 				</div>
 			</form>
 		</div>
 
+	</div>
+</div>
+<div id="boostmodalshowMsgWidgetNotFrontShow" style="z-index: 9999;" class="modal small fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><strong>Boost Post</strong></h4>
+			</div>
+
+			<div class="modal-body">
+				Please activate Spinkx Widget in your Front End  - <br/>1. Go to <a href="admin.php?page=spinkx_widget_design#widget_design">Widget Design</a> & Copy the Short code - which should look like this - [ spinkx id=”xx” ]
+				<br/>2. Go to <a href="widgets.php">Appearances > Widgets</a> of your WordPress Sidebar and scroll to the bottom add “TEXT” to your Main Sidebar.	<br/>3. To accumulate more boost points and advertising revenue, try and place your widget on the top.
+			</div>
+		</div>
+	</div>
+</div>
+<div id="boostmodalshowMsgWidgetNotActivate" style="z-index: 9999;" class="modal small fade" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><strong>Boost Post</strong></h4>
+			</div>
+			<div class="modal-body">
+				All your Sidebar Widget are Inactive. All your Boost Posts will be Stopped! Please  <a href="admin.php?page=spinkx_widget_design#widget_design">activate the Widget</a> and display it on your Front end to enable display of 'Boost Post’ on other Websites
+			</div>
+		</div>
 	</div>
 </div>
 <div id="boostmodalshowMsg" style="z-index: 9999;" class="modal small fade" role="dialog">
@@ -223,17 +263,13 @@ wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title"><strong>Boost Post</strong></h4>
 			</div>
-
 			<div class="modal-body">
 				Your site is not registered. Kindly <a href="admin.php?page=spinkx-site-register.php">Register</a> to start using credit points to boost post.
 			</div>
 
 		</div>
-
 	</div>
-
 </div>
-
 <div id="boostmodalbuyPoint" style="z-index: 9999;" class="modal small fade" role="dialog">
 	<div class="modal-dialog">
 

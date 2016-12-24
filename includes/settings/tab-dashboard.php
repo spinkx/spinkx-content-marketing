@@ -11,8 +11,8 @@ if( helperClass::getFilterVar( 'to_date' ) ) {
 global $wpdb;
 if ( ! ( isset($post['from_date']) && isset($post['to_date']) ) ) {
 	$from_date = $to_date = $wpdb->get_var( 'SELECT current_date()' );
-	$post['from_date'] = $from_date;
-	$post['to_date'] = $to_date;
+	$post['from_date'] = date('Y-m-d', $todaydate);
+	$post['to_date'] = date('Y-m-d', $enddate);
 }
 $data = helperClass::doCurl( $url,$post );
 $data = json_decode( $data, true );

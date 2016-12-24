@@ -1,14 +1,18 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
-
+$settings = get_option( SPINKX_CONT_LICENSE );
+$settings = maybe_unserialize( $settings );
 $url = esc_url( SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/get-date' );
 $post = array( 'site_id' => $settings['site_id'],'license_code' => md5( $settings['license_code'] ) );
 $data = helperClass::doCurl( $url, $post );
 $todaydate = 0;
+$enddate = 0;
 $data = json_decode( $data );
 if ( isset( $data->date ) ) {
 	$todaydate = $data->date;
+	$temp_today_date = strtotime('-30 days', $todaydate);
+	$todaydate = $temp_today_date;
+	$enddate = $data->date;
 } else {
 	echo isset( $data->msg )?$data->msg:'';
 	wp_die();

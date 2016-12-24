@@ -18,9 +18,13 @@ $url = esc_url( SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/get-date' );
 $post = array( 'site_id' => $settings['site_id'], 'license_code' => md5( $settings['license_code'] ) );
 $data = helperClass::doCurl( $url, $post );
 $todaydate = 0;
+$enddate = 0;
 $data = json_decode( $data );
 if ( isset( $data->date ) ) {
 	$todaydate = $data->date;
+	$temp_today_date = strtotime('-30 days', $todaydate);
+	$todaydate = $temp_today_date;
+	$enddate = $data->date;
 } else {
 	echo isset( $data->msg )? $data->msg : 'Error';
 	exit;
@@ -46,7 +50,7 @@ $custom_css = '
 $custom_js = 'jQuery(function() { ';
 if ( $todaydate ) {
 	$custom_js .= 'var start = moment(' . ( $todaydate * 1000 ) . ');';
-	$custom_js .= 'var end = moment(' . ( $todaydate * 1000 ) . ');';
+	$custom_js .= 'var end = moment(' . ( $enddate * 1000 ) . ');';
 } else {
 	$custom_js .= 'var start = moment();';
 	$custom_js .= 'var end = moment();';

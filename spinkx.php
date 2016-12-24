@@ -11,10 +11,10 @@
 /**
 Plugin Name: Spinkx Content Marketing
 Plugin URI: www.spinkx.com
-Description: Helps you manage your Spinkx account and tune settings from within your Wordpress Blog !
+Description: Spinkx is a full featured Content Marketing suite & an ad network. 1) Free Traffic Exchange 2) Content Distribution 3) Monetisation 4) SEO backlinks 5) Run Affiliate Campaign 6) Content analytics and <a href="http://www.spinkx.com">more..</a>
 Author: SPINKX
 Author URI: www.spinkx.com
-Version: 1.1.1
+Version: 1.1.3
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -56,10 +56,37 @@ register_activation_hook( __FILE__, 'spinkx_cont_plugin_activated' );
  * @return void
  * @param string $network_wide params for multisite.
  */
-function spinkx_cont_server_plugin_deactivate( $network_wide ) {
+function spinkx_cont_server_plugin_uninstall( $network_wide ) {
 	require  'uninstall.php';
 }
-register_uninstall_hook( __FILE__, 'spinkx_cont_server_plugin_deactivate' );
+register_uninstall_hook( __FILE__, 'spinkx_cont_server_plugin_uninstall' );
+
+/**
+ *
+ * This function fire when plugin deactivate and send status update server
+ * spinkx_cont_server_plugin_deactivate()
+ *
+ * @return void
+ * @param string $network_wide params for multisite.
+ */
+function spinkx_cont_server_plugin_deactivate( $network_wide ) {
+	global $wpdb;
+	$post =  maybe_unserialize(get_option( SPINKX_CONT_LICENSE ));
+	if( is_multisite() ) {
+		$siteArr = $wpdb->get_results( 'SELECT blog_id FROM `wp_blogs` WHERE public = 1', ARRAY_A );
+		$data = array();
+		foreach ( $siteArr as $currentSite ) {
+			switch_to_blog($currentSite['blog_id']);
+			$temp = maybe_unserialize(get_option( SPINKX_CONT_LICENSE ));
+			$data[] = $temp['site_id'];
+		}
+		$post['ids'] = $data;
+	}
+	$post = maybe_serialize($post);
+	$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/deactivate';
+	helperClass::doCurl( $url, $post, false );
+}
+register_deactivation_hook( __FILE__, 'spinkx_cont_server_plugin_deactivate' );
 
 /**
  *
@@ -301,6 +328,7 @@ function spinkx_cont_increment_views() {
  * @internal param void
  */
 function spinkx_cont_add_custom_action_after_plugins_loaded() {
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	if ( ! function_exists( 'process_postviews' ) || ! is_plugin_active( 'WP-PostViews' ) ) {
 		add_action( 'wp_head', 'spinkx_cont_process_postviews' );
 	}

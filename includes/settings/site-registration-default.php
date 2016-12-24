@@ -32,6 +32,8 @@ foreach ( $siteArr as $currentSite ) {
 		$response = helperClass::doCurl( $url, $data );
 
 	if ( $response && ! $site_id ) {
+
+
 		$output = json_decode( $response, true );
 
 		if ( ! isset( $output['message'] ) ) {
@@ -212,6 +214,9 @@ foreach ( $siteArr as $currentSite ) {
 			}
 		}
 	}
+	$post =  get_option( SPINKX_CONT_LICENSE );
+	$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/activate';
+	helperClass::doCurl( $url, $post, false );
 }
 
 

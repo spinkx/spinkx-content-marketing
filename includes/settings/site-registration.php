@@ -181,14 +181,17 @@ if ( $settings ) {
 				<div class="col-sm-4 col-md-4" style="text-align: right; vertical-align: middle;">
 					<div class="">
 						<p style="color: grey;font-weight: bold;">Plugin Version <?php echo SPINKX_VERSION;?></p>
-						<p style="color: <?php echo $color?>;font-weight: bold;">Licence Valid Till :
+
+						<p style="color: grey;font-weight: bold;width: 100%;float: right" >Licence Valid Till :
 						<?php if ( $datetime ) {
 								echo date( 'd',$datetime ) . ' ' . date( 'F',$datetime ) . ' ' . date( 'Y',$datetime ) . '(' . $diff->format( '%R%a days' ) . ')';
-} else {
-							echo '(xx days)'; }
+}
+							if ( ! $datetime ) { echo '(xx days)'; }
 							echo '<br/>';
-							echo do_shortcode( $buy_now )
+							echo '<span class="buy-msg">Buy the plugin and get 1000 Free Boost Points<br/>to reach 10,000 new visitors. Limited Offer!</span>';
+
 						?> </p>
+						<p style="display: block"><?php echo do_shortcode( $buy_now );?></p>
 					</div>
 				</div>
 			</div>
