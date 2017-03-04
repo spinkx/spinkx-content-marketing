@@ -7,7 +7,7 @@ class helperClass {
 	/** To perform a curl request to server
 	 * * Post null for get requests
 	 **/
-	public static function doCurl( $url, $post = null, $is_json_encode = true, $headers = array(), $timeout = 0 ) {
+	public static function doCurl( $url, $post = null, $is_json_encode = true, $headers = array(), $timeout = 0, $error_print = true ) {
 		$output = null;
 		if ( ! $post ) {
 			if(!$headers) {
@@ -39,8 +39,13 @@ class helperClass {
 			}
 
 			if ( is_wp_error( $wp_output ) ) {
-				$error_message = $wp_output->get_error_message();
-				$output =  "Something went wrong: $error_message";
+				if( $error_print ) {
+					$error_message = $wp_output->get_error_message();
+					$output = "Something went wrong: $error_message";
+				} else {
+					$output = 'error';
+				}
+
 			} else {
 				$output = $wp_output['body'];
 			}

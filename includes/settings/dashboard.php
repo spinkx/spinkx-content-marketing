@@ -13,21 +13,18 @@ if ( isset( $data->date ) ) {
 	$temp_today_date = strtotime('-30 days', $todaydate);
 	$todaydate = $temp_today_date;
 	$enddate = $data->date;
-} else {
-	echo isset( $data->msg )?$data->msg:'';
-	wp_die();
 }
 
 $custom_js = ' var client_url = "' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '";';
 $custom_js .= 'jQuery(function() { jQuery(".se-pre-con").fadeOut("slow"); ';
 if ( $todaydate ) {
 	$custom_js .= ' var start = moment(' . ( $todaydate * 1000 ) . ');';
-	$custom_js .= ' var end = moment(' . ( $todaydate * 1000 ) . ');';
+	$custom_js .= ' var end = moment(' . ( $enddate * 1000 ) . ');';
 } else {
 	$custom_js .= ' var start = moment();';
 	$custom_js .= ' var end = moment();';
 }
-$custom_js .= ' var todaydate = start;
+$custom_js .= ' var todaydate = end;
 	jQuery("#reportrange").on("apply.daterangepicker", function(ev, picker) {
 		//do something, like clearing an input
 		get_stat_now(picker.startDate, picker.endDate);
@@ -77,23 +74,7 @@ wp_add_inline_script( 'jquery-daterangepicker', $custom_js );
 
 	<!-- Main tabs here  -->
 	<div id="distributiontabs" style="width:100%;">
-		<ul class="nav nav-tabs">
-		<?php if ( ! $settings ) {
-			echo '
-			<li><a href="?page=spinkx_options#account_setup"><strong> Account Setup</strong></a></li>
-			<li><a href="?page=spinkx_widget_design#widget_design"><strong> Widget Design</strong></a></li>
-			<li><a href="?page=spinkx_content_play_list#content_play_list"><strong> Content Play List</strong></a></li>
-			<li class="active"><a href="?page=spinkx_dashboard#dashboard"><strong> Dashboard </strong></a></li>
-			<li><a href="?page=spinkx_campaigns#campaigns"><strong> Campaigns </strong></a></li>';
-} else { 			echo '
-			<li><a href="?page=spinkx_widget_design#widget_design"><strong> Widget Design</strong></a></li>
-			<li><a href="?page=spinkx_content_play_list#content_play_list"><strong> Content Play List</strong></a></li>
-			<li class="active"><a href="?page=spinkx_dashboard#dashboard"><strong> Dashboard </strong></a></li>
-			<li><a href="?page=spinkx_campaigns#campaigns"><strong> Campaigns </strong></a></li>';
-}
-			echo '<li><a href="?page=spinkx_options#account_setup"><strong> Account Setup</strong></a></li>';
-		?>
-		</ul>
+		<?php spinkx_header_menu() ?>
 		<div class="wrap-inner" style="min-height: 10px; padding: 20px; margin: 10px auto;" >
 			<div class="tab-contents">
 

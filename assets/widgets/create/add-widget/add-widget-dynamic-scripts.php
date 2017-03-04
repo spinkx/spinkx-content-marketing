@@ -440,7 +440,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		$("#recent").show();
 		$("#popular").show();
 		$("#related").show();
-		console.log("slide_time");
+		//console.log("slide_time");
 		jQuery(".ajax_create_button").attr("disabled",false);
 		var widget_recent	=	jQuery("#widget_recent_percentage").val();
 		var widget_related	=	jQuery("#widget_related_percentage").val();
@@ -499,23 +499,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				datatype : "json",
 				success : function(data){
 					//alert(data);
-					console.log(data);
-					$.ajax({
-						url : ajaxurl,
-						data : {
-							    "action": "spinkx_cont_save_widget_position",
-								"add_shortcode" : add_shortcode,
-								"wp_section" : wp_section
-							},
-						type : "post",
-						success:function(data){
-							$("#bpopup_ajax_loading").bPopup().close();
-							$.growl.notice({ message: "Successfully Updated!",
-								location: "tr",
-								size: "large" });
-						}
-					});
-
+					$.growl.notice({ message: "Successfully Updated!",
+					location: "tr",
+					size: "large" });
+					
 //					$(".ajax_create_button").value("Update");
 //					$(".ajax_create_button").prop("id", "Update");
 					location.reload();

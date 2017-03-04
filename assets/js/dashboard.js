@@ -1,5 +1,8 @@
 function get_stat_now(start, end){
     $.ajax({
+        beforeSend: function(){
+            jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+        },
         url : ajaxurl,
         type: 'get',
         datatype : 'json',
@@ -9,7 +12,11 @@ function get_stat_now(start, end){
             'from_date' :  start.format('YYYY-MM-DD'),
             'to_date' : end.format('YYYY-MM-DD'),
         },
+        complete: function(){
+            jQuery('#bpopup_ajax_loading').bPopup().close();
+        },
         success: function(data){
+
             var data = JSON.parse(data);
             $("#apb_activepost").html(data.active_post_block.activepost);
             $("#apb_imppost").html(data.active_post_block.imppost);

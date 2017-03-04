@@ -55,7 +55,7 @@ if ( $post ) {
 						location: 'tr',
 						size: 'large'
 					});
-					window.location.replace('?page=spinkx_options');
+					window.location.replace('?page=spinkx_widget_design');
 				});</script>";
 			echo $js_output;
 		} else {
@@ -85,7 +85,7 @@ if ( $post ) {
 			$settings['reg_user'] = $output['reg_user'];
 			$s = maybe_serialize( $settings );
 			update_option( SPINKX_CONT_LICENSE, $s );
-			echo '<script>window.location.replace("?page=spinkx_options");</script>';
+			echo '<script>window.location.replace("?page=spinkx_widget_design");</script>';
 		} else {
 			if ( isset( $output['message'] ) ) {
 
@@ -107,10 +107,13 @@ if ( ! $site_id ) {
 	$api_form_elements_url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/form-elements';
 	$output = helperClass::doCurl( $api_form_elements_url, null );
 	$dropdown = json_decode( $output );
-	$selected_url	= get_site_url();
-	$buy_now = $dropdown->selected_site->buy_now;
-	if ( class_exists( Domainmap_Utils ) ) {
+	$buy_now = '';
 
+	if( isset( $dropdown->selected_site ) ) {
+		$buy_now = $dropdown->selected_site->buy_now;
+	}
+	$selected_url	= get_site_url();
+	if ( class_exists( 'Domainmap_Utils' ) ) {
 		$selected_url = \Domainmap_Utils::get_mapped_domain();
 		// echo $selected_url;
 	}
@@ -119,10 +122,12 @@ else {
 	$api_form_elements_url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/form-elements/' . $site_id;
 	$output = helperClass::doCurl( $api_form_elements_url, null );
 	$dropdown = json_decode( $output );
+	
 	$selected_url = '';
 	if( isset( $dropdown->selected_site->site_url ) ) {
 		$selected_url = $dropdown->selected_site->site_url;
 	}
+	$user_key = null;
 	if( isset( $dropdown->selected_site->user_key ) ) {
 		$user_key = $dropdown->selected_site->user_key;
 	}
@@ -154,11 +159,12 @@ if ( ! $selected_url ) {
 }
 $userkey = 	helperClass::getFilterVar( 'userkey' );
 if ( $userkey ) {
-	$user_key		= $userkey;
+	$user_key = $userkey;
 }
 $datetime = null;
 $color = '#469fa1';
-if ( $settings ) {
+
+if ( isset($settings['due_date']) && $settings['due_date'] != '0000-00-00 00:00:00' ) {
 	$datetime = strtotime( $settings['due_date'] );
 	$diff = spinkx_cont_get_license_date( $settings['due_date'] );
 	if ( intval( $diff->format( '%R%a days' ) ) < 0 ) {
@@ -214,7 +220,7 @@ if ( $settings ) {
 			</div>
 			<?php // if(!isset($settings['reg_user'])) { ?>
 			<div class="auto-pick form-group">
-				<input type="hidden" id="user_key" name="user_key" value="<?php if ( $user_key ) {
+				<input type="hidden" id="user_key" name="user_key" value="<?php if ( isset( $user_key ) ) {
 					echo $user_key;
 } ?>" placeholder="KEY - (Enter your user key)" readonly>
 				<?php if ( ! $user_key ) { ?>

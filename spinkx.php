@@ -14,7 +14,7 @@ Plugin URI: www.spinkx.com
 Description: Spinkx is a full featured Content Marketing suite & an ad network. 1) Free Traffic Exchange 2) Content Distribution 3) Monetisation 4) SEO backlinks 5) Run Affiliate Campaign 6) Content analytics and <a href="http://www.spinkx.com">more..</a>
 Author: SPINKX
 Author URI: www.spinkx.com
-Version: 1.1.3
+Version: 2.0
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -23,10 +23,6 @@ require_once SPINKX_CONTENT_PLUGIN_DIR . 'class/storageClass/al_helperClass.php'
 require_once SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/spinkx-css-js-enqueue.php';
 require_once SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/spinkx-ajax.php';
 require_once SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/pagination-url.php';
-require_once SPINKX_CONTENT_PLUGIN_DIR . 'assets/widgets/create/ajax-url/create-widget-fields-ajax-url.php';
-require_once SPINKX_CONTENT_PLUGIN_DIR . 'assets/widgets/create/ajax-url/update-widget-fields-ajax-url.php';
-require_once SPINKX_CONTENT_PLUGIN_DIR . 'assets/widgets/create/ajax-url/delete-widget-ajax-url.php';
-require_once SPINKX_CONTENT_PLUGIN_DIR . 'assets/widgets/create/ajax-url/clone-widget-ajax-url.php';
 require_once SPINKX_CONTENT_PLUGIN_DIR . 'assets/widgets/create/save-widget-position.php';
 require_once SPINKX_CONTENT_PLUGIN_DIR . 'assets/campaigns/campajx.php';
 
@@ -42,12 +38,8 @@ $views_options = array( 'count' => 1, 'exclude_bots' => 1,'use_ajax' => 1 );
  * @return void
  * @param string $network_wide params for multisite.
  */
-function spinkx_cont_plugin_activate( $network_wide ) {
-	require SPINKX_CONTENT_PLUGIN_DIR . 'includes/activation/activation.php';
-}
-register_activation_hook( __FILE__, 'spinkx_cont_plugin_activate' );
-register_activation_hook( __FILE__, 'spinkx_cont_plugin_activated' );
 
+register_activation_hook( __FILE__, 'spinkx_cont_plugin_activated' );
 /**
  *
  * This function fire when plugin deactivate and send status update server
@@ -168,13 +160,18 @@ add_action( 'publish_to_publish', 'spinkx_cont_update_on_publish_to_publish', 10
  * @param null|string $content this is string params.
  */
 function spinkx_cont_display_shortcode( $atts, $content = null ) {
-		shortcode_atts( array( 'id' => '', 'user_id' => '', 'site_id' => '' ), $atts );
-		$license = get_option( SPINKX_CONT_LICENSE );
-		$license_arr = maybe_unserialize( $license );
-		$shortcode_output = '';
-		require SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/inc.php';
-		return $shortcode_output;
 
+	shortcode_atts( array( 'id' => '', 'user_id' => '', 'site_id' => '' ), $atts );
+	$license = get_option( SPINKX_CONT_LICENSE );
+	$license_arr = maybe_unserialize( $license );
+	$shortcode_output = '';
+	//require SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/inc.php';
+	if( isset($atts['is_mobile']) && intval($atts['is_mobile']) == 1) {
+		require SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/show-widget-mobile-initialize.php';
+	} else if( ! wp_is_mobile() ) {
+		require SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/show-widget.php';
+	}
+	return $shortcode_output;
 }
 add_shortcode( 'spinkx', 'spinkx_cont_display_shortcode' );
 
@@ -384,14 +381,13 @@ function spinkx_cont_get_default_shortcode_output() {
 	if ( isset( $license['reg_user'] ) ) {
 		if ( 0 === $license['reg_user'] ) {
 			$license = get_option( SPINKX_CONT_LICENSE );
-
 			$atts['id'] = $license['default_widget_id'];
 			$atts['site_id'] = $license['site_id'];
 			$atts['user_id'] = $license['reg_user'];
 			$license_arr = maybe_unserialize( $license );
 			$shortcode_output = '';
-			require SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/inc.php';  // call widget file.
-			return $shortcode_output;
+			//require SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/inc.php';  // call widget file.
+			//return $shortcode_output;
 		}
 	}
 }
@@ -413,6 +409,8 @@ function spinkx_cont_above_comment_widget_default() {
 		}
 	}
 }
+
+
 
 /**
  *
@@ -481,11 +479,7 @@ add_action( 'wp_dashboard_setup', 'spinkx_cont_add_dashboard_widgets' ); // Call
  * @internal param $void
  */
 function spinkx_cont_dashboard_widget() {
-	echo ' <div style="float:left; width: 48%;">     
-				  <img src="' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . 'assets/images/logo.png" alt="Home" style="  width: 100%; margin: 0px auto; display: block;">
-		   </div>
-				
-	  ';
+
 
 	$settings = maybe_unserialize( get_option( SPINKX_CONT_LICENSE ) );
 	$lpost_data = wp_json_encode( array( 'site_id' => $settings['site_id'] ) );
@@ -494,31 +488,41 @@ function spinkx_cont_dashboard_widget() {
 		'method' => 'POST',
 		'body' => $lpost_data,
 	) );
-	if ( ! is_wp_error( $wp_output ) ) {
-		$jsonity = json_decode( $wp_output['body'] );
-		if( isset( $jsonity->available_credit_block->availablecredit ) ) {
-			$jsonity->available_credit_block->availablecredit = number_format($jsonity->available_credit_block->availablecredit, 2);
+	$availablecredit = 0;
+	$impPostTotalToday = 0;
+	$impPostTotalYesterday = 0;
+	if ( ! is_wp_error( $wp_output ) &&  $wp_output['body'] != null) {
+		$jsonity = json_decode($wp_output['body']);
+		if( is_object( $jsonity ) ) {
+			if (isset($jsonity->available_credit_block->availablecredit)) {
+				$availablecredit = number_format($jsonity->available_credit_block->availablecredit, 2);
+			}
+
+			$impPostTotalToday = ($jsonity->available_credit_block->impPostTotalToday) ? $jsonity->available_credit_block->impPostTotalToday : '';
+			$impPostTotalYesterday = ($jsonity->available_credit_block->impPostTotalYesterday) ? $jsonity->available_credit_block->impPostTotalYesterday : '';
 		}
-	}
-	$jsonity->available_credit_block->impPostTotalToday = isset($jsonity->available_credit_block->impPostTotalToday)?$jsonity->available_credit_block->impPostTotalToday:'';
-	$jsonity->available_credit_block->impPostTotalYesterday = isset($jsonity->available_credit_block->impPostTotalYesterday)?$jsonity->available_credit_block->impPostTotalYesterday:'';
-	echo '<style>
+		echo ' <div style="float:left; width: 48%;">     
+				  <img src="' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . 'assets/images/logo.png" alt="Home" style="  width: 100%; margin: 0px auto; display: block;">
+		   </div>
+				
+	  ';
+		echo '<style>
 	.spinkx_dashwidget_label{ float:left; color:#242E82; font-size:1.2em; height:50%; width:25%; margin: 10% 10px; align-content: center; }
 
 .spinkx_dashwidget_value{ color:#242E82; font-size:1.5em; align-content: center; margin: 14% 25%; width:100%; height: 40%; }
 
-.spinkx_dashwidget_value p { font-size:none; line-height:none; margin:0; }
+.spinkx_dashwidget_value p {  margin:0; }
 
 	</style>
 	
 	<div style="float:left; width:50%; height:8%; margin:0 auto;"> 
 	<div class="spinkx_dashwidget_label">Credit Points</div> 
-	<div class="spinkx_dashwidget_value"><p> ' .  $jsonity->available_credit_block->availablecredit  . '</p>
+	<div class="spinkx_dashwidget_value"><p> ' . $availablecredit . '</p>
 	</div> 
 	<div style="clear:both;"></div> 
 	<hr /> 
 	<div class="spinkx_dashwidget_label">Post Reach</div> 
-	<div class="spinkx_dashwidget_value" style="margin:9% 7%;"><p> ' .  $jsonity->available_credit_block->impPostTotalToday  . ' <span style="font-size:.5em; color:#3E933B;"> Today</span><br/>  ' .  $jsonity->available_credit_block->impPostTotalYesterday  . ' <span style="font-size:.7em; color:#3E933B;"> Yesterday</span></p> </div> </div> 
+	<div class="spinkx_dashwidget_value" style="margin:9% 7%;"><p> ' . $impPostTotalToday . ' <span style="font-size:.5em; color:#3E933B;"> Today</span><br/>  ' . $impPostTotalYesterday . ' <span style="font-size:.7em; color:#3E933B;"> Yesterday</span></p> </div> </div> 
 	<div style="clear:both;">
 	</div>
 	
@@ -528,7 +532,9 @@ function spinkx_cont_dashboard_widget() {
 	
 	  </div>
 	  <div style="clear:both;"></div>';
-
+	} else {
+		
+	}
 }
 /**** End dashboard widget code ******/
 
@@ -568,7 +574,6 @@ function spinkx_cont_constant_update() {
 					$value = get_option(SPINKX_CONT_LICENSE);
 					if(!$value) {
 						$wpdb->query("UPDATE $wpdb->options SET option_name = '" . SPINKX_CONT_LICENSE . "' WHERE option_name = '_bw_license_update'");
-						//echo $wpdb->last_query;
 					}
 				}
 				switch_to_blog($current_blog_id);
@@ -583,7 +588,7 @@ function spinkx_cont_constant_update() {
 }
 add_action('init', 'spinkx_cont_constant_update');
 
-function spinkx_media_selector_print_scripts( ) {
+function spinkx_cont_media_selector_print_scripts( ) {
 	$my_saved_attachment_post_id = get_option( 'media_selector_attachment_id', 0 );
 	?><script type='text/javascript'>
 
@@ -647,6 +652,53 @@ function spinkx_media_selector_print_scripts( ) {
 
 }
 
+
+function spnx_cont_mobile_widget_data() {
+	$widget_id = $_REQUEST['widget_id'];
+	$shortcode_output = '';
+	require SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/show-widget-mobile-data.php';
+	echo $shortcode_output;
+	exit;
+}
+
+function spnx_cont_update_version() {
+	$settings = maybe_unserialize( get_option( SPINKX_CONT_LICENSE ) );
+	$settings['current_version'] = SPINKX_VERSION;
+	$lpost_data = wp_json_encode( $settings );
+	$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/update_version';
+	wp_remote_post($url, array(
+		'method' => 'POST',
+		'body' => $lpost_data,
+	));
+}
+
+add_action( 'wp_after_admin_bar_render','spnx_cont_update_version' );
+
+function spnx_mobile_widget_setup() {
+	if( ! is_admin() && wp_is_mobile() ) {
+		$settings = maybe_unserialize(get_option(SPINKX_CONT_LICENSE));
+		$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/widget/is_mobile_widget_exist';
+		$wp_output = helperClass::doCurl($url, $settings);
+		$wp_output = json_decode( $wp_output );
+		if( is_object( $wp_output ) ) {
+			if( $wp_output->widget_id > 0) {
+				echo do_shortcode('[spinkx id="'.$wp_output->widget_id.'" is_mobile=1]');
+			}
+		}
+	}
+}
+add_action( 'wp_footer', 'spnx_mobile_widget_setup' );
+function spinkx_cont_content_add( $content ) {
+	$content .= '<div id="spinkx_cont_aritcle_end"></div>';
+	return $content;
+}
+add_filter( 'the_content', 'spinkx_cont_content_add' );
+function spnx_cont_wpmu_add_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
+	
+	require SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/site-registration-default.php';
+}
+add_action( 'wpmu_new_blog', 'spnx_cont_wpmu_add_new_blog', 10, 6 );
+
 add_action( 'admin_head', 'spinkx_cont_icon_css' );
 add_action( 'admin_enqueue_scripts', 'spinkx_cont_js_var' );
 add_action( 'wp_ajax_spinkx_cont_get_dashbaord_statics', 'spinkx_cont_get_dashbaord_statics' );
@@ -665,7 +717,7 @@ add_action( 'wp_ajax_spinkx_cont_widget_update', 'spinkx_cont_widget_update' );
 add_action( 'wp_ajax_spinkx_cont_widget_delete', 'spinkx_cont_widget_delete' );
 add_action( 'wp_ajax_spinkx_cont_widget_clone', 'spinkx_cont_widget_clone' );
 add_action( 'wp_ajax_spinkx_cont_widget_create', 'spinkx_cont_widget_create' );
-add_action( 'wp_ajax_spinkx_cont_save_widget_position', 'spinkx_cont_save_widget_position' );
+add_action( 'wp_ajax_spinkx_cont_widget_reset', 'spinkx_cont_widget_reset' );
 add_action( 'wp_ajax_spinkx_cont_campaign_ajax', 'spinkx_cont_campaign_ajax' );
 add_action( 'wp_ajax_spinkx_cont_get_campaign_stat', 'spinkx_cont_get_campaign_stat' );
 
@@ -676,6 +728,7 @@ add_action( 'wp_ajax_spinkx_cont_update_post_sync_cpl', 'spinkx_cont_update_post
 add_action( 'wp_ajax_spinkx_cont_display_widget_content', 'spinkx_cont_display_widget_content' );
 add_action( 'wp_ajax_nopriv_spinkx_cont_display_widget_content', 'spinkx_cont_display_widget_content' );
 
-
+add_action('wp_ajax_spnx_cont_mobile_widget_data', 'spnx_cont_mobile_widget_data');
+add_action( 'wp_ajax_nopriv_spnx_cont_mobile_widget_data', 'spnx_cont_mobile_widget_data' );
 
 include_once SPINKX_CONTENT_PLUGIN_DIR . 'payment-method.php';

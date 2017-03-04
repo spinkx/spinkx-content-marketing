@@ -19,7 +19,7 @@ wp_enqueue_style( 'css-select2', $css_url . 'select2.css' );
 wp_add_inline_style( 'css-select2', $custom_css );
 wp_enqueue_script( 'jquery-select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js' );
 $tabtype = helperClass::getFilterVar( 'tabtype', INPUT_GET, FILTER_VALIDATE_INT);
-
+if( $result['widget']['is_mobile_widget'] == 0 ) {
 ?>
 <div class="brand-design-content" <?php echo ( $tabtype && $tabtype == 2 )?'style="display:none;"':''?>>
 	<div class="block-top-preview">
@@ -45,16 +45,17 @@ $tabtype = helperClass::getFilterVar( 'tabtype', INPUT_GET, FILTER_VALIDATE_INT)
 					?>
 					<input type="text" id="widget_name" value="<?php echo $clear_widget_name; ?>" name="widget_name" placeholder="Widget Name Here" required />
 				</td>
+				<?php if($main_widget_id > 0 && $widget_auto_id > 0 ) {?>
 				<td class="widget_shortcode_td">
 					<input type="hidden" id="main_widget_id" value="<?php echo $main_widget_id; ?>" name="main_widget_id" placeholder="" readonly />
-					<div class="bw-shortcode">[spinkx id = "<?php echo $widget_auto_id; ?>"]</div>
+					<div class="bw-shortcode">[spinkx id = "<?php echo $widget_auto_id; ?>"] </div>
+					
 					<input type="hidden" id="add_shortcode" value='[spinkx id=<?php echo $widget_auto_id; ?>]' name="add_shortcode" placeholder="Shortcode" />
 				</td>
+				<?php } ?>
 			</tr>
 		</table>
-		<!--  Widget Name Ends Here  -->
-		<!--  **********************************************************************  -->
-		<!--  **********************************************************************  -->
+
 		<?php
 			$key = '[spinkx id='.$widget_auto_id.']';  // pass your shortcode here
 			$blog_id = get_current_blog_id();
@@ -119,7 +120,7 @@ $tabtype = helperClass::getFilterVar( 'tabtype', INPUT_GET, FILTER_VALIDATE_INT)
 				<td  id="widget-masonry">
 					<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" <?php if ( $widget_layout_type=="masonry" ) { echo "checked"; };?> value="masonry" /><strong>Pinterest style </strong>(Suitable for Footers)
 				</td>
-				<td  id="widget-fixed">
+				<td  id="widget-fixed" style="display: none">
 					<input type="radio" id="widget_layout_type" class="widget_layout_fixed" name="widget_layout_type" <?php if ( $widget_layout_type=="fixed-width" ) { echo "checked"; };?> value="fixed-width" /><strong>Fixed Width & Height </strong>(Suitable for sidebar and all locations)
 				</td>
 			</tr>
@@ -244,7 +245,7 @@ $tabtype = helperClass::getFilterVar( 'tabtype', INPUT_GET, FILTER_VALIDATE_INT)
 			<tr>
 				<td  class="content-left-td">
 					<input type="text" id="bg_color" value="<?php echo $unit_bg_color; ?>" name="unit_bg_color" placeholder="<?php echo $unit_bg_color; ?>" />
-					</br>	Pick a background color (default #BBBBBB).
+					</br>	Pick a background color (default #ffffff).
 				</td>
 			</tr>
 		</table>
@@ -469,6 +470,25 @@ $tabtype = helperClass::getFilterVar( 'tabtype', INPUT_GET, FILTER_VALIDATE_INT)
 				</td>
 			</tr>
 		</table>
+		<table class="form-table" style="width:650px;">
+			<tr>
+				<td>
+					<span class="badge badge-double">14</span>
+					<p class="content-view-td" >Show Views</p>
+					<div style="float: right; margin-top: 10px;">
+					<div class="onoffswitch">
+							<input type="checkbox" name="unit_show_views" class="onoffswitch-checkbox" id="unit_show_views" value="1" <?php echo ($unit_show_views)?'checked':''; ?>>
+							<label class="onoffswitch-label" for="unit_show_views">
+								<span class="onoffswitch-inner"></span>
+								<span class="onoffswitch-switch"></span>
+							</label>
+
+					</div>
+					</div>
+
+				</td>
+			</tr>
+		</table>
 		<!--  Content Word Limit Ends Here  -->
 		<div class="block-default-buttons">
 			<?php
@@ -482,6 +502,7 @@ $tabtype = helperClass::getFilterVar( 'tabtype', INPUT_GET, FILTER_VALIDATE_INT)
 </div>
 <!-- Distribution Settings starts here -->
 <?php
+}
 if(($web_content_settings==0)&&($global_distribution_settings==0)&&($sponsored_content_settings==0)&&$own_campaign_settings==0)
 {
 	$auto_enable_view	=	"display:block;";
@@ -615,7 +636,7 @@ else
 				<a href="javascript:void(0);" style="<?php //echo $sponsor_color_auto;?>" id="Sponsored_content_auto"><strong>Automatic Settings</strong></a> | <a href="javascript:void(0);" style="<?php //echo $sponsor_color_manual;?>" id="Sponsored_content_manual"><strong>Manual Settings</strong></a> -->
 							</td>
 						</tr>
-						<tr>
+						<tr style="display: none">
 							<td>
 								<div class="onoffswitch">
 									<input type="checkbox" <?php if($site_id && $manual_boost_post){ echo 'checked="checked"'; }?> id="manual_boost_post" name="manual_boost_post" class="onoffswitch-checkbox">
@@ -688,14 +709,28 @@ else
 		$('#global_post').on('change',function(){
 			if($(this).prop("checked")) {
 				$("table.global-allow").find("input,button,textarea,select").prop("disabled", false);
+			//	$("table.global-allow li").prop("disabled", false);
 			} else {
-				$("table.global-allow").find("input,button,textarea,select").prop("disabled", true);
+				$("table.global-allow").find("input,button,textarea,select").attr("disabled", "disabled");
+				//$("table.global-allow").find("select").prop("disabled", 'disabled');
 			}
 		});
+		$('#block_global_url_checkbox').on('change',function(){
+			if($(this).prop("checked")) {
+				$("table.global-allow").find("input,button,textarea,select").attr("disabled", "disabled");
+				$(this).attr("disabled", false);
+				//	$("table.global-allow li").prop("disabled", false);
+			} else {
+				$("table.global-allow").find("input,button,textarea,select").prop("disabled", false);
+				
+				//$("table.global-allow").find("select").prop("disabled", 'disabled');
+			}
+		});
+
 		if(!gsite_id) {
 			$("table.global-allow").find("input,button,textarea,select").attr("disabled", "disabled");
 		} else {
-			$('#global_post').trigger('change');
+			//$('#block_global_url_checkbox').trigger('change');
 		}
 	});
 </script>

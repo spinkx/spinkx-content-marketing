@@ -1,6 +1,7 @@
 /* Google fonts */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600italic,600,400italic);
 
+
 body, table, th, td, tr {
     background: transparent;
     font-family: 'Open Sans';
@@ -453,7 +454,7 @@ input[type="checkbox"]:checked + span:after{
    /* background: #fff;*/
 }
 #tabsp li.ui-state-default.ui-corner-top.ui-tabs-active.ui-state-active {
-    background: #F0EDE7;
+    background: #EAC489;
 }
 .pre-img {
     width: 100%;
@@ -1242,4 +1243,6 @@ div.onoff_header input[type=button]{
     padding:2px;
 
 }
-
+.dataTables_filter {
+    display: none;
+}

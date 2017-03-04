@@ -98,7 +98,7 @@ jQuery( document ).ready(function() {
                 jQuery('#bpopup_ajax_loading').bPopup().close();
             }
         });
-    });
+    });    
     
 });
 function all_onoff(type){
@@ -112,11 +112,11 @@ function getAttachmentData(buttonObj, ishook) {
         console.log("Add Hook form already exists in DOM ");
         return;
     }
-    if(ishook){
 
-        var post_id = jQuery(buttonObj).parents('tr').attr('parent_post_id');
-    }else{
-        var post_id = jQuery(buttonObj).parents('tr').attr('global_pid');
+    if(ishook) {
+        var post_id = jQuery(buttonObj).parents('tr').find('td .main2').attr('parent_post_id');
+    } else {
+        var post_id = jQuery(buttonObj).parents('tr').find('td .main').attr('global_pid');
     }
     jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
     jQuery.ajax({
@@ -163,6 +163,7 @@ function getAttachmentData(buttonObj, ishook) {
                     jQuery("#addhook_image_src_"+post_id).prop("src",image);
                     jQuery("#addhook_excerpt_"+post_id).html(desc);
 
+
                 }
                 // to show overlay over hook image selector
                 var jQueryoverlay = jQuery('<div id="addhook_images_overlay"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></div>');
@@ -208,6 +209,7 @@ function submitVariationForm(formObj) {
     var title = jQuery("#addhook_title_"+post_id).val();
     var img = jQuery("#addhook_image_src_"+post_id);
     var excerpt = jQuery("#addhook_excerpt_"+post_id).val();
+    excerpt = excerpt.trim();
     formData.append('image_url',img.prop('src'));
     formData.append('image_aid',img.attr('data-id'));
     formData.append('action','spinkx_cont_save_hook');
@@ -434,50 +436,6 @@ function play_pause_AB(v,u_type){
     });
 }
 
-/* 					jQuery( ".add_hook" ).on( "click", function( e ) {
- var parent_post_id = jQuery(this).attr("parent_post_id");
- alert(parent_post_id);
- jQuery('#add_'+parent_post_id).toggle();
- });	 */
-
-
-/* 					jQuery(".hooks_form").on("submit",function(e){
- e.preventDefault();
-
- var post_id = jQuery(this).parent().parent().attr("post_id");
- var global_pid = jQuery(this).parent().parent().attr("global_pid");
- var site_id = jQuery(this).parent().parent().attr("site_id");
-
- var formData = new FormData(this);
-
- formData.append("parent_post_id", post_id);
- formData.append("global_pid", global_pid);
- formData.append("site_id", site_id);
-
- jQuery.ajax({
- type : "POST",
- //SPINKX_CONTENT_PLUGIN_URL+'campaigns/campajx.php',
- url : '<?php echo SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/'; ?>campajx.php?hooks=on',
- data : formData,
- cache:false,
- contentType: false,
- processData: false,
- success:function(data){
- jQuery('input[type="text"], textarea ,file').val('');
- jQuery('#error_'+post_id).html(data);
- //jQuery('#add_'+post_id).hide();
- jQuery('.removechilds' ).remove();
- jQuery('#toggle_'+post_id+'.ab-show-all').removeClass( "show_toggled_on" );
- jQuery('#toggle_'+post_id+'.ab-show-all').trigger("click");
-
-
- },
- error: function(data){
- console.log("error");
- console.log(data);
- }
- });
- }); */
 function get_stat_now(start, end){
 
     jQuery.ajax({
@@ -590,6 +548,7 @@ function changePostStatus(the_element) {
          post_type = temp[0];
     }
     var enabled = status ? 1 : 0;
+    jQuery('#bpopup_ajax_loading').bPopup({modalClose: false});
     jQuery.ajax({
         url: ajaxurl,
         data: {
@@ -628,8 +587,14 @@ function changePostStatus(the_element) {
                             jQuery("input."+post_type).prop("checked", false);
                         }
                     }
+                    jQuery.growl.notice({
+                        message: "Successfully Status updates",
+                        location: 'tr',
+                        size: 'large'
+                    });
                 }
-                window.location.reload();
+                jQuery('#bpopup_ajax_loading').bPopup().close();
+               // window.location.reload();
             } else {
                 if (data.error == 1) {
                     jQuery.growl.error({
@@ -644,8 +609,14 @@ function changePostStatus(the_element) {
                     } else {
                         the_element.prop("checked", false);
                     }
+                    jQuery.growl.notice({
+                        message: "Successfully Status updates",
+                        location: 'tr',
+                        size: 'large'
+                    });
                 }
             }
+            jQuery('#bpopup_ajax_loading').bPopup().close();
         },
         failure: function (data) {
             jQuery.growl.error({
@@ -767,7 +738,7 @@ function getEstimation() {
 }
 
 function setPostId(v) {
-    boost_post_id = jQuery(v).parents('tr').attr('global_pid');
+    boost_post_id = jQuery(v).parents('tr').find('td .main').attr('global_pid');
     var formData = new FormData();
     formData.append("post_id", boost_post_id);
     formData.append("action", 'spinkx_cont_get_credit_points');
@@ -870,10 +841,10 @@ function getAttachmentDataVideo(buttonObj, ishook) {
         console.log("Add Hook form already exists in DOM ");
         return;
     }
-    if(ishook){
-        var post_id = jQuery(buttonObj).parents('tr').attr('parent_post_id');
-    }else{
-        var post_id = jQuery(buttonObj).parents('tr').attr('global_pid');
+    if(ishook) {
+        var post_id = jQuery(buttonObj).parents('tr').find('td .main2').attr('parent_post_id');
+    } else {
+        var post_id = jQuery(buttonObj).parents('tr').find('td .main').attr('global_pid');
     }
     if(ishook) { jQuery(buttonObj).parents('tr').css('display', 'none'); }
     var div = jQuery("<ul></ul>");
@@ -928,8 +899,16 @@ jQuery(document).on('change','.video_url',function(){
     var vid = 'div_YouTube' + tidArr[tidArr.length-1];
     var video_id = jQuery(this).val();
     if(jQuery('#'+vid).length && jQuery('#'+vid).parent().find('iframe').length > 0) {
+        temp_arr = video_id.split('?v=');
+      //  console.log(temp_arr);
+     //   console.log(video_id);
+        video_id = temp_arr[1];
         jQuery("#"+vid).attr("src", "https://www.youtube.com/embed/"+video_id);
     } else {
+        temp_arr = video_id.split('?v=');
+       // console.log(temp_arr);
+        video_id = temp_arr[1];
+      //  console.log(video_id);
         onYouTubeIframeAPIReady(vid, video_id );
     }
 
@@ -989,9 +968,12 @@ function submitVideoVariationForm(formObj) {
             contentType: false,
             processData: false,
             success : function(data){
-                //console.log(data);
+
                 if(data == 'success') {
                     jQuery('#bpopup_ajax_loading').bPopup().close();
+                    jQuery.growl.notice({ message: "Video Saved",
+                        location: 'tr',
+                        size: 'large' });
                     window.location.reload();
                 }
             },
@@ -1004,7 +986,7 @@ function submitVideoVariationForm(formObj) {
         jQuery.growl.error({ message: "One of the fields is empty !",
             location: 'tr',
             size: 'large' });
-        console.log("one of the fields is empty");
+        //console.log("one of the fields is empty");
     }
     return false;
 }

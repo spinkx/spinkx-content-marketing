@@ -68,25 +68,6 @@ function register_spinkx_client_main_menu() {
 		'spinkx_campaigns',
 		'spinkx_client_main_menu_fn'
 	);
-	add_submenu_page(
-		'spinkx-site-register.php',
-		'Account-Setup | Spinkx',
-		'Account Setup',
-		'manage_options',
-		'spinkx_options',
-		'spinkx_client_main_menu_fn'
-	);
-
-	/*
-	add_submenu_page(
-		'spinkx-site-register.php',
-		'Facebook',
-		'FB Settings',
-		'manage_options',
-		'spinkx-fb-register.php',
-		'spinkx_register_fb'
-	);*/
-
 }
 function site_spinkx_client_main_menu() {
 	add_menu_page(
@@ -105,14 +86,6 @@ function site_spinkx_client_main_menu() {
 		'manage_options',
 		'spinkx-site-register.php',
 		'spinkx_register_site'
-	);
-	add_submenu_page(
-		'spinkx-site-register.php',
-		'Account-Setup | Spinkx',
-		'Account Setup',
-		'manage_options',
-		'spinkx_options',
-		'spinkx_client_main_menu_fn'
 	);
 
 	add_submenu_page(
@@ -147,16 +120,6 @@ function site_spinkx_client_main_menu() {
 		'spinkx_campaigns',
 		'spinkx_client_main_menu_fn'
 	);
-
-	/*
-	add_submenu_page(
-		'spinkx-site-register.php',
-		'Facebook - Register | Spinkx',
-		'FB Settings',
-		'manage_options',
-		'spinkx-fb-register.php',
-		'spinkx_register_fb'
-	);*/
 }
 
 function spinkx_client_main_menu_fn() {
@@ -208,10 +171,6 @@ function spinkx_client_main_menu_fn() {
 						currentIndex	=	'<?php echo $widget = ! empty( $settings )? 3 : 4 ;?>';
 						var currentPage	=	'Campaigns';
 						break;
-					case '#account_setup':
-						currentIndex	=	'<?php echo $widget = ! empty( $settings )? 4 : 0 ;?>';
-						var currentPage	=	'Account Setup';
-						break;
 				}
 
 				jQuery('#toplevel_page_spinkx-site-register ul li').removeClass( "current" );
@@ -251,16 +210,9 @@ function spinkx_client_main_menu_fn() {
 			case 'spinkx_campaigns':
 				require SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/manage-ads.php';
 				break;
-			case 'spinkx_options':
-				require SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/account-setup.php';
-				break;
 		}
 	}
 }
 function spinkx_register_site() {
 	require SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/site-registration.php';
 }
-function spinkx_register_fb() {
-	require SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/facebook_register.php';
-}
-?>

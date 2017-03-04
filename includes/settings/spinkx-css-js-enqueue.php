@@ -32,31 +32,40 @@ function spinkx_cont_icon_css() {
 function spinkx_cont_js_var() {
 	$settings = get_option( SPINKX_CONT_LICENSE );
 	$settings = maybe_unserialize( $settings );
+	if( ! isset($settings['site_id']) ) {
+		$settings['site_id'] = 0;
+	}
 	$custom_js = '<script>var SPINKX_CONTENT_PLUGIN_DIR = "' . SPINKX_CONTENT_PLUGIN_DIR . '";
 	var spinkx_server_baseurl = "' . SPINKX_SERVER_BASEURL . '";
 	var SPINKX_CONTENT_PLUGIN_URL = "' . SPINKX_CONTENT_PLUGIN_URL . '";
+	
 	var g_site_id =  "' . $settings['site_id'] . '";
 	</script>';
 	echo $custom_js;
 	$page = helperClass::getFilterVar( 'page' );
-	if ( $page ) {
-		spinkx_cont_common_css_js( $page );
-	}
+	
 	if ( $page && $page === 'spinkx_content_play_list' ) {
+		spinkx_cont_common_css_js( $page );
 		spinkx_cont_cp_css_js();
 	} elseif ( $page && $page === 'spinkx_widget_design' ) {
+		spinkx_cont_common_css_js( $page );
 		spinkx_cont_widget_css_js();
 	} elseif ( $page && $page === 'spinkx-site-register.php' ) {
+		spinkx_cont_common_css_js( $page );
 		spinkx_cont_registration_css_js();
 	} elseif ( $page && $page === 'spinkx_dashboard' ) {
+		spinkx_cont_common_css_js( $page );
 		spinkx_cont_dashboard_css_js();
 	} elseif ( $page && $page === 'spinkx_campaigns' ) {
+		spinkx_cont_common_css_js( $page );
 		spinkx_cont_campaign_set_css_js();
 		$r_flag = helperClass::getFilterVar( 'r' );
 		if ( $r_flag &&  $r_flag === 'edit_campaign' ) {
+			spinkx_cont_common_css_js( $page );
 			spinkx_cont_campaign_form_set_css_js();
 		}
 	} elseif ( $page && $page === 'spinkx_options' ) {
+		spinkx_cont_common_css_js( $page );
 		spinkx_cont_acc_set_css_js();
 	}
 }
@@ -98,6 +107,7 @@ function spinkx_cont_common_css_js( $page  ) {
 	 */
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
 	wp_enqueue_script( 'smooch-js', $js_url .'smooch.min.js' );
+
 	wp_add_inline_script('smooch-js', "Smooch.init({ appToken: 'aa9cksz2rzpy071aqxhe31yvs' });");
 	wp_enqueue_script( 'jquery-ui-js', $js_url . 'jquery-ui.js' );
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
@@ -114,9 +124,10 @@ function spinkx_cont_common_css_js( $page  ) {
 		$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/bpopup/' );
 		wp_enqueue_script( 'jquery-bpopup', $js_url . 'jquery.bpopup.min.js' );
 	}
-	//$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
-	// wp_enqueue_script( 'jquery-feedback', $js_url . 'feedback-custom.js' );
+
 }
+
+
 /**
  *
  * This function for add enqueue css & js
@@ -149,7 +160,7 @@ function spinkx_cont_widget_css_js() {
 	.no-js #loader, .notice { display: none;  }
 	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.se-pre-con { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 9999;	
-	 background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '/assets/images/my.gif) center no-repeat rgba(0, 0, 0, 0.2); }
+	 background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '/assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2); }
 	 table.dataTable { border-collapse: collapse; border-spacing: 0px; }';
 	wp_add_inline_style( 'master', $custom_css );
 	wp_enqueue_script( 'form-validator-js', esc_url( '//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js' ) );
@@ -176,7 +187,7 @@ function spinkx_cont_cp_css_js() {
 	.no-js #loader { display: none;  }
 	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.se-pre-con { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 9999; 
-	background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '/assets/images/my.gif) center no-repeat rgba(0, 0, 0, 0.2);; }
+	background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '/assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2);; }
 	.hook_add_class{ background-color:#e6e7e7; }
     .main{ /*background-color: !*#e4f4fa*! #F1F1F1 !important;*/ }
 	#clock span{ background-color: #469fa1; width:20px;	height:20px; margin:6px; padding:5px 7px; color:#fff; }
@@ -195,7 +206,37 @@ function spinkx_cont_cp_css_js() {
 	input[type=button] { padding: 5px !important; border: 1px solid #469fa1 !important; }
 	.posts_sync,th input[type=button] {	background: grey !important; }
 	.select2-container-multi .select2-choices { margin:0 !important; width:100% !important; }
-	select2-container input[type=text] { border: none !important; }';
+	select2-container input[type=text] { border: none !important; }
+	.progress { float: left;
+            width: 210px;
+            height: 10px !important;
+            margin-bottom: 0px !important;
+            margin-top: 3px;
+            border-radius: 9px !important;
+            font-size: 9px;
+            font-weight: bolder;
+            text-align: center;
+        }
+
+        .progress-bar {
+            line-height: 9px !important;
+            height: 10px !important;
+            font-size: 9px !important;
+        }
+
+        table.dataTable {
+            width: 1280px;
+            overflow-x: scroll;
+        }
+
+        table.dataTable.no-footer {
+            border-bottom: none;
+        }
+
+        table.dataTable tbody td {
+            padding: 8px 0px;
+        }
+	';
 	wp_add_inline_style( 'master', $custom_css );
 
 	wp_enqueue_script( 'form-validator-js', esc_url( '//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js' ) );
@@ -221,7 +262,7 @@ function spinkx_cont_dashboard_css_js() {
 	.no-js #loader { display: none;  }
 	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.se-pre-con { position: fixed; left: 0; top: 0;	width: 100%; height: 100%; z-index: 9999; 
-	 background: url( ' . SPINKX_CONTENT_PLUGIN_URL . '/assets/images/my.gif) center no-repeat rgba(0, 0, 0, 0.2); }
+	 background: url( ' . SPINKX_CONTENT_PLUGIN_URL . '/assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2); }
 	#wpfooter { display:none; } ';
 	wp_add_inline_style( 'master', $custom_css );
 
@@ -248,7 +289,7 @@ function spinkx_cont_acc_set_css_js() {
 	.no-js #loader { display: none;  }
 	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.se-pre-con { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 9999;
-     background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '/assets/images/my.gif) center no-repeat rgba(0, 0, 0, 0.2);; }';
+     background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '/assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2);; }';
 	wp_add_inline_style( 'master', $custom_css );
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
 	wp_enqueue_script( 'jquery-custom-js', $js_url . 'widget-design.js' );
@@ -356,12 +397,19 @@ function spinkx_cont_campaign_form_set_css_js() {
 
 /**
  *
- * This function for add enqueue css & js
- * spinkx_registration_css_js()
+ * This function is for adding menu buttons on page
+ * spinkx_header_menu()
  *
  * @return void
  * @internal param void
  */
-function spinkx_cont_widget_form_set_css_js() {
 
-}
+function spinkx_header_menu() {
+	$page = helperClass::getFilterVar('page');
+	?><ul class="nav nav-tabs">
+		<li <?php echo ('spinkx_widget_design' === $page)?'class="active"':''?>><a href="?page=spinkx_widget_design#widget_design"><strong> Widget Design</strong></a></li>
+		<li <?php echo ('spinkx_content_play_list' === $page)?'class="active"':''?>><a href="?page=spinkx_content_play_list#content_play_list"><strong> Content Play List</strong></a></li>
+		<li <?php echo ('spinkx_dashboard' === $page)?'class="active"':''?>><a href="?page=spinkx_dashboard#dashboard"><strong> Dashboard </strong></a></li>
+		<li <?php echo ('spinkx_campaigns' === $page)?'class="active"':''?>><a href="?page=spinkx_campaigns#campaigns"><strong> Campaigns </strong></a></li>
+	</ul>
+<?php }

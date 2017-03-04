@@ -55,7 +55,7 @@ if ( $todaydate ) {
 	$custom_js .= 'var start = moment();';
 	$custom_js .= 'var end = moment();';
 }
-$custom_js .= 'var todaydate = start;
+$custom_js .= 'var todaydate = end;
 		function cb(start, end) {
 			jQuery("#reportrange span").html(start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY"));
 
@@ -85,7 +85,7 @@ $custom_js .= 'var todaydate = start;
 				//get_stat_now(picker.startDate, picker.endDate);
 				updatewidget();
 			});
-
+			
 			var table = $("#bwki_widgets_display").DataTable({
 			"pageLength": 5,
 			"lengthMenu": [ 5, 10, 20, 50, 100 ],
@@ -95,6 +95,7 @@ $custom_js .= 'var todaydate = start;
 			});
 			function updatewidget(){
 				var site_id = "' . $site_id . '";
+				jQuery(\'#bpopup_ajax_loading\').bPopup( { modalClose: false } );
 				$.ajax({
 					url : ajaxurl,
 					type : "get",
@@ -107,18 +108,33 @@ $custom_js .= 'var todaydate = start;
 					},
 					success : function(data){
 						var data = JSON.parse(data);
-
+						jQuery(\'#bpopup_ajax_loading\').bPopup().close();
 						$.each(data,function(key,stat){
 								cell_imp = table.cell("#w_"+key, 4);
-								//var cell = table.cell( this );
-								cell_imp.data( stat.total_impressions ).draw();
-									//this.data()[3] = "sdf";
-								//console.log(cell_imp.data());
-								cell_click = table.cell("#w_"+key, 5);
-								cell_click.data( stat.total_clicks ).draw();
-
-								cell_ctr = table.cell("#w_"+key, 6);
-								cell_ctr.data( stat.widget_ctr ).draw();
+								if( cell_imp[0].length > 0 ) {	
+									
+								
+									//var cell = table.cell( this );
+									cell_imp.data( stat.total_impressions ).draw();
+										//this.data()[3] = "sdf";
+									//console.log(cell_imp.data());
+									cell_click = table.cell("#w_"+key, 5);
+									cell_click.data( stat.total_clicks ).draw();
+	
+									cell_ctr = table.cell("#w_"+key, 6);
+									cell_ctr.data( stat.widget_ctr ).draw();
+								} else {
+									var mobile_widget_table = $("#bwki_mobile_widgets_display").DataTable();
+									cell_imp = mobile_widget_table.cell("#w_"+key, 3);
+									cell_imp.data( stat.total_impressions ).draw();
+										//this.data()[3] = "sdf";
+									//console.log(cell_imp.data());
+									cell_click = mobile_widget_table.cell("#w_"+key, 4);
+									cell_click.data( stat.total_clicks ).draw();
+	
+									cell_ctr = mobile_widget_table.cell("#w_"+key, 5);
+									cell_ctr.data( stat.widget_ctr ).draw();
+								}
 
 							//});
 
@@ -147,8 +163,7 @@ if ( empty( $tab ) && empty( $widget_id ) ) {
 		$result = json_decode($wp_output['body']);
 	}
 	if ( 'License Invalid' !== $result ) {
-	?>
-		<h2><div style="float: right;background-color: #469fa1;border-color: #469fa1;color: #fff;" class="add_widget_button button "  >+ Add New Widget</div></h2>
+	?><h2><div style="float: right;background-color: #469fa1;border-color: #469fa1;color: #fff;" class="add_widget_button button "  >+ Add New Widget</div></h2>
 		<div class="clear" style="display: block; overflow: hidden;"></div>
 		<div id="add_new_widget" style="display:none;">
 		<?php require esc_url( SPINKX_CONTENT_PLUGIN_DIR ) . 'assets/widgets/create/new-widget.php'; ?>
@@ -160,11 +175,9 @@ if ( empty( $tab ) && empty( $widget_id ) ) {
 		echo sprintf( $result );
 	}
 } else {
-?>
-		<div id="update_new_widget" >
+?><div id="update_new_widget" >
 			<?php require esc_url( SPINKX_CONTENT_PLUGIN_DIR ) . 'assets/widgets/create/update-widget.php'; ?>
 		</div>
 	<?php } ?>
 </div>
 <?php
-

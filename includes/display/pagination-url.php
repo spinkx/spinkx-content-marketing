@@ -66,26 +66,22 @@ function spinkx_cont_display_widget_content() {
 	$widget_array['post_cat'] = $categories;
 	$widget_array['ip'] = $ip;
 	$sx_id = helperClass::getFilterVar( 'sx_id', INPUT_REQUEST);
-	/*if(! $sx_id ) {
-		$sx_id = helperClass::getFilterVar('sx_id', INPUT_POST);
-	}*/
+	
 	$widget_array['sx_id'] = $sx_id;
 	$widget_array['country'] = $country;
 	$widget_array['state'] = $state;
 	$req_url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/widget/display';
-	$response = helperClass::doCurl( $req_url, $widget_array, true, $header );
+	$response = helperClass::doCurl( $req_url, $widget_array, true, $header, 10000, false );
 	$shortcode_output = '';
-	if ( ! $response ) {
-		$shortcode_output .= '<br/>Access Denied!';
+	if (!$response) {
+		$shortcode_output .= 'No More Articles';
 	} else {
-		$shortcode_output .= '<div style="' . $al_brnd_styles . '" id="al_brnd_content" class="al_brnd_content al_brnd_content_' . $widget_id . ' display-units-' . $display_col_count . ' " wid="' . $widget_id . '" >';
-		if ( strlen( trim( $response ) ) > 0 ) {
+		if (strlen(trim($response)) > 0 && $response != 'null' && $response != null) {
 			$shortcode_output .= $response;
-			$shortcode_output .= '</div> <div style="clear:both;"></div>';
 		} else {
 			$shortcode_output .= 'No More Articles';
 		}
 	}
 	echo $shortcode_output;
-
+	exit;
 }

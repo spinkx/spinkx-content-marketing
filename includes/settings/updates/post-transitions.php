@@ -31,14 +31,14 @@ if ( $post->post_type != 'post' ) {
 $post_title = $post->post_title;
 $post->post_publish_date = $post->post_date_gmt;
 setup_postdata( $post );
-if ( strtotime( $post->post_publish_date ) < strtotime( '-6 months' ) ) {
+/*if ( strtotime( $post->post_publish_date ) < strtotime( '-6 months' ) ) {
 	return;
-}
+}*/
 $post_content = $post->post_content;
 $post_excerpt = spinkx_cont_get_excerpt_by_id( $post_content );
 $post->post_author_email = get_the_author_meta( 'email' );
 $post->post_author_name = get_the_author_meta( 'display_name' );
-$post->post_excerpt = base64_encode( $post_excerpt );
+$post->post_excerpt =  base64_encode( $post_excerpt );
 $post->guid = '';
 $post->post_src_id = $post->ID;
 $post_array = (array) $post;
@@ -53,7 +53,7 @@ $p_thumb_image_url = $p_thumb_image_array[0];
 if ( ! ($p_thumb_id && $p_thumb_image_url) ) {
 	return;
 }
-$post_array['post_full_image'] = base64_encode( $p_thumb_url );
+$post_array['post_full_image'] =  base64_encode( $p_thumb_url );
 $post_array['post_thumb_image'] = base64_encode( $p_thumb_image_url );
 $permalink_url = '';
 if ( class_exists( 'Domainmap_Plugin' ) ) {
@@ -82,7 +82,9 @@ foreach ( $categories as $c ) {
 	$p_cats[] = $cat->name;
 }
 $post_array['post_categories'] = implode( ',', $p_cats );
+
 $json_posts_array = base64_encode( maybe_serialize( $post_array ) );
 //$api = $curl_url . '?post=' . $json_posts_array . '&key=' . base64_encode( maybe_serialize( $license_check ) );
 $postData = array( 'post' => $json_posts_array, 'key' => base64_encode( maybe_serialize( $license_check ) ) );
 $output = helperClass::doCurl( $curl_url, $postData, false );
+

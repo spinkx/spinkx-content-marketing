@@ -52,6 +52,7 @@ function spinkx_cont_edit_hook() {
 function spinkx_cont_save_hook() {
 	$post = helperClass::getFilterPost();
 	$post['post_full_image'] = wp_get_attachment_image_src( $post['image_aid'],'full' )[0];
+	//$post['post_thumbnail'] = wp_get_attachment_image_src( $post['image_aid'],'full' )[0];
 	$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/content-playlist/variation/save';
 	$output = helperClass::doCurl( $url, $post );
 	echo json_decode($output);
@@ -65,23 +66,26 @@ function spinkx_cont_save_hook() {
  * @return bool true if exists else false
  */
 function spinkx_cont_is_404( $url ) {
-	$handle = curl_init( $url );
+	/*$handle = curl_init( $url );
 	curl_setopt( $handle,  CURLOPT_RETURNTRANSFER, true );
 	curl_setopt( $handle, CURLOPT_NOBODY, true );
 	curl_setopt( $handle, CURLOPT_FOLLOWLOCATION, true );
 
-	/* Get the HTML or whatever is linked in $url. */
+	/* Get the HTML or whatever is linked in $url. *
 	$response = curl_exec( $handle );
 
-	/* Check for 404 (file not found). */
+	/* Check for 404 (file not found). *
 	$httpCode = curl_getinfo( $handle, CURLINFO_HTTP_CODE );
-	curl_close( $handle );
-
-	/* If the document has loaded successfully without any redirection or error */
-	if ( $httpCode >= 200 && $httpCode < 300 ) {
+	curl_close( $handle );*/
+	$wp_output = wp_remote_head( $url );
+	if( is_wp_error( $wp_output ) ) {
 		return false;
-	} else {
+	}
+	/* If the document has loaded successfully without any redirection or error */
+	if ( $wp_output['response']['code'] >= 200 &&  $wp_output['response']['code'] < 300 ) {
 		return true;
+	} else {
+		return false;
 	}
 }
 
@@ -121,7 +125,7 @@ function spinkx_cont_get_attachment_data()
 	$img_data = array();
 	for ($i = 0; $i < $length; $i++) {
 		$src_url = @$doc->getElementsByTagName('img')->item($i)->getAttribute('src');
-		if (!spinkx_cont_is_404($src_url)) {
+		if (spinkx_cont_is_404($src_url)) {
 			$img_data[] = $src_url;
 		}
 	}
@@ -222,8 +226,7 @@ function spinkx_cont_update_post_sync_cpl() {
 	wp_die();
 }
 
-function spinkx_cont_post_sync($settings = null)
-{
+function spinkx_cont_post_sync($settings = null) {
 	global $wpdb;
 	global $post;
 	$request = null;
@@ -279,9 +282,9 @@ function spinkx_cont_post_sync($settings = null)
 
 	foreach ($posts_array as $post) {
 		setup_postdata($post);
-		if (strtotime($post->post_date_gmt) < strtotime('-6 months')) {
+		/*if (strtotime($post->post_date_gmt) < strtotime('-6 months')) {
 			continue;
-		}
+		}*/
 		$pid = $post->ID;
 		$p_thumb_id = get_post_thumbnail_id($pid);
 		$p_thumb_array = wp_get_attachment_image_src($p_thumb_id, 'full');
@@ -309,12 +312,12 @@ function spinkx_cont_post_sync($settings = null)
 		if(!$post_excerpt) {
 
 		}
-		$post_array['posts'][$all_posts_count]['post_excerpt'] = base64_encode($post_excerpt); // viksedit we need post_excerpt
+		$post_array['posts'][$all_posts_count]['post_excerpt'] = base64_encode ( $post_excerpt ); // viksedit we need post_excerpt
 		$post_array['posts'][$all_posts_count]['post_author_email'] = get_the_author_meta('email'); // Vikash
 		$post_array['posts'][$all_posts_count]['post_author_name'] = get_the_author_meta('display_name');   // Vikash
 		$post_array['posts'][$all_posts_count]['post_src_id'] = $post->ID; // Vikash
-		$post_array['posts'][$all_posts_count]['post_full_image'] = base64_encode($p_thumb_url);
-		$post_array['posts'][$all_posts_count]['post_thumb_image'] = base64_encode($p_thumb_image_url); // added by Vikash Saharan
+		$post_array['posts'][$all_posts_count]['post_full_image'] = base64_encode( $p_thumb_url );
+		$post_array['posts'][$all_posts_count]['post_thumb_image'] = base64_encode( $p_thumb_image_url ); // added by Vikash Saharan
 		$permalink_url = '';
 		if (class_exists('Domainmap_Plugin')) {
 			$relative_url = str_replace(home_url(), '', get_permalink($pid));
@@ -479,6 +482,20 @@ function spinkx_cont_widget_delete() {
 
 function spinkx_cont_widget_update() {
 	$post = helperClass::getFilterPost();
+	$settings = maybe_unserialize( get_option( SPINKX_CONT_LICENSE ) );
+	$post['mode'] = 'update';
+	$url = esc_url( SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/widget/update' );
+	$post['site_id'] = $settings['site_id'];
+	$post = wp_json_encode( $post );
+
+	$response = helperClass::doCurl( $url, $post, false );
+	echo json_decode($response);
+	wp_die();
+}
+function spinkx_cont_widget_reset() {
+	$post = helperClass::getFilterPost();
+	$post['form_serialized_data'] = get_default_form_serialized_data($post['widget_name']);
+	unset($post['widget_name']);
 	$post['mode'] = 'update';
 	$post = wp_json_encode($post);
 	$url = esc_url( SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/widget/update' );
@@ -489,7 +506,10 @@ function spinkx_cont_widget_update() {
 
 function spinkx_cont_widget_create() {
 	$post = helperClass::getFilterPost();
+	$settings = maybe_unserialize( get_option( SPINKX_CONT_LICENSE ) );
 	$post['mode'] = 'create';
+	$post['site_id'] = $settings['site_id'];
+
 	$post = wp_json_encode($post);
 	$url = esc_url( SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/widget/create' );
 	$response = helperClass::doCurl( $url, $post, FALSE );
@@ -668,7 +688,153 @@ function spinkx_cont_widget_create() {
 		return $results;
 	}
 
+function  get_default_form_serialized_data( $widget_name  ) {
+	$postdata = array();
+	// vikash Default widget creation and default settings insertion
+	$postdata['widget_name'] = $widget_name;
+	/* no_of_columns Inserting Starts Here */
+	$postdata['no_of_columns'] = '1';
+	/*
+ no_of_columns Inserting Starts Here */
+	/* no_of_columns Inserting Starts Here */
+	$postdata['no_col_mob_view'] = '1';
+	/*
+ no_of_columns Inserting Starts Here */
+	/* widget_layout_type Inserting Starts Here 'fixed-width' or 'masonry'*/
+	$postdata['widget_layout_type'] = 'masonry';
+	/*
+ widget_layout_type Inserting Starts Here */
+	/* unit_layout_type Inserting Starts Here */
+	$postdata['unit_layout_type'] = 'tall';
+	/*
+ unit_layout_type Inserting Starts Here */
+	/* unit_spacing Inserting Starts Here */
+	$postdata['unit_spacing'] = '20';
+	/* unit_spacing Inserting Starts Here */
 
+	/* img_crop_width Inserting Starts Here */
+	$postdata['img_crop_width'] = '236';
+	/* img_crop_width Inserting Starts Here */
+
+	/* img_crop_height Inserting Starts Here */
+	$postdata['img_crop_height'] = '300';
+	/* img_crop_height Inserting Starts Here */
+	$postdata['img_height'] = '';
+	$postdata['img_width'] = '400';
+
+
+	/* unit_bg_color Inserting Starts Here */
+	$postdata['unit_bg_color'] = '#ffffff';
+	/* unit_bg_color Inserting Ends Here */
+
+	/* unit_fg_color Inserting Starts Here */
+	$postdata['unit_fg_color'] = '#fefefe';
+	/* unit_fg_color Inserting Ends Here */
+
+	$postdata['unit_show_views'] = 1;
+
+	/* unit_border_width Inserting Starts Here */
+	$postdata['unit_border_width'] = '1';
+	/* unit_border_width Inserting Ends Here */
+
+	/* unit_border_style Inserting Starts Here */
+	$postdata['unit_border_style'] = 'solid';
+	/* unit_border_style Inserting Ends Here */
+
+	/* unit_border_color Inserting Starts Here */
+	$postdata['unit_border_color'] = '#d8d8d8';
+	/* unit_border_color Inserting Ends Here */
+
+	/* unit_border_radius Inserting Starts Here */
+	$postdata['unit_border_radius'] = '6';
+	/* unit_border_radius Inserting Ends Here */
+
+
+
+	/* unit_title_font_size Inserting Starts Here */
+	$postdata['unit_title_font_size'] = '14';
+	/* unit_title_font_size Inserting Ends Here */
+
+	/* unit_title_line_height Inserting Starts Here */
+	$postdata['unit_title_line_height'] = '18';
+	/* unit_title_line_height Inserting Ends Here */
+
+	/* unit_title_font_style Inserting Starts Here */
+	$postdata['unit_title_font_style'] = 'bold';
+	/* unit_title_font_style Inserting Ends Here */
+
+	/* unit_title_font_color Inserting Starts Here */
+	$postdata['unit_title_font_color'] = '#000000';
+	/* unit_title_font_color Inserting Ends Here */
+
+
+
+	/* unit_title_font_family Inserting Starts Here */
+	$postdata['unit_title_font_family'] = 'Carrois Gothic';
+	/* unit_title_font_family Inserting Ends Here */
+
+	/* unit_title_font_case Inserting Starts Here */
+	$postdata['unit_title_font_case'] = 'none';
+	/* unit_title_font_case Inserting Ends Here */
+
+
+
+	/* unit_add_line_width Inserting Starts Here */
+	$postdata['unit_add_line_width'] = '4';
+	/* unit_add_line_width Inserting Ends Here */
+
+	/* unit_add_line_style Inserting Starts Here */
+	$postdata['unit_add_line_style'] = 'belowimg';
+	/* unit_add_line_style Inserting Ends Here */
+
+	/* unit_add_line_color Inserting Starts Here */
+	$postdata['unit_add_line_color'] = '#E36C09';
+	/* unit_add_line_color Inserting Ends Here */
+
+
+
+	/* unit_excerpt_font_size Inserting Starts Here */
+	$postdata['unit_excerpt_font_size'] = '14';
+	/* unit_excerpt_font_size Inserting Ends Here */
+
+	/* unit_excerpt_line_height Inserting Starts Here */
+	$postdata['unit_excerpt_line_height'] = '18';
+	/* unit_excerpt_line_height Inserting Ends Here */
+
+	/* unit_excerpt_font_style Inserting Starts Here */
+	$postdata['unit_excerpt_font_style'] = 'normal';
+	/* unit_excerpt_font_style Inserting Ends Here */
+
+	/* unit_excerpt_font_color Inserting Starts Here */
+	$postdata['unit_excerpt_font_color'] = '#333333';
+	/*
+ unit_excerpt_font_color Inserting Ends Here */
+	/* unit_excerpt_line_style Inserting Starts Here */
+	$postdata['unit_excerpt_line_style'] = 'belowimg';
+	/*
+ unit_excerpt_line_style Inserting Ends Here */
+
+
+	/* unit_excerpt_font_family Inserting Starts Here */
+	$postdata['unit_excerpt_font_family'] = 'Carrois Gothic';
+	/* unit_excerpt_font_family Inserting Ends Here */
+
+	/* unit_excerpt_font_case Inserting Starts Here */
+	$postdata['unit_excerpt_font_case'] = 'none';
+	/* unit_excerpt_font_case Inserting Ends Here */
+
+
+
+	/* unit_excerpt_word_limit Inserting Starts Here */
+	$postdata['unit_excerpt_word_limit'] = '100';
+	/* unit_excerpt_word_limit Inserting Ends Here */
+	$postdata['web_enable'] = 'on';
+	$postdata['global_post'] = 'on';
+	$postdata['sponsor_enable'] = 'on';
+	$postdata['auto_boost_post'] = 'off';
+	$postdata['manual_boost_post'] = 'on';
+	return http_build_query( $postdata );
+}
 
 
 

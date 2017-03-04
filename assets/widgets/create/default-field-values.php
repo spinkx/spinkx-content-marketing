@@ -7,7 +7,7 @@ global $wpdb;
 			$response	=	json_decode($output,true);
 			$widget_auto_id	=	$response['widgetid'];
 			$categories	=	$response['category'];
-
+			$site_name = $response['site_name'];
 
 $main_widget_id = $widget_auto_id;
 
@@ -39,7 +39,8 @@ $img_width = "400";
 /***************************************************************************************/
 
 /* unit_bg_color Inserting Starts Here */
-$unit_bg_color = "#ffffff";
+//$unit_bg_color = "#ffffff";
+$unit_bg_color = "#bbbbbb";
 /* unit_bg_color Inserting Ends Here */
 
 /* unit_fg_color Inserting Starts Here */
@@ -63,7 +64,7 @@ $unit_border_color = "#d8d8d8";
 /* unit_border_radius Inserting Starts Here */
 $unit_border_radius = "6";
 /* unit_border_radius Inserting Ends Here */
-
+$unit_show_views = 1;
 /***************************************************************************************/
 
 /* unit_title_font_size Inserting Starts Here */
@@ -212,3 +213,62 @@ $global_blocked_categories_textarea = "";
 /* global_blocked_categories_textarea Inserting Starts Here */
 $camp_site_widget="";
 /*******************************************************************************/
+$prev_img_1 = isset($response['post'][0]['image'])?$response['post'][0]['image']:SPINKX_CONTENT_PLUGIN_URL.'/assets/images/spinkx-intro-bg.jpg';
+$prev_img_2 = isset($response['post'][1]['image'])?$response['post'][1]['image']:SPINKX_CONTENT_PLUGIN_URL.'/assets/images/bloggers-make-money.jpg';
+$prev_img_3 = isset($response['post'][2]['image'])?$response['post'][2]['image']:SPINKX_CONTENT_PLUGIN_URL.'/assets/images/wordpress-content-marketing-plugin.jpg';
+$prev_img_4 = isset($response['post'][3]['image'])?$response['post'][3]['image']:$prev_img_1;
+$prev_img_5 = isset($response['post'][4]['image'])?$response['post'][4]['image']:$prev_img_2;
+$prev_img_6 = isset($response['post'][5]['image'])?$response['post'][5]['image']:$prev_img_3;
+
+$initial_default_title = 'It takes half your life before you discover life is a do-it-yourself project.';
+$initial_default_excerpt = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sunt in culpa qui officia deserunt mollit anim id est laborum.';
+$post_title_1 = isset($response['post'][0]['post_title'])?$response['post'][0]['post_title']:$initial_default_title;
+$post_title_2 = isset($response['post'][1]['post_title'])?$response['post'][1]['post_title']:$initial_default_title;
+$post_title_3 = isset($response['post'][2]['post_title'])?$response['post'][2]['post_title']:$initial_default_title;
+$post_title_4 = isset($response['post'][3]['post_title'])?$response['post'][3]['post_title']:$initial_default_title;
+$post_title_5 = isset($response['post'][4]['post_title'])?$response['post'][4]['post_title']:$initial_default_title;
+$post_title_6 = isset($response['post'][5]['post_title'])?$response['post'][5]['post_title']:$initial_default_title;
+
+$post_excerpt_1 = isset($response['post'][0]['post_excerpt'])?$response['post'][0]['post_excerpt']:$initial_default_excerpt;
+$post_excerpt_2 = isset($response['post'][1]['post_excerpt'])?$response['post'][1]['post_excerpt']:$initial_default_excerpt;
+$post_excerpt_3 = isset($response['post'][2]['post_excerpt'])?$response['post'][2]['post_excerpt']:$initial_default_excerpt;
+$post_excerpt_4 = isset($response['post'][3]['post_excerpt'])?$response['post'][3]['post_excerpt']:$initial_default_excerpt;
+$post_excerpt_5 = isset($response['post'][4]['post_excerpt'])?$response['post'][4]['post_excerpt']:$initial_default_excerpt;
+$post_excerpt_6 = isset($response['post'][5]['post_excerpt'])?$response['post'][5]['post_excerpt']:$initial_default_excerpt;
+
+	$post_views_1 = isset($response['post'][0]['post_views'])?$response['post'][0]['post_views']:'0 . 0d';
+	if ( isset( $result['post'] ) && $post_views = get_post_meta( $response['post'][0]['id'], 'spx_views', true ) ) {
+		$temp_arr = explode('.', $post_views_1);
+		$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+		$post_views_1 = implode(' .',$temp_arr);
+	}
+	$post_views_2 = isset($response['post'][1]['post_views'])?$response['post'][1]['post_views']:'0 . 0d';
+	if ( isset( $result['post'] ) && $post_views = get_post_meta( $response['post'][1]['id'], 'spx_views', true ) ) {
+		$temp_arr = explode('.', $post_views_2);
+		$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+		$post_views_2 = implode(' .',$temp_arr);
+	}
+	$post_views_3 = isset($response['post'][2]['post_views'])?$response['post'][2]['post_views']:'0 . 0d';
+	if ( isset( $result['post'] ) &&  $post_views = get_post_meta( $response['post'][3]['id'], 'spx_views', true ) ) {
+		$temp_arr = explode('.', $post_views_3);
+		$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+		$post_views_3 = implode(' .',$temp_arr);
+	}
+	$post_views_4 = isset($response['post'][3]['post_views'])?$response['post'][3]['post_views']:'0 . 0d';
+	if ( isset( $result['post'] ) && $post_views = get_post_meta( $response['post'][3]['id'], 'spx_views', true ) ) {
+		$temp_arr = explode('.', $post_views_4);
+		$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+		$post_views_4 = implode(' .',$temp_arr);
+	}
+	$post_views_5 = isset($response['post'][4]['post_views'])?$response['post'][4]['post_views']:'0 . 0d';
+	if ( isset( $result['post'] ) && $post_views = get_post_meta( $response['post'][4]['id'], 'spx_views', true ) ) {
+		$temp_arr = explode('.', $post_views_5);
+		$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+		$post_views_5 = implode(' .',$temp_arr);
+	}
+	$post_views_6 = isset($response['post'][5]['post_views'])?$response['post'][5]['post_views']:'0 . 0d';
+	if ( isset( $result['post'] ) && $post_views = get_post_meta( $response['post'][5]['id'], 'spx_views', true ) ) {
+		$temp_arr = explode('.', $post_views_6);
+		$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+		$post_views_6 = implode(' .',$temp_arr);
+	}

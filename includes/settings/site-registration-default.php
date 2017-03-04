@@ -6,11 +6,15 @@
 
 	$mflag = is_multisite();
 if ( $mflag ) {
-	$siteArr = $wpdb->get_results( 'SELECT blog_id FROM `wp_blogs` WHERE public = 1', ARRAY_A );
-	// $siteArr = wp_get_sites(array('public' => 1));
+	if( isset( $blog_id ) && $blog_id > 0) {
+		$siteArr = array( array( 'blog_id' => $blog_id ) );
+	} else {
+		$siteArr = $wpdb->get_results('SELECT blog_id FROM `wp_blogs` WHERE public = 1', ARRAY_A);
+	}
 } else {
 	$siteArr = array( array( 'blog_id' => get_current_blog_id() ) );
 }
+
 	$data = array();
 foreach ( $siteArr as $currentSite ) {
 	if ( $mflag ) {
@@ -26,11 +30,11 @@ foreach ( $siteArr as $currentSite ) {
 		if ( $temp ) {
 			$data['site_url'] = $temp;
 		}
-		// echo $selected_url.'v';
 	}
 	    $data['sflag'] = 'site_create';
-		$response = helperClass::doCurl( $url, $data );
 
+		$response = helperClass::doCurl( $url, $data );
+		
 	if ( $response && ! $site_id ) {
 
 
@@ -59,7 +63,7 @@ foreach ( $siteArr as $currentSite ) {
 					$post['site_id'] = $settings['site_id'];
 					$postdata = array();
 					// vikash Default widget creation and default settings insertion
-					$postdata['widget_name'] = 'Demo Widget';
+					$postdata['widget_name'] = 'My First Widget';
 					/* no_of_columns Inserting Starts Here */
 					$postdata['no_of_columns'] = '1';
 					/*
@@ -92,14 +96,18 @@ foreach ( $siteArr as $currentSite ) {
 
 
 					/* unit_bg_color Inserting Starts Here */
+					//$postdata['unit_bg_color'] = '#ffffff';
 					$postdata['unit_bg_color'] = '#ffffff';
+
 					/* unit_bg_color Inserting Ends Here */
 
 					/* unit_fg_color Inserting Starts Here */
 					$postdata['unit_fg_color'] = '#fefefe';
 					/* unit_fg_color Inserting Ends Here */
 
-
+					/* unit_show_views Inserting Starts Here */
+					$postdata['unit_show_views'] = 1;
+					/* unit_show_views Inserting Ends Here */
 
 					/* unit_border_width Inserting Starts Here */
 					$postdata['unit_border_width'] = '1';
@@ -214,9 +222,4 @@ foreach ( $siteArr as $currentSite ) {
 			}
 		}
 	}
-	$post =  get_option( SPINKX_CONT_LICENSE );
-	$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/activate';
-	helperClass::doCurl( $url, $post, false );
 }
-
-

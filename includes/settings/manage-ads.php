@@ -1,28 +1,17 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $settings = maybe_unserialize( get_option( SPINKX_CONT_LICENSE ) );
-
 ?>
 <div class="se-pre-con"></div>
 <div class="wrap">
 	<div class="bpopup" id="bpopup_ajax_loading" style="display: none;width:100px">
 			<div class="popup_div" style="display: block;" >
-				<img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL )?>/assets/images/loader.gif" alt="loading"/>
+				<img src="<?php   echo esc_url( SPINKX_CONTENT_PLUGIN_URL )?>/assets/images/loader.gif" alt="loading"/>
 			</div>
 		</div>
 	<!-- Main tabs here  -->
 	<div id="distributiontabs" style="width:100%;">
-		<ul class="nav nav-tabs">
-			<?php echo '
-			<li><a href="?page=spinkx_widget_design#widget_design"><strong> Widget Design</strong></a></li>
-			<li><a href="?page=spinkx_content_play_list#content_play_list"><strong> Content Play List</strong></a></li>
-			<li><a href="?page=spinkx_dashboard#dashboard"><strong> Dashboard </strong></a></li>
-			<li class="active"><a href="?page=spinkx_campaigns#campaigns"><strong> Campaigns </strong></a></li>
-			<li><a href="?page=spinkx_options#account_setup"><strong> Account Setup</strong></a></li>';
-
-		?>
-
-		</ul>
+		<?php spinkx_header_menu() ?>
 		<div class="wrap-inner" style="min-height: 10px; padding: 20px; margin: 10px auto;" >
 			
 				<div id="campaigns">
@@ -36,9 +25,9 @@ $settings = maybe_unserialize( get_option( SPINKX_CONT_LICENSE ) );
 
 						<div class="tab-contents">
 							<div id="campaign_subtabs-1">
-								<?php
+								<?php require esc_url( SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/tab-manage-ads.php' );
 
-								require esc_url( SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/tab-manage-ads.php' ); ?>
+								?>
 							</div>
 							<div id="campaign_subtabs-2" style="display: none;">
 								<label>Enter Amount</label>

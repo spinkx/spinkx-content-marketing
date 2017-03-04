@@ -160,6 +160,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	/***************************************************************************************/
 
+	/* unit_excerpt_word_limit Inserting Starts Here */
+	$unit_show_views = helperClass::getFilterVar( 'unit_show_views', INPUT_POST, FILTER_SANITIZE_STRING);
+	$unserialized_storage_meta['unit_show_views'] = $unit_show_views;
+	/* unit_excerpt_word_limit Inserting Ends Here */
+
+	/***************************************************************************************/
+
 	/******************* Local Distribution Field Values Starts Here ***********************/
 
 	/* widget_recent_percentage Inserting Starts Here */

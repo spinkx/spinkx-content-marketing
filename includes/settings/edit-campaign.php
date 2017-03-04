@@ -692,4 +692,4 @@ wp_add_inline_script( 'jquery-select2', $custom_js );
 	});
 </script>
 <?php
- add_action( 'admin_footer', 'spinkx_media_selector_print_scripts' );
+ add_action( 'admin_footer', 'spinkx_cont_media_selector_print_scripts' );

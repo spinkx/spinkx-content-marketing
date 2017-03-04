@@ -1,5 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 $js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
 $css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/css/' );
 $css_output = ".small .modal-body { overflow-y: auto; height:600px; padding: 0; }
@@ -38,7 +39,8 @@ wp_enqueue_script( 'jquery-bootstrap-js', $js_url . 'bootstrap.min.js' );
 	wp_enqueue_media();
 	$from_date = helperClass::getFilterVar( 'from_date' );
 	$to_date = helperClass::getFilterVar( 'to_date' );
-
+	$todaydate = null;
+	$enddate = null;
 	if ( $from_date && $to_date  ) {
 		$todaydate = strtotime( $from_date );
 		$enddate = strtotime( $to_date );
@@ -50,11 +52,9 @@ wp_enqueue_script( 'jquery-bootstrap-js', $js_url . 'bootstrap.min.js' );
 
 		if ( isset( $data->date ) ) {
 			$todaydate = $data->date;
+			$temp_today_date = strtotime('-30 days', $todaydate);
+			$todaydate = $temp_today_date;
 			$enddate = $data->date;
-
-		} else {
-			echo isset( $data->msg ) ? $data->msg : '';
-			exit;
 		}
 	}
 
@@ -68,7 +68,7 @@ wp_enqueue_script( 'jquery-bootstrap-js', $js_url . 'bootstrap.min.js' );
 	$custom_js = 'jQuery(function() { ';
 	if ( $todaydate ) {
 		$custom_js .= 'var start = moment(' . ( $todaydate * 1000 ) . ');';
-		$custom_js .= 'var end = moment(' . ( $todaydate * 1000 ) . ');';
+		$custom_js .= 'var end = moment(' . ( $enddate * 1000 ) . ');';
 	} else {
 		$custom_js .= 'var start = moment();';
 		$custom_js .= 'var end = moment();';
@@ -232,16 +232,19 @@ wp_enqueue_script( 'jquery-bootstrap-js', $js_url . 'bootstrap.min.js' );
 
 	wp_enqueue_script( 'jquery-daterange-picker', '//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js' );
 	wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
+	
 $post = helperClass::getFilterPost();
-if ( isset( $post['add_camp'] ) ) {
-		if( $post['image_attachment_id'] > 0) {
-			$image_attributes = wp_get_attachment_image_src( $post['image_attachment_id'], 'medium' );
+if( is_array( $settings ) && isset($settings['site_id'])) {
+	if (isset($post['add_camp'])) {
+		if ($post['image_attachment_id'] > 0) {
+			$image_attributes = wp_get_attachment_image_src($post['image_attachment_id'], 'medium');
 			$post['ad_image_url'] = $image_attributes[0];
 		}
 		$post['access_key'] = $settings['license_code'];
 		$post['site_id'] = $settings['site_id'];
 		$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign/create';
 		$response = helperClass::doCurl($url, $post);
+	}
 }
 ?>
 <div class="tab-contents">
@@ -333,12 +336,13 @@ if ( isset( $post['add_camp'] ) ) {
 						</div>
 					</div>
 						<?php
+								if( is_array( $settings ) && isset($settings['site_id'])) {
+									$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign/form-elements';
+									$post['site_id'] = $settings['site_id'];
+									$output = helperClass::doCurl($url, $post);
 
-								$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign/form-elements';
-								$post['site_id'] = $settings['site_id'];
-								$output = helperClass::doCurl( $url, $post );
-
-								$output = json_decode( $output,true );
+									$output = json_decode($output, TRUE);
+								}
 								if(isset($output['countries'])) {
 									$countries = $output['countries'];
 								}
@@ -528,14 +532,16 @@ if ( isset( $post['add_camp'] ) ) {
 					</div>
 				<div class="modal-footer">
 					<?php
-						$url = esc_url( SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign/add-money' );
-						$post = array( 'site_id' => $settings['site_id'], 'license_code' => md5( $settings['license_code'] ), 'reg_email' => $settings['reg_email'] );
+						if( is_array( $settings ) && isset($settings['site_id'])) {
+							$url = esc_url(SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign/add-money');
+							$post = array('site_id' => $settings['site_id'], 'license_code' => md5($settings['license_code']), 'reg_email' => $settings['reg_email']);
 
-						$response = helperClass::doCurl( $url, $post );
-						$response = json_decode($response);
+							$response = helperClass::doCurl($url, $post);
+							$response = json_decode($response);
 
-						if($response) {
-							echo do_shortcode($response);
+							if ($response) {
+								echo do_shortcode($response);
+							}
 						}
 					?>
 						<label class="pheading">Or</label>
@@ -551,12 +557,14 @@ if ( isset( $post['add_camp'] ) ) {
 <div class="campaign col-sm-12 col-md-12" id="c_index" style="display:block;margin-top: 10px;" >
 <div>
 <?php
-	$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign';
-	$post = [ 'site_id' => $settings['site_id'],'license_code' => md5( $settings['license_code'] ), 'from_date'=> $from_date, 'to_date'=> $to_date ];
-	$output = helperClass::doCurl( $url, $post );
-	$output =  json_decode($output);
-	echo $output;
+	if( is_array( $settings ) && isset($settings['site_id'])) {
+		$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign';
+		$post = ['site_id' => $settings['site_id'], 'license_code' => md5($settings['license_code']), 'from_date' => $from_date, 'to_date' => $to_date];
+		$output = helperClass::doCurl($url, $post);
+		$output = json_decode($output);
+		echo $output;
+	}
 ?>
 </div></div>
 <?php
-	add_action( 'admin_footer', 'spinkx_media_selector_print_scripts' );
+add_action( 'admin_footer', 'spinkx_cont_media_selector_print_scripts' );

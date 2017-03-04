@@ -7,6 +7,7 @@ $camp_site_widget_bool = ( $camp_site_widget == "mysite" )?'true':'false';
 $camp_site_widget_delivery = ( $camp_site_widget == "delivery" )?'true':'false';
 $camp_site_widget_external = ( $camp_site_widget == "externalsite" )?'true':'false';
 $url = SPINKX_CONTENT_PLUGIN_URL;
+$no_of_columns = ($no_of_columns != 0)?$no_of_columns:1;
 $output = <<<EOD
      jQuery(document).ready(function( $ ) { 
      
@@ -287,7 +288,7 @@ $output = <<<EOD
 			placeholder: "Enter keywords/tags",
 			tags: [],
 			maximumSelectionSize: 5,
-            tokenSeparators: [',', ' '],
+            tokenSeparators: [',',],
 			value: data
 		});
 		if (data_arr.length > 0)
@@ -544,6 +545,7 @@ $output = <<<EOD
 			var form_serialized_data = $('form#SPINKX_edit_form').serialize();
 			var main_widget_id = $('#main_widget_id').val();
 			/*------------------------------------------------------------------------------*/
+			
 			var page_url = window.location.href;
 			var page_new_url = page_url.split("?")[0];
 			var add_shortcode = $('#add_shortcode').val();
@@ -561,22 +563,10 @@ $output = <<<EOD
 				type : 'post',
 				datatype : 'json',
 				success : function(data){
-					$.ajax({
-						url : ajaxurl,
-						data : {
-								'action': 'spinkx_cont_save_widget_position',
-								'add_shortcode' : add_shortcode,
-								'wp_section' : wp_section
-							},
-						type : 'post',
-						success:function(data){
-							$('#bpopup_ajax_loading').bPopup().close();
-							$.growl.notice({ message: "Successfully Updated!",
-								location: 'tr',
-								size: 'large' });
-						}
-					});
-					
+					$('#bpopup_ajax_loading').bPopup().close();
+					$.growl.notice({ message: "Successfully Updated!",
+					location: 'tr',
+					size: 'large' });					
 				},
 				failure : function(data){
 					console.log(data);
@@ -587,7 +577,46 @@ $output = <<<EOD
 				}
 			});
 		});
+		
 		/*------------------------------------------------------------------------------*/
+		$( ".ajax_reset_button" ).click(function( e ) {
+			e.preventDefault();
+			if($(this).attr("disabled")=='disabled')
+				return false;
+			var widget_name = $('form #widget_name').val();
+			var main_widget_id = $('#main_widget_id').val();
+			/*------------------------------------------------------------------------------*/
+			var page_url = window.location.href;
+			var page_new_url = page_url.split("?")[0];
+			var add_shortcode = $('#add_shortcode').val();
+			var wp_section = $('#wp_section').val();
+			/*------------------------------------------------------------------------------*/
+			$('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+			$.ajax({
+				url : ajaxurl,
+				data : {
+						'action': 'spinkx_cont_widget_reset',
+						'widget_name' : widget_name,
+						'main_widget_id' : main_widget_id,
+						'mode' : 'reset',
+				},
+				type : 'post',
+				datatype : 'json',
+				success : function(data){
+					$('#bpopup_ajax_loading').bPopup().close();
+					$.growl.notice({ message: "Successfully Reset!",
+					location: 'tr',
+					size: 'large' });
+					window.location.reload();
+				},
+				failure : function(data){
+					$('#bpopup_ajax_loading').bPopup().close();
+					$.growl.error({ message: "Failed to Update!",
+						location: 'tr',
+						size: 'large' });
+				}
+			});
+		});
 		/*------------------------------------------------------------------------------*/
 		$( ".ajax_delete_button" ).click(function( e ) {
 			e.preventDefault();

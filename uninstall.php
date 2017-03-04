@@ -11,7 +11,3 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) || !WP_UNINSTALL_PLUGIN || dirname( WP_UN
 	status_header( 404 );
 	exit;
 }
-
-//$option_name = SPINKX_CONT_LICENSE;
-//delete_site_option($option_name);
-

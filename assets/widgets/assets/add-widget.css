@@ -269,7 +269,6 @@ a.ui-slider-handle {
 }
 .block-default-buttons {
 	clear: left;
-	width: 400px;
 	max-width: 100%;
 }
 .SPINKX_edit {
@@ -339,7 +338,7 @@ a.ui-slider-handle {
     font-size: 16px;
     width: 100px;
 }
-#ajax_delete_button,#ajax_clone_button,#ajax_update_button ,#ajax_cancel_button{
+#ajax_delete_button,#ajax_clone_button,#ajax_update_button ,#ajax_cancel_button, #ajax_reset_button{
 	background-color: #469fa1;
 	border-color:#469fa1;
 	color:#fff;

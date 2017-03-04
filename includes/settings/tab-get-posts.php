@@ -39,19 +39,6 @@ if( ! $to_date ) {
 $p = [ 'site_id' => $settings['site_id'],'license_code' => md5( $settings['license_code'] ),'sortby' => $sortby,'post_type' => $ptype, 'from_date' => $from_date, 'to_date' => $to_date ];
 $p = wp_json_encode( $p );
 $url = esc_url( SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/content-playlist' );
-$wp_output = wp_remote_post( $url,  array(
-	'method' => 'POST',
-	'timeout' => 30,
-	'body' => $p,
-) );
-
-if ( ! is_wp_error( $wp_output ) ) {
-	$output = $wp_output['body'];
-	echo json_decode($output);
-} else {
-	echo json_decode($wp_output);
-}
-
 $custom_js = 'jQuery(function() { ';
 if ( $todaydate ) {
 	$custom_js .= 'var start = moment(' . ( $todaydate * 1000 ) . ');';
@@ -61,14 +48,17 @@ if ( $todaydate ) {
 	$custom_js .= 'var end = moment();';
 }
 $bwki_sites_display_length	= helperClass::getFilterVar( 'bwki_sites_display_length' );
-$pageLength = ( $bwki_sites_display_length  && in_array( $bwki_sites_display_length,[ 10, 20, 50, 100 ] ))?$bwki_sites_display_length:10;
+$pageLength = ( $bwki_sites_display_length )?$bwki_sites_display_length:10;
+	$loader = '<img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL )?>/assets/images/loader.gif" alt="loading"/>';
 $custom_js .= 'var todaydate = start;
 	jQuery("#reportrange").on("apply.daterangepicker", function(ev, picker) {
-		get_stat_now(picker.startDate, picker.endDate);
+		//get_stat_now(picker.startDate, picker.endDate);
+		loadDT(picker.startDate, picker.endDate);
 	});
 
 	jQuery(".paginate_button").on("click", function(){
-		get_stat_now(start, end);
+		//var table = jQuery("#bwki_sites_display").DataTable
+		loadDT(start,end);
 	});
 	
 	function cb(start, end) {
@@ -92,28 +82,43 @@ $custom_js .= 'var todaydate = start;
 	cb(start, end);
 	var $ = jQuery.noConflict();
 	var pageLength = ' . $pageLength . ';
-	var table = jQuery("#bwki_sites_display").DataTable({
-	"autoWidth": false,
-	"pageLength": pageLength,
-	"lengthMenu": [10, 20, 50, 100],
-	"bFilter": false,
-	"ordering": false,
-	"bSort": false,
-	"language": {
-            "zeroRecords": "Only Posts from last 6 months and with Featured image, will show in this list and can be promoted in the sidebar. You may re-publish your articles to a recent date to make them appear in the content playlist with featured  image already set.",
-           
-        }
-
-	});
+	var pt = '.$p.';
+	loadDT(start, end);
+	function loadDT(startDate, endDate) {
+		//jQuery(\'#bpopup_ajax_loading\').bPopup( { modalClose: false } );
+		pt.from_date = startDate.format(\'YYYY-MM-DD\');
+		pt.to_date = endDate.format(\'YYYY-MM-DD\');
+		var table = jQuery("#bwki_sites_display").DataTable({
+		"pageLength": pageLength,
+	    "processing": false,
+		"serverSide": true,
+		"destroy":true,
+		"ajax": {
+			beforeSend: function(){
+	            jQuery(\'#bpopup_ajax_loading\').bPopup( { modalClose: false } );
+            },
+            headers: {
+                "Accept" : "application/json; charset=utf-8",
+                "Content-Type": "application/javascript; charset=utf-8",
+                "Access-Control-Allow-Origin" : "*"
+            },
+			"url": spinkx_server_baseurl + \'/wp-json/spnx/v1/content-playlist\',
+			  "dataType": "jsonp",			  
+			data: pt,
+			complete: function(){
+                jQuery(\'#bpopup_ajax_loading\').bPopup().close();
+              
+             },
+		},	
+		
+		});
+		jQuery(\'#bpopup_ajax_loading\').bPopup().close();
+	} 
+	
 	jQuery(".site-cat-multiple").select2();
-	jQuery("select[name=\'bwki_sites_display_length\']").change(function () {
-        var url = addParameter(window.location.href, "bwki_sites_display_length", jQuery(this).val());
-        window.location.href = url;
-
-    });
-	jQuery("input.onoffswitch-checkbox").click(
-        function() {
-            var dataid = jQuery(this).attr("data-id");
+	
+	jQuery(document).on("click","input.onoffswitch-checkbox",function() {
+            var dataid = jQuery(this).attr("data-id");                     
             switch (dataid) {
                 case "all_local":
                     break;
@@ -128,6 +133,61 @@ wp_enqueue_script( 'jquery-youtubeapi', 'https://www.youtube.com/iframe_api' );
 wp_enqueue_script( 'jquery-daterange-picker', '//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js' );
 wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 ?>
+<div style="width:100%;">
+	<div style="width: 40%; float: left;">
+		<input type="button" value="ReSync" id="posts_<?php echo $site_id ?>" class="posts_sync">
+	</div>
+	<div style="width: 60%; float: right; text-align:right;">
+		<span style="line-height: 29px !important;">Show Statistics For :&nbsp;</span>
+		<div id="reportrange" class="pull-right"
+		     style="background: #fff; cursor: pointer; padding: 5px 10px; margin-right:10px; border: 1px solid #ccc;">
+			<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+			<span></span> <b class="caret"></b>
+		</div>
+	</div>
+</div><div class="content_playlist_listing">
+
+	<table id="bwki_sites_display" class="wp-list-table table-responsive "><thead  style="border-bottom:1px solid #469fa1">
+		<tr>
+			<td width="500px" height="10px" style="padding: 0px">&nbsp;</td>
+
+			<td width="300px" height="10px" style="padding: 0px"><div class="onoff_header" >
+					<div class="onoffswitch">
+						<input type="checkbox" data-id="all_local" data-site="<?php echo $settings['site_id']?>" name="playpauseswitch_local_all" class="onoffswitch-checkbox" id="playpauseswitch_local_all"  checked >
+						<label class="onoffswitch-label" for="playpauseswitch_local_all">
+							<span class="onoffswitch-inner"></span>
+							<span class="onoffswitch-switch"></span>
+						</label>
+
+					</div>
+					<input type="button" onclick="all_onoff('local')" value="Apply to All" />
+				</div>
+			</td>
+			<td width="300px" height="10px" style="padding: 0px"> <div class="onoff_header" >
+					<div class="onoffswitch">
+						<input type="checkbox" data-id="all_global" data-site="<?php echo $settings['site_id']?>" name="playpauseswitch_global_all" class="onoffswitch-checkbox" id="playpauseswitch_global_all"  checked >
+						<label class="onoffswitch-label" for="playpauseswitch_global_all">
+							<span class="onoffswitch-inner"></span>
+							<span class="onoffswitch-switch"></span>
+						</label>
+
+					</div>
+					<input type="button" onclick="all_onoff('global')" value="Apply to All" />
+
+				</div></td>
+		</tr>
+		<tr>
+			<th width="500px" height="10px" style="padding: 0px">&nbsp;&nbsp;&nbsp;Post Details</th>
+
+			<th width="300px"  height="10px" style="padding: 0px; text-align: center;padding-right: 60px;">Your Post Statistics<br/><span>Sort By :-  <a href="#" id="sortby_local_reach">Reach</a>|<a href="#" id="sortby_local_ctr">Engagement</a></span></th>
+			<th width="300px" height="10px" style="padding: 0px; text-align: center;padding-right: 60px;">Boosted Post Statistics<br/><span>Sort By :-  <a href="#" id="sortby_global_reach">Reach</a>|<a href="#" id="sortby_global_ctr">Engagement</a></span> </th>
+
+		</tr>
+
+		</thead><tbody><input type="hidden" id="chooks" value="0" /></tbody>
+		</table></div>
+<div class="clear"></div>
+</div>
 <div id="confirm_hooks_delete" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -211,7 +271,7 @@ wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 
 				</div>
 				<div class="modal-footer">
-					<a href="javascript::void(0)" id="buy-more-point" style="float: left">Buy More Point</a>
+					<a href="javascript:;void(0)" id="buy-more-point" style="float: left">Buy More Point</a>
 
 					<button class='btn btn-danger' data-dismiss='modal' aria-hidden='true'>Cancel</button>
 					<input type="submit" class='btn btn-success' value="Boost Post" />
@@ -281,14 +341,13 @@ wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 			</div>
 			<?php
 				$url = esc_url( SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/get-point-price' );
-				$post = array( 'site_id' => $settings['site_id'], 'points' => 100 );
+				$post = array( 'site_id' => $settings['site_id'], 'license_code' => md5($settings['license_code']), 'reg_email' => $settings['reg_email'], 'points' => 100 );
 				$response = helperClass::doCurl( $url, $post );
 				$response = json_decode($response, true);
-
-				if(isset($response['reach'])) {
 			?>
 
 			<div class="modal-body">
+				<?php if(isset($response['reach'])) { ?>
 				<div class="form-group">
 					<label for="point_amount">Points</label><br/>
 					<br/><input
@@ -312,7 +371,9 @@ wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 						if ($response) {
 							echo do_shortcode($response);
 						}
-					}
+					} else {
+					echo $response;
+				}
 				?>
 				</div>
 			</div>
@@ -351,6 +412,7 @@ wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 			});
 
 		});
+
 
 	});
 </script>

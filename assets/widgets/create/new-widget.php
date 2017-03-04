@@ -30,7 +30,9 @@ require esc_url ( SPINKX_CONTENT_PLUGIN_DIR ) . 'assets/widgets/create/default-f
 		<!--  SPINKX All Site Blogs Ends Here  -->
 		<!-- Add widget second level tabs starts here -->
 		<div class="distribution-sub-menu-tabs">
-			<button type="button" id="brand_design_button" class="dist-sub-second-link active">Design</button>
+			
+				<button type="button" id="brand_design_button" class="dist-sub-second-link active">Design</button>
+			
 			<button type="button" id="brand_local_button" class="dist-sub-second-link">Content Distribution</button>
 		</div>
 		<!-- Add widget second level tabs ends here  -->

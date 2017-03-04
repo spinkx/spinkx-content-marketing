@@ -8,7 +8,7 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A content marketing suite: Free Traffic Exchange, SEO Backlinks, Affiliate Campaigns, Trending Posts, Ad network, Monetisation on a sidebar widget
+A content marketing plugin: Free Traffic Exchange, SEO Backlinks, Affiliate Campaigns, Trending Posts, Ad network, Monetisation on a sidebar widget
 
 == Description ==
 
@@ -44,7 +44,13 @@ Make your site look good, with appealing content, displayed attractively. It’s
 Content analytics as seen from dashboard or from content playlist helps you easily identify which is your most read content, so you could write more of similar nature. you just get to know your users mindset better.
 
 = 10. Run Video & Gif’s on your Sidebar or footer widget =
-Set an animated GIF file as your featured image and it appears on the sidebar widget as animated. This definitely attracts more eyeballs to your content post. Video play on sidebar coming soon!
+Set an animated GIF file as your featured image and it appears on the sidebar widget as animated. This definitely attracts more eyeballs to your content post.
+
+**New Features in Version 2.0**
+
+= 11. Youtube Video marketing and promotion on your site side bar now released with version 2.0 =
+
+= 12. Mobile Widget newly made in version 2.0 for enhanced visibility of posts on Mobile Devices. You can set this feature on/off from Widget Settings Page of the Plugin. =
 
 —
 
@@ -112,6 +118,18 @@ This plugin has been tested from WordPress version 4.5 onwards. Please backup yo
 5. Widget Design & Display Settings
 
 == Changelog ==
+= 2.0 =
+*Release Date - 04 March, 2017*
+* Mobile Widget release
+* Youtube video marketing release
+* Frontend Content Unit Views & Age of post added
+* Bug Fixes & speed enhancement
+* Content playlist pagination
+* HTTP & HTTPS url support
+
+
+* Added support system
+* Show Statistics for last 30 Days on Content Playlist, Widget and Dashboard Screens
 
 = 1.1.3 =
 *Release Date - 24th December, 2016*
@@ -131,4 +149,3 @@ This plugin has been tested from WordPress version 4.5 onwards. Please backup yo
 *Release Date - 13th December, 2016*
 
 * Initial release
-
