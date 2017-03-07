@@ -92,7 +92,7 @@ jQuery( document ).ready(function() {
             success : function(data){
             //console.log(data);
             jQuery('#bpopup_ajax_loading').bPopup().close();
-            window.location.reload();
+          //  window.location.reload();
             },
             failure : function(data){
                 jQuery('#bpopup_ajax_loading').bPopup().close();

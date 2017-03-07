@@ -11,6 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 global $wpdb;
 $settings = get_option( SPINKX_CONT_LICENSE );
 $settings = maybe_unserialize( $settings );
+if( ! ( isset(  $settings['after_registration_sync'] ) && $settings['after_registration_sync'] ) ) {
+	$settings['site_url'] = spinkx_cont_get_site_url();
+	$settings['after_registration_sync'] = true;
+	$response = spinkx_cont_post_sync($settings);
+	update_option(SPINKX_CONT_LICENSE, maybe_serialize($settings));
+}
 $p = [ 'site_id' => $settings['site_id'],'license_code' => md5( $settings['license_code'] ) ];
 $p = wp_json_encode( $p );
 $site_id = $settings['site_id'];

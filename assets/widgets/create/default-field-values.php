@@ -8,7 +8,7 @@ global $wpdb;
 			$widget_auto_id	=	$response['widgetid'];
 			$categories	=	$response['category'];
 			$site_name = $response['site_name'];
-
+	$is_mobile_widget = 0;
 $main_widget_id = $widget_auto_id;
 
 /* no_of_columns Inserting Starts Here */
@@ -40,7 +40,7 @@ $img_width = "400";
 
 /* unit_bg_color Inserting Starts Here */
 //$unit_bg_color = "#ffffff";
-$unit_bg_color = "#bbbbbb";
+$unit_bg_color = "#ffffff";
 /* unit_bg_color Inserting Ends Here */
 
 /* unit_fg_color Inserting Starts Here */

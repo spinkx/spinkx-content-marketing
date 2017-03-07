@@ -40,19 +40,17 @@ $=jQuery;
 		if(t.value == 'max_price')
 			cpc.style.display="block";
 	}
-	jQuery(document).ready(
-		function () {
-
+	jQuery(document).ready(function ($) {
 			jQuery('input.select2-default').css({'width':'500px'})
 			var d = new Date();
 			//$('#start').data("DateTimePicker").defaultDate(d);
-			$('#start').datepicker("setDate", d );
+			jQuery('#start').datepicker("setDate", d );
 			var m = moment(d);
 			m.add('days', 1);
 			m.add('months', 1);
 			d = m.toDate();
 			//$('#end').data("DateTimePicker").defaultDate(d);
-			$('#end').datepicker("setDate", d );
+			jQuery('#end').datepicker("setDate", d );
 			jQuery.validate({
 				form : '#c_form1',
 /* 				onError : function($form) {
@@ -72,13 +70,13 @@ $=jQuery;
 					if(jQuery("#languages").val()== null){
 						return {
 							element : jQuery('#languages'),
-							message : 'Please select atleast one language'
+							message : 'Please select at least one language'
 					  }
 					}
 					if(jQuery("#categories").val()== null){
 						return {
 							element : jQuery('#categories'),
-							message : 'Please select atleast one category'
+							message : 'Please select at least one category'
 					  }
 					}
 					if(!(jQuery('#bid_price').val() >= 5 && jQuery('#bid_price').val() <= 15 )){
@@ -157,21 +155,6 @@ $=jQuery;
 				//$('#run_schedule').html('Your ad will run until ' + str_date);
 			}
 
-			jQuery.validate({
-				form : '#add_form',
-				onValidate : function($form) {
-
-				},
-			  });
-			/*jQuery('#c_form1').submit(function(event){
-				event.preventDefault();
-				if(jQuery('#bid_price').val() >= 5 && jQuery('#bid_price').val() <= 15 ){
-					jQuery(this).unbind('submit').submit();
-				} else{
-					alert('Please input price between 5 to 15');
-					return false;
-				}
-			});*/
 
 		$('.create_ad_btn').click(function(){
 			var index = $(this).attr('index');

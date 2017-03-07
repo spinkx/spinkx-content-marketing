@@ -36,6 +36,7 @@ wp_enqueue_script( 'jquery-dateFormat-js', $js_url . 'jquery-dateFormat.min.js' 
 wp_enqueue_script( 'jquery-moment-js', $js_url . 'moment.js' );
 wp_enqueue_script( 'jquery-datetimepicker-js', $js_url . 'bootstrap-datetimepicker.js' );
 wp_enqueue_script( 'jquery-bootstrap-js', $js_url . 'bootstrap.min.js' );
+	wp_enqueue_script( 'jquery-daterange-picker', 'http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js' );
 	wp_enqueue_media();
 	$from_date = helperClass::getFilterVar( 'from_date' );
 	$to_date = helperClass::getFilterVar( 'to_date' );
@@ -230,12 +231,13 @@ wp_enqueue_script( 'jquery-bootstrap-js', $js_url . 'bootstrap.min.js' );
 			
 		});';
 
-	wp_enqueue_script( 'jquery-daterange-picker', '//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js' );
+
 	wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 	
 $post = helperClass::getFilterPost();
 if( is_array( $settings ) && isset($settings['site_id'])) {
 	if (isset($post['add_camp'])) {
+
 		if ($post['image_attachment_id'] > 0) {
 			$image_attributes = wp_get_attachment_image_src($post['image_attachment_id'], 'medium');
 			$post['ad_image_url'] = $image_attributes[0];
@@ -244,7 +246,14 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 		$post['site_id'] = $settings['site_id'];
 		$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign/create';
 		$response = helperClass::doCurl($url, $post);
+		$response = json_decode($response);
+		if( $response['error'] ) {
+			echo $response['message'];
+		}
 	}
+	$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign/is_user_registered';
+	$response_is_user_registered = helperClass::doCurl($url, $settings);
+	$response_is_user_registered = json_decode($response_is_user_registered);
 }
 ?>
 <div class="tab-contents">
@@ -257,17 +266,27 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 			</div>
 		</div>
 	</div>
+	<?php if(! $response_is_user_registered->error) {?>
 	<div class="campaign_page col-sm-12 col-md-12">
-			<div style="float: right">Balance:<span id="user-balance"></span></div>
+			<div style="float: right">Balance:<span id="user-balance">0</span></div>
+			<!-- <button class="btn btn-primary" id="add_money_wallet" onclick="jQuery('#campaignmodaladdMoney').modal({
+    backdrop: 'static',
+    keyboard: false,
+    show: true
+})"><i class="fa fa-plus"></i>Add Money to Wallet</button> -->
 			<div class="add_button">
 				<button class="btn btn-primary" id="add_campaign" onclick="jQuery('#boostmodal').modal({
     backdrop: 'static',
     keyboard: false,
     show: true
 })"><i class="fa fa-plus"></i>Create an Ad</button>
-			</div>
 
+<?php } else {
+	echo $response_is_user_registered->msg;
+}	?>
+			</div>
 	</div>
+<?php if(! $response_is_user_registered->error) {?>
 <div id="boostmodal" class="modal small fade" role="dialog">
 	<div class="modal-dialog">
 
@@ -535,12 +554,10 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 						if( is_array( $settings ) && isset($settings['site_id'])) {
 							$url = esc_url(SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign/add-money');
 							$post = array('site_id' => $settings['site_id'], 'license_code' => md5($settings['license_code']), 'reg_email' => $settings['reg_email']);
-
 							$response = helperClass::doCurl($url, $post);
-							$response = json_decode($response);
-
-							if ($response) {
-								echo do_shortcode($response);
+							$response_money = json_decode($response);
+							if ($response_money) {
+								echo do_shortcode($response_money);
 							}
 						}
 					?>
@@ -559,12 +576,36 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 <?php
 	if( is_array( $settings ) && isset($settings['site_id'])) {
 		$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign';
-		$post = ['site_id' => $settings['site_id'], 'license_code' => md5($settings['license_code']), 'from_date' => $from_date, 'to_date' => $to_date];
+		$post = ['site_id' => $settings['site_id'], 'license_code' => md5($settings['license_code']), 'from_date' => $from_date, 'to_date' => $to_date, 'reg_email' => $settings['reg_email']];
 		$output = helperClass::doCurl($url, $post);
 		$output = json_decode($output);
 		echo $output;
 	}
 ?>
 </div></div>
+<div id="campaignmodaladdMoney" style="z-index: 9999;" class="modal small fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><strong>Add Money to Wallet</strong></h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+						<label for="point_amount">Enter Amount</label><br/>
+						<br/>
+						<input	type="text" class="form-control" id="budget_amount" style="display: inline;width:40%;" value="100"/>
+					</div>
+					<?php
+						if ($response_money) {
+							echo do_shortcode($response_money);
+						}
+					?>
+			</div>
+		</div>
+	</div>
+</div>
 <?php
 add_action( 'admin_footer', 'spinkx_cont_media_selector_print_scripts' );
+}

@@ -242,7 +242,10 @@ function spinkx_cont_post_sync($settings = null) {
 	$site_url = $request['site_url'];
 	$current_blog_id = $request['current_blog_id'];
 	$array_to_serialize = array();
-
+	if(  ( isset(  $request['after_registration_sync'] ) && $request['after_registration_sync'] ) ) {
+		$array_to_serialize['after_registration_sync'] = true;
+	}
+	//print_r($array_to_serialize);
 	$array_to_serialize['site_id'] = $site_id;
 	$array_to_serialize['license_code'] = $license_code;
 	$array_to_serialize['reg_email'] = $reg_email;
@@ -304,9 +307,9 @@ function spinkx_cont_post_sync($settings = null) {
 		$post_array['posts'][$all_posts_count]['post_title'] = $post->post_title;
 		$post_array['posts'][$all_posts_count]['post_status'] = $post_status;
 		$post_array['posts'][$all_posts_count]['post_publish_date'] = $post->post_date_gmt;
-		if (strtotime($post_array['posts'][$all_posts_count]['post_publish_date']) < strtotime('-6 months')) {
+		/*if (strtotime($post_array['posts'][$all_posts_count]['post_publish_date']) < strtotime('-6 months')) {
 			continue;
-		}
+		}*/
 		//$post = get_post($pid);
 		$post_excerpt = get_the_excerpt();
 		if(!$post_excerpt) {
@@ -352,6 +355,9 @@ function spinkx_cont_post_sync($settings = null) {
 		$post_array['site_id'] = $site_id;
 		$post_array['site_url'] = $site_url;
 		$post_array['reg_email'] = $reg_email;
+		if(  ( isset(  $request['after_registration_sync'] ) && $request['after_registration_sync'] ) ) {
+			$post_array['after_registration_sync'] = true;
+		}
 		$json_posts_array = base64_encode(maybe_serialize($post_array));
 		$curl_url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/content-playlist/post/sync';
 		$postData = array('post' => $json_posts_array);

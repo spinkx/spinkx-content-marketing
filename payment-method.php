@@ -131,7 +131,11 @@ function spinkx_cont_payment_method_list( $atts, $content = null ) {
 					//$temp_variable = 'var current_rate = '.$current_rate.';';
 			     	$temp_variable .= <<<EOD
 			     	var current_rate = {$current_rate};
-					sx_cont_amount = document.getElementById('budget_amount').value;
+			     	if(  null !== document.getElementById('wallet_amount')) {
+			     	    sx_cont_amount = document.getElementById('wallet_amount').value;
+			     	} else {
+			     	    sx_cont_amount = document.getElementById('budget_amount').value;
+			     	}					
 					displayAmount = Math.round(sx_cont_amount * 100 * current_rate);
 					options.amount = displayAmount;
 					options.display_amount = sx_cont_amount;
@@ -202,6 +206,11 @@ document.getElementById(\'payment-method-button\').onclick = function(e){
 '.$temp_variable.'
 	rzp1.open();
 	e.preventDefault();  
+}		
+	document.getElementById(\'add-money-campaign-wallet\').onclick = function(e){
+'.$temp_variable.'
+rzp1.open();
+e.preventDefault();  
 }';
 		wp_add_inline_script( 'razorpay-js', $js_output );
 	}

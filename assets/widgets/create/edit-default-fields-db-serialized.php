@@ -91,41 +91,54 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		$post_excerpt_6 = isset($result['post'][5]['post_excerpt']) ? $result['post'][5]['post_excerpt'] : $initial_default_excerpt;
 		$post_views = 0;
 
-		$post_views_1 = isset($result['post'][0]['post_views']) ? $result['post'][0]['post_views'] : '0 . 0d';
-		if (isset($result['post']) && $post_views = get_post_meta($result['post'][0]['id'], 'spx_views', TRUE)) {
-			$temp_arr = explode('.', $post_views_1);
-			$temp_arr[0] = intval($temp_arr[0]) + $post_views;
-			$post_views_1 = implode(' .', $temp_arr);
+		$counter = count( $result['post'] );
+		//if( $counter >= 1 ) {
+			$post_views_1 = isset($result['post'][0]['post_views']) ? $result['post'][0]['post_views'] : '0 . 0d';
+			if (isset($result['post']) && $post_views = get_post_meta($result['post'][0]['id'], 'spx_views', TRUE)) {
+				$temp_arr = explode('.', $post_views_1);
+				$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+				$post_views_1 = implode(' .', $temp_arr);
+			}
+		//}
+		//if( $counter >= 2 ) {
+			$post_views_2 = isset($result['post'][1]['post_views']) ? $result['post'][1]['post_views'] : '0 . 0d';
+			if (isset($result['post']) && $post_views = get_post_meta($result['post'][1]['id'], 'spx_views', TRUE)) {
+				$temp_arr = explode('.', $post_views_2);
+				$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+				$post_views_2 = implode(' .', $temp_arr);
+			}
+		//}
+		if( $counter >= 3 ) {
+			$post_views_3 = isset($result['post'][2]['post_views']) ? $result['post'][2]['post_views'] : '0 . 0d';
+			if (isset($result['post']) && $post_views = get_post_meta($result['post'][2]['id'], 'spx_views', TRUE)) {
+				$temp_arr = explode('.', $post_views_3);
+				$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+				$post_views_3 = implode(' .', $temp_arr);
+			}
 		}
-		$post_views_2 = isset($result['post'][1]['post_views']) ? $result['post'][1]['post_views'] : '0 . 0d';
-		if (isset($result['post']) && $post_views = get_post_meta($result['post'][1]['id'], 'spx_views', TRUE)) {
-			$temp_arr = explode('.', $post_views_2);
-			$temp_arr[0] = intval($temp_arr[0]) + $post_views;
-			$post_views_2 = implode(' .', $temp_arr);
+		if( $counter >= 4 ) {
+			$post_views_4 = isset($result['post'][3]['post_views']) ? $result['post'][3]['post_views'] : '0 . 0d';
+			if (isset($result['post']) && $post_views = get_post_meta($result['post'][3]['id'], 'spx_views', TRUE)) {
+				$temp_arr = explode('.', $post_views_4);
+				$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+				$post_views_4 = implode(' .', $temp_arr);
+			}
 		}
-		$post_views_3 = isset($result['post'][2]['post_views']) ? $result['post'][2]['post_views'] : '0 . 0d';
-		if (isset($result['post']) && $post_views = get_post_meta($result['post'][3]['id'], 'spx_views', TRUE)) {
-			$temp_arr = explode('.', $post_views_3);
-			$temp_arr[0] = intval($temp_arr[0]) + $post_views;
-			$post_views_3 = implode(' .', $temp_arr);
+		if( $counter >= 5 ) {
+			$post_views_5 = isset($result['post'][4]['post_views']) ? $result['post'][4]['post_views'] : '0 . 0d';
+			if (isset($result['post']) && $post_views = get_post_meta($result['post'][4]['id'], 'spx_views', TRUE)) {
+				$temp_arr = explode('.', $post_views_5);
+				$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+				$post_views_5 = implode(' .', $temp_arr);
+			}
 		}
-		$post_views_4 = isset($result['post'][3]['post_views']) ? $result['post'][3]['post_views'] : '0 . 0d';
-		if (isset($result['post']) && $post_views = get_post_meta($result['post'][3]['id'], 'spx_views', TRUE)) {
-			$temp_arr = explode('.', $post_views_4);
-			$temp_arr[0] = intval($temp_arr[0]) + $post_views;
-			$post_views_4 = implode(' .', $temp_arr);
-		}
-		$post_views_5 = isset($result['post'][4]['post_views']) ? $result['post'][4]['post_views'] : '0 . 0d';
-		if (isset($result['post']) && $post_views = get_post_meta($result['post'][4]['id'], 'spx_views', TRUE)) {
-			$temp_arr = explode('.', $post_views_5);
-			$temp_arr[0] = intval($temp_arr[0]) + $post_views;
-			$post_views_5 = implode(' .', $temp_arr);
-		}
-		$post_views_6 = isset($result['post'][5]['post_views']) ? $result['post'][5]['post_views'] : '0 . 0d';
-		if (isset($result['post']) && $post_views = get_post_meta($result['post'][5]['id'], 'spx_views', TRUE)) {
-			$temp_arr = explode('.', $post_views_6);
-			$temp_arr[0] = intval($temp_arr[0]) + $post_views;
-			$post_views_6 = implode(' .', $temp_arr);
+		if( $counter >= 6 ) {
+			$post_views_6 = isset($result['post'][5]['post_views']) ? $result['post'][5]['post_views'] : '0 . 0d';
+			if (isset($result['post']) && $post_views = get_post_meta($result['post'][5]['id'], 'spx_views', TRUE)) {
+				$temp_arr = explode('.', $post_views_6);
+				$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+				$post_views_6 = implode(' .', $temp_arr);
+			}
 		}
 	} else {
 		$is_mobile_widget = 1;

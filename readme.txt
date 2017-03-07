@@ -118,18 +118,29 @@ This plugin has been tested from WordPress version 4.5 onwards. Please backup yo
 5. Widget Design & Display Settings
 
 == Changelog ==
+= 2.0.2 =
+*Release Date - 07 March, 2017*
+
+* Change Flow of site regitration process
+* Minor Bug Fixes - plugin activation error fixes
+
+
+
+= 2.0.1 =
+*Release Date - 06 March, 2017*
+
+* Minor Bug Fixes - content playlist loader & post sync
+
+
 = 2.0 =
 *Release Date - 04 March, 2017*
+
 * Mobile Widget release
 * Youtube video marketing release
 * Frontend Content Unit Views & Age of post added
 * Bug Fixes & speed enhancement
 * Content playlist pagination
 * HTTP & HTTPS url support
-
-
-* Added support system
-* Show Statistics for last 30 Days on Content Playlist, Widget and Dashboard Screens
 
 = 1.1.3 =
 *Release Date - 24th December, 2016*

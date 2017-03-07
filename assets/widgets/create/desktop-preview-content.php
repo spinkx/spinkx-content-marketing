@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_1?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 		<!--<p class="pre-author">
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_1?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?> color:<?php echo $unit_excerpt_font_color; ?>;"><?php echo $post_title_1?></h4>
 
 		<!--<p class="pre-author">
@@ -59,7 +59,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_2?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_2?></h4>
 
 		<!--<p class="pre-author">
@@ -83,7 +83,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_1?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 		<!--<p class="pre-author">
@@ -105,7 +105,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_2?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_2?></h4>
 
 		<!--<p class="pre-author">
@@ -127,7 +127,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_3?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_3?></h4>
 
 		<!--<p class="pre-author">
@@ -151,7 +151,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_1?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 		<!--<p class="pre-author">
@@ -173,7 +173,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_2?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_2?></h4>
 
 		<!--<p class="pre-author">
@@ -195,7 +195,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 		<img src="<?php echo $prev_img_3?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_3?></h4>
 
 		<!--<p class="pre-author">
@@ -217,7 +217,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 		<img src="<?php echo $prev_img_4?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_4?></h4>
 
 		<!--<p class="pre-author">
@@ -243,7 +243,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 		<img src="<?php echo $prev_img_1?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 		<!--<p class="pre-author">
@@ -265,7 +265,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 		<img src="<?php echo $prev_img_2?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_2?></h4>
 
 		<!--<p class="pre-author">
@@ -287,7 +287,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 		<img src="<?php echo $prev_img_3?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_3?></h4>
 
 		<!--<p class="pre-author">
@@ -309,7 +309,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 		<img src="<?php echo $prev_img_4?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_4?></h4>
 
 	<!--	<p class="pre-author">
@@ -331,7 +331,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 		<img src="<?php echo $prev_img_5?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_5?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_5?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_5?></h4>
 
 		<!--<p class="pre-author">
@@ -356,7 +356,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 		<img src="<?php echo $prev_img_1?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 		<!--<p class="pre-author">
@@ -378,7 +378,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 		<img src="<?php echo $prev_img_2?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_2?></h4>
 
 		<!--<p class="pre-author">
@@ -400,7 +400,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 		<img src="<?php echo $prev_img_3?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_3?></h4>
 
 		<!--<p class="pre-author">
@@ -422,7 +422,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_4?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_4?></h4>
 
 		<!--<p class="pre-author">
@@ -444,7 +444,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_5?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_5?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_5?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_5?></h4>
 
 		<!--<p class="pre-author">
@@ -466,7 +466,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="pre-img">
 			<img src="<?php echo $prev_img_6?>" alt="" >
 		</div>
-		<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_6?></span></div>
+		<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_6?></span></div>
 		<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_6?></h4>
 
 		<!--<p class="pre-author">
@@ -496,7 +496,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_1?>" alt="">
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 				<!--<p class="pre-author">
@@ -521,7 +521,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_1?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 				<!--<p class="pre-author">
@@ -543,7 +543,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_2?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_2?></h4>
 
 				<!--<p class="pre-author">
@@ -567,7 +567,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_1?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 				<!--<p class="pre-author">
@@ -589,7 +589,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_2?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_2?></h4>
 
 				<!--<p class="pre-author">
@@ -611,7 +611,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_3?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_3?></h4>
 
 				<!--<p class="pre-author">
@@ -635,7 +635,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_1?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 				<!--<p class="pre-author">
@@ -657,7 +657,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_2?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_2?></h4>
 
 				<!--<p class="pre-author">
@@ -679,7 +679,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_3?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_3?></h4>
 
 				<!--<p class="pre-author">
@@ -701,7 +701,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_4?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_4?></h4>
 
 				<!--<p class="pre-author">
@@ -727,7 +727,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_1?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 				<!--<p class="pre-author">
@@ -749,7 +749,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_2?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_2?></h4>
 
 				<!--<p class="pre-author">
@@ -771,7 +771,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_3?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_3?></h4>
 
 				<!--<p class="pre-author">
@@ -793,7 +793,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_4?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_4?></h4>
 
 				<!--<p class="pre-author">
@@ -815,7 +815,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_5?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_5?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_5?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_5?></h4>
 
 				<!--<p class="pre-author">
@@ -840,7 +840,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_1?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_1?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
 
 				<!--<p class="pre-author">
@@ -862,7 +862,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_2?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_2?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_2?></h4>
 
 			<!--	<p class="pre-author">
@@ -884,7 +884,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_3?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_3?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_3?></h4>
 
 				<!--<p class="pre-author">
@@ -906,7 +906,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_4?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_4?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_4?></h4>
 
 				<!--<p class="pre-author">
@@ -928,7 +928,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_5?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_5?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_5?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_5?></h4>
 
 				<!--<p class="pre-author">
@@ -950,7 +950,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<div class="pre-img">
 					<img src="<?php echo $prev_img_6?>" alt="" >
 				</div>
-				<div class="site_name" style="font-size: 12px;padding: 5px 10px;color: grey;overflow:hidden;height:25px;<?php echo (!$unit_show_views)?'display:none':''?>"><p style="max-width:70%;float:left;overflow:hidden;font-size: 12px;margin:0;"><?php echo $site_name?></p><span style="float:right;color:grey"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_6?></span></div>
+				<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; <?php echo (!$unit_show_views)?'display:none':''?>"><span style="max-width:60%;float:left;margin:0;padding-left: 6px"><?php echo $site_name?></span><span style="float:right;padding-right:3px;"><i class="fa fa-eye" aria-hidden="true"></i><?php echo $post_views_6?></span></div>
 				<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='belowimg' || !$unit_add_line_style ) { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_6?></h4>
 
 			<!--	<p class="pre-author">

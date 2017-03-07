@@ -14,7 +14,7 @@ Plugin URI: www.spinkx.com
 Description: Spinkx is a full featured Content Marketing suite & an ad network. 1) Free Traffic Exchange 2) Content Distribution 3) Monetisation 4) SEO backlinks 5) Run Affiliate Campaign 6) Content analytics and <a href="http://www.spinkx.com">more..</a>
 Author: SPINKX
 Author URI: www.spinkx.com
-Version: 2.0
+Version: 2.0.2
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -40,6 +40,7 @@ $views_options = array( 'count' => 1, 'exclude_bots' => 1,'use_ajax' => 1 );
  */
 
 register_activation_hook( __FILE__, 'spinkx_cont_plugin_activated' );
+
 /**
  *
  * This function fire when plugin deactivate and send status update server
@@ -662,18 +663,39 @@ function spnx_cont_mobile_widget_data() {
 }
 
 function spnx_cont_update_version() {
-	$settings = maybe_unserialize( get_option( SPINKX_CONT_LICENSE ) );
-	$settings['current_version'] = SPINKX_VERSION;
-	$lpost_data = wp_json_encode( $settings );
-	$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/update_version';
-	wp_remote_post($url, array(
-		'method' => 'POST',
-		'body' => $lpost_data,
-	));
+	$current = get_site_transient( 'update_plugins' );
+	$plugin = plugin_basename( __FILE__ );
+	if(  isset( $current->response[ $plugin ] ) ) {
+		$spinkx_object = $current->response[$plugin];
+	}
+	if( isset( $spinkx_object ) && $spinkx_object->new_version != SPINKX_VERSION ) {
+		$data = array();
+		if( is_multisite() ) {
+			$args = array(
+				'public'     => 1,
+				'number'      => 2000,
+				'offset'     => 0,
+			);
+			$sites_array = get_sites( $args );
+
+			foreach ( $sites_array as $site ) {
+				switch_to_blog( $site->blog_id );
+				$settings = maybe_unserialize( get_option( SPINKX_CONT_LICENSE ) );
+				$data[] = $settings['site_id'];
+			}
+		} else {
+			$settings = maybe_unserialize( get_option( SPINKX_CONT_LICENSE ) );
+			$data[] = $settings['site_id'];
+		}
+		$lpost_data = wp_json_encode(array( "id" => $data, "current_version" => SPINKX_VERSION));
+		$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/update_version';
+		wp_remote_post( $url, array(
+			'method' => 'POST',
+			'body' => $lpost_data,
+		));
+	}
 }
-
 add_action( 'wp_after_admin_bar_render','spnx_cont_update_version' );
-
 function spnx_mobile_widget_setup() {
 	if( ! is_admin() && wp_is_mobile() ) {
 		$settings = maybe_unserialize(get_option(SPINKX_CONT_LICENSE));
@@ -686,6 +708,21 @@ function spnx_mobile_widget_setup() {
 			}
 		}
 	}
+}
+function spinkx_cont_get_site_url() {
+	$site_url = '';
+	if ( class_exists( 'Domainmap_Utils' ) ) {
+		$obj = new Domainmap_Utils();
+		$temp = $obj->get_mapped_domain();
+		if ( $temp ) {
+			$site_url = $temp;
+		}
+	}
+
+	if ( ! $site_url ) {
+		$site_url	= get_site_url();
+	}
+	return $site_url;
 }
 add_action( 'wp_footer', 'spnx_mobile_widget_setup' );
 function spinkx_cont_content_add( $content ) {

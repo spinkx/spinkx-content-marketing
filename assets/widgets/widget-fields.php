@@ -19,7 +19,7 @@ wp_enqueue_style( 'css-select2', $css_url . 'select2.css' );
 wp_add_inline_style( 'css-select2', $custom_css );
 wp_enqueue_script( 'jquery-select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js' );
 $tabtype = helperClass::getFilterVar( 'tabtype', INPUT_GET, FILTER_VALIDATE_INT);
-if( $result['widget']['is_mobile_widget'] == 0 ) {
+if( $is_mobile_widget == 0 ) {
 ?>
 <div class="brand-design-content" <?php echo ( $tabtype && $tabtype == 2 )?'style="display:none;"':''?>>
 	<div class="block-top-preview">
@@ -118,7 +118,7 @@ if( $result['widget']['is_mobile_widget'] == 0 ) {
 		<table class="form-table">
 			<tr>
 				<td  id="widget-masonry">
-					<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" <?php if ( $widget_layout_type=="masonry" ) { echo "checked"; };?> value="masonry" /><strong>Pinterest style </strong>(Suitable for Footers)
+					<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" <?php if ( $widget_layout_type=="masonry" ) { echo "checked"; };?> value="masonry" /><strong>Pinterest style </strong>
 				</td>
 				<td  id="widget-fixed" style="display: none">
 					<input type="radio" id="widget_layout_type" class="widget_layout_fixed" name="widget_layout_type" <?php if ( $widget_layout_type=="fixed-width" ) { echo "checked"; };?> value="fixed-width" /><strong>Fixed Width & Height </strong>(Suitable for sidebar and all locations)

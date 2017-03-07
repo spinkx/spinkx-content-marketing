@@ -112,7 +112,7 @@ $custom_js .= 'var todaydate = start;
 		},	
 		
 		});
-		jQuery(\'#bpopup_ajax_loading\').bPopup().close();
+		//jQuery(\'#bpopup_ajax_loading\').bPopup().close();
 	} 
 	
 	jQuery(".site-cat-multiple").select2();

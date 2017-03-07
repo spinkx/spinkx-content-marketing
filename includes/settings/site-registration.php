@@ -132,8 +132,8 @@ else {
 		$user_key = $dropdown->selected_site->user_key;
 	}
 	$buy_now=null;
-	if( isset( $dropdown->selected_site->buy_now ) ) {
-		$buy_now = $dropdown->selected_site->buy_now;
+	if( isset( $dropdown->selected_site->buy_now ) &&  $dropdown->selected_site->buy_now) {
+		$buy_now .= $dropdown->selected_site->buy_now;
 	}
 	$settings['due_date'] = $dropdown->selected_site->due_date;
 	if ( isset( $dropdown->selected_site->registeredemail ) ) {
@@ -194,9 +194,12 @@ if ( isset($settings['due_date']) && $settings['due_date'] != '0000-00-00 00:00:
 }
 							if ( ! $datetime ) { echo '(xx days)'; }
 							echo '<br/>';
-							echo '<span class="buy-msg">Buy the plugin and get 1000 Free Boost Points<br/>to reach 10,000 new visitors. Limited Offer!</span>';
+							if( null != $buy_now ) {
+								echo '<span class="buy-msg">Buy the plugin and get 1000 Free Boost Points<br/>to reach 10,000 new visitors. Limited Offer!</span> <br/>';
+							}
 
 						?> </p>
+
 						<p style="display: block"><?php echo do_shortcode( $buy_now );?></p>
 					</div>
 				</div>
@@ -319,14 +322,14 @@ if ( isset($settings['due_date']) && $settings['due_date'] != '0000-00-00 00:00:
 
 					</div><!-- row close -->
 					<p style="text-align: center;"><input type="checkbox"
-					                                      name="agree" <?php echo $settings['reg_user'] ? 'checked' : ''; ?> >
+					                                      name="agree" <?php echo isset( $settings['reg_user'] ) ? 'checked' : ''; ?> >
 						I have read & accept the Terms & Conditions - <a target="_blank"
 						                                                 href="http://www.spinkx.com/terms-conditions/">Read
 							Terms & Conditions</a></p>
 					<p class="fb-image">
 						<?php if ( ! $user_key ) { ?>
 							<span style="font-size:1.2em; ">Step 2 &rarr;</span>
-						<?php } elseif ( ! $settings['reg_user'] && $user_key ) {
+						<?php } elseif ( ! isset( $settings['reg_user'] ) && $user_key ) {
 						?>
 							<script>
 								window.load = function() {

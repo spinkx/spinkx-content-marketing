@@ -33,13 +33,14 @@
 					marginLeft = 0;
 					if( dataColumn > 1 ) {
 						marginLeft = 1 * dataColumn - 1;
+						actualwidth = ( 100 - 7 ) / dataColumn;
+					} else {
+						actualwidth = 100;
 					}
 
-					actualwidth =  ( 100 - 7 )   / dataColumn;
-					marginLeft = 1;
 				}
 			}
-
+			
 			if( dFlag ) {
 				var defaults = {
 					width: actualwidth,
