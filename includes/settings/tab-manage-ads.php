@@ -25,9 +25,9 @@ $css_output = ".small .modal-body { overflow-y: auto; height:600px; padding: 0; 
 	.select2-container-multi .select2-choices { min-height:25px !important; background: none !important; border-color: #e3e3e3 !important; box-shadow: none !important; font-family: 'Open Sans' !important;  height: 25px !important; font-size: 10px; font-weight: 600; }
 	#getlifetime .dropdown-menu { font-size: 10px !important; left: -10px !important; }
 	.select2-container { width: 90%; }
-	.btn-primary, #payment-method-button { font-family: 'Open Sans' !important; font-size: 11px !important; font-weight: 700 !important; }
+	.btn-primary, #payment-method-button, .payment-method-button  { font-family: 'Open Sans' !important; font-size: 11px !important; font-weight: 700 !important; }
 	.btn-primary:hover { background-color: #469fa1; }
-	#payment-method-button { background-color: #0170b6 !important; }
+	#payment-method-button, .payment-method-button { background-color: #0170b6 !important; }
 	.rTableHead, .rTableCell { text-align: left !important; }";
 wp_enqueue_style( 'campaign-css', $css_url . 'master.css' );
 wp_add_inline_style( 'campaign-css', $css_output );
@@ -247,7 +247,7 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 		$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/campaign/create';
 		$response = helperClass::doCurl($url, $post);
 		$response = json_decode($response);
-		if( $response['error'] ) {
+		if( isset( $response['error'] ) ) {
 			echo $response['message'];
 		}
 	}
@@ -268,12 +268,13 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 	</div>
 	<?php if(! $response_is_user_registered->error) {?>
 	<div class="campaign_page col-sm-12 col-md-12">
-			<div style="float: right">Balance:<span id="user-balance">0</span></div>
-			<!-- <button class="btn btn-primary" id="add_money_wallet" onclick="jQuery('#campaignmodaladdMoney').modal({
+			<div style="float: right;">Balance:<span id="user-balance">0</span>
+			<button class="btn btn-primary" id="add_money_wallet" onclick="jQuery('#campaignmodaladdMoney').modal({
     backdrop: 'static',
     keyboard: false,
     show: true
-})"><i class="fa fa-plus"></i>Add Money to Wallet</button> -->
+})">Add Money to Wallet</button>
+			</div>
 			<div class="add_button">
 				<button class="btn btn-primary" id="add_campaign" onclick="jQuery('#boostmodal').modal({
     backdrop: 'static',
@@ -583,7 +584,7 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 	}
 ?>
 </div></div>
-<div id="campaignmodaladdMoney" style="z-index: 9999;" class="modal small fade" role="dialog">
+<div id="campaignmodaladdMoney" style="z-index: 9999;" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
 		<div class="modal-content">
@@ -593,12 +594,12 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
-						<label for="point_amount">Enter Amount</label><br/>
-						<br/>
-						<input	type="text" class="form-control" id="budget_amount" style="display: inline;width:40%;" value="100"/>
+						<label for="point_amount">Enter Amount</label>
+						<input	type="text" class="form-control" id="wallet_amount" style="display: inline;width:40%;" value="100"/>
 					</div>
 					<?php
-						if ($response_money) {
+						if ( $response_money ) {
+							$response_money = str_replace('flag="3"', 'flag="4"', $response_money);
 							echo do_shortcode($response_money);
 						}
 					?>

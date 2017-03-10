@@ -256,12 +256,13 @@ $content_id = 'id="al_brnd_content"';
 		});
         jQuery(window).resize(function(){
 	        if(jQuery(document).width() <= 768) {
+		        console.log(3);
 		        if( ! jQuery('#spinkx-cont-popup').is(':visible') ) {			        
 			        jQuery('#mobile-spinkx-arrow').show();
 		        }
 	        } else {
-		        jQuery('#mobile-spinkx-arrow').hide();
-
+		       jQuery('#mobile-spinkx-arrow').hide();
+		       jQuery('#down-arrow').click();
 	        }
 	       // $('.waterfall li .art_img_block .youtube-player').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
         });

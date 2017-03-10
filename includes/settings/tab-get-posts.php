@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly	
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $settings = get_option( SPINKX_CONT_LICENSE );
 $settings = maybe_unserialize( $settings );
 $todaydate = 0;
@@ -403,6 +403,8 @@ wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
 				data : {
 					"site_id" : g_site_id,
 					"points": points,
+					"license_code": '<?php echo md5($settings['license_code'])?>',
+					"reg_email": '<?php echo $settings['reg_email']?>',
 				},
 				success : function(data){
 					$('#reach').text(data.reach);

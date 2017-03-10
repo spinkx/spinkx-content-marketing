@@ -18,16 +18,19 @@
  * @param string  $content if any content available.
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
+$showFlag = true;
 function spinkx_cont_payment_method_list( $atts, $content = null ) {
 	global $wpdb;
+	global $showFlag;
 	shortcode_atts(
 		array(
 			'site_url' => get_site_url(),
 			'flag' => 0,
 		), $atts
 	);
-
+	if( 0 === intval( $atts['flag'] ) ) {
+		return 0;
+	}
 	$shortcode_output = '';
 	$row = new stdClass();
 	$display_currency = '';
@@ -35,7 +38,7 @@ function spinkx_cont_payment_method_list( $atts, $content = null ) {
 	$current_rate = 1;
 	$currencies = helperClass::doCurl(SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/system/currencies');
 	$currencies = json_decode($currencies, true);
-	if ( 1 === intval( $atts['flag'] ) || 2 === intval( $atts['flag'] ) || 3 === intval( $atts['flag'] ) ) {
+	if ( 1 === intval( $atts['flag'] ) || 2 === intval( $atts['flag'] ) || 3 === intval( $atts['flag'] ) || 4 === intval( $atts['flag'] ) ) {
 		$row->status = $atts['status'];
 		$row->amount = $atts['amount'];
 		$row->merchant_name = $atts['merchant_name'];
@@ -101,7 +104,7 @@ function spinkx_cont_payment_method_list( $atts, $content = null ) {
 			return;
 		}
 		$row->amount = intval( $row->amount );
-		if ( 1 === $atts['flag'] || 2 === intval( $atts['flag'] ) || 3 === intval( $atts['flag'] ) ) {
+		if ( 1 === $atts['flag'] || 2 === intval( $atts['flag'] ) || 3 === intval( $atts['flag'] ) || 4 === intval( $atts['flag'] ) ) {
 			$url = $atts['other-url'];
 		} else {
 			$url = SPINKX_SERVER_BASEURL . '/wp-json/bwki/v1/payment-method/charge';
@@ -109,34 +112,50 @@ function spinkx_cont_payment_method_list( $atts, $content = null ) {
 		if ( 1 === $atts['flag'] ) {
 			$shortcode_output = '<button id="payment-method-button">Buy Now</button>';
 		} elseif ( 2 === intval( $atts['flag'] ) ) {
-			$shortcode_output = '<button id="payment-method-button">Buy Points</button>';
+			$shortcode_output = '<button id="payment-method-button" class="btn-primary pbuy-now">Buy Points</button>';
 		} elseif ( 3 === intval( $atts['flag'] ) ) {
 			$shortcode_output = '<span class="sub-heading"><sup>*</sup>You do not need to add money if you already have money in your SPINKX wallet.&nbsp; &nbsp;<button id="payment-method-button">Add Money to wallet</button></span>';
+		} elseif ( 4 === intval( $atts['flag'] ) ) {
+			$shortcode_output = '<span class="sub-heading"><button id="add-money-campaign-wallet" class="btn-primary payment-method-button">Add Money to wallet</button><br/><sup>*</sup>You do not need to add money if you already have money in your SPINKX wallet.&nbsp; &nbsp;</span>';
+
 		} else {
 			$shortcode_output = '<button id="payment-method-button" class="btn-primary pbuy-now" style="    color: #fff;
     background-color: #0170B9;">Buy Now</button>';
 		}
 		$after_transaction = '';
+
 		if(2 === intval( $atts['flag'] )) {
 			$after_transaction = ' var obj = jQuery("#bwki_sites_display tbody tr[global_pid="+boost_post_id+"] td:first"); setPostId(obj); ';
-		} if(3 === intval( $atts['flag'] )) {
+		} elseif(3 === intval( $atts['flag'] )) {
 			$after_transaction='document.getElementById(\'budget_amount\').disabled = true;
 			document.getElementById(\'payment-method-button\').disabled = true;';
 			$after_transaction='';
+		} elseif(4 === intval( $atts['flag'] )) {
+			$after_transaction='document.getElementById(\'wallet_amount\').disabled = true;
+			document.getElementById(\'add-money-campaign-wallet\').disabled = true;';
+			$after_transaction = '';
 		} else {
 			$after_transaction = 'window.location.reload()';
 		}
 		$temp_variable = null;
-		if(3 === intval( $atts['flag'] )) {
+		if(4 === intval( $atts['flag'] ) ) {
+			//$temp_variable = 'var current_rate = '.$current_rate.';';
+			$temp_variable .= <<<EOD
+			     	var current_rate = {$current_rate};
+			    	sx_cont_amount = document.getElementById('wallet_amount').value;
+			     	displayAmount = Math.round(sx_cont_amount * 100 * current_rate);
+					options.amount = displayAmount;
+					options.display_amount = sx_cont_amount;
+					
+					var rzp1 = new Razorpay( options );
+					
+EOD;
+		} elseif(3 === intval( $atts['flag'] ) ) {
 					//$temp_variable = 'var current_rate = '.$current_rate.';';
 			     	$temp_variable .= <<<EOD
 			     	var current_rate = {$current_rate};
-			     	if(  null !== document.getElementById('wallet_amount')) {
-			     	    sx_cont_amount = document.getElementById('wallet_amount').value;
-			     	} else {
-			     	    sx_cont_amount = document.getElementById('budget_amount').value;
-			     	}					
-					displayAmount = Math.round(sx_cont_amount * 100 * current_rate);
+			     	sx_cont_amount = document.getElementById('budget_amount').value;
+			     	displayAmount = Math.round(sx_cont_amount * 100 * current_rate);
 					options.amount = displayAmount;
 					options.display_amount = sx_cont_amount;
 					var rzp1 = new Razorpay( options );
@@ -162,8 +181,9 @@ EOD;
 		}
 		wp_enqueue_script( 'razorpay-js', 'https://checkout.razorpay.com/v1/checkout.js' );
 		$disAmount = $row->amount * $current_rate;
-		$js_output = "var sx_cont_amount = $row->amount; var displayAmount = $disAmount; function paymentSuccessHandler(transaction) {
-		
+		$js_output = '';
+		if( $showFlag ) {
+			$js_output = "var loadingWindow = false;  var sx_cont_amount = $row->amount; var displayAmount = $disAmount; function paymentSuccessHandler(transaction) {		
 var http = new XMLHttpRequest();
 var url = '" . $url . "';
 var params = 'razorpay_payment_id='+transaction.razorpay_payment_id+'&amount=' + displayAmount;
@@ -180,12 +200,15 @@ http.onreadystatechange = function() {//Call a function when the state changes.
    } else {
 	 alert(data.msg);
    }
-  ".$after_transaction."
+   if( loadingWindow  ) { window.location.reload() }
+  " . $after_transaction . "
+   
   }
+  
 }
 http.send(params);
 }";
-		$js_output .= 'var options = {
+			$js_output .= 'var options = {
 	"key": "' . $row->api_key . '",
 	"amount": sx_cont_amount, // 2000 paise = INR 20
 	"name": "' . $row->merchant_name . '",
@@ -200,19 +223,25 @@ http.send(params);
 	"theme": {
 		"color": "#F37254"
 	}
-};
+};';
 
-document.getElementById(\'payment-method-button\').onclick = function(e){
-'.$temp_variable.'
+				$js_output .= 'document.getElementById(\'payment-method-button\').onclick = function(e){
+' . $temp_variable . '
 	rzp1.open();
 	e.preventDefault();  
-}		
-	document.getElementById(\'add-money-campaign-wallet\').onclick = function(e){
-'.$temp_variable.'
+}';
+			$showFlag = false;
+			}
+			if(4 === intval( $atts['flag'] )) {
+	$js_output .= 'document.getElementById(\'add-money-campaign-wallet\').onclick = function(e){
+' . $temp_variable . '
+loadingWindow = true;
 rzp1.open();
 e.preventDefault();  
 }';
-		wp_add_inline_script( 'razorpay-js', $js_output );
+		}
+			wp_add_inline_script('razorpay-js', $js_output);
+
 	}
 	return $shortcode_output;
 }

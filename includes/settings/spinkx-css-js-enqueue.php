@@ -112,7 +112,7 @@ function spinkx_cont_common_css_js( $page  ) {
 	wp_enqueue_script( 'jquery-ui-js', $js_url . 'jquery-ui.js' );
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
 	wp_enqueue_script( 'bootstrap-js', $js_url . 'bootstrap.min.js' );
-
+	
 
 	if ( $page !== 'spinkx_options' ) {
 		wp_enqueue_script( 'select2-js', $js_url . 'select2.min.js' );

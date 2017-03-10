@@ -14,7 +14,7 @@ Plugin URI: www.spinkx.com
 Description: Spinkx is a full featured Content Marketing suite & an ad network. 1) Free Traffic Exchange 2) Content Distribution 3) Monetisation 4) SEO backlinks 5) Run Affiliate Campaign 6) Content analytics and <a href="http://www.spinkx.com">more..</a>
 Author: SPINKX
 Author URI: www.spinkx.com
-Version: 2.0.2
+Version: 2.1.0
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -234,6 +234,8 @@ function spinkx_cont_process_postviews() {
 			}
 			if ( $should_count && ( ( isset( $views_options['use_ajax'] ) && intval( $views_options['use_ajax'] ) === 0 ) || ( ! defined( 'WP_CACHE' ) || ! WP_CACHE ) ) ) {
 				update_post_meta( $id, 'spx_views', ( $post_views + 1 ) );
+				$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/statistics';
+
 			}
 		}
 	}
@@ -586,8 +588,9 @@ function spinkx_cont_constant_update() {
 			}
 		}
 	}
+	spnx_cont_update_version();
 }
-add_action('init', 'spinkx_cont_constant_update');
+add_action('wp_dashboard_setup', 'spinkx_cont_constant_update');
 
 function spinkx_cont_media_selector_print_scripts( ) {
 	$my_saved_attachment_post_id = get_option( 'media_selector_attachment_id', 0 );
@@ -668,6 +671,7 @@ function spnx_cont_update_version() {
 	if(  isset( $current->response[ $plugin ] ) ) {
 		$spinkx_object = $current->response[$plugin];
 	}
+	$current_blog_id = get_current_blog_id();
 	if( isset( $spinkx_object ) && $spinkx_object->new_version != SPINKX_VERSION ) {
 		$data = array();
 		if( is_multisite() ) {
@@ -689,13 +693,15 @@ function spnx_cont_update_version() {
 		}
 		$lpost_data = wp_json_encode(array( "id" => $data, "current_version" => SPINKX_VERSION));
 		$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/update_version';
+
 		wp_remote_post( $url, array(
 			'method' => 'POST',
 			'body' => $lpost_data,
 		));
+
 	}
 }
-add_action( 'wp_after_admin_bar_render','spnx_cont_update_version' );
+
 function spnx_mobile_widget_setup() {
 	if( ! is_admin() && wp_is_mobile() ) {
 		$settings = maybe_unserialize(get_option(SPINKX_CONT_LICENSE));
@@ -718,7 +724,6 @@ function spinkx_cont_get_site_url() {
 			$site_url = $temp;
 		}
 	}
-
 	if ( ! $site_url ) {
 		$site_url	= get_site_url();
 	}

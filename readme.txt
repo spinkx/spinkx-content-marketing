@@ -3,7 +3,7 @@ Contributors: spinkx
 Donate link: www.spinkx.com
 Tags: Ad network, Affiliate Marketing, Backlinks, Content marketing, Link Exchange, Monetisation, Multisite, Native ads, Pay per Click, Popular posts, Recent posts, Revenue, SEO Backlinks, Traffic, Traffic exchange, Trending posts, Trending Stories, User engagement, Video marketing, Video widget
 Requires at least: 4.5
-Tested up to: 4.7
+Tested up to: 4.7.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -118,10 +118,19 @@ This plugin has been tested from WordPress version 4.5 onwards. Please backup yo
 5. Widget Design & Display Settings
 
 == Changelog ==
+= 2.1.0 =
+*Release Date - 10 March, 2017*
+
+* Multi-site user registration enhancement
+* Widget creation after registration flow change
+* Campaign - add money button added
+* Mobile widget bug fix with caching enabled websites
+
+
 = 2.0.2 =
 *Release Date - 07 March, 2017*
 
-* Change Flow of site regitration process
+* Change Flow of site registration process
 * Minor Bug Fixes - plugin activation error fixes
 
 

@@ -249,12 +249,20 @@ $content_id = 'id="al_brnd_content"';
 				<?php } ?>
 			}
 
-			$(window).resize(function(){
-			//	$('.waterfall li .art_img_block .youtube-player').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
-			});
+
 		});
 
+			jQuery(window).resize(function(){
+				if(jQuery(document).width() <= 768) {
+					if( ! jQuery('#spinkx-cont-popup').is(':visible') ) {
+						jQuery('#mobile-spinkx-arrow').show();
+					}
+				} else {
+					jQuery('#mobile-spinkx-arrow').hide();
+					jQuery('#down-arrow').click();
+				}
 
+			});
 
 		var loading = false;
 		var dist = 700;
