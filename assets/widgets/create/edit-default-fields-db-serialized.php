@@ -1,16 +1,32 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-	$url = SPINKX_SERVER_BASEURL.'/wp-json/spnx/v1/widget/get/'.$widget_auto_id.'/'.$access_site_id;
-	$output = helperClass::doCurl( $url );
+	$url = $spnxAdminManage->spinkx_cont_bapi_url().'/wp-json/spnx/v1/widget/get';
+	$post =array('widget_id' => $widget_auto_id);
+	$output = spnxHelper::doCurl( $url, $post );
 	$result	=	json_decode($output,true);
+	
+	if($result == "Invalid Widget Request") {
+		echo $result;
+		exit;
+	}
 	$widget_name				=	$result['widget']['widget_name'];
-	$unserialized_widget_data	= 	maybe_unserialize( $result['widget']['meta_value'] );
-	$categories					=	$result['category'];
+	$unserialized_widget_data	= 	maybe_unserialize( $result['widget']['wd_settings']);
+    $categories					=	$result['category'];
+	$urls =	 $result['urls'];
 	$is_mobile_widget = 0;
+	$global_blocked_categories_textarea = 0;
+	$no_of_columns=1;
+	$no_of_row = 1;
+	$image_width = 100;
+	$image_height = 100;
+	
 	if( $result['widget']['is_mobile_widget'] == 0 ) {
 		$site_name = $result['site_name'];
 		$no_of_columns = $unserialized_widget_data['no_of_columns'];
+		$no_of_row =  (isset($unserialized_widget_data['no_of_row']) && intval($unserialized_widget_data['no_of_row']) > 0)?intval($unserialized_widget_data['no_of_row']):0;
+		$image_width =  (isset($unserialized_widget_data['image_width']) && intval($unserialized_widget_data['image_width']) > 0 )?intval($unserialized_widget_data['image_width']):0;
+		$image_height =  (isset($unserialized_widget_data['image_height']) && intval($unserialized_widget_data['image_height']) > 0)?intval($unserialized_widget_data['image_height']):0;
 		$no_col_mob_view = (!empty($unserialized_widget_data['no_col_mob_view'])) ? $unserialized_widget_data['no_col_mob_view'] : 2;
 		$widget_layout_type = $unserialized_widget_data['widget_layout_type'];
 		$unit_layout_type = $unserialized_widget_data['unit_layout_type'];
@@ -30,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		$unit_title_font_color = $unserialized_widget_data['unit_title_font_color'];
 		$unit_title_font_family = $unserialized_widget_data['unit_title_font_family'];
 		$unit_title_font_case = $unserialized_widget_data['unit_title_font_case'];
-		$unit_add_line_style = $unserialized_widget_data['unit_add_line_style'];
+		$unit_add_line_style = isset( $unserialized_widget_data['unit_add_line_style'] )?$unserialized_widget_data['unit_add_line_style']:'belowimg';
 		$unit_excerpt_font_size = $unserialized_widget_data['unit_excerpt_font_size'];
 		$unit_excerpt_line_height = $unserialized_widget_data['unit_excerpt_line_height'];
 		$unit_excerpt_font_style = $unserialized_widget_data['unit_excerpt_font_style'];
@@ -43,14 +59,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		$widget_recent_percentage = $unserialized_widget_data['widget_recent_percentage'];
 		$widget_popular_percentage = $unserialized_widget_data['widget_popular_percentage'];
 		$widget_related_percentage = $unserialized_widget_data['widget_related_percentage'];
-		$allow_global_url_checkbox = $unserialized_widget_data['allow_global_url_checkbox'];
-		$block_global_url_checkbox = $unserialized_widget_data['block_global_url_checkbox'];
+
 
 		$global_post_percentage = $unserialized_widget_data['global_post_percentage'];
 		$mysite_post_percentage = (isset($unserialized_widget_data['local_post_percentage'])) ? $unserialized_widget_data['local_post_percentage'] : 0;
 		$sponsored_post_percentage = (isset($unserialized_widget_data['ad_post_percentage'])) ? $unserialized_widget_data['ad_post_percentage'] : 0;
-		$global_blocked_url_textarea = $unserialized_widget_data['global_blocked_url_textarea'];
-		$global_blocked_keywords_textarea = $unserialized_widget_data['global_blocked_keywords_textarea'];
+		$global_blocked_url_textarea = (isset($unserialized_widget_data['global_blocked_url_textarea']) && ( $unserialized_widget_data['global_blocked_url_textarea'] == 'on' || $unserialized_widget_data['global_blocked_url_textarea'] == 1))?$unserialized_widget_data['global_blocked_url_textarea']:0;
 		$global_blocked_categories_textarea = $unserialized_widget_data['global_blocked_categories_textarea'];
 		$camp_site_widget = (isset($unserialized_widget_data['campaign_widget'])) ? $unserialized_widget_data['campaign_widget'] : '';
 		$web_content_settings = (isset($unserialized_widget_data['web_content_settings'])) ? $unserialized_widget_data['web_content_settings'] : 0;
@@ -58,13 +72,19 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		$sponsored_content_settings = (isset($unserialized_widget_data['sponsor_content_settings'])) ? $unserialized_widget_data['sponsor_content_settings'] : 0;
 		$own_campaign_settings = (isset($unserialized_widget_data['campaign_content_settings'])) ? $unserialized_widget_data['campaign_content_settings'] : 0;
 		/***************************************************************************************/
-		$unit_add_line_width = (isset($unserialized_widget_data['unit_add_line_width'])) ? $unserialized_widget_data['unit_add_line_width'] : 0;
-		$allow_global_checkbox = (isset($unserialized_widget_data['allow_global_checkbox'])) ? $unserialized_widget_data['allow_global_checkbox'] : '';
+		$unit_add_line_width = (isset($unserialized_widget_data['unit_add_line_width']))? $unserialized_widget_data['unit_add_line_width'] : 0;
+		$allow_global_checkbox = (isset($unserialized_widget_data['allow_global_checkbox']))? $unserialized_widget_data['allow_global_checkbox'] : '';
 		$unit_add_line_color = (isset($unserialized_widget_data['unit_add_line_color'])) ? $unserialized_widget_data['unit_add_line_color'] : '#fff;';
-		$page_takeover_checkbox = (isset($unserialized_widget_data['page_takeover_checkbox'])) ? $unserialized_widget_data['page_takeover_checkbox'] : '';
-		$allow_global_url_textarea = (isset($unserialized_widget_data['allow_global_url_textarea'])) ? $unserialized_widget_data['allow_global_url_textarea'] : '';
+		$page_takeover_checkbox = (isset($unserialized_widget_data['page_takeover_checkbox']))? $unserialized_widget_data['page_takeover_checkbox'] : '';
+		$allow_global_url_textarea = (isset($unserialized_widget_data['allow_global_url_textarea']))? $unserialized_widget_data['allow_global_url_textarea'] : '';
 		$global_url_post_percentage = (isset($unserialized_widget_data['global_url_post_percentage'])) ? $unserialized_widget_data['global_url_post_percentage'] : 0;
 		//Vikash get data and put in variable
+
+		$web_enable = (isset($unserialized_widget_data['web_enable']) && strtolower($unserialized_widget_data['web_enable']) == 'on') ? 1 : 0;
+		$sponsor_enable = (isset($unserialized_widget_data['sponsor_enable']) && strtolower($unserialized_widget_data['sponsor_enable']) == 'on') ? 1 : 0;
+		$auto_boost_post = (isset($unserialized_widget_data['auto_boost_post']) && strtolower($unserialized_widget_data['auto_boost_post']) == 'on') ? 1 : 0;
+		$manual_boost_post = (isset($unserialized_widget_data['manual_boost_post']) && strtolower($unserialized_widget_data['manual_boost_post']) == 'on') ? 1 : 0;
+		$global_post = (isset($unserialized_widget_data['global_post']) && strtolower($unserialized_widget_data['global_post']) == 'on') ? 1 : 0;
 
 
 		$prev_img_1 = isset($result['post'][0]['image']) ? $result['post'][0]['image'] : SPINKX_CONTENT_PLUGIN_URL . '/assets/images/spinkx-intro-bg.jpg';
@@ -92,22 +112,24 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		$post_views = 0;
 
 		$counter = count( $result['post'] );
-		//if( $counter >= 1 ) {
+		if( $counter >= 1 ) {
 			$post_views_1 = isset($result['post'][0]['post_views']) ? $result['post'][0]['post_views'] : '0 . 0d';
 			if (isset($result['post']) && $post_views = get_post_meta($result['post'][0]['id'], 'spx_views', TRUE)) {
 				$temp_arr = explode('.', $post_views_1);
 				$temp_arr[0] = intval($temp_arr[0]) + $post_views;
 				$post_views_1 = implode(' .', $temp_arr);
 			}
-		//}
-		//if( $counter >= 2 ) {
+		}
+		if( $counter >= 2 ) {
 			$post_views_2 = isset($result['post'][1]['post_views']) ? $result['post'][1]['post_views'] : '0 . 0d';
-			if (isset($result['post']) && $post_views = get_post_meta($result['post'][1]['id'], 'spx_views', TRUE)) {
-				$temp_arr = explode('.', $post_views_2);
-				$temp_arr[0] = intval($temp_arr[0]) + $post_views;
-				$post_views_2 = implode(' .', $temp_arr);
+			if (isset($result['post'], $result['post'][1]['id'])) {
+				if($post_views = get_post_meta($result['post'][1]['id'], 'spx_views', TRUE)) {
+					$temp_arr = explode('.', $post_views_2);
+					$temp_arr[0] = intval($temp_arr[0]) + $post_views;
+					$post_views_2 = implode(' .', $temp_arr);
+				}
 			}
-		//}
+		}
 		if( $counter >= 3 ) {
 			$post_views_3 = isset($result['post'][2]['post_views']) ? $result['post'][2]['post_views'] : '0 . 0d';
 			if (isset($result['post']) && $post_views = get_post_meta($result['post'][2]['id'], 'spx_views', TRUE)) {
@@ -153,6 +175,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		$manual_boost_post = (isset($unserialized_widget_data['manual_boost_post']) && strtolower($unserialized_widget_data['manual_boost_post']) == 'on') ? 1 : 0;
 		$global_post = (isset($unserialized_widget_data['global_post']) && strtolower($unserialized_widget_data['global_post']) == 'on') ? 1 : 0;
 
+
 		$global_post_percentage = isset($unserialized_widget_data['global_post_percentage']) ? $unserialized_widget_data['global_post_percentage'] : 0;
 		$mysite_post_percentage = (isset($unserialized_widget_data['local_post_percentage'])) ? $unserialized_widget_data['local_post_percentage'] : 0;
 		$sponsored_post_percentage = (isset($unserialized_widget_data['ad_post_percentage'])) ? $unserialized_widget_data['ad_post_percentage'] : 0;
@@ -168,8 +191,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	$allow_global_url_textarea = (isset($unserialized_widget_data['allow_global_url_textarea'])) ? $unserialized_widget_data['allow_global_url_textarea'] : '';
 	$global_url_post_percentage = (isset($unserialized_widget_data['global_url_post_percentage'])) ? $unserialized_widget_data['global_url_post_percentage'] : 0;
-	//Vikash get data and put in variable
+	$intra_exchange_url_checkbox = (isset($unserialized_widget_data['intra_exchange_url_checkbox']) && $unserialized_widget_data['intra_exchange_url_checkbox'] == 1) ? $unserialized_widget_data['intra_exchange_url_checkbox'] : 0;
+	$intra_exchange_url_textarea = (isset($unserialized_widget_data['intra_exchange_url_textarea'])) ? $unserialized_widget_data['intra_exchange_url_textarea'] : "";
 
+	//Vikash get data and put in variable
+	if($intra_exchange_url_textarea && strlen($intra_exchange_url_textarea) > 0) {
+		$intra_exchange_url_textarea = explode(',', $intra_exchange_url_textarea); 
+	}
+	if($global_blocked_url_textarea && strlen($global_blocked_url_textarea) > 0) {
+		$global_blocked_url_textarea = explode(',', $global_blocked_url_textarea);
+	}
     if( isset($auto_boost_post) && $auto_boost_post) {
         $manual_boost_post = 0;
     }

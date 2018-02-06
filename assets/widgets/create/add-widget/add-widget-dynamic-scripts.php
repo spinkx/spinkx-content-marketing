@@ -1,6 +1,6 @@
 <!--  Script for Settings Starts Here  -->
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+	if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	$custom_js = '
 	//jQuery("#widget_name").focus()
@@ -57,6 +57,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 		//$("input[id=widget_name]").focus();
 		$(".add_widget_button").click(function(){
+			$(this).hide();
+			$("#wpfooter").hide();
+			$(".spnx-statistcs").hide();			
 			$("#add_new_widget").toggle();
 			$("#w_table").toggle();
 			$("#install_guide").toggle();
@@ -277,22 +280,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			$(this).next().css("float", "left");
 		});
 		/* ColorPicker Script Ends Here */
-		$("#global_blocked_categories_textarea").select2({
-			placeholder: "Select categories",
-            maximumSelectionSize: 5
-		});
-		$("#global_blocked_keywords_textarea").select2({
-			placeholder: "Enter keywords/tags",
-			tags: [],
-			maximumSelectionSize: 5,
-            tokenSeparators: [",", " "]
-		});
-		$("#global_blocked_url_textarea").select2({
-			placeholder: "Enter URL",
-			tags: [],
-			maximumSelectionSize: 5,
-            tokenSeparators: [",", " "]
-		});
+		
 		//$(".select2-selection").css("width","300px");
 		//$(".select2-search__field").css("width","300px");
 	});
@@ -519,15 +507,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		});
 	});
 ';
-$handle = 'jquery-evol';
-$list = 'enqueued';
-$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
-if (wp_script_is( $handle, $list )) {
-	wp_add_inline_script( "jquery-evol", $output );
-} else {
-	wp_enqueue_script('jquery-evol', $js_url . 'evol.colorpicker.min.js');
-	wp_add_inline_script("jquery-evol", $custom_js);
-}
-//wp_enqueue_script("widget-dynamic-preview-js");
+	$handle = 'jquery-evol';
+	$list = 'enqueued';
+	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
+	if (wp_script_is( $handle, $list )) {
+		wp_add_inline_script( "jquery-evol", $output );
+	} else {
+		wp_enqueue_script('jquery-evol', $js_url . 'evol.colorpicker.min.js');
+		wp_add_inline_script("jquery-evol", $custom_js);
+	}
+	//wp_enqueue_script("widget-dynamic-preview-js");
 
-	

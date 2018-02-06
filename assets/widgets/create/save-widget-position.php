@@ -4,10 +4,10 @@
 	function spinkx_cont_save_widget_position() {
 		global $wpdb;
 		/************************* Constants Defined Here *************************/
-		$add_shortcode = $reserve_key = helperClass::getFilterVar( 'add_shortcode', INPUT_POST);;
+		$add_shortcode = $reserve_key = spnxHelper::getFilterVar( 'add_shortcode', INPUT_POST);;
 		$data = $reserve_data = array();
 		$blog_id = get_current_blog_id();
-		$section = helperClass::getFilterVar( 'wp_section', INPUT_POST);;
+		$section = spnxHelper::getFilterVar( 'wp_section', INPUT_POST);;
 		$wp_section = $section;
 
 		if ($add_shortcode) {

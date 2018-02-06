@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
 $css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/styles/' );
 wp_enqueue_style( 'css-evol-colorpicker', $css_url . 'evol.colorpicker.min.css' );
-$css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/widgets/assets/' );
 wp_enqueue_style( 'css-add-widget', $css_url . 'add-widget.css' );
 wp_enqueue_style( 'css-add-widget-preview', $css_url . 'add-widget-preview.css' );
 
@@ -22,7 +21,7 @@ require esc_url ( SPINKX_CONTENT_PLUGIN_DIR ) . 'assets/widgets/create/default-f
 ?>
 
 	<div class="wrap SPINKX_edit" >
-	<div class="wrap-inner">
+	<div class="wrap-inner2">
 		<form id="SPINKX_create_form" class="SPINKX_form" action="" method="post">
 
 		<!--  SPINKX All Site Blogs Starts Here  -->

@@ -1,8 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$allow_global_url_checkbox_bool = ( $allow_global_url_checkbox == "on" )?'true':'false';
-$block_global_url_checkbox_bool = ( $block_global_url_checkbox == "on" )?'true':'false';
+
 $camp_site_widget_bool = ( $camp_site_widget == "mysite" )?'true':'false';
 $camp_site_widget_delivery = ( $camp_site_widget == "delivery" )?'true':'false';
 $camp_site_widget_external = ( $camp_site_widget == "externalsite" )?'true':'false';
@@ -98,8 +97,7 @@ $output = <<<EOD
 			$("#global_post_percentage").val({$global_post_percentage});
 			$("#global_post_percentage_range").slider('value',{$global_post_percentage});
 			$('#global_enable').val(1);
-			$("#allow_global_url_checkbox").prop('checked', {$allow_global_url_checkbox_bool});
-			$("#block_global_url_checkbox").prop('checked', {$block_global_url_checkbox_bool});
+			
 
 			if(($('#web_enable').val()==0)&&($('#global_enable').val()==0)&&($('#sponsor_enable').val()==0)&&($('#owncamp_enable').val()==0))
 			{
@@ -253,81 +251,12 @@ $output = <<<EOD
 		});
 		/* ColorPicker Script Ends Here */
 /*************************************************************************************************/
-		var blocked_category	=	$("#global_blocked_categories_textarea").select2({
-			placeholder: "Select categories",
-           maximumSelectionSize: 5
-		});
-		var category_arr = [];
-		var catstr	=	'{$global_blocked_categories_textarea}';
-		if(catstr)
-		{
-			category_arr = catstr.split(',');
-			blocked_category.val(category_arr).trigger("change");
-		}
- /*************************************************************************************************/
+		
+		
+		
 
-		var data_arr 	= [];
-		var keywordstr	=	'{$global_blocked_keywords_textarea}';
-		if(keywordstr)
-		{
-			var keyword_arr = [];
-			keyword_arr		= keywordstr.split(',');
-			var data 		= [];
-			for(i=0;i<(keyword_arr.length);i++)
-			{
-				if(keyword_arr[i])
-				{
-					data_arr.push(keyword_arr[i]);
-					data.push({ id: keyword_arr[i], name: keyword_arr[i] });
-				}
-			}
 
-		}
 
-		var blocked_keywords	=	$("#global_blocked_keywords_textarea").select2({
-			placeholder: "Enter keywords/tags",
-			tags: [],
-			maximumSelectionSize: 5,
-            tokenSeparators: [',',],
-			value: data
-		});
-		if (data_arr.length > 0)
-		{
-			blocked_keywords.val(data_arr).trigger("change");
-		}
-
- /*************************************************************************************************/
-		var disp_arr = [];
-		var urlstr	=	'{$global_blocked_url_textarea}';
-		if(urlstr)
-		{
-			var tags=true;
-			var url_arr 	= [];
-			url_arr = urlstr.split(',');
-			var datarr 		= [];
-			for(j=0;j<(url_arr.length);j++)
-			{
-				if(url_arr[j])
-				{
-					disp_arr.push(url_arr[j]);
-					datarr.push({ id: url_arr[j], text: url_arr[j] });
-				}
-			}
-		}
-
-		var blocked_url	=	$("#global_blocked_url_textarea").select2({
-			placeholder: "Enter URL's",
-			tags: [],
-			maximumSelectionSize: 5,
-            tokenSeparators: [',', ' '],
-			value: datarr
-		});
-		if (disp_arr.length > 0)
-		{
-			blocked_url.val(disp_arr).trigger("change");
-		}
-
- /*************************************************************************************************/
  /* $(".unit_layout_tall").click(function(){
 	 $(".line-style-tall").show();
 	 $(".line-style-wide").hide();
@@ -454,6 +383,7 @@ $output = <<<EOD
 			$("#ad_post_percentage").on('input',function(e){
 				calculateValues();
 			});
+			
 		});
 	});
 	/*------------------------------------------------------------------------------*/
@@ -575,7 +505,7 @@ $output = <<<EOD
 						location: 'tr',
 						size: 'large' });
 				}
-			});
+			});		
 		});
 		
 		/*------------------------------------------------------------------------------*/

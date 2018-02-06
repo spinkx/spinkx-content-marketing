@@ -2,7 +2,9 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/css/' );
-wp_enqueue_style( 'css-select2', $css_url . 'select2.css' );
+//wp_enqueue_style( 'css-select2', $css_url . 'select2.css' );
+$css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/styles/' );
+//wp_enqueue_style( 'css-multiselect', $css_url . 'jquery.multiselect.css' );
 	$custom_css = ' 
  .select2-choices{
 	width: 240px !important;
@@ -15,10 +17,15 @@ wp_enqueue_style( 'css-select2', $css_url . 'select2.css' );
 }
 #s2id_global_blocked_categories_textarea{
 	margin-left: 15px;
+}
+.select2-container-multi.intra_exchange_url_textarea ul {
+	width: 890px !important;
 }';
 wp_add_inline_style( 'css-select2', $custom_css );
-wp_enqueue_script( 'jquery-select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js' );
-$tabtype = helperClass::getFilterVar( 'tabtype', INPUT_GET, FILTER_VALIDATE_INT);
+//wp_enqueue_script( 'jquery-select2', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js' );
+$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
+//wp_enqueue_script( 'jquery-multiselect', $js_url . 'jquery.multiselect.js' );
+$tabtype = spnxHelper::getFilterVar( 'tabtype', INPUT_GET, FILTER_VALIDATE_INT);
 if( $is_mobile_widget == 0 ) {
 ?>
 <div class="brand-design-content" <?php echo ( $tabtype && $tabtype == 2 )?'style="display:none;"':''?>>
@@ -120,8 +127,18 @@ if( $is_mobile_widget == 0 ) {
 				<td  id="widget-masonry">
 					<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" <?php if ( $widget_layout_type=="masonry" ) { echo "checked"; };?> value="masonry" /><strong>Pinterest style </strong>
 				</td>
-				<td  id="widget-fixed" style="display: none">
-					<input type="radio" id="widget_layout_type" class="widget_layout_fixed" name="widget_layout_type" <?php if ( $widget_layout_type=="fixed-width" ) { echo "checked"; };?> value="fixed-width" /><strong>Fixed Width & Height </strong>(Suitable for sidebar and all locations)
+				<td  id="widget-fixed" >
+					<!--<input type="radio" id="widget_layout_type" class="widget_layout_fixed" name="widget_layout_type" <?php //if ( $widget_layout_type=="fixed-width" ) { echo "checked"; };?> value="fixed-width" /><strong>Fixed Width & Height </strong> -->
+					<div id="widget-fixed-input" <?php if ( $widget_layout_type!="fixed-width" ) { echo 'style="display: none"'; } ?>>
+						<label>No of Row</label>
+						<input type="text" name="no_of_row" id="no_of_row" min="1" max="10" value="<?php echo $no_of_row?>"  />
+						<label>No of Columns</label>
+						<input type="text" name="no_of_columns" id="no_of_columns" value="<?php echo $no_of_columns?>" />
+						<label>Image Width</label>
+						<input type="text" name="image_width" id="image_width" value="<?php echo $image_width?>"/>
+						<label>Image Height</label>
+						<input type="text" name="image_height" id="image_height" value="<?php echo $image_height?>" />
+					</div>
 				</td>
 			</tr>
 		</table>
@@ -324,7 +341,7 @@ if( $is_mobile_widget == 0 ) {
 		<h3>TEXT FONT & COLOR</h3>
 		<!--  **********************************************************************  -->
 		<!--  Title Font Part Starts Here  -->
-		<table class="form-table" style="width:900px;">
+		<table class="form-table" >
 			<tr>
 				<td>
 					<span class="badge badge-double">9</span>
@@ -355,7 +372,7 @@ if( $is_mobile_widget == 0 ) {
 				</select>
 			</p>
 
-				<select id="unit_title_font_case" name="unit_title_font_case" title="text-transform" class="font_case">
+				<select id="unit_title_font_case" name="unit_title_font_case" title="text-transform" class="font_case" style="display: block;">
 					<option <?php if( $unit_title_font_case == "none" ) { echo "selected"; }; ?> value="none">none</option>
 					<option <?php if( $unit_title_font_case == "uppercase" ) { echo "selected"; }; ?> value="uppercase">uppercase</option>
 					<option <?php if( $unit_title_font_case == "lowercase" ) { echo "selected"; }; ?> value="lowercase">lowercase</option>
@@ -382,8 +399,8 @@ if( $is_mobile_widget == 0 ) {
 					<span class="badge badge-double" >10</span>
 					<p class="content-view-td" >Headline Placement</p>
 					<select id="unit_add_line_style" name="unit_add_tall_style" title="line-style" class="line-style-tall" style="<?php if( $unit_layout_type == "wide" ) { echo "display:none;"; } ?>width:150px;">
-						<option <?php if( $unit_add_line_style == "aboveimg" && $unit_layout_type == "tall" ) { echo "selected"; }; ?> value="aboveimg">Above Image</option>
-						<option <?php if( $unit_add_line_style == "belowimg" && $unit_layout_type == "tall") { echo "selected"; }; ?> value="belowimg">Below Image</option>
+						<option <?php if( $unit_add_line_style == "aboveimg"  ) { echo "selected"; }; ?> value="aboveimg">Above Image</option>
+						<option <?php if( $unit_add_line_style == "belowimg" ) { echo "selected"; }; ?> value="belowimg">Below Image</option>
 					</select>
 					<select id="unit_add_line_styles" name="unit_add_wide_style" title="line-style" class="line-style-wide" style="<?php if( $unit_layout_type == "tall" ) { echo "display:none;"; } ?>width:150px;">
 						<option <?php if( $unit_add_line_style == "left" && $unit_layout_type == "wide") { echo "selected"; }; ?> value="left">Image Left</option>
@@ -397,7 +414,7 @@ if( $is_mobile_widget == 0 ) {
 
 		<!--  **********************************************************************  -->
 		<!--  Content Font Part Starts Here  -->
-		<table class="form-table" style="width:900px;">
+		<table class="form-table">
 			<tr>
 				<td>
 					<span class="badge badge-double" >11</span>
@@ -427,7 +444,7 @@ if( $is_mobile_widget == 0 ) {
 						<option <?php if( $unit_excerpt_font_family == "Arial" ) { echo "selected"; }; ?> value="Arial">Arial</option>
 					</select>
 				</p>
-					<select id="unit_excerpt_font_case" name="unit_excerpt_font_case" title="text-transform" class="font_case">
+					<select id="unit_excerpt_font_case" name="unit_excerpt_font_case" title="text-transform" class="font_case" style="display: block;">
 						<option <?php if( $unit_excerpt_font_case == "none" ) { echo "selected"; }; ?> value="none">none</option>
 						<option <?php if( $unit_excerpt_font_case == "uppercase" ) { echo "selected"; }; ?> value="uppercase">uppercase</option>
 						<option <?php if( $unit_excerpt_font_case == "lowercase" ) { echo "selected"; }; ?> value="lowercase">lowercase</option>
@@ -461,7 +478,7 @@ if( $is_mobile_widget == 0 ) {
 		</table>
 		<!--  **********************************************************************  -->
 		<!--  Content Word Limit Starts Here  -->
-		<table class="form-table" style="width:650px;">
+		<table class="form-table" >
 			<tr>
 				<td>
 					<span class="badge badge-double">13</span>
@@ -470,7 +487,7 @@ if( $is_mobile_widget == 0 ) {
 				</td>
 			</tr>
 		</table>
-		<table class="form-table" style="width:650px;">
+		<table class="form-table">
 			<tr>
 				<td>
 					<span class="badge badge-double">14</span>
@@ -538,23 +555,22 @@ else
 		$camp_color_auto		=	($own_campaign_settings==0)?"color:#469fa1;":"color:#c00000;";
 		$camp_color_manual	=	($own_campaign_settings==0)?"color:#c00000;":"color:#469fa1;";
 
-		$settings = get_option(SPINKX_CONT_LICENSE);
-		$settings = maybe_unserialize($settings);
-		
+
 		//echo $web_enable;
-		$site_id = $settings['site_id'];
+
+
 		$web_enable = (isset($web_enable))?$web_enable:1;
 		$sponsor_enable = (isset($sponsor_enable))?$sponsor_enable:1;
 		$auto_boost_post = (isset($auto_boost_post))?$auto_boost_post:1;
 		$manual_boost_post = (isset($manual_boost_post))?$manual_boost_post:0;
 		$global_post = (isset($global_post))?$global_post:1;
 		if($auto_boost_post) {
-			$manual_boost_post =0;
+			$manual_boost_post = 0;
 		}
 	
 	    ?>
 		<table class="form-table" >
-			<tr style="display:none">
+			<tr>
 				<td>
 					<div class="onoffswitch" >
 						<input type="checkbox" <?php if($site_id && $web_enable){ echo 'checked'; } ?> id="web_enable" name="web_enable" class="onoffswitch-checkbox">
@@ -563,13 +579,13 @@ else
 							<span class="onoffswitch-switch"></span>
 						</label>
 					</div>
-					<strong>Local Post on Widget</strong>
-					<!--<input type="hidden" name="web_enable" id="web_enable" value="<?php //echo $web_content_settings;?>"/>
-					<a href="javascript:void(0);" style="<?php echo $web_color_auto;?>" id="website_content_auto"><strong>Automatic Settings</strong></a> | <a href="javascript:void(0);" style="<?php echo $web_color_manual;?>" id="website_content_manual"><strong>Manual Settings</strong></a> -->
+					<strong>Your Post on Widget</strong>
+
 				</td>
 			</tr>
+
 			<tr>
-				<td>
+				<td  style="width:1000px">
 					<div class="onoffswitch">
 						<input type="checkbox" <?php if($site_id && $global_post){ echo 'checked'; }?> id="global_post" name="global_post" class="onoffswitch-checkbox">
 						<label for="global_post" class="onoffswitch-label">
@@ -577,48 +593,46 @@ else
 							<span class="onoffswitch-switch"></span>
 						</label>
 					</div>
-					<strong>Publisher posts on widget</strong><br/>
-					<span class="global-allow2s">To earn point to boost your post</span>
+					<strong>Publisher posts on widget</strong>
+					<span class="global-allow2s">To earn point to boost your post</span><br/>
+
+
 					<!--<input type="hidden" name="web_enable" id="web_enable" value="<?php //echo $web_content_settings;?>"/>
 					<a href="javascript:void(0);" style="<?php echo $web_color_auto;?>" id="website_content_auto"><strong>Automatic Settings</strong></a> | <a href="javascript:void(0);" style="<?php echo $web_color_manual;?>" id="website_content_manual"><strong>Manual Settings</strong></a> -->
-
-					<table class="form-table global-allow">
+					<div style="width:400px;float: left;display: inline">
+					<table class="form-table global-allow blocked-url">
 
 					<tr>
 						<td>
-							<input type="checkbox" id="block_global_url_checkbox" name="block_global_url_checkbox" class="block_global_url_checkbox" style="width:0px !important;" <?php if( $block_global_url_checkbox == "on" ) { echo "checked"; }; ?> />
 
-							<strong>Block URL, Keyword & Categories</strong>
+							<strong>Categories</strong>
 						</td>
 
 					</tr>
 					<tr>
 						<td>
-							<div style="float: left;margin-left: 20px;">
-							<p  style="margin-left:0px;">Enter Blocked URL's: seperate by " , "  </p>
-							<!--<select name="global_blocked_url_textarea[]"  class="global_blocked_url_textarea" multiple="true"  ></select>-->
-							<input type="text" id="global_blocked_url_textarea" name="global_blocked_url_textarea[]"  class="global_blocked_url_textarea" multiple="true" />
-						</div>
-						</td>
-						<td>
-						<div style="float: left;margin: 0 25px 0 25px;">
-							<p  style="margin-left:0px;"> Enter Blocked keywords /tags: seperate by " , " </p>
-							<!--<select name="global_blocked_keywords_textarea[]"  class="global_blocked_keywords_textarea" multiple="true"  ></select>-->
-							<input type="text" id="global_blocked_keywords_textarea" name="global_blocked_keywords_textarea[]"  class="global_blocked_keywords_textarea" multiple="true" >
-						</div>
-						</td>
-						<td><div>
-							<p  style="margin-left:0px;"> Enter Blocked categories: Seperated by " , " </p>
-							<select name="global_blocked_categories_textarea[]" id="global_blocked_categories_textarea" class="global_blocked_categories_textarea" multiple="true"  >
+							<div style="float: left;margin-left: 20px;" class="global_blocked_categories_textarea-parent">
+								<!--<select name="global_blocked_url_textarea[]"  class="global_blocked_url_textarea" multiple="true"  ></select>-->
 
-								<?php
-								foreach($categories as $key=>$value)
-								{
-									echo '<option value="'.$key.'">'.$value.'</option>';
-								}
-								?>
-							</select>
+
+									<select name="global_blocked_categories_textarea[]" id="global_blocked_categories_textarea" class="global_blocked_categories_textarea" multiple  >
+
+										<?php
+											$global_blocked_categories_textarea2 = explode(',', $global_blocked_categories_textarea);
+											foreach($categories as $key=>$value) {
+												if(in_array($key, $global_blocked_categories_textarea2)) {
+													echo '<option value="' . $key . '" selected="selected" >' . $value . '</option>';
+												} else {
+													echo '<option value="' . $key . '">' . $value . '</option>';
+												}
+											}
+										?>
+									</select>
+
 							</div>
+						</td>
+
+						<td>
 						</td>
 					</tr>
 						<tr style="display: none">
@@ -652,11 +666,86 @@ else
 							</td>
 						</tr>
 		</table>
+					</div>
+					<div style="width:400px;float: left;margin-left: 50px;">
+					<table class="form-table global-allow blocked-url">
+						<tr>
+							<td>
+
+								<strong>Allowed URL</strong>
+							</td>
+
+						</tr>
+						<tr>
+							<td>
+								<div style="float: left;margin-left: 20px;" class="intra_exchange_url_textarea-parent">
+									<!--<select name="global_blocked_url_textarea[]"  class="global_blocked_url_textarea" multiple="true"  ></select>-->
+
+									<select name="intra_exchange_url_textarea[]" id="intra_exchange_url_textarea" class="intra_exchange_url_textarea" multiple >
+										<?php
+											if( is_array($intra_exchange_url_textarea) && count($intra_exchange_url_textarea) > 0) {
+												foreach ($urls as $key => $value) {
+													if (in_array($key, $intra_exchange_url_textarea)) {
+														echo '<option value="' . $key . '" selected="selected">' . $value . '</option>';
+													} else {
+														echo '<option value="' . $key . '">' . $value . '</option>';
+													}
+												}
+											} else {
+												foreach ($urls as $key => $value) {
+													echo '<option value="' . $key . '" selected="selected">' . $value . '</option>';
+												}
+											}
+										?>
+									</select>
+								</div>
+							</td>
+						</tr>
+
+					</table>
+					</div>
 				</td>
 			</tr>
 
-			<tr>
 
+			<tr style="display: none">
+				<td>
+
+					<table class="form-table global-allow allowed-url">
+
+
+						<tr style="display: none">
+							<td>
+								<div class="onoffswitch">
+									<input type="checkbox" <?php if($site_id && !$manual_boost_post){ echo 'checked="checked"'; }?> id="auto_boost_post" name="auto_boost_post" class="onoffswitch-checkbox">
+									<label for="auto_boost_post" class="onoffswitch-label">
+										<span class="onoffswitch-inner"></span>
+										<span class="onoffswitch-switch"></span>
+									</label>
+								</div>
+								<strong>Automatic post boost to get max click</strong>
+
+								<!--<input type="hidden" name="sponso	r_enable" id="sponsor_enable" value="<?php //echo $sponsored_content_settings;?>"/>
+				<a href="javascript:void(0);" style="<?php //echo $sponsor_color_auto;?>" id="Sponsored_content_auto"><strong>Automatic Settings</strong></a> | <a href="javascript:void(0);" style="<?php //echo $sponsor_color_manual;?>" id="Sponsored_content_manual"><strong>Manual Settings</strong></a> -->
+							</td>
+						</tr>
+						<tr style="display: none">
+							<td>
+								<div class="onoffswitch">
+									<input type="checkbox" <?php if($site_id && $manual_boost_post){ echo 'checked="checked"'; }?> id="manual_boost_post" name="manual_boost_post" class="onoffswitch-checkbox">
+									<label for="manual_boost_post" class="onoffswitch-label">
+										<span class="onoffswitch-inner"></span>
+										<span class="onoffswitch-switch"></span>
+									</label>
+								</div>
+								<strong>Manual post boost</strong>
+
+								<!--<input type="hidden" name="sponsor_enable" id="sponsor_enable" value="<?php //echo $sponsored_content_settings;?>"/>
+				<a href="javascript:void(0);" style="<?php //echo $sponsor_color_auto;?>" id="Sponsored_content_auto"><strong>Automatic Settings</strong></a> | <a href="javascript:void(0);" style="<?php //echo $sponsor_color_manual;?>" id="Sponsored_content_manual"><strong>Manual Settings</strong></a> -->
+							</td>
+						</tr>
+					</table>
+				</td>
 			</tr>
 		<tr>
 			<td>
@@ -715,23 +804,113 @@ else
 				//$("table.global-allow").find("select").prop("disabled", 'disabled');
 			}
 		});
+		$('#global_blocked_categories_textarea').change(function(){
+			if(window.ct_ch) {
+				jQuery('#bpopup_ajax_loading').bPopup({modalClose: false});
+				var formData = new FormData();
+				selectValue = $('select#global_blocked_categories_textarea').val();
+				formData.append('categories', selectValue);
+				url = ajaxurl + '?action=spinkx_cont_widget_get_site_url';
+				jQuery.ajax({
+					url: url,
+					data: formData,
+					type: 'POST',
+					cache: false,
+					contentType: false,
+					processData: false,
+					success: function (response) {
+						if (response.success) {
+							$('#intra_exchange_url_textarea').empty();
+
+							$.each(response.data.urls, function (i, item) {
+								$('#intra_exchange_url_textarea').append('<option value="' + i + '" selected="selected">' + item + '</option>');
+							});
+							$('#intra_exchange_url_textarea').multiselect('reload');
+						} else {
+							jQuery.growl.error({
+								message: data,
+								location: 'tr',
+								size: 'large'
+							});
+
+						}
+						jQuery('#bpopup_ajax_loading').bPopup().close();
+					},
+					failure: function (data) {
+						jQuery('#bpopup_ajax_loading').bPopup().close();
+					}
+				});
+			}
+		});
 		$('#block_global_url_checkbox').on('change',function(){
-			if($(this).prop("checked")) {
-				$("table.global-allow").find("input,button,textarea,select").attr("disabled", "disabled");
-				$(this).attr("disabled", false);
-				//	$("table.global-allow li").prop("disabled", false);
+			if( $(this).is(":checked") ) {
+				$('#global_blocked_url_textarea').select2('enable');
+				$('#global_blocked_keywords_textarea').select2('enable');
+				$('#global_blocked_categories_textarea').select2('enable');
+				$("#intra_exchange_url_checkbox").attr("disabled", true);
+				$("#intra_exchange_url_textarea").select2("disable");
 			} else {
-				$("table.global-allow").find("input,button,textarea,select").prop("disabled", false);
-				
-				//$("table.global-allow").find("select").prop("disabled", 'disabled');
+				$('#global_blocked_url_textarea').select2('disable');
+				$('#global_blocked_keywords_textarea').select2('disable');
+				$('#global_blocked_categories_textarea').select2('disable');
+				$("#intra_exchange_url_checkbox").attr("disabled", false);
+				$("#intra_exchange_url_textarea").select2("enable");
+			}
+		});
+		$('#intra_exchange_url_checkbox').on('change',function(){
+			if( $(this).is(":checked") ) {
+				$('#global_blocked_url_textarea').select2('disable');
+				$('#global_blocked_keywords_textarea').select2('disable');
+				$('#global_blocked_categories_textarea').select2('disable');
+				$("#block_global_url_checkbox").attr("disabled", true);
+				$("#intra_exchange_url_textarea").select2("enable");
+			} else {
+				$('#global_blocked_url_textarea').select2('enable');
+				$('#global_blocked_keywords_textarea').select2('enable');
+				$('#global_blocked_categories_textarea').select2('enable');
+				$("#block_global_url_checkbox").attr("disabled", false);
+				$("#intra_exchange_url_textarea").select2("disable");
+			}
+		});
+		$('.widget_layout_fixed').change(function(){
+			if( $(this).is(":checked") ) {
+				$('#widget-fixed-input').show();
+			} else {
+				$('#widget-fixed-input').hide();
+			}
+		});
+		$('.widget_layout_masonary').change(function(){
+			if( $(this).is(":checked") ) {
+				$('#widget-fixed-input').hide();
+			} else {
+				$('#widget-fixed-input').show();
 			}
 		});
 
-		if(!gsite_id) {
-			$("table.global-allow").find("input,button,textarea,select").attr("disabled", "disabled");
-		} else {
-			//$('#block_global_url_checkbox').trigger('change');
-		}
+		jQuery('#intra_exchange_url_textarea').multiselect({
+			columns: 1,
+			placeholder: 'Select Allowed URL',
+			search: true,
+			selectAll: true
+		});
+		jQuery('#global_blocked_categories_textarea').multiselect({
+			columns: 1,
+			placeholder: 'Select Categories',
+			search: true,
+			selectAll: true
+
+		});
+		jQuery('#global_blocked_url_textarea').multiselect({
+			columns: 1,
+			placeholder: 'Select Block URL',
+			search: true,
+			selectAll: true,
+			
+		});
+
+	window.onload = function() {
+		window.ct_ch = false;
+	}
 	});
 </script>
 <?php

@@ -42,47 +42,118 @@ function addParameter(url, parameterName, parameterValue, atStart){
 };
 
 jQuery( document ).ready(function() {
+
+    jQuery(document).on("click","input.onoffswitch-checkbox",function() {
+        var dataid = jQuery(this).attr("data-id");
+        switch (dataid) {
+            case "all_local":
+                break;
+            case "all_global":
+                break;
+            default:
+                changePostStatus(jQuery(this));
+        }
+    });
+    window.onload = function() {
+        jQuery('.categories').multiselect({
+            columns: 1,
+            placeholder: 'Select Categories',
+            search: true,
+            selectAll: true
+        });
+    };
+
+
+    jQuery(document).on("click","button.updatecategories",function() {
+        var dataid = jQuery(this).attr('data-id');
+        categories = jQuery('#bp_categories_'+dataid).val();
+        var formData = new FormData();
+        formData.append('action', 'spinkx_cont_bp_update_categories');
+        formData.append('site_cat', categories);
+        formData.append('post_id', dataid);
+        jQuery.ajax({
+            type: 'POST',
+            url: ajaxurl ,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                data = JSON.parse(data);
+                if (data.success) {
+                    jQuery.growl.notice({
+                        message: data.msg,
+                        location: 'tr',
+                        size: 'large'
+                    });
+                    window.location.reload();
+                } else {
+                    jQuery.growl.error({
+                        message: data.msg,
+                        location: 'tr',
+                        size: 'large'
+                    });
+                }
+            },
+            failure: function (data) {
+                //jQuery('#ab_posts_pause_loading').bPopup().close();
+                jQuery.growl.error({
+                    message: " Request to server failed, kind;y retry or contact support ! ",
+                    location: 'tr',
+                    size: 'large'
+                });
+                console.log(data);
+            }
+        });
+    });
+
     jQuery("#sortby_local_reach").click(function () {
-        var start = jQuery('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
-        var end =  jQuery('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
+        console.log(global_start_date);
+        //var start = jQuery('#drp-input-startdate')._$startDate.val().format('YYYY-MM-DD');
+        //var end =  jQuery('#daterange').data('daterangepicker').endDate.format('YYYY-MM-DD');
         var url = addParameter(window.location.href, "post_type", "local");
         url = addParameter(url, "sortby", "reach");
-        url = addParameter(url, "from_date", start);
-        url = addParameter(url, "to_date", end);
+        url = addParameter(url, "from_date", global_start_date);
+        url = addParameter(url, "to_date", global_end_date);
         window.location.href = url;
     });
     jQuery("#sortby_local_ctr").click(function () {
-        var start = jQuery('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
-        var end =  jQuery('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
+       // var start = jQuery('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
+       // var end =  jQuery('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
         var url = addParameter(window.location.href, "post_type", "local");
         url = addParameter(url, "sortby", "engagement");
-        url = addParameter(url, "from_date", start);
-        url = addParameter(url, "to_date", end);
+        url = addParameter(url, "from_date", global_start_date);
+        url = addParameter(url, "to_date", global_end_date);
         window.location.href = url;
 
     });
     jQuery("#bwki_sites_display #sortby_global_reach").click(function () {
-        var start = jQuery('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
-        var end =  jQuery('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
+      //  var start = jQuery('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
+      //  var end =  jQuery('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
         var url = addParameter(window.location.href, "post_type", "global");
         url = addParameter(url, "sortby", "reach");
-        url = addParameter(url, "from_date", start);
-        url = addParameter(url, "to_date", end);
+        url = addParameter(url, "from_date", global_start_date);
+        url = addParameter(url, "to_date", global_end_date);
         window.location.href = url;
 
     });
     jQuery("#bwki_sites_display #sortby_global_ctr").click(function () {
-        var start = jQuery('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
-        var end =  jQuery('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
+      //  var start = jQuery('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
+      //  var end =  jQuery('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
         var url = addParameter(window.location.href, "post_type", "global");
         url = addParameter(url, "sortby", "engagement");
-        url = addParameter(url, "from_date", start);
-        url = addParameter(url, "to_date", end);
+        url = addParameter(url, "from_date", global_start_date);
+        url = addParameter(url, "to_date", global_end_date);
         window.location.href = url;
 
     });
 
-    jQuery('input.posts_sync').click(function(){
+    jQuery('.spnx-sync').powerTip({
+        placement: 'n',
+        smartPlacement: true
+    });
+
+    jQuery('.spnx-sync').click(function(){
         var sid = jQuery(this).attr('id');
         jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
         jQuery.ajax({
@@ -90,9 +161,8 @@ jQuery( document ).ready(function() {
             data: {'action': 'spinkx_cont_update_post_sync_cpl'},
             type : 'get',
             success : function(data){
-            //console.log(data);
             jQuery('#bpopup_ajax_loading').bPopup().close();
-          //  window.location.reload();
+            window.location.reload();
             },
             failure : function(data){
                 jQuery('#bpopup_ajax_loading').bPopup().close();
@@ -132,8 +202,7 @@ function getAttachmentData(buttonObj, ishook) {
             data = JSON.parse(data)
             if(data['success']) {
                 if(ishook){
-                    jQuery(buttonObj).parents('tr').css('display', 'none');             }
-
+                    jQuery(buttonObj).parents('tr').css('display', 'none');}
                 var div = jQuery("<ul></ul>");
                 for(var i = 0; i < data.data.length; i++){
                     var img = '<li onclick="replaceChooseImage('+post_id+',\''+data.data[i]+'\'); return false;" class="addhook_each_photo"> <a href="#"> <img  src="'+data.data[i]+'" id="variation_imgs_'+post_id+'" class="variation_imgs" /> </a> </li>';
@@ -143,7 +212,7 @@ function getAttachmentData(buttonObj, ishook) {
 						<div id="addhook_form_'+post_id+'" class="addhook_form form-group"><form name="frm_addhook_form_'+post_id+'" onsubmit="event.preventDefault(); return submitVariationForm(this);" method="post" class="frm_addhook_form" id="frm_addhook_form_'+post_id+'" enctype="multipart/form-data" data-ishook='+ishook+'>\
 							<div class="addhook_choose_image"><img  id="addhook_image_src_'+post_id+'" /></div> \
 							<div class="addhook_title"><input class="form-control" placeholder="Variation Headline" id="addhook_title_'+post_id+'" name="title"/></div> \
-							<div class="addhook_excerpt"><textarea id="addhook_excerpt_'+post_id+'" class="form-control" placeholder="Enter your Excerpt here ..." name="excerpt"></textarea></div>  \
+							<div class="addhook_excerpt"><textarea id="addhook_excerpt_'+post_id+'" class="form-control" placeholder="Enter your Excerpt here" name="excerpt"></textarea></div>  \
 							<button  type="submit" class="btn btn-primary btn-sm"  style="float:right; margin-top:42px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
 							<button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn btn-warning btn-sm"  style="float:right; margin:42px 10px 0 0; border-radius:0;  color:#fff; ">Cancel</button>\
 							</form></div> \
@@ -849,17 +918,33 @@ function getAttachmentDataVideo(buttonObj, ishook) {
     if(ishook) { jQuery(buttonObj).parents('tr').css('display', 'none'); }
     var div = jQuery("<ul></ul>");
     var addhook_form = '<td> \
-            <div id="addhook_videoform_'+post_id+'" class="addhook_videoform form-group"><form name="frm_addhook_videoform_'+post_id+'" onsubmit="event.preventDefault(); return submitVideoVariationForm(this);" method="post" class="frm_addhook_form" id="frm_addhook_form_'+post_id+'" enctype="multipart/form-data" data-ishook='+ishook+'>\
+            <div id="addhook_videoform_'+post_id+'" class="addhook_form addhook_videoform form-group"><form name="frm_addhook_videoform_'+post_id+'" onsubmit="event.preventDefault(); return submitVideoVariationForm(this);" method="post" class="frm_addhook_form" id="frm_addhook_form_'+post_id+'" enctype="multipart/form-data" data-ishook='+ishook+'>\
                 <div class="addhook_choose_video"><div id="div_YouTube'+post_id+'"><img  id="addhook_image_src_'+post_id+'" /></div></div> \
-                <div class="addhook_title" style="width: auto"><input class="form-control video_url" placeholder="Video URL" id="addhook_video_url_'+post_id+'" name="video_url" /></div> \
+                <div class="addhook_form2"><div class="addhook_title" style="width: auto"><input class="form-control video_url" placeholder="Video URL" id="addhook_video_url_'+post_id+'" name="video_url" /></div> \
                 <div class="addhook_title"><input class="form-control" placeholder="Video Title" id="addhook_video_title_'+post_id+'" name="title"/></div> \
-                <div class="addhook_excerpt"><textarea id="addhook_video_excerpt_'+post_id+'" class="form-control" placeholder="Add your Video Description ..." name="excerpt"></textarea></div>  \
-                <button  type="submit" class="btn btn-primary btn-sm"  style="float:right; margin-top:42px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
-                <button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn btn-warning btn-sm"  style="float:right; margin:42px 10px 0 0; border-radius:0;  color:#fff; ">Cancel</button>\
-                </form></div> \
+                <div class="addhook_excerpt addhook_excerpt2"><textarea id="addhook_video_excerpt_'+post_id+'" class="form-control" placeholder="Add your Video Description ..." name="excerpt"></textarea></div>  \
+                <button  type="submit" class="btn btn-primary btn-sm"  style="float:right; margin-top:62px; color:#fff; background-color:#1dbd45; margin-right: 10px;">SAVE &amp; ACTIVATE</button>\
+                <button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn btn-warning btn-sm"  style="float:right; margin:62px 10px 0 0; border-radius:0;  color:#fff; ">Cancel</button>\
+                </div></form></div> \
                 </td>\
                 <td>\
                 </td>';
+    var addhook_form = '<td> \
+						<div id="addhook_form_'+post_id+'" class="addhook_form  addhook_videoform form-group"><form name="frm_addhook_videoform_'+post_id+'" onsubmit="event.preventDefault(); return submitVideoVariationForm(this);" method="post" class="frm_addhook_form" id="frm_addhook_form_'+post_id+'" enctype="multipart/form-data" data-ishook='+ishook+' style="margin-left:10px;padding-top: 10px;">\
+							 <div class="addhook_choose_video" style="display: none"><div id="div_YouTube'+post_id+'"><img  id="addhook_image_src_'+post_id+'" /></div></div>';
+
+                            if(!ishook) {
+                                addhook_form += '<div class="addhook_form2"><div class="addhook_title addhook_title2"><input class="form-control video_url" placeholder="Video URL" id="addhook_video_url_' + post_id + '" name="video_url" /></div>';
+                            } else {
+                                addhook_form += '<div class="addhook_form2" style="height:107px;">';
+                            }
+							addhook_form += '<div class="addhook_title addhook_title2" style="margin-top: 13px;margin-bottom: 13px;"><input class="form-control" placeholder="Video Title" id="addhook_video_title_'+post_id+'" name="title"/></div> \
+							<div class="addhook_excerpt2" style=""><textarea id="addhook_video_excerpt_'+post_id+'" class="form-control" placeholder="Add your Video Description ..." name="excerpt" style="height:50px;"></textarea></div>  \
+							<button  type="submit" class="btn btn-primary btn-sm"  style="float:right; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
+							<button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn btn-warning btn-sm"  style="float:right; margin:19px 10px 0 0; border-radius:0;  color:#fff; ">Cancel</button>\
+							</div></form></div> \
+							</td>\
+							<td></td>';
     jQuery(buttonObj).parents('tr').after('<tr>'+addhook_form+'</tr>');
 
 
@@ -873,8 +958,9 @@ function getAttachmentDataVideo(buttonObj, ishook) {
         video_id = videoArr[videoArr.length - 1];
         videoArr = video_id.split('?');
         video_id = videoArr[0];
-        jQuery("#addhook_video_url_"+post_id).val(video_id);
+       // jQuery("#addhook_video_url_"+post_id).val(video_id);
         vid = 'div_YouTube' + post_id;
+        jQuery('#frm_addhook_form_'+post_id+' .addhook_choose_video').show();
         onYouTubeIframeAPIReady(vid, video_id );
 
     }
@@ -910,34 +996,38 @@ jQuery(document).on('change','.video_url',function(){
         video_id = temp_arr[1];
       //  console.log(video_id);
         onYouTubeIframeAPIReady(vid, video_id );
+
     }
+    jQuery('#frm_addhook_form_'+tidArr[tidArr.length-1]+' .addhook_choose_video').show();
 
 });
 
 function onYouTubeIframeAPIReady(id, video_id, is_edit) {
     var player;
-    player = new YT.Player(id, {
-        videoId: video_id,     // THE VIDEO ID.
-        width: 560,
-        height: 316,
-        playerVars: {
-            'autoplay': 0,
-            'controls': 1,
-            'showinfo': 0,
-            'modestbranding': 0,
-            'loop': 0,
-            'fs': 0,
-            'cc_load_policty': 0,
-            'wmode': 'opaque',
-            'iv_load_policy': 3
-        },
-        events: {
-            'onReady': function (e) {
-                e.target.mute();
-                e.target.setVolume(50);      // YOU CAN SET VALUE TO 100 FOR MAX VOLUME.
+    if(typeof id !== "undefined") {
+        player = new YT.Player(id, {
+            videoId: video_id,     // THE VIDEO ID.
+            width: 390,
+            height: 200,
+            playerVars: {
+                'autoplay': 0,
+                'controls': 1,
+                'showinfo': 0,
+                'modestbranding': 0,
+                'loop': 0,
+                'fs': 0,
+                'cc_load_policty': 0,
+                'wmode': 'opaque',
+                'iv_load_policy': 3
+            },
+            events: {
+                'onReady': function (e) {
+                    e.target.mute();
+                    e.target.setVolume(50);      // YOU CAN SET VALUE TO 100 FOR MAX VOLUME.
+                }
             }
-        }
-    });
+        });
+    }
 
 }
 function submitVideoVariationForm(formObj) {
@@ -949,14 +1039,29 @@ function submitVideoVariationForm(formObj) {
     if( jQuery(formObj).data("ishook")) {
         // If hook update then add hook_id as POST param
         formData.append("hook_id", jQuery(formObj).data("ishook") );
+
     }
     formData.append('parent_post_id', post_id);
     var title = jQuery("#addhook_video_title_"+post_id).val();
-    var img = jQuery("#addhook_video_url_"+post_id);
+
     var excerpt = jQuery("#addhook_video_excerpt_"+post_id).val();
-    formData.append('image_url',img.prop('src'));
+    console.log(jQuery(formObj[0]).val());
+    if(!jQuery(formObj).data("ishook")) {
+        if(jQuery(formObj[0]).val() == '' ) {
+            jQuery.growl.error({ message: 'video url missing',
+                location: 'tr',
+                size: 'large' });
+            jQuery('#bpopup_ajax_loading').bPopup().close();
+            return false;
+        }
+        var img = jQuery("#addhook_video_url_"+post_id);
+        formData.append('image_url', img.prop('src'));
+        formData.append('image_aid',img.attr('data-id'));
+    } else {
+        var img = true;
+    }
     formData.append('type','video');
-    formData.append('image_aid',img.attr('data-id'));
+
     formData.append('action','spinkx_cont_save_hook');
     if(g_site_id && title &&  img  &&  excerpt) {
         jQuery.ajax({
@@ -975,6 +1080,11 @@ function submitVideoVariationForm(formObj) {
                         location: 'tr',
                         size: 'large' });
                     window.location.reload();
+                } else {
+                    jQuery.growl.error({ message: data,
+                        location: 'tr',
+                        size: 'large' });
+                    jQuery('#bpopup_ajax_loading').bPopup().close();
                 }
             },
             failure : function(data){
@@ -986,7 +1096,52 @@ function submitVideoVariationForm(formObj) {
         jQuery.growl.error({ message: "One of the fields is empty !",
             location: 'tr',
             size: 'large' });
+        jQuery('#bpopup_ajax_loading').bPopup().close();
         //console.log("one of the fields is empty");
     }
     return false;
+}
+function loadDT(startDate, endDate) {
+    //jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+    pt.from_date = startDate;
+    pt.to_date = endDate;
+    var table = jQuery("#bwki_sites_display").DataTable({
+        "pageLength": pageLength,
+        "serverSide": true,
+        "deferRender": true,
+        "ordering": false,
+        "destroy":true,
+        "language": {
+            "lengthMenu": "Display_MENU_Posts"
+        },
+        "ajax": {
+            beforeSend: function(){
+                jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+            },
+            headers: {
+                "Accept" : "application/json; charset=utf-8",
+                "Content-Type": "application/javascript; charset=utf-8",
+                "Access-Control-Allow-Origin" : "*"
+            },
+            "url": spinkx_server_baseurl + '/wp-json/spnx/v1/content-playlist',
+            "dataType": "jsonp",
+            data: pt,
+            complete: function(){
+                jQuery('#bpopup_ajax_loading').bPopup().close();
+                jQuery('#wpcontent').css('height',jQuery('#bwki_sites_display').height()+250);
+            },
+        },
+
+    });
+}
+function getpoints() {
+    jQuery('#boostmodal').modal('hide');
+    jQuery('#boostmodalbuyPoint').modal({
+        backdrop: 'static',
+        keyboard: false,
+        show: true
+    });
+}
+function modifiedcategory($id) {
+    jQuery(".modified-category-"+$id).toggle();
 }

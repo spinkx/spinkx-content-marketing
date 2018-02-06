@@ -44,13 +44,7 @@ div#campaign_subtabs-1 {
     display: inline-block;
     width: 100%;
 }
-.font-icons {
-    width: 11px;
-    height: 11px;
-    display: inline-block;
-    background: url(images/icons.png);
-    background-position: -641px -274px;
-}
+
 .ads select, .budget select, .budget input {
     padding: 8px;
 }
@@ -85,10 +79,6 @@ button {
     border: 1px solid #ccc;
     padding: 10px 0px;
     margin: 10px 0px;
-}
-#start_date, #end_date {
-    padding: 0 0 0 6px;
-    width: 68%;
 }
 .table_section {
     overflow: auto;
@@ -408,4 +398,230 @@ height:	700px;
 .admin_general .form-group {
     width: 100%;
     display: inline-block;
+}
+.cad-icons .landing_url { font-size: 10px;height: 24px;margin-left: 7px;border-radius: 4px;border: 0;color: rgba(0,0,0,0.4);font-weight:700;width: 700px;padding: 4px;background: rgba(0,0,0,0);box-shadow: none; }
+.cad-icons .landing_url:focus,.cad-icons .landing_url:hover { border:0; box-shadow: none; background: rgba(0,0,0,0); }
+.cad-icons .utm-source, .cad-icons .utm-source:hover, .cad-icons .utm-source:focus {font-size: 10px;height: 24px;border-radius: 4px;border: 0;color:#337ABB;font-weight:700;width: 36px;padding:0;background: rgba(0,0,0,0);box-shadow: none; }
+.cad-icons .utm-campaign, .cad-icons .utm-campaign:hover, .cad-icons .utm-campaign:focus {font-size: 10px;height: 24px;border-radius: 4px;border: 0;color: #337ABB;font-weight:700;width: 83px;padding:0;background: rgba(0,0,0,0);box-shadow: none;}
+.cad-icons .targeting-categories, .cad-icons .targeting-languages, .cad-icons .targeting-countries  {
+    display: inline;
+    float: left;
+    margin-left: 13px;
+}
+.cad-icons .budget-optimise-for {
+    float: left;
+    margin-left: 13px;
+    font-size: 10px;
+}
+.cad-icons .budget-optimise-for i.sub-heading.fa {
+    display: inline;
+    margin-left: 5px;
+    vertical-align: text-bottom;
+    color: #337ab7;
+}
+.cad-icons .budget-optimise-for #budget_amount {
+    padding: 0;
+    font-weight: 600;
+    color: #337ab7;
+    margin-top: 3px;
+    width: 44px;
+    height: 20px;
+    border-radius: 5px;
+    padding-left: 3px;
+    border: 0;
+    margin-left: 3px;
+    padding-top: 2px;
+}
+span.cpm-outer-main, .cad-icons .add-money-message {
+    font-size: 10px;
+    font-weight: 600;
+    height: 20px;
+    line-height: 25px;
+    color: #a93671;
+}
+.cad-icons .add-money-message {
+    margin-left: 10px;
+}
+.cad-icons #test-landing-url, .cad-icons .camp_agreement {
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: 36px;
+}
+.cad-icons .camp_agreement input[type="checkbox"]:checked:before{
+    margin: -3px 0 0 -4px;
+    font-size: 17px;
+}
+.cad-icons .targeting-categories {
+    width:220px;
+}
+.cad-icons .targeting-languages .ms-options-wrap, .cad-icons .targeting-countries .ms-options-wrap  {
+    min-width: 150px;
+}
+.cad-icons .budget-date { float: left; display: inline;}
+.cad-icons .budget-date .date { float: left; display: block ;}
+.cad-icons .budget-date > span {     font-size: 10px;
+    margin-left: 10px;
+    height: 20px;
+    vertical-align: bottom;}
+.cad-icons .budget-date #reportrange_camp {
+    font-size: 9px !important;
+    height: 20px;
+    border: 0;
+    border-radius: 5px;
+    line-height: 10px;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+.cad-icons .budget-date .date .track { width: 63px; font-size: 9px; height: 20px; margin-top: 5px; padding: 0 0 0 6px;}
+.cad-icons .budget-date .input-group-addon{ height: 20px; margin-top: 5px;}
+.cad-icons .budget-date .glyphicon{ height: 20px; top: -5px;}
+.budget-date #reportrange_camp {
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+#call-to-action {    padding: 2px;
+    line-height: 20px;
+    height: 20px;
+    vertical-align: middle;
+    font-size: 9px;
+    font-weight: 600;
+    margin-top: 4px;
+    float: right;
+    width: 100%;
+    border: 0;
+    background: #fff;}
+.ms-options-wrap > button:focus, .ms-options-wrap > button {
+    font-size: 9px;
+    border-radius: 5px !important;
+    border: 0;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+    padding: 2px;
+    line-height: 20px;
+    height: 22px;
+    vertical-align: middle;
+    font-size: 9px;
+    font-weight: 600;
+    margin-top: 4px;
+    float: right;
+    width: 100%;
+    border: 0;
+    background: #fff;
+    padding-left: 8px;
+
+    transition: 0.05s border-color ease-in-out
+}
+.ms-options-wrap > .ms-options {
+    background-color: #e4eff4; box-shadow: inset 0 1px 1px rgba(0,0,0,.075); border: 0;
+    border-radius: 7px;
+}
+.ms-options-wrap  .ms-options  ul li {
+    height: 20px;
+    font-size: 9px;
+    min-height: 20px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+
+}
+.ms-options-wrap  .ms-options ul li label{
+    padding-left: 20px !important;
+    padding-top: 4px !important;
+    padding-bottom: 0px !important;
+
+}
+.ms-options-wrap  .ms-options ul li label input[type="checkbox"], .cad-icons input[type="checkbox"] {
+    border: 1px solid #b4b9be;
+    border-radius: 3px;
+    background: #fff;
+    color: #555;
+    clear: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 0;
+    height: 13px;
+    margin: -4px 4px 0 0;
+    outline: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 13px;
+    min-width: 10px;
+    -webkit-appearance: none;
+    -webkit-box-shadow: inset 0 1px 2px rgba( 0, 0, 0, 0.1 );
+    box-shadow: inset 0 1px 2px rgba( 0, 0, 0, 0.1 );
+    -webkit-transition: .05s border-color ease-in-out;
+    transition: .05s border-color ease-in-out;
+}
+
+.ms-options-wrap > .ms-options > .ms-search input {
+    font-size: 9px;
+    font-weight: 300;
+}
+.ms-options-wrap > .ms-options > .ms-selectall.global {
+    font-size: 9px;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+.ms-options-wrap > .ms-options > .ms-search input {
+    border-bottom: none;
+}
+.ms-options-wrap > button:after {
+    content: ' ';
+    height: 0;
+    position: absolute;
+    top: 57%;
+    right: 5px;
+    width: 0;
+    border: 4px solid rgba(0, 0, 0, 0);
+    border-top-color: #999;
+    margin-top: -3px;
+}
+.ms-options-wrap  .ms-options  ul li input[type="checkbox"]:checked:before {
+    margin: -2px 0 0 -3px;
+    color: #ec971f;
+    font-size: 16px;
+}
+.ms-options-wrap > .ms-options > ul li.selected label, .ms-options-wrap > .ms-options > ul label:hover {
+    background: none;
+}
+.camp-error {
+    color: red;
+}
+.create-ad-image .playlist_img img { cursor: pointer; }
+.create-ad-form #optimise_for {
+font-size: 9px;
+font-weight: 600;
+background: #fff !important;
+box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+color: #aaa;
+margin-right: 8px;
+border: 0;
+height: 22px;
+line-height: 20px;
+width: 110px;
+}
+.budget-amount-alert {
+    border: 1px solid red !important;
+}
+.cad-icons #campaign_display_name {
+    height: 25px;
+    line-height: 10px;
+    font-size: 10px;
+    margin-top: 0px;
+    color: #337ab7;
+    width: 200px;
+    border-radius: 5px;
+    margin-left: 7px;
+    font-weight: 700;
+    text-align: center;
+}
+
+tr td div.camp-group-name {
+    background-color: #e3e3e3;
+    flex: 1 100%;
+    height: 30px;
+    padding-top: 5px;
+    padding-left: 15px;
+    border-radius: 5px;
 }

@@ -7,7 +7,8 @@
  * @package wordpress.
  * @subpackage spinkx.
  */
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly	
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+$start_time = time();
 
 ?>
 <div class="se-pre-con"></div>
@@ -20,13 +21,14 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<!-- Main tabs here  -->
 	<!--div class="distribution-main-tabs"-->
 		<!--<h2 style="font-weight: bold; padding:0px;">spinkx Distribution Settings</h2>
-		<hr/>
+		<hr/>position: relative;margin-top:0;
 		<br/>-->
+
 	<!-- Main tabs here  -->
 	<div id="distributiontabs" style="width:100%;">
 		<?php spinkx_header_menu() ?>
-		<div class="wrap-inner" style="min-height: 10px; padding: 20px; margin: 10px auto;" >
-			<div class="tab-contents">
+		<div class="wrap-inner" style="width: 100%;">
+			<div class="tab-contents" style="width: 98%;">
 				<div id="widget_design">           <!--Widget Design -->
 					<?php require esc_url( SPINKX_CONTENT_PLUGIN_DIR ) . '/includes/settings/tab-manage-widgets.php'; ?>
 				</div>
@@ -34,3 +36,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		</div>
 	</div>
 </div>
+<?php
+$endtime = time() - $start_time;
+error_log("start time=".$start_time." and endtime = ".$endtime);

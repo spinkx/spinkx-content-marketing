@@ -9,34 +9,27 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly		
 global $wpdb;
-$settings = get_option( SPINKX_CONT_LICENSE );
+$spnxAdminManage = new spnxAdminManage;
+$settings = get_option( $spnxAdminManage->spinkx_cont_get_license() );
 $settings = maybe_unserialize( $settings );
+$registration_complete = true;
+$spnxAdminManage = new spnxAdminManage(false);
 if( $settings['due_date'] != '0000-00-00 00:00:00' ) {
 	if (!(isset($settings['after_registration_sync']) && $settings['after_registration_sync'])) {
-		$settings['site_url'] = spinkx_cont_get_site_url();
+		$settings['site_url'] = $spnxAdminManage->spinkx_cont_get_site_url();
 		$settings['after_registration_sync'] = TRUE;
-		$response = spinkx_cont_post_sync($settings);
-		update_option(SPINKX_CONT_LICENSE, maybe_serialize($settings));
+		$response = $spnxAdminManage->spinkx_cont_post_sync($settings);
+		update_option($spnxAdminManage->spinkx_cont_get_license(), maybe_serialize($settings));
 	}
-}
-$p = [ 'site_id' => $settings['site_id'],'license_code' => md5( $settings['license_code'] ) ];
-$p = wp_json_encode( $p );
-$site_id = $settings['site_id'];
-$url = esc_url( SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/site/get-date' );
-$post = array( 'site_id' => $settings['site_id'], 'license_code' => md5( $settings['license_code'] ) );
-$data = helperClass::doCurl( $url, $post );
-$todaydate = 0;
-$enddate = 0;
-$data = json_decode( $data );
-if ( isset( $data->date ) ) {
-	$todaydate = $data->date;
-	$temp_today_date = strtotime('-30 days', $todaydate);
-	$todaydate = $temp_today_date;
-	$enddate = $data->date;
 } else {
-	echo isset( $data->msg )? $data->msg : 'Error';
-	exit;
+	//$registration_complete = false;
 }
+$site_id = $settings['site_id'];
+$spnxAdminManage = new spnxAdminManage();
+$custom_date = $spnxAdminManage->spinkx_cont_last_30_days();
+$from_date = date('Y-m-d', $custom_date[0]);
+$to_date = date('Y-m-d', $custom_date[1]);
+$todaydate = $custom_date[2] * 1000;
 $custom_css = ' 
  #bwki_widgets_display.widefat tr,
 	#bwki_widgets_display.widefat td,
@@ -53,139 +46,66 @@ $custom_css = '
 	}
 	.notice{ display:none !important;}
 	';
-
-
-$custom_js = 'jQuery(function() { ';
-if ( $todaydate ) {
-	$custom_js .= 'var start = moment(' . ( $todaydate * 1000 ) . ');';
-	$custom_js .= 'var end = moment(' . ( $enddate * 1000 ) . ');';
-} else {
-	$custom_js .= 'var start = moment();';
-	$custom_js .= 'var end = moment();';
-}
-$custom_js .= 'var todaydate = end;
-		function cb(start, end) {
-			jQuery("#reportrange span").html(start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY"));
-
-		}
-		jQuery("#reportrange").daterangepicker({
-			startDate: start,
-			endDate: end,
-			ranges: {
-				"Today": [moment(todaydate), moment(todaydate)],
-				"Yesterday": [moment(todaydate).subtract(1, "days"), moment(todaydate).subtract(1, "days")],
-				"Last 7 Days": [moment(todaydate).subtract(6, "days"), moment(todaydate)],
-				"Last 30 Days": [moment(todaydate).subtract(29, "days"), moment(todaydate)],
-				"This Month": [moment(todaydate).startOf("month"), moment(todaydate).endOf("month")],
-				"Last Month": [moment(todaydate).subtract(1, "month").startOf("month"), moment(todaydate).subtract(1, "month").endOf("month")]
-			}
-		}, cb);
-
-		cb(start, end);
-
-	});
-		var $ = jQuery.noConflict();
-		$(document).ready(function(){
-
-
-			jQuery("#reportrange").on("apply.daterangepicker", function(ev, picker) {
-				//do something, like clearing an input
-				//get_stat_now(picker.startDate, picker.endDate);
-				updatewidget();
-			});
-			
-			var table = $("#bwki_widgets_display").DataTable({
-			"pageLength": 5,
+$table_js = '';
+ if( $registration_complete	) {
+	 $table_js = 'var table = jQuery("#bwki_widgets_display").DataTable({
+			"pageLength": 10,
 			"lengthMenu": [ 5, 10, 20, 50, 100 ],
 			"bFilter": false,
 			"order": [],
-			"bSort": false
-			});
-			function updatewidget(){
-				var site_id = "' . $site_id . '";
-				jQuery(\'#bpopup_ajax_loading\').bPopup( { modalClose: false } );
-				$.ajax({
-					url : ajaxurl,
-					type : "get",
-					datatype : "json",
-					data : {
-					    "action": "spinkx_cont_get_widget_stat",
-						"site_id" : site_id,
-						"from_date" : jQuery("#reportrange").data("daterangepicker").startDate.format("YYYY-MM-DD"),
-						"to_date" : jQuery("#reportrange").data("daterangepicker").endDate.format("YYYY-MM-DD"),
-					},
-					success : function(data){
-						var data = JSON.parse(data);
-						jQuery(\'#bpopup_ajax_loading\').bPopup().close();
-						$.each(data,function(key,stat){
-								cell_imp = table.cell("#w_"+key, 4);
-								if( cell_imp[0].length > 0 ) {	
-									
-								
-									//var cell = table.cell( this );
-									cell_imp.data( stat.total_impressions ).draw();
-										//this.data()[3] = "sdf";
-									//console.log(cell_imp.data());
-									cell_click = table.cell("#w_"+key, 5);
-									cell_click.data( stat.total_clicks ).draw();
-	
-									cell_ctr = table.cell("#w_"+key, 6);
-									cell_ctr.data( stat.widget_ctr ).draw();
-								} else {
-									var mobile_widget_table = $("#bwki_mobile_widgets_display").DataTable();
-									cell_imp = mobile_widget_table.cell("#w_"+key, 3);
-									cell_imp.data( stat.total_impressions ).draw();
-										//this.data()[3] = "sdf";
-									//console.log(cell_imp.data());
-									cell_click = mobile_widget_table.cell("#w_"+key, 4);
-									cell_click.data( stat.total_clicks ).draw();
-	
-									cell_ctr = mobile_widget_table.cell("#w_"+key, 5);
-									cell_ctr.data( stat.widget_ctr ).draw();
-								}
+			"bSort": false,			
+			});';
+ }
+$custom_js = $table_js ;
+$custom_js .= '		
+		var $ = jQuery.noConflict();
+		$(document).ready(function(){			
+			jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: '.$todaydate.'}); });';
 
-							//});
+	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
+wp_enqueue_script( 'jquery-countdown-js', $js_url . 'jquery.countdown.min.js' );
+wp_add_inline_script( 'jquery-countdown-js', $custom_js );
+if( $registration_complete ) {
+	?>
+	<div id="widget_data" style="min-height: 475px;">
+		<?php
+			$tab = spnxHelper::getFilterVar('tab');
+			$widget_id = spnxHelper::getFilterVar('widget_id');
+			if (empty($tab) && empty($widget_id)) {
+				$url = $spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/widget/' . $settings['site_id'] . '/' . md5($settings['license_code']);
+				$wp_output = wp_remote_post($url,
+					array(
+						'method' => 'GET',
+						'body' => array('from_date' => $from_date, 'to_date' => $to_date),
+					)
+				);
+				if (!is_wp_error($wp_output)) {
+					$result = json_decode($wp_output['body']);
+				}
+				if ('License Invalid' !== $result) {
+					?>
 
-						});
-					}
-				});
-			}
+						<div class="add_widget_button">+ Add New Widget</div>
 
-			
-		});';
-wp_enqueue_script( 'jquery-daterange-picker', '//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js' );
-wp_add_inline_script( 'jquery-daterange-picker', $custom_js );
-?>
-<div  id="widget_data" style="min-height: 10px;" >
-<?php
-$tab = 	helperClass::getFilterVar( 'tab' );
-$widget_id = helperClass::getFilterVar( 'widget_id' );
-if ( empty( $tab ) && empty( $widget_id ) ) {
-	$url = SPINKX_SERVER_BASEURL . '/wp-json/spnx/v1/widget/'. $settings['site_id'].'/'. md5($settings['license_code']);
-	$wp_output = wp_remote_post( $url,
-		array(
-			'method' => 'GET',
-			)
-	);
-	if ( ! is_wp_error( $wp_output ) ) {
-		$result = json_decode($wp_output['body']);
-	}
-	if ( 'License Invalid' !== $result ) {
-	?><h2><div style="float: right;background-color: #469fa1;border-color: #469fa1;color: #fff;" class="add_widget_button button "  >+ Add New Widget</div></h2>
-		<div class="clear" style="display: block; overflow: hidden;"></div>
-		<div id="add_new_widget" style="display:none;">
-		<?php require esc_url( SPINKX_CONTENT_PLUGIN_DIR ) . 'assets/widgets/create/new-widget.php'; ?>
-		</div>
-		<?php echo  $result . '<div style="text-align:center" id="install_guide">
-			<a href="http://www.spinkx.com/how-to-install-guide/" style="text-decoration: none;color: #4bacc6;font-weight: 800;font-size: 18px;">How to Install Guide</a>
+					<div class="clear" style="display: block; overflow: hidden;"></div>
+					<div id="add_new_widget" style="display:none;margin-top: 26px;">
+						<?php require esc_url(SPINKX_CONTENT_PLUGIN_DIR) . 'assets/widgets/create/new-widget.php'; ?>
+					</div>
+					<?php echo $result . '<div style="text-align:center" id="install_guide">
+			<a href="http://www.spinkx.com/how-to-install-guide/" style="text-decoration: none;color: #4bacc6;font-weight: 800;font-size: 18px; cursor: pointer;" target="_blank">How to Install Guide</a>
 		</div>';
-	} else {
-		echo sprintf( $result );
-	}
+				} else {
+					echo sprintf($result);
+				}
+			} else {
+				?>
+				<div class="clear" style="display: block; overflow: hidden;"></div>
+				<div id="update_new_widget" style="margin-top: 26px;">
+					<?php require esc_url(SPINKX_CONTENT_PLUGIN_DIR) . 'assets/widgets/create/update-widget.php'; ?>
+				</div>
+			<?php } ?>
+	</div>
+	<?php
 } else {
-?><div id="update_new_widget" >
-			<?php require esc_url( SPINKX_CONTENT_PLUGIN_DIR ) . 'assets/widgets/create/update-widget.php'; ?>
-		</div>
-	<?php } ?>
-</div>
-<?php
+	echo '<div id="widget_data" style="min-height: 475px; position: absolute; top:100px;left:100px;">You are not registered on Spinkx! Please <a href="?page=spinkx-site-register.php">register</a> first.</div>';
+}

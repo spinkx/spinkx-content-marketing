@@ -2,13 +2,14 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $wpdb;
-			$url = SPINKX_SERVER_BASEURL.'/wp-json/spnx/v1/widget/fetchid/'.$access_site_id;
-			$output = helperClass::doCurl( $url );
-			$response	=	json_decode($output,true);
-			$widget_auto_id	=	$response['widgetid'];
-			$categories	=	$response['category'];
-			$site_name = $response['site_name'];
-	$is_mobile_widget = 0;
+$url = $spnxAdminManage->spinkx_cont_bapi_url().'/wp-json/spnx/v1/widget/fetchid/'.$access_site_id;
+$output = spnxHelper::doCurl( $url );
+$response	=	json_decode($output,true);
+$widget_auto_id	=	$response['widgetid'];
+$categories	=	$response['category'];
+$urls =	$response['urls'];
+$site_name = $response['site_name'];
+$is_mobile_widget = 0;
 $main_widget_id = $widget_auto_id;
 
 /* no_of_columns Inserting Starts Here */
@@ -272,3 +273,9 @@ $post_excerpt_6 = isset($response['post'][5]['post_excerpt'])?$response['post'][
 		$temp_arr[0] = intval($temp_arr[0]) + $post_views;
 		$post_views_6 = implode(' .',$temp_arr);
 	}
+	$no_of_columns=1;
+	$no_of_row = 1;
+	$image_width = 100;
+	$image_height = 100;
+	$intra_exchange_url_textarea = "";
+	$global_blocked_categories_textarea = (isset($response['global_blocked_categories_textarea'])) ? $response['global_blocked_categories_textarea'] : "";
