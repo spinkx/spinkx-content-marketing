@@ -1,0 +1,5 @@
+error_log
+.idea/
+.phpintel/
+.DS_Store
+TODO.md
