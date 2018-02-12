@@ -21,12 +21,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<a id="ajax_update_button" class="button ajax_update_button" alt="Update" href="javascript:;void(0)" style="background-color: #23bf4a">Save</a>
 		<?php if( $is_mobile_widget == 0 ) { ?>
 		<!--  SPINKX AJAX Update Settings Starts Here  -->
-		<a id="ajax_delete_button" class="button ajax_delete_button" alt="Delete" href="javascript:;void(0)">Delete</a>
+		<!--<a id="ajax_delete_button" class="button ajax_delete_button" alt="Delete" href="javascript:;void(0)">Delete</a> -->
 		<!--  SPINKX AJAX Update Settings Ends Here  -->
 
 		<!--  SPINKX AJAX Update Settings Starts Here  -->
-		<a id="ajax_clone_button" class="button ajax_clone_button" alt="Clone" href="javascript:;void(0)">Clone</a>
-		<!--  SPINKX AJAX Update Settings Ends Here  -->
+			<!-- 	<a id="ajax_clone_button" class="button ajax_clone_button" alt="Clone" href="javascript:;void(0)">Clone</a> -->
+                <!--  SPINKX AJAX Update Settings Ends Here  -->
 		<?php } ?>
 		<!--  SPINKX AJAX Update Settings Starts Here  -->
 
