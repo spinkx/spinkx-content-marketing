@@ -1,11 +1,173 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if(isset($post_title_1)) {
+	$post_title_1=$post_title_1;
+}
+else {
+	$post_title_1='';
+}
+if(isset($prev_img_1)) {
+	$prev_img_1=$prev_img_1;
+}
+else {
+	$prev_img_1='';
+}
+if(isset($unit_show_views)) {
+	$unit_show_views=$unit_show_views;
+}
+else {
+	$unit_show_views='';
+}
+if(isset($site_name)) {
+	$site_name=$site_name;
+}
+else {
+	$site_name='';
+}
+if(isset($post_views_1)) {
+	$post_views_1=$post_views_1;
+}
+else {
+	$post_views_1='';
+}
+if(isset($post_title_2)) {
+	$post_title_2=$post_title_2;
+}
+else {
+	$post_title_2='';
+}
+if(isset($post_excerpt_2)) {
+	$post_excerpt_2=$post_excerpt_2;
+}
+else {
+	$post_excerpt_2='';
+}
+if(isset($prev_img_2)) {
+	$prev_img_2=$prev_img_2;
+}
+else {
+	$prev_img_2='';
+}
+if(isset($post_title_3)) {
+	$post_title_3=$post_title_3;
+}
+else {
+	$post_title_3='';
+}
+if(isset($post_excerpt_3)) {
+	$post_excerpt_3=$post_excerpt_3;
+}
+else {
+	$post_excerpt_3='';
+}
+if(isset($prev_img_3)) {
+	$prev_img_3=$prev_img_3;
+}
+else {
+	$prev_img_3='';
+}
+if(isset($post_views_3)) {
+	$post_views_3=$post_views_3;
+}
+else {
+	$post_views_3='';
+}
+if(isset($post_title_4)) {
+	$post_title_4=$post_title_4;
+}
+else {
+	$post_title_4='';
+}
+if(isset($post_excerpt_4)) {
+	$post_excerpt_4=$post_excerpt_4;
+}
+else {
+	$post_excerpt_4='';
+}
+if(isset($prev_img_4)) {
+	$prev_img_4=$prev_img_4;
+}
+else {
+	$prev_img_4='';
+}
+if(isset($post_title_5)) {
+	$post_title_5=$post_title_5;
+}
+else {
+	$post_title_5='';
+}
+if(isset($post_views_4)) {
+	$post_views_4=$post_views_4;
+}
+else {
+	$post_views_4='';
+}
+if(isset($post_excerpt_5)) {
+	$post_excerpt_5=$post_excerpt_5;
+}
+else {
+	$post_excerpt_5='';
+}
+if(isset($prev_img_5)) {
+	$prev_img_5=$prev_img_5;
+}
+else {
+	$prev_img_5='';
+}
+if(isset($post_views_5)) {
+	$post_views_5=$post_views_5;
+}
+else {
+	$post_views_5='';
+}
+if(isset($post_title_6)) {
+	$post_title_6=$post_title_6;
+}
+else {
+	$post_title_6='';
+}
+if(isset($post_excerpt_6)) {
+	$post_excerpt_6=$post_excerpt_6;
+}
+else {
+	$post_excerpt_6='';
+}
+if(isset($prev_img_6)) {
+	$prev_img_6=$prev_img_6;
+}
+else {
+	$prev_img_6='';
+}
+if(isset($post_views_6)) {
+	$post_views_6=$post_views_6;
+}
+else {
+	$post_views_6='';
+}
+if(isset($post_views_2)) {
+	$post_views_2=$post_views_2;
+}
+else {
+	$post_views_2='';
+}
+if(isset($post_excerpt_1)) {
+	$post_excerpt_1=$post_excerpt_1;
+}
+else {
+	$post_excerpt_1='';
+}
+if(isset($unit_excerpt_word_limit)) {
+	$unit_excerpt_word_limit=$unit_excerpt_word_limit;
+}
+else {
+	$unit_excerpt_word_limit='';
+}
 ?>
 <div class="masonry-grid" style="background: <?php echo $unit_bg_color; ?>; <?php if ( $widget_layout_type=="masonry" ) { echo "display: block;"; } else { echo "display: none;"; } ?> ">
 
 	<!------------------------------------Start no_of_columns=1--------------------------------------------------------------->
 	<div class="SPINKX_preview_fg dskpre_col1 grid-item grid-item--height"  style="width:<?php echo $img_crop_width;?>px;margin-right:<?php echo $unit_spacing; ?>!important;margin-bottom:8px;background: <?php echo $unit_fg_color; ?>; border-width: <?php echo $unit_border_width; ?>px; border-style: <?php echo $unit_border_style; ?>; border-color:<?php echo $unit_border_color; ?>; border-radius:<?php echo $unit_border_radius; ?>px;<?php if ( $no_of_columns==1 ) { echo "display: block;"; } else { echo "display: none;"; } ?> ">		<!-- block Start -->
-		<h4 class="pre-title SPINKX_preview_title_h3 divider_above_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='aboveimg' || $unit_add_line_style=='left' || $unit_add_line_style=='right') { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1?></h4>
+		<h4 class="pre-title SPINKX_preview_title_h3 divider_above_img" style="font-size: <?php  echo $unit_title_font_size;?>px; line-height: <?php  echo $unit_title_line_height;?>px; font-weight: <?php echo $unit_title_font_style; ?>; color: <?php echo $unit_title_font_color; ?>; font-family: <?php echo $unit_title_font_family;?> text-transform: <?php echo $unit_title_font_case;?>;<?php if ( $unit_add_line_style=='aboveimg' || $unit_add_line_style=='left' || $unit_add_line_style=='right') { echo "display: block;"; } else { echo "display: none;"; } ?>"><?php echo $post_title_1;?></h4>
 		<p class="pre-desc alter excerpt_content SPINKX_preview_content excerpt_aboveimg excerpt_content_1"  id="content" style="font-size: <?php echo $unit_excerpt_font_size; ?>px; line-height: <?php echo $unit_excerpt_line_height; ?>px;<?php if ( $unit_excerpt_line_style=='aboveimg' ) { echo "display: block;"; } else { echo "display: none;"; } ?> color:<?php echo $unit_excerpt_font_color; ?>; text-transform: <?php echo $unit_excerpt_font_case?>; font-weight: <?php echo $unit_excerpt_font_style?>;">
 			<?php echo substr($post_excerpt_1,0,$unit_excerpt_word_limit).'...';?>
 		</p>

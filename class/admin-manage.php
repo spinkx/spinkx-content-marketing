@@ -60,10 +60,10 @@ final class spnxAdminManage {
 			$this->_spinkx_cont_license = 'spinkx_content_license_update';
 		}
 		if(!$this->_spinkx_server_bapi_url) {
-            $this->_spinkx_server_bapi_url = 'https://backend.spinkx.com';
+            $this->_spinkx_server_bapi_url = 'http://bwdev.local/spinkx-backend';
 		}
 		if(!$this->_spinkx_server_api_url) {
-            $this->_spinkx_server_api_url = 'https://frontend.spinkx.com';
+            $this->_spinkx_server_api_url = 'http://bwdev.local/spinkx-server';
 		}
 		if(!$this->_spinkx_cont_dir) {
 			$this->_spinkx_cont_dir =  plugin_dir_path( __FILE__ );
@@ -227,11 +227,13 @@ final class spnxAdminManage {
 
 	function spinkx_cont_save_hook() {
 		$post = spnxHelper::getFilterPost();
-		$post['post_full_image'] = wp_get_attachment_image_src( $post['image_aid'],'full' )[0];
-		//$post['post_thumbnail'] = wp_get_attachment_image_src( $post['image_aid'],'full' )[0];
-		$url = $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/content-playlist/variation/save';
-		$output = spnxHelper::doCurl( $url, $post );
-		echo json_decode($output);
+		if(isset( $post['image_aid'])) {
+			$post['post_full_image'] = wp_get_attachment_image_src( $post['image_aid'],'full' )[0];
+			//$post['post_thumbnail'] = wp_get_attachment_image_src( $post['image_aid'],'full' )[0];
+			$url = $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/content-playlist/variation/save';
+			$output = spnxHelper::doCurl( $url, $post );
+			echo json_decode($output);
+		}
 		exit;
 	}
 

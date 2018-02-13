@@ -8,8 +8,6 @@
  * @subpackage spinkx.
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-$start_time = time();
-
 ?>
 <div class="se-pre-con"></div>
 <div class="wrap">
@@ -36,6 +34,3 @@ $start_time = time();
 		</div>
 	</div>
 </div>
-<?php
-$endtime = time() - $start_time;
-error_log("start time=".$start_time." and endtime = ".$endtime);
