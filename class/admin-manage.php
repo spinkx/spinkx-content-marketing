@@ -60,10 +60,10 @@ final class spnxAdminManage {
 			$this->_spinkx_cont_license = 'spinkx_content_license_update';
 		}
 		if(!$this->_spinkx_server_bapi_url) {
-            $this->_spinkx_server_bapi_url = 'http://bwdev.local/spinkx-backend';
+			$this->_spinkx_server_bapi_url = 'https://backend.spinkx.com';
 		}
 		if(!$this->_spinkx_server_api_url) {
-            $this->_spinkx_server_api_url = 'http://bwdev.local/spinkx-server';
+            $this->_spinkx_server_api_url = 'https://frontend.spinkx.com';
 		}
 		if(!$this->_spinkx_cont_dir) {
 			$this->_spinkx_cont_dir =  plugin_dir_path( __FILE__ );
