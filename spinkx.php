@@ -161,11 +161,20 @@ add_action( 'wp_head', function(){
 		if(!$spnxAdminManage->update_widget_list()) {
 			echo '<script>console.log("Widget list not updated")</script>';
             return;
+		} else {
+			$widget_list = get_option('spnx_widget_list');
+			if($widget_list) {
+				$widget_list = maybe_unserialize($widget_list);
+			}
 		}
+	}
+	if(!$widget_list) {
+		return false;
 	}
     $spnxwdArr = array();
     $deviceType = ($md->isMobile() ? ($md->isTablet() ? 'tablet' : 'phone') : 'desktop');
-	foreach ($widget_list as $widget) {
+
+		foreach ($widget_list as $widget) {
 		if( $deviceType == 'desktop' && $widget['is_mobile']) {
 			//continue;
 		} 
