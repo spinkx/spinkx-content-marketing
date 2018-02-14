@@ -1,12 +1,7 @@
 /* Google fonts */
-@import url(https://fonts.googleapis.com/css?family=Muli:500);
 
 body, table, th, td, tr {
     font-family:sans-serif;
-    -webkit-font-smoothing: antialiased;
-
-
-
 }
 input {
     padding: 5px;

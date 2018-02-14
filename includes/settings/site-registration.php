@@ -107,9 +107,20 @@ if ( ! $site_id ) {
 	$output = spnxHelper::doCurl( $api_form_elements_url, true );
 	$dropdown = json_decode( $output );
 	if(isset($dropdown->message)) {
-		echo '<div style="margin-top:20px;">' . $dropdown->message . '</div>';
+		?>
+<div class="spnx-reg-mn-cntainter">
+	<div class="text-spninks">
+		<div class="image-container-cls-reg-spnx"><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/spinkx-logo.png" /></div>
+		<div class="reg-lbl-txt">REGISTRATION</div>
+	</div>
+	<div>
+		<?php echo $dropdown->message;
 		exit;
-	}
+		?>
+	</div>
+</div>
+
+<?php	}
 	$buy_now = '';
 	if( isset( $dropdown->selected_site ) ) {
 		$buy_now = $dropdown->selected_site->buy_now;
@@ -227,7 +238,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 ?>
 <script type='text/javascript'>
 	/* <![CDATA[ */
-	var spnx_sec_cats = <?php echo wp_json_encode($dropdown->categories)?>; /* ]]> */
+	var spnx_sec_cats = <?php echo wp_json_encode(isset($dropdown->categories)?$dropdown->categories:'')?>; /* ]]> */
 </script>
 <div class="spnx-reg-mn-cntainter">
 	<div class="text-spninks">
@@ -258,7 +269,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		<div class="spnx-box-reg-cmn-cls">
 			<div class="header-cmn-cls-spnx">Tell us about your goals. Choose one</div>
 			<div class="spnx-rdio-dv-cmn-cls">
-				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" name="plugin-type" value="1" <?php if($plugin_type_id==1) { echo "checked='checked'"; }?>/></div>
+				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" name="plugin-type" value="1" checked="checked" <?php if($plugin_type_id==1) { echo "checked='checked'"; }?>/></div>
 				<div class="label-cntnr-mn-cls-cmommon-sec"> I want to only earn Revenue. I have more than 100,000 visitors per month.</div>
 			</div>
 			<div class="spnx-rdio-dv-cmn-cls">
@@ -483,7 +494,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		<div class="spnx-box-reg-cmn-cls">
 			<div class="continue-spnx-reg-button-cntnr">
 				<span style="font-size:13px;">
-					<input type="checkbox" name="agree" <?php echo isset( $settings['reg_user'] ) ? 'checked' : ''; ?> >
+					<input type="checkbox" name="agree" id="checked-registration" <?php echo isset( $settings['reg_user'] ) ? 'checked' : ''; ?> >
 					I agree the
 					<a target="_blank" href="http://www.spinkx.com/terms-conditions/">
 						Terms & Conditions
