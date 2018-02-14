@@ -105,10 +105,12 @@ if ( isset($_POST['agree']) &&  $_POST['agree']) {
 if ( ! $site_id ) {
 	$api_form_elements_url = $spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/site/form-elements';
 	$output = spnxHelper::doCurl( $api_form_elements_url, true );
-
 	$dropdown = json_decode( $output );
+	if(isset($dropdown->message)) {
+		echo '<div style="margin-top:20px;">' . $dropdown->message . '</div>';
+		exit;
+	}
 	$buy_now = '';
-
 	if( isset( $dropdown->selected_site ) ) {
 		$buy_now = $dropdown->selected_site->buy_now;
 	}
@@ -119,10 +121,10 @@ if ( ! $site_id ) {
 	}
 } /******GET REQUEST FOR FORM ELEMENTS-UPDATE******/
 else {
+
 	$api_form_elements_url = $spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/site/form-elements/' . $site_id;
 	$output = spnxHelper::doCurl( $api_form_elements_url, false );
 	$dropdown = json_decode( $output );
-
 	$selected_url = '';
 	if( isset( $dropdown->selected_site->site_url ) ) {
 		$selected_url = $dropdown->selected_site->site_url;
