@@ -2034,3 +2034,6 @@ vertical-align: sub;
     cursor: pointer;
 
 }
+#buy-more-point, #bwki_sites_display_info .btn {
+    float:unset;
+}
