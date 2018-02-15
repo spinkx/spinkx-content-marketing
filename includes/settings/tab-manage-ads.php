@@ -29,8 +29,6 @@
 	$sortby = spnxHelper::getFilterVar( 'sortby' );
 	$ptype = spnxHelper::getFilterVar( 'post_type' );
 
-	//$p = [ 'site_id' => $settings['site_id'],'license_code' => md5( $settings['license_code'] ),'sortby' => $sortby,'post_type' => $ptype, 'from_date' => $from_date, 'to_date' => $to_date ];
-	//$p = wp_json_encode( $p );
 	$p = ['site_id' => $settings['site_id'], 'license_code' => $settings['license_code'], 'from_date' => $from_date, 'to_date' => $to_date, 'reg_email' => $settings['reg_email'], 'sortby' => $sortby,'post_type' => $ptype, 'plg_url' => esc_url( SPINKX_CONTENT_PLUGIN_URL )];
 	$p = wp_json_encode( $p );
 	$url = $spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/campaign';

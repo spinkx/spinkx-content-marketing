@@ -314,7 +314,7 @@
           $url =  window.location.href;
           $urlArr = $url.split('page=');
           if($urlArr.length == 2) {
-            if($urlArr[1] == 'spinkx_dashboard' ) {
+            if($urlArr[1] == 'spinkx_analytics' ) {
               get_stat_now($stDate, $enDate);
               console.log('spinkx dashboard');
             } else  if($urlArr[1].indexOf('spinkx_content_play_list' ) >= 0 ) {

@@ -1092,7 +1092,7 @@ final class spnxAdminManage {
 			add_submenu_page('spinkx-site-register', 'Widget Settings | Spinkx', 'Widget Settings', 'manage_options', 'spinkx_widget_design', array($this, 'spinkx_cont_show_page'));
 			add_submenu_page('spinkx-site-register', 'Boost Post | Spinkx', 'Free Boost Post', 'manage_options', 'spinkx_content_play_list', array($this, 'spinkx_cont_show_page'));
 			add_submenu_page('spinkx-site-register', 'Campaigns | Spinkx', 'Paid Campaigns', 'manage_options', 'spinkx_campaigns', array($this, 'spinkx_cont_show_page'));
-			add_submenu_page('spinkx-site-register', 'Dashboard | Spinkx', 'Dashboard', 'manage_options', 'spinkx_dashboard', array($this, 'spinkx_cont_show_page'));
+			add_submenu_page('spinkx-site-register', 'Analytics | Spinkx', 'Analytics', 'manage_options', 'spinkx_analytics', array($this, 'spinkx_cont_show_page'));
 		}
 	}
 
@@ -1107,7 +1107,7 @@ final class spnxAdminManage {
 			case 'spinkx_content_play_list':
 				require SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/content-playlist.php';
 				break;
-			case 'spinkx_dashboard':
+			case 'spinkx_analytics':
 				require SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/dashboard.php';
 				break;
 			case 'spinkx_campaigns':
@@ -1458,7 +1458,7 @@ final class spnxAdminManage {
 	</div>
 	
 	<div style="float:left; width:100%; margin:5px 20%;">
-	  <span style="float:left; height:20px; "><a href="admin.php?page=spinkx_dashboard">Visit Dashboard</a></span> | <span><a href="admin.php?page=spinkx_content_play_list">Boost Post</a></span>
+	  <span style="float:left; height:20px; "><a href="admin.php?page=spinkx_analytics">Visit Dashboard</a></span> | <span><a href="admin.php?page=spinkx_content_play_list">Boost Post</a></span>
 	
 	
 	  </div>

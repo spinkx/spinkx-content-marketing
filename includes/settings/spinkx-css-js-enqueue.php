@@ -81,7 +81,7 @@ function spinkx_cont_js_var() {
 	} elseif ( $page && $page === 'spinkx-site-register' ) {
 		spinkx_cont_common_css_js( $page );
 		spinkx_cont_registration_css_js();
-	} elseif ( $page && $page === 'spinkx_dashboard' ) {
+	} elseif ( $page && $page === 'spinkx_analytics' ) {
 		spinkx_cont_common_css_js( $page );
 		spinkx_cont_dashboard_css_js();
 	} elseif ( $page && $page === 'spinkx_campaigns' ) {
@@ -409,7 +409,7 @@ function spinkx_header_menu() {
 		<li <?php echo ('spinkx_widget_design' === $page)?'class="active"':''?>><a href="?page=spinkx_widget_design">Widget Settings</a></li>
 		<li <?php echo ('spinkx_content_play_list' === $page)?'class="active"':''?>><a href="?page=spinkx_content_play_list">Free Boost Post</a></li>
 		<li <?php echo ('spinkx_campaigns' === $page)?'class="active"':''?>><a href="?page=spinkx_campaigns">Paid Campaigns</a></li>
-		<li <?php echo ('spinkx_dashboard' === $page)?'class="active"':''?>><a href="?page=spinkx_dashboard">Dashboard</a></li>
+		<li <?php echo ('spinkx_analytics' === $page)?'class="active"':''?>><a href="?page=spinkx_analytics">Analytics</a></li>
 	</ul>
 	<?php if ('spinkx_content_play_list' === $page) { ?>
 	<div class="spnx-sync" title="Post ReSync"><img  id="posts_<?php echo $site_id ?>" class="posts_sync" src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sync-icon.png"  /></div>
