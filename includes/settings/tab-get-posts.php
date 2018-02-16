@@ -53,8 +53,8 @@ wp_add_inline_script( 'jquery-powertip', $custom_js );///
 	<table id="bwki_sites_display" class="wp-list-table table-responsive " style="width:1024px;"><thead  style="border-bottom:1px solid #469fa1">
 		<tr>
 			<td  style="padding: 0px;text-align: right;">
-                <span class="duration-text-first-span-span-crnt">Current Points:<span id="credit_points_value"><?php echo $spnxAdminManage->spinkx_cont_get_credit_points();?></span></span>
-				<button  class="btn btn-primary btn-sm" id="buy-more-point" onclick="getpoints()">Buy More Point</button>
+                <span class="duration-text-first-span-span-crnt">Current points: <span id="credit_points_value"><?php echo $spnxAdminManage->spinkx_cont_get_credit_points();?></span></span>
+				<button  class=" buy-more-point" id="buy-more-point" onclick="getpoints()">Buy More Point</button>
 
 			</td>
 

@@ -194,9 +194,9 @@ function createAd(buttonObj, campaign_id, $data) {
     addhook_form += '<span class="cad-icons"><img src="../wp-content/plugins/spinkx-content-marketing/assets/images/camp-icons/pay.png" /><span class="add-money-message">Campaign Balance&nbsp;<i class="sub-heading fa ' + spinkxJs.currencyClass + '"></i>&nbsp;<span id="camp-money-account">'+camp_balance_amount+' </span><span id="camp-money-account-first" style="display: none">'+camp_balance_amount+' </span><input type="hidden" name="budget_amount_total" id="budget_amount_total" value="'+camp_money_account+'"/></span><span>&nbsp;&nbsp;| </span><button onClick="addMoneyForCampaign('+wallet_balance_amount+')" style="margin-right: 10px; font-size: 10px; font-weight: 500; color: #fff; border:0;background-color: #6fb7d5" type="button">Add Money</button><span style="font-size: 9px; font-weight: 400;">Wallet Balance=&nbsp;<i style="color:#23527c" class="sub-heading fa ' + spinkxJs.currencyClass + '"></i><span id="wallet_money_update">' + wallet_balance_amount + '</span>  <span style="display:none" class="parent-balance-span"><span class="without-percent-text"></span><span id="campain_balance_add">' + 0 + '</span></span>';
     addhook_form += '<span class="cad-icons"><span><a href="'+test_lending_url+'" id="test-landing-url" target="_blank">Click here to test Landing URL</a></span><span>&nbsp;&nbsp;| </span><span class="camp_agreement" style="margin-left: 5px;"><input type="checkbox" value="1" name="camp_agreement" checked style="margin: -3px 0 0 -4px;font-size: 17px;"/>&nbsp;&nbsp;<a href="https://www.spinkx.com/campaign-terms-conditions/" target="_blank">I agreee to terms and conditions</a></span></span>'
     addhook_form += '<input type="hidden" id="campaign-id" name="c_id" value="'+campaign_id+'"/>';
-    addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="btn btn-primary btn-sm" name="add_camp" style="float:right; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn btn-warning btn-sm"  style="float:right; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">Cancel</button></div>';
+    addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn-cancle-spnx-main-cls"  style="float:right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">CANCLE</button></div>';
     addhook_form += '</form></div>';
-    jQuery('#button-create-ad').parents('tr').hide();
+    //jQuery('#button-create-ad').parents('tr').hide();
     imgHeight = jQuery('form.create-ad-form .playlist_img img').height();
 
 
@@ -695,6 +695,7 @@ String.prototype.capitalize = function() {
 }
 
 function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_campaign_id ) {
+    //alert("bababiu");
     jQuery(buttonObj).parents('tr').hide();
     var formData = new FormData();
     formData.append('action', 'spinkx_cont_campaign_get_data');
@@ -702,8 +703,6 @@ function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_c
     if( undefined !== campaign_type) {
         formData.append('campaign_type', campaign_type);
     }
-
-
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl ,
@@ -729,7 +728,7 @@ function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_c
         failure: function (data) {
             jQuery('#bpopup_ajax_loading').bPopup().close();
             jQuery.growl.error({
-                message: " Request to server failed, kind;y retry or contact support ! ",
+                message: " Request to server failed, kindly retry or contact support ! ",
                 location: 'tr',
                 size: 'large'
             });
@@ -780,12 +779,18 @@ function createVariation(buttonObj, parent_campaign_id, campaign_id, $data) {
         addhook_form += '<input type="hidden" id="campaign-id" name="c_id" value="'+campaign_id+'"/>';
     }
 
-    addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="btn btn-primary btn-sm" name="add_camp" style="float:right; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn btn-warning btn-sm"  style="float:right; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">Cancel</button></div>';
+    addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn-cancle-spnx-main-cls"  style=" right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">CANCLE</button></div>';
     addhook_form += '</form></div>';
-    jQuery('#button-create-ad').parents('tr').hide();
+    //jQuery('#button-create-ad').parents('tr').hide();
     jQuery(buttonObj).parents('tr').after('<tr><td colspan="3">'+addhook_form+'</td></tr>');
     imgHeightnew = jQuery('form.create-variation-form .playlist_img img').height();
-    jQuery('form.create-variation-form>div').css('height',(imgHeight+107+'px'));
+    if(imgHeightnew>0) {
+        jQuery('form.create-variation-form>div').css('height',(imgHeightnew+107+'px'));
+    }
+    else {
+        jQuery('form.create-variation-form>div').css('height',(340+'px'));
+    }
+
 }
 
 jQuery(document).ready(function($) {
@@ -996,12 +1001,12 @@ function createVideoVariation(buttonObj, parent_campaign_id, campaign_id, $data)
         addhook_form += '<input type="hidden" id="campaign-id" name="c_id" value="'+campaign_id+'"/>';
     }
     addhook_form += '<input type="hidden" name="is_video" value="1"/>';
-    addhook_form += ' <button  type="submit" class="btn btn-primary btn-sm" name="add_camp" style="float:right; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
-							<button  onclick="deleteCampaignMain(this, '+campaign_id+')" type="button" class="btn btn-warning btn-sm"  style="float:right; margin:19px 10px 0 0; border-radius:0;  color:#fff; ">Cancel</button>\
+    addhook_form += ' <button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
+							<button  onclick="deleteCampaignMain(this, '+campaign_id+')" type="button" class="btn-cancle-spnx-main-cls"  style="float:right; margin:19px 10px 0 0; border-radius:0;  color:#fff; ">CANCLE</button>\
 							</div></form></div> \
 							</td>\
 							<td></td>';
-    jQuery('#button-create-ad').parents('tr').hide();
+    //jQuery('#button-create-ad').parents('tr').hide();
     jQuery(buttonObj).parents('tr').after('<tr>'+addhook_form+'</tr>');
 
 

@@ -29,6 +29,8 @@
 	$sortby = spnxHelper::getFilterVar( 'sortby' );
 	$ptype = spnxHelper::getFilterVar( 'post_type' );
 
+	//$p = [ 'site_id' => $settings['site_id'],'license_code' => md5( $settings['license_code'] ),'sortby' => $sortby,'post_type' => $ptype, 'from_date' => $from_date, 'to_date' => $to_date ];
+	//$p = wp_json_encode( $p );
 	$p = ['site_id' => $settings['site_id'], 'license_code' => $settings['license_code'], 'from_date' => $from_date, 'to_date' => $to_date, 'reg_email' => $settings['reg_email'], 'sortby' => $sortby,'post_type' => $ptype, 'plg_url' => esc_url( SPINKX_CONTENT_PLUGIN_URL )];
 	$p = wp_json_encode( $p );
 	$url = $spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/campaign';
@@ -156,7 +158,10 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 <div class="content_playlist_listing">
 	<table id="bwki_sites_display" class="wp-list-table table-responsive"  style="width:1024px;"><thead  style="border-bottom:1px solid #469fa1">
 		<tr>
-			<td  style="padding: 0px">&nbsp;</td>
+			<td style="padding: 0px;text-align: right;">
+			<span class="duration-text-first-span-span-crnt">Wallet Balance: <span id="credit_points_value"><?php echo $spnxAdminManage->spinkx_cont_get_credit_points();?></span></span>
+				<button  class="buy-more-point" id="buy-more-point" onclick="getpoints()">Add Money</button>
+            </td>
 
 			<td  style="padding: 0px;text-align: center;">
 				<span><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"><a href="#" id="sortby_local_reach">Views</a>|<a href="#" id="sortby_local_ctr">Engagement</a></span>
@@ -166,15 +171,12 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 				<span style=""><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"> <a href="#" id="sortby_global_reach">Views</a>|<a href="#" id="sortby_global_ctr">Engagement</a></span>
 				</td>
 		</tr>
-		<tr style="background-color: #e4eff4 !important;height: 27px;font-size: 12px; color:#a93671;">
+		<tr style="background-color: #e4eff4 !important;height: 30px;font-size: 12px; color:#a93671;">
 			<th style="padding: 0px;border:none;width:475px;">&nbsp;&nbsp;&nbsp;Campaign Details</th>
 			<th style="padding: 0 0 0 12px;border:none;width:252px;">&nbsp;&nbsp;&nbsp;Campaign Statistics </th>
-			<th style="padding: 0 0 0 12px;border:none;width:252px;">&nbsp;&nbsp;&nbsp; </th>
+			<th style="padding: 0 0 0 0px;border:none;width:252px; text-align:center; background-color: #337ab7 !important;">&nbsp;&nbsp;&nbsp; <button  id="button-create-ad" onclick="createAd(this)"><span  style="font-size:12px;">Create Ad </span><span style="font-size:13px;">+</span></button></th>
 		</tr>
-		<tr style="height: 27px;font-size: 12px; color:#a93671;">
-			<th style="padding: 0px;border:none;width:475px;" colspan="3">&nbsp;&nbsp;&nbsp;
-					<button class="btn btn-primary" id="button-create-ad" onclick="createAd(this)" style="font-size: 12px;">Create Ad</button></th>
-		</tr>
+
 		</thead><tbody><input type="hidden" id="chooks" value="0" /></tbody>
 		</table></div>
 <div class="clear"></div>

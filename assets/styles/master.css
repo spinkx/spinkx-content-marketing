@@ -29,9 +29,7 @@ select {
 input:focus, select:focus{
     outline: none;
 }
-
 /* header */
-
 header.container-fluid {
     /*background: #f1eee8;*/
     background: transparent;
@@ -368,11 +366,7 @@ input[type="checkbox"]:checked + span:after{
     text-align: center;
     margin: 20px 0;
 }
-.btn-primary {
-   background: #337ab7;
-/* Commented by DENCY to fix the border colour in ad's page */
-/*    border:1px solid #d32f2f; */
-}
+
 .number_count {
     width: 35px;
     height: 35px;
@@ -429,7 +423,6 @@ input[type="checkbox"]:checked + span:after{
 }
 .pre-img {
     width: 100%;
-    /* height: 200px; */
     overflow: hidden;
 }
 .pre-img img {
@@ -437,9 +430,6 @@ input[type="checkbox"]:checked + span:after{
     max-height: 100%;
     width: 100%;
     object-fit: cover;
-    /* height: 200px; */
-	/* padding : 10px; */
-	/*padding-top: 8%;*/
 }
 p.pre-author {
     font-size: 11px;
@@ -452,11 +442,8 @@ p.pre-author {
     padding: 0px 9px;
 }
 .col-sm-3 h4.pre-title{
-    /* font-size: 15px !important; */
     font-weight: 400;
-   /* border-left: 2px solid #8954a2;*/
     padding-left: 10px;
-    /* line-height: 18px !important; */
 }
 ul.likes li {
     border-right: 0 !important;
@@ -1252,6 +1239,9 @@ div.create-ad-field{ height:35px;}
     box-shadow: none;
 
 }
+#daterange {
+    cursor: pointer;
+}
 input.form-control2:hover,input.form-control2:focus { background-color: #e4eff4; box-shadow: inset 0 1px 1px rgba(0,0,0,.075); }
 textarea.splcaheholder::-webkit-input-placeholder { color: #337ab7; }
 textarea.splcaheholder::-moz-placeholder {color: #337ab7; }
@@ -1393,8 +1383,15 @@ textarea.splcaheholder:-ms-input-placeholder { color: #337ab7; }
 }
 .clrsave {
     background-color: #1dbd45 !important;
-    padding: 1px 6px !important;
+    padding: 0 6px 2px 6px;
     font-size: 10px !important;
+    outline: none;
+    color: white;
+    border: 1px solid #0b982e;
+}
+.clrsave:active {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
 }
 .tt-txt-btn-cmn-cls-input input {
     height: 21px;
@@ -1415,6 +1412,7 @@ textarea.splcaheholder:-ms-input-placeholder { color: #337ab7; }
     border-radius: 3px;
     margin-top: 4px;
     width:85%;
+    margin-left: 24px;
 
 }
 .fnt-awsm-spn {
@@ -1437,8 +1435,10 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 .cog-fnt-awe-cls {
-    margin-left: 19px;
+    margin-left: 10px;
     cursor: pointer;
+    position: relative;
+    top:-2px;
 }
 .cog-fnt-awe-cls i {
     color: #747575;
@@ -1465,7 +1465,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .spnx-sec-one-chld-mn-cntnr {
     background-color:white;
-    width: 48.9%;
+    width: 49%;
     display: inline-block;
     vertical-align: top;
     box-sizing: border-box;
@@ -1493,14 +1493,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .spnx-flex-strt {
     float: left;
-
 }
 .spnx-flex-end {
     float: right;
-
-}
-.spnx-flex-center {
-
 
 }
 .spnx-flex-center-second {
@@ -1509,7 +1504,6 @@ input[type=number]::-webkit-outer-spin-button {
 .bold-spnx-txt-cmn-cls {
     font-weight: bold;
     color: #0b518e;
-
 }
 .ver-alg-fnt-awe-main {
     margin-top: 11px;
@@ -1587,7 +1581,7 @@ margin-top: 11px;
     margin-left:0;
 }
 .spnx-flex-new-cmn {
-    width:33%;
+    width:35%;
 }
 @media screen and (max-width:1130px) {
     .spnx-sec-one-chld-mn-cntnr {
@@ -1792,13 +1786,11 @@ margin-top: 11px;
 
     box-shadow: none;
 }
-.cmn-cls-verticl-bus-spnx-reg select {
-    margin-top:15px;
-    width: 100%;
+.cmn-cls-verticl-bus-spnx-reg select , .select-div-common-class-spnx-reg select{
+
     box-sizing: border-box;
     border-bottom:1px solid #bfbdbd;
     outline: none;
-    font-size: 14px;
     border-top: none;
     border-left: none;
     border-right:none;
@@ -1808,22 +1800,17 @@ margin-top: 11px;
     -webkit-appearance: none;
     -webkit-border-radius: 0px;
     box-shadow: none;
+    font-size: 10px;
+    font-weight: 600;
+    color: #b7b7b7;
 }
-.select-div-common-class-spnx-reg select{
+.cntry-rgn-cmn-cls-spnx-reg select{
+    margin-top:15px;
+    width: 100%;
+}
+.select-vrticl-align-cmn-cls select {
     margin-top:8px;
     width: 90%;
-    box-sizing: border-box;
-    border-bottom:1px solid #bfbdbd;
-    outline: none;
-    font-size: 14px;
-    border-top: none;
-    border-left: none;
-    border-right:none;
-    padding:0 5px;
-    background-color: transparent;
-    -webkit-appearance: none;
-    -webkit-border-radius: 0px;
-    box-shadow: none;
 }
 .pin-code-main-cntnr {
 
@@ -1835,22 +1822,6 @@ margin-top: 11px;
 
 width: 54%;
     display: inline-block;
-}
-.state-main-cntnr select {
-    margin-top:6px;
-    width: 90%;
-    box-sizing: border-box;
-    border-bottom:1px solid #bfbdbd;
-    outline: none;
-    font-size: 14px;
-    border-top: none;
-    border-left: none;
-    border-right:none;
-    padding:3px 5px;
-    background-color: transparent;
-    -webkit-appearance: none;
-    -webkit-border-radius: 0px;
-    box-shadow: none;
 }
 .money-trnsfer-main-class-spnx-cntnr input {
     margin-top:15px;
@@ -2022,6 +1993,12 @@ vertical-align: sub;
 .dashb-buy-points button {
     font-size:10px;
     font-weight:700;
+    background: #337ab7;
+    color: #fbfbfb;
+    border: unset;
+    padding: 4px 10px 6px 10px;
+    outline: none;
+    cursor: pointer;
 }
 .buy-now-shrt-code button {
     padding: 3px 9px;
@@ -2036,4 +2013,61 @@ vertical-align: sub;
 }
 #buy-more-point, #bwki_sites_display_info .btn {
     float:unset;
+}
+/**new css **/
+
+.dashb-buy-points .btn {
+    background: #337ab7;
+    color:#fbfbfb;
+    border: unset;
+}
+#button-create-ad {
+    background: #337ab7 !important;
+    color:#fbfbfb !important;
+    border: unset !important;
+}
+/** button css **/
+.button-cmn-class-bp-cmp-spnx {
+    font-size: 9px !important;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    padding: 4px 10px;
+    border: 1px solid #0b982e;
+}
+.button-cmn-class-bp-cmp-spnx:active {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+.btn-cancle-spnx-main-cls {
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    padding: 4px 10px;
+    color: #fff !important;
+    background-color: #f0ad4e !important;
+    border-color: #eea236 !important;
+    font-size: 9px;
+}
+.btn-cancle-spnx-main-cls:active {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+.buy-more-point {
+    background: #337ab7 !important;
+    color:#fbfbfb !important;
+    border: unset !important;
+    margin-right: unset !important;
+    margin-left: 10px;
+    font-size: 9px;
+    outline: none;
+    cursor: pointer;
+    padding: 4px 10px;
+}
+.buy-more-point:active {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+.camp-group-name img {
+    margin-right: 10px;
 }

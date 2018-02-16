@@ -30,7 +30,7 @@ if($data) {
 					</div>
 
 					<div class="dashb-buy-points">
-						<button  class="btn btn-primary btn-sm" id="buy-more-point" onclick="getpoints()">Buy More Point</button>
+						<button   id="buy-more-point" onclick="getpoints()">Buy More Point</button>
 					</div>
 
 				</div>
@@ -42,7 +42,7 @@ if($data) {
 						<span class="credit-wallet-currency"><?php echo $data['currency']?></span> <span class="credit-wallet-bal"><?php echo $data['wallet_bal']?></span>
 					</div>
 					 <div class="withdraw-money dashb-buy-points">
-						<button class="btn btn-primary btn-sm">Withdraw Money</button>
+						<button >Withdraw Money</button>
 					</div>
 				</div>
 			</div>

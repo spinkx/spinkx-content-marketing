@@ -253,7 +253,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				<span class="horizntal-align-cmn-cls-spnx-reg align-spnx-css"> <?php echo $selected_url; ?></span>
 				<input type="hidden" name="site_url" value="<?php echo $selected_url; ?>">
 			</div>
-			<div class="cmn-cls-verticl-bus-spnx-reg-sitename">
+			<div class="cmn-cls-verticl-bus-spnx-reg-sitename ">
 				<span class="catog-des-cmn-cls-spnx-reg">Site name </span>
 				<span class="horizntal-align-cmn-cls-spnx-reg">
 				<?php if ( isset($settings['site_name']) && $settings['site_name'] ) { ?>
@@ -326,7 +326,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		<div class="spnx-box-reg-cmn-cls">
 			<div class="header-cmn-cls-spnx">Geography & Language</div>
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Country</div>
-			<div class="select-div-common-class-spnx-reg " id="geography-spnx-reg" style="position: relative;">
+			<div class="select-div-common-class-spnx-reg select-vrticl-align-cmn-cls" id="geography-spnx-reg" style="position: relative;">
 				<div style="position: relative;">
 				<select name="site_target" id="site-gerography-select" class="target-country-cmn">
 					<?php foreach ( $dropdown->countries as $key => $value ) {
@@ -343,7 +343,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				</div>
 			</div>
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Language</div>
-			<div class="select-div-common-class-spnx-reg " style="position: relative;">
+			<div class="select-div-common-class-spnx-reg select-vrticl-align-cmn-cls" style="position: relative;">
 				<div style="position: relative;">
 				<select name="site_language">
 					<?php foreach ( $dropdown->languages as $key => $value ) {
@@ -353,7 +353,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 						} elseif (  isset(  $dropdown->selected_site->language_id ) &&  $key == $dropdown->selected_site->language_id  ) {
 							$languages = "selected='selected'";
 						}
-						echo '<option value="' . $key . '" ' . $languages . '>' . $value . '</option>';
+						echo '<option style="background-color:red !important; font-size:100px !important;" value="' . $key . '" ' . $languages . '>' . $value . '</option>';
 					} ?>
 				</select>
 					<span class="cmn-arw-cmn-clas-dv"><i class="fa fa-sort-desc fa-lg" aria-hidden="true"></i></span>
@@ -368,7 +368,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 			<div class="header-cmn-cls-spnx">Category</div>
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Category describe what your business is, not what it does or sells.</div>
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Primary category</div>
-			<div class="select-div-common-class-spnx-reg ">
+			<div class="select-div-common-class-spnx-reg select-vrticl-align-cmn-cls">
 				<div style="position: relative;"><select name="primary_category">
 					<?php foreach ($dropdown->primary_categories as $key => $value ) {
 						$primary_cat = '';
@@ -387,7 +387,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 
 			</div>
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Additional category</div>
-			<div class="select-div-common-class-spnx-reg xyz" style="position: relative; width:90%; ">
+			<div class="select-div-common-class-spnx-reg select-vrticl-align-cmn-cls" style="position: relative; width:90%; ">
 				<div class="select-drtn-cls">
 					<select class="categories"  id="categories" multiple name="site_cat[]">
 						<?php
@@ -405,7 +405,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 							if ( isset( $category_arr ) && in_array( $key, $category_arr ) ) {
 								$category = "selected='selected'";
 							}
-							echo '<option value="' . $key . '" ' . $category . '>' . $value . '</option>';
+							echo '<option  value="' . $key . '" ' . $category . '>' . $value . '</option>';
 						} }?>
 					</select>
 				</div>
@@ -437,7 +437,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				</div>
 				<span class="font-awesome-icon-align-cmn-cls"><i class="fa fa-user" aria-hidden="true"></i></span>
 			</div>
-			<div class="cmn-cls-verticl-bus-spnx-reg">
+			<div class="cmn-cls-verticl-bus-spnx-reg cntry-rgn-cmn-cls-spnx-reg">
 				<div class="catog-des-cmn-cls-spnx-reg">Country / Region </div>
 				<div>
 					<select name="bussiness_region">
