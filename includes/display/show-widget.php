@@ -18,7 +18,7 @@ if(is_array($widget_list) && count($widget_list)) {
 }
 $display_layout_type = 'masonry';
 $display_col_count = 1;
-$disp_unit_bg_color = '#ffffff';
+$disp_unit_bg_color = 'transparent';
 $al_brnd_styles = ' clear: both; ';
 if (is_array($settings_array)) {
     if (isset($settings_array['widget_layout_type'])) {
