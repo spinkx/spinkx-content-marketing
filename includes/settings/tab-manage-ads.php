@@ -44,7 +44,7 @@
 	}
 	$bwki_sites_display_length	= spnxHelper::getFilterVar( 'bwki_sites_display_length' );
 	$pageLength = ( $bwki_sites_display_length )?$bwki_sites_display_length:10;
-	$loader = '<img src="'.esc_url( SPINKX_CONTENT_PLUGIN_URL ).'/assets/images/loader.gif" alt="loading"/>';
+	$loader = '<img src="'.esc_url( SPINKX_CONTENT_PLUGIN_URL ).'assets/images/loader.gif" alt="loading"/>';
 	$css_output = "
 	ul.select2-choices li.select2-search-choice {display:none};
 	";
@@ -114,7 +114,7 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 	$url = $spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/campaign/form-elements';
 	$output = spnxHelper::doCurl($url,true);
 	$output = json_decode($output, TRUE);
-
+    $currencyClass = '';
 	if(isset($output['countries'])) {
 		$countries = $output['countries'];
 	}
@@ -144,7 +144,7 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 ?>
 <?php if($output['error'] === false) {?>
 	<div class="campaign_page col-sm-12 col-md-12">
-	<div style="float: right;display: none;">Balance:<span id="user-balance"><i class="fa fa-<?php echo $currencyClass?>"></i><?php echo $output['user_bal']?></span>
+	<div style="float: right;display:none">Balance:<span id="user-balance"><i class="fa <?php echo $currencyClass?>"></i><?php echo $output['user_bal']?></span>
 		<button class="btn btn-primary" id="add_money_wallet" style="display: none" onclick="jQuery('#campaignmodaladdMoney').modal({
     backdrop: 'static',
     keyboard: false,
@@ -159,7 +159,7 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 	<table id="bwki_sites_display" class="wp-list-table table-responsive"  style="width:1024px;"><thead  style="border-bottom:1px solid #469fa1">
 		<tr>
 			<td style="padding: 0px;text-align: right;">
-			<span class="duration-text-first-span-span-crnt">Wallet Balance: <span id="credit_points_value"><?php echo $spnxAdminManage->spinkx_cont_get_credit_points();?></span></span>
+			<span class="duration-text-first-span-span-crnt">Wallet Balance: <i class="fa <?php echo $currencyClass?>"></i><?php  printf('%.2f', $output['user_bal'])?></span>
 				<button  class="buy-more-point" id="buy-more-point" onclick="getpoints()">Add Money</button>
             </td>
 

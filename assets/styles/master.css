@@ -2071,3 +2071,10 @@ vertical-align: sub;
 .camp-group-name img {
     margin-right: 10px;
 }
+.notice-error, .notice-warning, .notice-success, .notice-info, .update-nag {
+    display: none;
+}
+
+.notice-spinkx {
+    display: inline-block;
+}

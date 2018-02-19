@@ -1,5 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 $spnxAdminManage = new spnxAdminManage;
 $post = array();
 $custom_date = $spnxAdminManage->spinkx_cont_last_30_days();
@@ -19,7 +20,7 @@ wp_add_inline_script( 'jquery-custom-js', $custom_js );
 <div class="wrap">
 	<div class="bpopup" id="bpopup_ajax_loading" style="display: none;width:100px">
 			<div class="popup_div" style="display: block;" >
-				<img src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>/assets/images/loader.gif" alt="loading"/>
+				<img src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/loader.gif" alt="loading"/>
 			</div>
 		</div>
 

@@ -38,7 +38,7 @@ $pageLength = ( $bwki_sites_display_length )?$bwki_sites_display_length:10;
 $custom_js = 'var pt = '.$p.'; var pageLength = ' . $pageLength . '; ';
 $custom_js .= 'var start = moment(' . (  $startdate ) . ');';
 $custom_js .= 'var end = moment(' . ( $enddate  ) . '); jQuery(function() {';
-$loader = '<img src="'.esc_url( SPINKX_CONTENT_PLUGIN_URL ).'/assets/images/loader.gif" alt="loading"/>';
+$loader = '<img src="'.esc_url( SPINKX_CONTENT_PLUGIN_URL ).'assets/images/loader.gif" alt="loading"/>';
 $custom_js .= 'jQuery(".se-pre-con").fadeOut("slow");';
 $custom_js .= 'jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: '.$todaydate.'});
 	var $ = jQuery.noConflict();	

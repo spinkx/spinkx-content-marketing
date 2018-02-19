@@ -74,6 +74,7 @@ function spinkx_cont_site_registration( $blog_id = 0 ) {
 	}
 	$data = array();
     $spinkx_version =  $spnxAdminManage->spinkx_cont_get_version();
+
 	foreach ( $siteArr as $currentSite ) {
 		if ( $mflag ) {
 			switch_to_blog( $currentSite['blog_id'] );

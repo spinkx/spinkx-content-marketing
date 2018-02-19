@@ -214,7 +214,7 @@ function getAttachmentData(buttonObj, ishook) {
 							<div class="addhook_title"><input class="form-control" placeholder="Variation Headline" id="addhook_title_'+post_id+'" name="title"/></div> \
 							<div class="addhook_excerpt"><textarea id="addhook_excerpt_'+post_id+'" class="form-control" placeholder="Enter your Excerpt here" name="excerpt"></textarea></div>  \
 							<button  type="submit" class="button-cmn-class-bp-cmp-spnx"  style="float:right !important; margin-top:42px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
-							<button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn-cancle-spnx-main-cls"  style="float:right; margin:42px 10px 0 0; border-radius:0;  color:#fff; ">CANCLE</button>\
+							<button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn-cancle-spnx-main-cls"  style="float:right; margin:42px 10px 0 0; border-radius:0;  color:#fff; ">CANCEL</button>\
 							</form></div> \
 							</td>\
 							<td>\
@@ -369,7 +369,7 @@ function editAB(v){
         '<div class="row" style="padding:5px"><input name="title" value="'+title+'"    type="text" placeholder="Title" data-validation="required" data-validation-error-msg="Ouch!Title is required"></div>'+
         '<div class="row" style="padding:5px"><textarea name="excerpt"  placeholder="Excerpt"  data-validation="required" data-validation-error-msg="Oh!Fill me please">'+content+'</textarea></div>'+
         '<div class="row">'+
-        '<div class="col-sm-4"><button class="btn btn-primary" id="submit">Update</button></div><div class="col-sm-3"><button class="btn btn-danger" id="cancel" onClick="cancelEdit(this);return false;">CANCLE</button></div></form>';
+        '<div class="col-sm-4"><button class="btn btn-primary" id="submit">Update</button></div><div class="col-sm-3"><button class="btn btn-danger" id="cancel" onClick="cancelEdit(this);return false;">CANCEL</button></div></form>';
     jQuery(v).html(html);
 }
 
@@ -924,7 +924,7 @@ function getAttachmentDataVideo(buttonObj, ishook) {
                 <div class="addhook_title"><input class="form-control" placeholder="Video Title" id="addhook_video_title_'+post_id+'" name="title"/></div> \
                 <div class="addhook_excerpt addhook_excerpt2"><textarea id="addhook_video_excerpt_'+post_id+'" class="form-control" placeholder="Add your Video Description ..." name="excerpt"></textarea></div>  \
                 <button  type="submit" class="button-cmn-class-bp-cmp-spnx"  style="float:right !important; margin-top:62px; color:#fff; background-color:#1dbd45; margin-right: 10px;">SAVE &amp; ACTIVATE</button>\
-                <button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn-cancle-spnx-main-cls"  style="float:right!important; margin:62px 10px 0 0; border-radius:0;  color:#fff; ">CANCLE</button>\
+                <button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn-cancle-spnx-main-cls"  style="float:right!important; margin:62px 10px 0 0; border-radius:0;  color:#fff; ">CANCEL</button>\
                 </div></form></div> \
                 </td>\
                 <td>\
@@ -941,7 +941,7 @@ function getAttachmentDataVideo(buttonObj, ishook) {
 							addhook_form += '<div class="addhook_title addhook_title2" style="margin-top: 13px;margin-bottom: 13px;"><input class="form-control" placeholder="Video Title" id="addhook_video_title_'+post_id+'" name="title"/></div> \
 							<div class="addhook_excerpt2" style=""><textarea id="addhook_video_excerpt_'+post_id+'" class="form-control" placeholder="Add your Video Description ..." name="excerpt" style="height:50px;"></textarea></div>  \
 							<button  type="submit" class="button-cmn-class-bp-cmp-spnx"  style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
-							<button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn-cancle-spnx-main-cls"  style="float:right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; ">CANCLE</button>\
+							<button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn-cancle-spnx-main-cls"  style="float:right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; ">CANCEL</button>\
 							</div></form></div> \
 							</td>\
 							<td></td>';

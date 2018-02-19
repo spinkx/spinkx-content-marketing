@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 
 function spinkx_cont_icon_css() {
-	echo '<style>.toplevel_page_spinkx-site-register .wp-menu-image img {
+	echo '<style>.toplevel_page_spinkx-site-register .wp-menu-image img, .toplevel_page_spinkx_analytics .wp-menu-image img {
 		padding: 6px 0 0 !important;
 		opacity: .9 !important;
 		max-width: 65%;
@@ -57,6 +57,7 @@ span.spinkx-notify-text-active{
  */
 
 function spinkx_cont_js_var() {
+
 	$spnxAdminManage = new spnxAdminManage;
 	$settings = get_option( $spnxAdminManage->spinkx_cont_get_license() );
 	$settings = maybe_unserialize( $settings );
@@ -199,7 +200,7 @@ function spinkx_cont_widget_css_js() {
 	$custom_css = ' .no-js #loader, .notice { display: none;  }
 	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.se-pre-con { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 9999;	
-	 background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '/assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2); }
+	 background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . 'assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2); }
 	 table.dataTable { border-collapse: collapse; border-spacing: 0px; }
 	 ';
 	wp_add_inline_style( 'master', $custom_css );
@@ -228,7 +229,7 @@ function spinkx_cont_cp_css_js( $callFrom = null ) {
 	.no-js #loader { display: none;  }
 	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.se-pre-con { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 9999; 
-	background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '/assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2);; }
+	background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . 'assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2);; }
 	.hook_add_class{ background-color:#e6e7e7; }
     .main{ /*background-color: !*#e4f4fa*! #F1F1F1 !important;*/ }
 	#clock span{ background-color: #469fa1; width:20px;	height:20px; margin:6px; padding:5px 7px; color:#fff; }
@@ -298,7 +299,7 @@ function spinkx_cont_dashboard_css_js() {
 	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.#wpwrap, .wrap, #wpcontent, #wpfooter { background-color: #319de4 !important;}
 	.se-pre-con { position: fixed; left: 0; top: 0;	width: 100%; height: 100%; z-index: 9999; 
-	 background: url( ' . SPINKX_CONTENT_PLUGIN_URL . '/assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2); } ';
+	 background: url( ' . SPINKX_CONTENT_PLUGIN_URL . 'assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2); } ';
 	wp_add_inline_style( 'master', $custom_css );
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
 	wp_enqueue_script( 'jquery-growl', $js_url . 'jquery.growl.js' );
@@ -321,7 +322,7 @@ function spinkx_cont_acc_set_css_js() {
 	.no-js #loader { display: none;  }
 	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.se-pre-con { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 9999;
-     background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '/assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2);; }';
+     background: url( ' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . 'assets/images/loader.gif) center no-repeat rgba(0, 0, 0, 0.2);; }';
 	wp_add_inline_style( 'master', $custom_css );
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
 	wp_enqueue_script( 'jquery-custom-js', $js_url . 'widget-design.js' );
@@ -431,7 +432,7 @@ function spinkx_header_menu() {
 	if('spinkx_content_play_list' === $page ) {
 		$cp_noitce_info = get_option('notice-spnx-cp', 1);
 		if( $cp_noitce_info ) {
-			$spnxAdminManage->spinkx_cont_admin_notices('Important Features of Boost Post<br/><span class="message">“Boost Post” is a Traffic Builder & SEO Backlink Builder for your website. It helps your content to reach out to audience outside your network by displaying your posts on other websites who use Spinkx as well.<br/>- It is run using a Traffic Exchange points mechanism. You earn points when other sites boost post are displayed on your site widget and you can use those points to keep on boosting your posts and get more traffic to your site Free for life.<br/>- You already have 100 points to begin with which will give your posts a 1000 reach and if you buy this plugin for $60, you get 1000 points with 10,000 reach. Enjoy boosting and see your SEO rise with backlinks and keep getting more traffic back!.<br/>- You can only promote Posts with featured images in it, and not pages or home page (for this you need to go to Campaigns and run a Paid Campaign)<br/>- “Create Variations” is a very very important tool to Multiply your Reach & backlinks. It helps you create more variations for your post with different Headlines, Descriptions & Images. Allowing you  a higher chance of getting clicks back. It will tell you what users like to read more, when you look at the CTR performance.<br/>- The Variation Posts also can be shared on Social Media,  creating more opportunities of engagement for the same post and we can actually now count how many people clicked and landed on to your website. And what worked better!</span>', 'notice-info notice-spnx-cp');
+			$spnxAdminManage->spinkx_cont_admin_notices('Important Features of Boost Post<br/><span class="message">“Boost Post” is a Traffic Builder & SEO Backlink Builder for your website. It helps your content to reach out to audience outside your network by displaying your posts on other websites who use Spinkx as well.<br/>- It is run using a Traffic Exchange points mechanism. You earn points when other sites boost post are displayed on your site widget and you can use those points to keep on boosting your posts and get more traffic to your site Free for life.<br/>- You already have 100 points to begin with which will give your posts a 1000 reach and if you buy this plugin for $60, you get 1000 points with 10,000 reach. Enjoy boosting and see your SEO rise with backlinks and keep getting more traffic back!.<br/>- You can only promote Posts with featured images in it, and not pages or home page (for this you need to go to Campaigns and run a Paid Campaign)<br/>- “Create Variations” is a very very important tool to Multiply your Reach & backlinks. It helps you create more variations for your post with different Headlines, Descriptions & Images. Allowing you  a higher chance of getting clicks back. It will tell you what users like to read more, when you look at the CTR performance.<br/>- The Variation Posts also can be shared on Social Media,  creating more opportunities of engagement for the same post and we can actually now count how many people clicked and landed on to your website. And what worked better!</span>', 'notice-info notice-spnx notice-spnx-cp');
 			$noitce_flag = true;
 		} else {
 			echo '<a href="javascript:;void(0)" class="spnx-faq" onclick="showNoticeCP();" style="margin-top: 10px; margin-left: 355px;"><i>Boost Post FAQ\'s</i></a>';
@@ -440,7 +441,7 @@ function spinkx_header_menu() {
 	 } else if('spinkx_campaigns' === $page ) {
 	    $campaigns_noitce_info = get_option('notice-spnx-campaigns', 1);
 		if(  $campaigns_noitce_info ) {
-			$spnxAdminManage->spinkx_cont_admin_notices('Important Features of Campaign<br/><span class="message">- Campaigns have more Features than Boost Post. The more important ones are “Geo Targeting” & “Call to Action”.<br/>- You can promote any URL (may be of your Client, if you are a digital Marketeer) and give them guaranteed Reach across Spinkx Network. (If you want to promote your posts and your Site, its better to use Boost Post for Free Traffic, Reach & Backlinks)<br/>- You can measure the effectiveness of the campaign by looking at the eCPC data (It means, the monetary value of your Clicks)<br/>- It is important for you to add multiple creatives to your campaign to drive lowest eCPC and get the Reach Faster. The more creatives you add the faster your campaign works.<br/>- When other people run Campaigns and they auto-display on your site sidebar, you get to earn 80% of the campaign money for the number of reach given by your website.<br/>- You can go to your Spinkx-dashboard to see how much money you have earned or spent, and you may withdraw the money to your Paypal account.</span>', 'notice-info notice-spnx-campaigns');
+			$spnxAdminManage->spinkx_cont_admin_notices('Important Features of Campaign<br/><span class="message">- Campaigns have more Features than Boost Post. The more important ones are “Geo Targeting” & “Call to Action”.<br/>- You can promote any URL (may be of your Client, if you are a digital Marketeer) and give them guaranteed Reach across Spinkx Network. (If you want to promote your posts and your Site, its better to use Boost Post for Free Traffic, Reach & Backlinks)<br/>- You can measure the effectiveness of the campaign by looking at the eCPC data (It means, the monetary value of your Clicks)<br/>- It is important for you to add multiple creatives to your campaign to drive lowest eCPC and get the Reach Faster. The more creatives you add the faster your campaign works.<br/>- When other people run Campaigns and they auto-display on your site sidebar, you get to earn 80% of the campaign money for the number of reach given by your website.<br/>- You can go to your Spinkx-dashboard to see how much money you have earned or spent, and you may withdraw the money to your Paypal account.</span>', 'notice-info notice-spnx notice-spnx-campaigns');
 			$noitce_flag = true;
 		} else {
 			echo '<a href="javascript:;void(0)" class="spnx-faq" onclick="showNoticeCampaign();" style="margin-top: 10px; margin-left: 509px;"><i>Campaign FAQ\'s</i></a>';

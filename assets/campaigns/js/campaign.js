@@ -40,7 +40,7 @@ function addParameter(url, parameterName, parameterValue, atStart){
     }
     return urlParts[0] + newQueryString + urlhash;
 };
-
+var flag_reload = false;
 jQuery( document ).ready(function() {
     jQuery(document).on("click","input.onoffswitch-checkbox",function() {
         var dataid = jQuery(this).attr("data-id");
@@ -194,7 +194,7 @@ function createAd(buttonObj, campaign_id, $data) {
     addhook_form += '<span class="cad-icons"><img src="../wp-content/plugins/spinkx-content-marketing/assets/images/camp-icons/pay.png" /><span class="add-money-message">Campaign Balance&nbsp;<i class="sub-heading fa ' + spinkxJs.currencyClass + '"></i>&nbsp;<span id="camp-money-account">'+camp_balance_amount+' </span><span id="camp-money-account-first" style="display: none">'+camp_balance_amount+' </span><input type="hidden" name="budget_amount_total" id="budget_amount_total" value="'+camp_money_account+'"/></span><span>&nbsp;&nbsp;| </span><button onClick="addMoneyForCampaign('+wallet_balance_amount+')" style="margin-right: 10px; font-size: 10px; font-weight: 500; color: #fff; border:0;background-color: #6fb7d5" type="button">Add Money</button><span style="font-size: 9px; font-weight: 400;">Wallet Balance=&nbsp;<i style="color:#23527c" class="sub-heading fa ' + spinkxJs.currencyClass + '"></i><span id="wallet_money_update">' + wallet_balance_amount + '</span>  <span style="display:none" class="parent-balance-span"><span class="without-percent-text"></span><span id="campain_balance_add">' + 0 + '</span></span>';
     addhook_form += '<span class="cad-icons"><span><a href="'+test_lending_url+'" id="test-landing-url" target="_blank">Click here to test Landing URL</a></span><span>&nbsp;&nbsp;| </span><span class="camp_agreement" style="margin-left: 5px;"><input type="checkbox" value="1" name="camp_agreement" checked style="margin: -3px 0 0 -4px;font-size: 17px;"/>&nbsp;&nbsp;<a href="https://www.spinkx.com/campaign-terms-conditions/" target="_blank">I agreee to terms and conditions</a></span></span>'
     addhook_form += '<input type="hidden" id="campaign-id" name="c_id" value="'+campaign_id+'"/>';
-    addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn-cancle-spnx-main-cls"  style="float:right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">CANCLE</button></div>';
+    addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn-cancle-spnx-main-cls"  style="float:right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">CANCEL</button></div>';
     addhook_form += '</form></div>';
     //jQuery('#button-create-ad').parents('tr').hide();
     imgHeight = jQuery('form.create-ad-form .playlist_img img').height();
@@ -653,12 +653,14 @@ function saveCampaign(field_name, field_value) {
 }
 
 function deleteCampaignMain(buttonObj, campaign_id) {
-    window.location.reload();
-  /* jQuery(buttonObj).parents('tr').remove();
-   jQuery('#bwki_sites_display thead tr #button-create-ad').parents('tr').show();
-   if( campaign_id ) {
-       jQuery('#bwki_sites_display tbody #post-'+campaign_id).parents('tr').show();
-   }*/
+    if(flag_reload) {
+        window.location.reload();
+    } else {
+
+        jQuery(buttonObj).parents('tr').prev().css('display', '');
+        jQuery(buttonObj).parents('tr').remove();
+    }
+
 }
 function addMoneyForCampaign( wallet_balance ) {
     $budget =  jQuery('#budget_amount').val() * 1;
@@ -675,6 +677,7 @@ function addMoneyForCampaign( wallet_balance ) {
         jQuery('#wallet_money_update').text((wallet_balance - $budget).toFixed(2));
         jQuery('#camp-money-account').text( ( Number( jQuery('#camp-money-account').text() ) * 1 + $budget * 1 ).toFixed(2) );
         jQuery('#campain_balance_add').text(0);
+        flag_reload = true;
     }
     //jQuery('#payment-method-button').trigger('click');
 }
@@ -779,7 +782,7 @@ function createVariation(buttonObj, parent_campaign_id, campaign_id, $data) {
         addhook_form += '<input type="hidden" id="campaign-id" name="c_id" value="'+campaign_id+'"/>';
     }
 
-    addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn-cancle-spnx-main-cls"  style=" right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">CANCLE</button></div>';
+    addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn-cancle-spnx-main-cls"  style=" right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">CANCEL</button></div>';
     addhook_form += '</form></div>';
     //jQuery('#button-create-ad').parents('tr').hide();
     jQuery(buttonObj).parents('tr').after('<tr><td colspan="3">'+addhook_form+'</td></tr>');
@@ -1002,7 +1005,7 @@ function createVideoVariation(buttonObj, parent_campaign_id, campaign_id, $data)
     }
     addhook_form += '<input type="hidden" name="is_video" value="1"/>';
     addhook_form += ' <button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
-							<button  onclick="deleteCampaignMain(this, '+campaign_id+')" type="button" class="btn-cancle-spnx-main-cls"  style="float:right; margin:19px 10px 0 0; border-radius:0;  color:#fff; ">CANCLE</button>\
+							<button  onclick="deleteCampaignMain(this, '+campaign_id+')" type="button" class="btn-cancle-spnx-main-cls"  style="float:right; margin:19px 10px 0 0; border-radius:0;  color:#fff; ">CANCEL</button>\
 							</div></form></div> \
 							</td>\
 							<td></td>';
