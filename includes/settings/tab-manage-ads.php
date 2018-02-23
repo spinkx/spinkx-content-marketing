@@ -145,11 +145,7 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 <?php if($output['error'] === false) {?>
 	<div class="campaign_page col-sm-12 col-md-12">
 	<div style="float: right;display:none">Balance:<span id="user-balance"><i class="fa <?php echo $currencyClass?>"></i><?php echo $output['user_bal']?></span>
-		<button class="btn btn-primary" id="add_money_wallet" style="display: none" onclick="jQuery('#campaignmodaladdMoney').modal({
-    backdrop: 'static',
-    keyboard: false,
-    show: true
-})">Add Money to Wallet</button>
+
 	</div>
 <?php } else {
 	echo $output['error'];
@@ -160,7 +156,11 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 		<tr>
 			<td style="padding: 0px;text-align: right;">
 			<span class="duration-text-first-span-span-crnt">Wallet Balance: <i class="fa <?php echo $currencyClass?>"></i><?php  printf('%.2f', $output['user_bal'])?></span>
-				<button  class="buy-more-point" id="buy-more-point" onclick="getpoints()">Add Money</button>
+				<button class="buy-more-point" id="add_money_wallet"  onclick="jQuery('#campaignmodaladdMoney').modal({
+    backdrop: 'static',
+    keyboard: false,
+    show: true
+})">Add Money to Wallet</button>
             </td>
 
 			<td  style="padding: 0px;text-align: center;">

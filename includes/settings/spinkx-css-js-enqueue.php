@@ -406,11 +406,13 @@ function spinkx_header_menu() {
 	<ul class="nav nav-tabs">
 		<?php if( ! ($settings['due_date'] != '0000-00-00 00:00:00' ) ) { ?>
 		<li <?php echo ('spinkx-site-register.php' === $page)?'class="active"':''?>><a href="?page=spinkx-site-register.php">Registration</a></li>
-		<?php } ?>
+		<?php } else { ?>
+            <li <?php echo ('spinkx_analytics' === $page)?'class="active"':''?>><a href="?page=spinkx_analytics">Analytics</a></li>
+        <?php } ?>
 		<li <?php echo ('spinkx_widget_design' === $page)?'class="active"':''?>><a href="?page=spinkx_widget_design">Widget Settings</a></li>
 		<li <?php echo ('spinkx_content_play_list' === $page)?'class="active"':''?>><a href="?page=spinkx_content_play_list">Free Boost Post</a></li>
 		<li <?php echo ('spinkx_campaigns' === $page)?'class="active"':''?>><a href="?page=spinkx_campaigns">Paid Campaigns</a></li>
-		<li <?php echo ('spinkx_analytics' === $page)?'class="active"':''?>><a href="?page=spinkx_analytics">Analytics</a></li>
+
 	</ul>
 	<?php if ('spinkx_content_play_list' === $page) { ?>
 	<div class="spnx-sync" title="Post ReSync"><img  id="posts_<?php echo $site_id ?>" class="posts_sync" src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sync-icon.png"  /></div>

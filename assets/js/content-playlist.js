@@ -1143,5 +1143,11 @@ function getpoints() {
     });
 }
 function modifiedcategory($id) {
+    jQuery('#bp_categories_'+$id).multiselect({
+        columns: 1,
+        placeholder: 'Select Categories',
+        search: true,
+        selectAll: true
+    });
     jQuery(".modified-category-"+$id).toggle();
 }

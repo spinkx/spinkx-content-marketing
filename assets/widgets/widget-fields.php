@@ -487,7 +487,7 @@ if( $is_mobile_widget == 0 ) {
 				</td>
 			</tr>
 		</table>
-		<table class="form-table">
+		<table class="form-table" style="display: none;">
 			<tr>
 				<td>
 					<span class="badge badge-double">14</span>

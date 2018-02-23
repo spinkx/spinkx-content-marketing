@@ -9,6 +9,9 @@ if( spnxHelper::getFilterVar( 'to_date' ) ) {
 }
 $data = spnxHelper::doCurl( $url,$post, true, array(), 3000);
 $data = json_decode( $data, true );
+$spnxAdminManage = new spnxAdminManage();
+$settings = get_option($spnxAdminManage->spinkx_cont_get_license());
+$settings = unserialize($settings);
 if($data) {
 ?><div class="spnx-dshb-mn-cntr">
 		<div class="spnx-sec-mn-cntr">
@@ -90,8 +93,12 @@ if($data) {
 					<div class="points-cmn-cls-spnx">
 						<?php echo $data['days']?>
 					</div>
-					<div style="font-size: 10px; display: none;" class="purchase-plugin dashb-buy-points"><button  class="btn btn-primary btn-sm">Plugin Buy Now </button></div>
-				</div>
+                    <?php  if ( intval( $data['days'] ) < 0 ) { ?>
+					    <div style="font-size: 10px;" class="purchase-plugin dashb-buy-points"><button id="payment-method-buttonpn" class="btn-primary pbuy-now" style="    color: #fff;
+    background-color: #0170B9;">Buy Now</button></div>
+                    <?php  } ?>
+                </div>
+
 
 			</div>
 		</div>
@@ -122,7 +129,7 @@ if($data) {
 				</div>
 				<div class="widget-cmn-cls-wid">
 					<div class="bold-spnx-txt-cmn-cls">
-						Widget Clicks  &nbsp;|&nbsp;  CTR
+						Widget Clicks |&nbsp;CTR
 					</div>
 					<div class="points-cmn-cls-spnx">
 						<div class="wid-rev-point-icon-dv-cmn">
@@ -186,11 +193,11 @@ if($data) {
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title"><strong>Buy Points</strong></h4>
 				</div>
-				<div class="modal-body">
+                <div class="modal-body">
 					<?php if(isset($data['reach'])) { ?>
 						<div class="form-group">
 							<label for="point_amount">Points</label><br/>
-							<br/><input	type="text" class="form-control" id="buy_point" style="display: inline;width:40%;" value="100"/>
+							<br/><input	type="text" class="form-control" id="buy_point"  style="display: inline;width:40%;" value="100"/>
 						</div>
 						<div class="form-group">
 							<label>Reach</label>
@@ -214,8 +221,11 @@ if($data) {
 	</div>
 	</div>
 	<script type="text/javascript">
-		google.charts.load('current', {'packages': ['corechart']});
+        google.charts.load('current', {'packages': ['corechart']});
         var spinkx_data = <?php echo json_encode($data); ?>;
+        window.onload =  function() {
+            <?php echo $data['buy_now']?>;
+        }
 	</script>
 	<?php
 } else {
