@@ -20,9 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	$no_of_row = 1;
 	$image_width = 100;
 	$image_height = 100;
+    $primary_cat=$result['pri_cat'];
 	
 	if( $result['widget']['is_mobile_widget'] == 0 ) {
 		$site_name = $result['site_name'];
+
 		$no_of_columns = $unserialized_widget_data['no_of_columns'];
 		$no_of_row =  (isset($unserialized_widget_data['no_of_row']) && intval($unserialized_widget_data['no_of_row']) > 0)?intval($unserialized_widget_data['no_of_row']):0;
 		$image_width =  (isset($unserialized_widget_data['image_width']) && intval($unserialized_widget_data['image_width']) > 0 )?intval($unserialized_widget_data['image_width']):0;

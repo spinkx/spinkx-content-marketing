@@ -1802,7 +1802,7 @@ margin-top: 11px;
     box-shadow: none;
     font-size: 10px;
     font-weight: 600;
-    color: #b7b7b7;
+    color:#a7a7a7;
 }
 .cntry-rgn-cmn-cls-spnx-reg select{
     margin-top:15px;
@@ -2077,4 +2077,95 @@ vertical-align: sub;
 
 .notice-spinkx {
     display: inline-block;
+}
+.select-drtn-cls .ms-options-wrap > .ms-options {
+    background-color:#f3f3f3 !important;
+}
+.select-drtn-cls .ms-options-wrap > .ms-options > ul li.selected label, .ms-options-wrap > .ms-options > ul label:hover {
+    background-color: unset !important;
+}
+
+/**new widget category css **/
+.acc-mn-dv-cntainr {
+    border:1px solid #f7f7f7;
+    width:400px;
+    margin:0 auto;
+    background-color: white;
+}
+.mn-txt-cmn-dv:before {
+    border: 5px solid transparent;
+    border-left-color: #adb0b3;
+    content: '';
+    display: block;
+    height: 0;
+    position: absolute;
+    top:10px;
+    width: 0;
+}
+.active:before{
+    border: 5px solid transparent;
+    border-top-color: #adb0b3;
+    content: '';
+    display: block;
+    height: 0;
+    left: 7px;
+    position: absolute;
+    top: 13px;
+    width: 0;
+}
+.mn-txt-cmn-dv {
+    position:relative;
+    padding:07px;
+    border-bottom:1px solid #f7f7f7;
+    cursor:pointer;
+    padding-left:10px;
+}
+.mn-txt-cmn-dv:hover {
+    background-color:#eff0f2;
+}
+.mn-txt-cmn-dv:last-child {
+    border-bottom:5px solid red;
+}
+.mn-txt-cmn-dv span {
+    border-left:1px solid #f7f7f7;
+    margin-left:15px;
+    padding-left:10px;
+}
+.ul-mn-cls-chkbx {
+    padding: 0;
+    list-style-type: none;
+    margin:0;
+}
+.ul-mn-cls-chkbx li {
+    border-bottom:1px solid #f7f7f7 !important;
+    padding:07px !important;
+    padding-left:45px !important;
+    cursor: pointer !important;
+    margin-bottom: unset !important;
+    font-weight: unset !important;
+    font-size: 13px;
+}
+.ul-mn-cls-chkbx li:hover {
+    background-color:#eff0f2;
+}
+.sb-ctgry-cmn-cls {
+    display:none;
+}
+.chkbx-cmn-cls-li {
+    float: right;
+    padding:unset !important;
+    background:unset !important;
+    color:unset !important;
+    border-radius: unset !important;
+    margin-right: unset !important;
+    width: unset !important;
+    height:  unset !important;
+}
+.chkbx-cmn-cls-li input {
+    width: unset !important;
+    margin: unset !important;
+
+}
+.chkbx-cmn-cls-li input:before {
+
 }

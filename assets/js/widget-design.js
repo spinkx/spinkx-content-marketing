@@ -52,6 +52,31 @@ jQuery(document).ready(function($) {
             }
         });
     });
+    $(".mn-txt-cmn-dv").click(function() {
+        if(!$(this).hasClass('active')) {
+            $('.cmn-cls-cntnr .mn-txt-cmn-dv').removeClass('active');
+            $('.sb-ctgry-cmn-cls').hide();
+        }
+        $(this).next('.sb-ctgry-cmn-cls').toggle();
+        $(this).toggleClass("active");
+
+    });
+    $(".ul-mn-cls-chkbx li").click(function () {
+        var checkbx = $(this).find("input");
+        if(checkbx.is(':checked')) {
+            checkbx.prop('checked', false);
+        } else {
+            checkbx.prop('checked', true);
+        }
+    });
+    $(".chkbx-cmn-cls-li").click(function () {
+        var checkbx = $(this).find("input");
+        if(checkbx.is(':checked')) {
+            checkbx.prop('checked', false);
+        } else {
+            checkbx.prop('checked', true);
+        }
+    });
 });
 
 function updatewidget(){

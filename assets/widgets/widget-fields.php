@@ -567,6 +567,7 @@ else
 		if($auto_boost_post) {
 			$manual_boost_post = 0;
 		}
+	$get_primary_arr=explode(',',$primary_cat);
 	
 	    ?>
 		<table class="form-table" >
@@ -600,7 +601,7 @@ else
 					<!--<input type="hidden" name="web_enable" id="web_enable" value="<?php //echo $web_content_settings;?>"/>
 					<a href="javascript:void(0);" style="<?php echo $web_color_auto;?>" id="website_content_auto"><strong>Automatic Settings</strong></a> | <a href="javascript:void(0);" style="<?php echo $web_color_manual;?>" id="website_content_manual"><strong>Manual Settings</strong></a> -->
 					<div style="width:400px;float: left;display: inline">
-					<table class="form-table global-allow blocked-url">
+					<table class="form-table global-allow blocked-url" style="background-color: unset !important;">
 
 					<tr>
 						<td>
@@ -611,7 +612,34 @@ else
 					</tr>
 					<tr>
 						<td>
-							<div style="float: left;margin-left: 20px;" class="global_blocked_categories_textarea-parent">
+							<div class="acc-mn-dv-cntainr">
+								<div class="acc-sec-dv-mn-cntnr">
+									<?php foreach($get_primary_arr as $key=>$value) {
+
+										?>
+										<div class="cmn-cls-cntnr">
+										<div class="mn-txt-cmn-dv "><span><?php echo $value;?></span></div>
+										<div class="sb-ctgry-cmn-cls">
+											<ul class="ul-mn-cls-chkbx">
+												<li>Demography level <span class="chkbx-cmn-cls-li"><input  type="checkbox"></span>
+												</li>
+												<li>Field of study<span class="chkbx-cmn-cls-li"><input  type="checkbox"></span>
+												</li>
+												<li>Schools university <span class="chkbx-cmn-cls-li"><input  type="checkbox"></span></li>
+												<li>Schools university <span class="chkbx-cmn-cls-li"><input  type="checkbox"></span></li>
+												<li>Schools university<span class="chkbx-cmn-cls-li"><input  type="checkbox"></span></li>
+												<li>Schools university<span class="chkbx-cmn-cls-li"><input  type="checkbox"></span></li>
+												<li>Schools university<span class="chkbx-cmn-cls-li"><input  type="checkbox"></span></li>
+											</ul>
+										</div>
+									</div>
+
+								<?php	}?>
+
+								</div>
+							</div>
+
+							<div style="float: left;margin-left: 20px; " class="global_blocked_categories_textarea-parent">
 								<!--<select name="global_blocked_url_textarea[]"  class="global_blocked_url_textarea" multiple="true"  ></select>-->
 
 
@@ -668,7 +696,7 @@ else
 		</table>
 					</div>
 					<div style="width:400px;float: left;margin-left: 50px;">
-					<table class="form-table global-allow blocked-url">
+					<table class="form-table global-allow blocked-url" style="display: none;">
 						<tr>
 							<td>
 
