@@ -7,6 +7,7 @@ $output = spnxHelper::doCurl( $url );
 $response	=	json_decode($output,true);
 $widget_auto_id	=	$response['widgetid'];
 $categories	=	$response['category'];
+
 $urls =	$response['urls'];
 $site_name = $response['site_name'];
 $is_mobile_widget = 0;

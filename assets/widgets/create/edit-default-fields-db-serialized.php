@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		echo $result;
 		exit;
 	}
+
 	$widget_name				=	$result['widget']['widget_name'];
 	$unserialized_widget_data	= 	maybe_unserialize( $result['widget']['wd_settings']);
     $categories					=	$result['category'];
@@ -20,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	$no_of_row = 1;
 	$image_width = 100;
 	$image_height = 100;
-    $primary_cat=$result['pri_cat'];
+
 	
 	if( $result['widget']['is_mobile_widget'] == 0 ) {
 		$site_name = $result['site_name'];
@@ -67,7 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		$mysite_post_percentage = (isset($unserialized_widget_data['local_post_percentage'])) ? $unserialized_widget_data['local_post_percentage'] : 0;
 		$sponsored_post_percentage = (isset($unserialized_widget_data['ad_post_percentage'])) ? $unserialized_widget_data['ad_post_percentage'] : 0;
 		$global_blocked_url_textarea = (isset($unserialized_widget_data['global_blocked_url_textarea']) && ( $unserialized_widget_data['global_blocked_url_textarea'] == 'on' || $unserialized_widget_data['global_blocked_url_textarea'] == 1))?$unserialized_widget_data['global_blocked_url_textarea']:0;
-		$global_blocked_categories_textarea = $unserialized_widget_data['global_blocked_categories_textarea'];
+		$global_blocked_categories_textarea = $result['global_blocked_categories_textarea'];
 		$camp_site_widget = (isset($unserialized_widget_data['campaign_widget'])) ? $unserialized_widget_data['campaign_widget'] : '';
 		$web_content_settings = (isset($unserialized_widget_data['web_content_settings'])) ? $unserialized_widget_data['web_content_settings'] : 0;
 		$global_distribution_settings = (isset($unserialized_widget_data['global_content_settings'])) ? $unserialized_widget_data['global_content_settings'] : 0;
@@ -183,7 +184,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		$sponsored_post_percentage = (isset($unserialized_widget_data['ad_post_percentage'])) ? $unserialized_widget_data['ad_post_percentage'] : 0;
 		$global_blocked_url_textarea = (isset($unserialized_widget_data['global_blocked_url_textarea'])) ? $unserialized_widget_data['global_blocked_url_textarea'] : "";
 		$global_blocked_keywords_textarea = (isset($unserialized_widget_data['global_blocked_keywords_textarea'])) ? $unserialized_widget_data['global_blocked_keywords_textarea'] : "";
-		$global_blocked_categories_textarea = (isset($unserialized_widget_data['global_blocked_categories_textarea'])) ? $unserialized_widget_data['global_blocked_categories_textarea'] : "";
+		$global_blocked_categories_textarea = (isset($result['global_blocked_categories_textarea'])) ? $result['global_blocked_categories_textarea'] : "";
 		$camp_site_widget = (isset($unserialized_widget_data['campaign_widget'])) ? $unserialized_widget_data['campaign_widget'] : '';
 		$web_content_settings = (isset($unserialized_widget_data['web_content_settings'])) ? $unserialized_widget_data['web_content_settings'] : 0;
 		$global_distribution_settings = (isset($unserialized_widget_data['global_content_settings'])) ? $unserialized_widget_data['global_content_settings'] : 0;

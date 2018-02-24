@@ -26,6 +26,7 @@ wp_add_inline_style( 'css-select2', $custom_css );
 $js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
 //wp_enqueue_script( 'jquery-multiselect', $js_url . 'jquery.multiselect.js' );
 $tabtype = spnxHelper::getFilterVar( 'tabtype', INPUT_GET, FILTER_VALIDATE_INT);
+
 if( $is_mobile_widget == 0 ) {
 ?>
 <div class="brand-design-content" <?php echo ( $tabtype && $tabtype == 2 )?'style="display:none;"':''?>>
@@ -567,7 +568,7 @@ else
 		if($auto_boost_post) {
 			$manual_boost_post = 0;
 		}
-	$get_primary_arr=explode(',',$primary_cat);
+
 	
 	    ?>
 		<table class="form-table" >
@@ -614,50 +615,53 @@ else
 						<td>
 							<div class="acc-mn-dv-cntainr">
 								<div class="acc-sec-dv-mn-cntnr">
-									<?php foreach($get_primary_arr as $key=>$value) {
-
-										?>
+									<?php
+                                    $global_blocked_categories_textarea2 = explode(',', $global_blocked_categories_textarea);
+                                    error_log($global_blocked_categories_textarea);
+                                    foreach($categories as $key=>$category) { ?>
 										<div class="cmn-cls-cntnr">
-										<div class="mn-txt-cmn-dv "><span><?php echo $value;?></span></div>
-										<div class="sb-ctgry-cmn-cls">
-											<ul class="ul-mn-cls-chkbx">
-												<li>Demography level <span class="chkbx-cmn-cls-li"><input  type="checkbox"></span>
-												</li>
-												<li>Field of study<span class="chkbx-cmn-cls-li"><input  type="checkbox"></span>
-												</li>
-												<li>Schools university <span class="chkbx-cmn-cls-li"><input  type="checkbox"></span></li>
-												<li>Schools university <span class="chkbx-cmn-cls-li"><input  type="checkbox"></span></li>
-												<li>Schools university<span class="chkbx-cmn-cls-li"><input  type="checkbox"></span></li>
-												<li>Schools university<span class="chkbx-cmn-cls-li"><input  type="checkbox"></span></li>
-												<li>Schools university<span class="chkbx-cmn-cls-li"><input  type="checkbox"></span></li>
-											</ul>
-										</div>
+										<div class="mn-txt-cmn-dv "><span><?php echo $category[0];?></span></div>
+
+                                            <div class="sb-ctgry-cmn-cls">
+                                                <ul class="ul-mn-cls-chkbx">
+                                                    <?php foreach ($category[1] as $skey => $svalue) {
+                                                        $checked = '';
+                                                        if(in_array($skey, $global_blocked_categories_textarea2)) {
+                                                            $checked = 'checked';
+                                                        }
+                                                        ?>
+                                                        <li><?php echo $svalue?> <span class="chkbx-cmn-cls-li"><input  type="checkbox" name="global_blocked_categories_textarea[]" value="<?php echo $skey?>" <?php echo $checked?>></span>
+                                                        </li>
+                                                    <?php } ?>
+                                                </ul>
+                                            </div>
+
 									</div>
 
-								<?php	}?>
+								<?php } ?>
 
 								</div>
 							</div>
 
-							<div style="float: left;margin-left: 20px; " class="global_blocked_categories_textarea-parent">
-								<!--<select name="global_blocked_url_textarea[]"  class="global_blocked_url_textarea" multiple="true"  ></select>-->
+							<!--<div style="float: left;margin-left: 20px; " class="global_blocked_categories_textarea-parent">
+								<!--<select name="global_blocked_url_textarea[]"  class="global_blocked_url_textarea" multiple="true"  ></select>->
 
 
 									<select name="global_blocked_categories_textarea[]" id="global_blocked_categories_textarea" class="global_blocked_categories_textarea" multiple  >
 
 										<?php
-											$global_blocked_categories_textarea2 = explode(',', $global_blocked_categories_textarea);
-											foreach($categories as $key=>$value) {
+
+											/*foreach($categories as $key=>$value) {
 												if(in_array($key, $global_blocked_categories_textarea2)) {
 													echo '<option value="' . $key . '" selected="selected" >' . $value . '</option>';
 												} else {
 													echo '<option value="' . $key . '">' . $value . '</option>';
 												}
-											}
+											}*/
 										?>
 									</select>
 
-							</div>
+							</div> -->
 						</td>
 
 						<td>

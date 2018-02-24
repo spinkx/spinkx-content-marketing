@@ -156,7 +156,7 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 		<tr>
 			<td style="padding: 0px;text-align: right;">
 			<span class="duration-text-first-span-span-crnt">Wallet Balance: <i class="fa <?php echo $currencyClass?>"></i><?php  printf('%.2f', $output['user_bal'])?></span>
-				<button class="buy-more-point" id="add_money_wallet"  onclick="jQuery('#campaignmodaladdMoney').modal({
+				<button class=" buy-more-point" id="add_money_wallet"  onclick="jQuery('#campaignmodaladdMoney').modal({
     backdrop: 'static',
     keyboard: false,
     show: true

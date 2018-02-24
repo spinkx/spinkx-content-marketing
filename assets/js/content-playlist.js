@@ -598,6 +598,7 @@ function changePostStatus(the_element) {
     var site_id = null;
     var post_id = null;
     var post_type= null;
+    var post_enbp = null;
     if (typeof the_element === 'string' || the_element instanceof String) {
         post_id = the_element;
         status = jQuery("#playpauseswitch_"+the_element+"_all").prop("checked");
@@ -615,6 +616,9 @@ function changePostStatus(the_element) {
          site_id = temp[1];
          post_id = temp[2];
          post_type = temp[0];
+         if(temp[3] !== undefined) {
+             post_enbp = temp[3];
+         }
     }
     var enabled = status ? 1 : 0;
     jQuery('#bpopup_ajax_loading').bPopup({modalClose: false});
@@ -625,7 +629,8 @@ function changePostStatus(the_element) {
             'post_id': post_id,
             'site_id': site_id,
             'post_type': post_type,
-            'status': enabled
+            'status': enabled,
+            'post_enbp': post_enbp
         },
         type: 'post',
         datatype: 'json',
