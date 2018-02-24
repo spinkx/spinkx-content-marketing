@@ -55,10 +55,23 @@ jQuery(document).ready(function($) {
     $(".mn-txt-cmn-dv").click(function() {
         if(!$(this).hasClass('active')) {
             $('.cmn-cls-cntnr .mn-txt-cmn-dv').removeClass('active');
-            $('.sb-ctgry-cmn-cls').hide();
+            $('.sb-ctgry-cmn-cls').hide(300);
         }
         $(this).next('.sb-ctgry-cmn-cls').toggle();
         $(this).toggleClass("active");
+        var height=$(".acc-mn-dv-cntainr").height();
+
+
+        var test=$(this).hasClass("active");
+        if(!(test)) {
+            $(".acc-mn-dv-cntainr").css("height",198+"px");
+        }
+        else {
+            $(".acc-mn-dv-cntainr").css({'height':400+'px','overflow-y':'scroll'})
+
+        }
+
+
 
     });
     $(".ul-mn-cls-chkbx li").click(function () {
@@ -77,6 +90,7 @@ jQuery(document).ready(function($) {
             checkbx.prop('checked', true);
         }
     });
+
 });
 
 function updatewidget(){

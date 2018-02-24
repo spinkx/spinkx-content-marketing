@@ -1991,7 +1991,7 @@ vertical-align: sub;
     position: unset !important;
 }
 .dashb-buy-points button {
-    font-size:10px;
+    font-size:9px;
     font-weight:700;
     background: #337ab7;
     color: #fbfbfb;
@@ -1999,6 +1999,8 @@ vertical-align: sub;
     padding: 4px 10px 6px 10px;
     outline: none;
     cursor: pointer;
+    width: 105px;
+
 }
 .buy-now-shrt-code button {
     padding: 3px 9px;
@@ -2084,6 +2086,20 @@ vertical-align: sub;
 .select-drtn-cls .ms-options-wrap > .ms-options > ul li.selected label, .ms-options-wrap > .ms-options > ul label:hover {
     background-color: unset !important;
 }
+.cmpgn-ad-mny-pts {
+    font-size: 12px;
+    margin-top: 7px;
+
+}
+.cmpgn-model-txt-dv {
+font-size: 12px;
+    margin-top: 26px;
+}
+.cmpgn-dv-entr-amnt {
+    margin-bottom: 19px;
+    font-weight: 600;
+    font-size:12px;
+}
 
 /**new widget category css **/
 .acc-mn-dv-cntainr {
@@ -2166,6 +2182,4 @@ vertical-align: sub;
     margin: unset !important;
 
 }
-.chkbx-cmn-cls-li input:before {
-
-}
+/**new widget category ends css **/

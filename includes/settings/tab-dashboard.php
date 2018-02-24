@@ -223,9 +223,12 @@ if($data) {
 	<script type="text/javascript">
         google.charts.load('current', {'packages': ['corechart']});
         var spinkx_data = <?php echo json_encode($data); ?>;
-        window.onload =  function() {
-            <?php echo $data['buy_now']?>;
-        }
+      <?php   if(isset($data['buy_now'])) { ?>
+			window.onload =  function() {
+				<?php echo $data['buy_now']?>;
+			}
+	<?php	}  ?>
+
 	</script>
 	<?php
 } else {

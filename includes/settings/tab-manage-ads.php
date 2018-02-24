@@ -125,6 +125,7 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 		$languages = $output['languages'];
 	}
 	if(isset($output['currencyClass'])) {
+
 		$currencyClass = $output['currencyClass'];
 	}
 	if(isset($output['cpm'])) {
@@ -199,7 +200,7 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label for="point_amount">Enter Amount</label>
+						<div class="cmpgn-dv-entr-amnt" for="point_amount">Enter Amount</div>
 						<input	type="text" class="form-control" id="wallet_amount" style="display: inline;width:40%;" value="100"/>
 					</div>
 					<?php
