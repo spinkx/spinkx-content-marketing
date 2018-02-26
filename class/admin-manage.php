@@ -643,7 +643,7 @@ final class spnxAdminManage {
 		$post['mode'] = 'update';
 
 		$url = esc_url( $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/widget/update' );
-		$response = spnxHelper::doCurl( $url, $post, false );
+		$response = spnxHelper::doCurl( $url, $post);
 		echo json_decode($response);
 		wp_die();
 	}

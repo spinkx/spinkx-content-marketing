@@ -617,7 +617,6 @@ else
 								<div class="acc-sec-dv-mn-cntnr">
 									<?php
                                     $global_blocked_categories_textarea2 = explode(',', $global_blocked_categories_textarea);
-                                    error_log($global_blocked_categories_textarea);
                                     foreach($categories as $key=>$category) { ?>
 										<div class="cmn-cls-cntnr">
 										<div class="mn-txt-cmn-dv "><span><?php echo $category[0];?></span></div>
