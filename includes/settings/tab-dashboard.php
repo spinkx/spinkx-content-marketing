@@ -223,11 +223,12 @@ if($data) {
 	<script type="text/javascript">
         google.charts.load('current', {'packages': ['corechart']});
         var spinkx_data = <?php echo json_encode($data); ?>;
-      <?php   if(isset($data['buy_now'])) { ?>
-			window.onload =  function() {
-				<?php echo $data['buy_now']?>;
-			}
-	<?php	}  ?>
+        <?php if(isset($data['buy_now'])) { ?>
+        jQuery(document).ready(function(){
+        function pluginPaymentSuccessHandler(transaction){transaction.amount =pnoptions.amount; pluginPayment(transaction);}
+        <?php echo $data['buy_now']?>;
+        });
+        <?php } ?>
 
 	</script>
 	<?php

@@ -312,29 +312,23 @@ jQuery(window).on("resize", function (event) {
     drawChart();
 });
 
-function pluginPaymentSuccessHandler(transaction) {
-    var http = new XMLHttpRequest();
-    var url = 'http://localhost/spinkx-backend/wp-json/spnx/v1/payment-method/charge';
-    var params = 'razorpay_payment_id='+transaction.razorpay_payment_id+'&amount=' + displayAmount;
-    http.open('POST', url, true);
-
-    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-    http.onreadystatechange = function() {//Call a function when the state changes.
-        if (http.readyState === 4 && http.status === 200) {
+function pluginPayment(transaction) {
+     var http = new XMLHttpRequest();
+     var url = spinkx_server_baseurl + '/wp-json/spnx/v1/payment-method/charge';
+     var params = 'razorpay_payment_id='+transaction.razorpay_payment_id+'&amount=' + transaction.amount;
+     http.open('POST', url, true);
+     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+     http.onreadystatechange = function() {//Call a function when the state changes.
+         if (http.readyState === 4 && http.status === 200) {
             data = JSON.parse(http.responseText);
             if (data.status == 0){
                 alert('Error:' + data.msg);
             } else {
-                alert(data.msg);
-
+                 alert(data.msg);
             }
-
             window.location.reload()
-
-        }
-
-    }
-    http.send(params);
+         }
+     }
+     http.send(params);
 }
 

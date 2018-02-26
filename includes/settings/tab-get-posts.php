@@ -68,7 +68,7 @@ wp_add_inline_script( 'jquery-powertip', $custom_js );///
 		</tr>
 		<tr style="background-color: #e4eff4 !important;height: 27px;font-size: 12px; color:#a93671;">
 			<th style="padding: 0px;border:none;width:475px;">&nbsp;&nbsp;&nbsp;Post Details</th>
-			<th style="padding: 0 0 0 12px;border:none;width:252px;">&nbsp;&nbsp;&nbsp;Your Post Stats <div class="onoff_header" >
+			<th style=" padding: 0 0 0 12px;border:none;width:252px;">&nbsp;&nbsp;&nbsp;Your Post Stats <div class="onoff_header" >
 					<div class="onoffswitch">
 						<input type="checkbox" data-id="all_local" data-site="<?php echo $settings['site_id']?>" name="playpauseswitch_local_all" class="onoffswitch-checkbox" id="playpauseswitch_local_all"  checked >
 						<label class="onoffswitch-label" for="playpauseswitch_local_all">
@@ -81,7 +81,7 @@ wp_add_inline_script( 'jquery-powertip', $custom_js );///
 				</div></th>
 			<th style="padding: 0 0 0 12px;border:none;width:252px;">&nbsp;&nbsp;&nbsp;Boost Post Stats <div class="onoff_header" >
 					<div class="onoffswitch"  >
-						<input type="checkbox" data-id="all_global" data-site="<?php echo $settings['site_id']?>" name="playpauseswitch_global_all" class="onoffswitch-checkbox" id="playpauseswitch_global_all"  <?php echo ($auto_boost['auto_boost'] == 1)?'checked':''?> >
+						<input type="checkbox" data-id="all_global" data-site="<?php echo $settings['site_id']?>" name="playpauseswitch_global_all" class="onoffswitch-checkbox" id="playpauseswitch_global_all"  checked >
 						<label class="onoffswitch-label" for="playpauseswitch_global_all">
 							<span class="onoffswitch-inner"></span>
 							<span class="onoffswitch-switch"></span>

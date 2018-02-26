@@ -698,7 +698,7 @@ String.prototype.capitalize = function() {
 }
 
 function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_campaign_id ) {
-    //alert("bababiu");
+   jQuery('.se-pre-con').bPopup({modalClose: false});
     jQuery(buttonObj).parents('tr').hide();
     var formData = new FormData();
     formData.append('action', 'spinkx_cont_campaign_get_data');
@@ -714,16 +714,19 @@ function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_c
         contentType: false,
         processData: false,
         beforeSend: function(){
-            jQuery('#bpopup_ajax_loading').bPopup({modalClose: false});
+            //jQuery('#bpopup_ajax_loading').bPopup({modalClose: false});
         },
         success: function (data) {
+          jQuery('.se-pre-con').bPopup().close();
             data = JSON.parse(data);
             jQuery('#bpopup_ajax_loading').bPopup().close();
             if( undefined === campaign_type) {
                 createAd(buttonObj, campaign_id, data)
             } else if( 'video' === campaign_type) {
+
                 createVideoVariation(buttonObj, parent_campaign_id, campaign_id, data)
             } else  {
+                jQuery(buttonObj).parents('tr').hide();
                 createVariation(buttonObj, parent_campaign_id, campaign_id, data)
             }
 
