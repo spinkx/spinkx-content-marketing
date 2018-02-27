@@ -1392,7 +1392,7 @@ final class spnxAdminManage {
 	}
 
 	public function spinkx_cont_wpmu_add_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
-		$this->spinkx_cont_site_registration( $blog_id );
+		spinkx_cont_site_registration( $blog_id, 'add_new_blog' );
 	}
 
 	public function spinkx_cont_content_add( $content ) {

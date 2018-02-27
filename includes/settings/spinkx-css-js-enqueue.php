@@ -61,9 +61,7 @@ function spinkx_cont_js_var() {
 	$spnxAdminManage = new spnxAdminManage;
 	$settings = get_option( $spnxAdminManage->spinkx_cont_get_license() );
 	$settings = maybe_unserialize( $settings );
-	if( ! isset($settings['site_id']) ) {
-		return;
-	}
+    $settings['site_id'] = isset( $settings['site_id'] )? $settings['site_id']:0;
 	$custom_js = '<script>var SPINKX_CONTENT_PLUGIN_DIR = "' . SPINKX_CONTENT_PLUGIN_DIR . '";
 	var spinkx_server_baseurl = "' . $spnxAdminManage->spinkx_cont_bapi_url() . '";
 	var SPINKX_CONTENT_PLUGIN_URL = "' . SPINKX_CONTENT_PLUGIN_URL . '";
@@ -99,6 +97,7 @@ function spinkx_cont_js_var() {
 		spinkx_cont_common_css_js( $page );
 		spinkx_cont_acc_set_css_js();
 	}
+
 }
 
 /**
@@ -401,7 +400,8 @@ function spinkx_header_menu() {
 	$spnxAdminManage = new spnxAdminManage;
 	$settings = get_option( $spnxAdminManage->spinkx_cont_get_license() );
 	$settings = maybe_unserialize( $settings );
-	$site_id = $settings['site_id'];
+	$site_id = isset($settings['site_id'])?$settings['site_id']:0;
+    $settings['due_date'] = isset($settings['due_date'])?$settings['due_date']:'0000-00-00 00:00:00';
 	?><div><div class="spnx-menu-logo"><span><a href="https://www.spinkx.com"><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/spinkx-logo.png" /></a></span></div>
 	<ul class="nav nav-tabs">
 		<?php if( ! ($settings['due_date'] != '0000-00-00 00:00:00' ) ) { ?>

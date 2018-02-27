@@ -14,6 +14,12 @@ $settings = get_option( $spnxAdminManage->spinkx_cont_get_license() );
 $settings = maybe_unserialize( $settings );
 $registration_complete = true;
 $spnxAdminManage = new spnxAdminManage(false);
+$settings['site_id'] = isset($settings['site_id'])?$settings['site_id']:0;
+$site_id = $settings['site_id'];
+$settings['license_code'] = isset($settings['license_code'])?$settings['license_code']:'';
+$settings['reg_email'] = isset($settings['reg_email'])?$settings['reg_email']:'';
+$settings['due_date'] = isset($settings['due_date'])?$settings['due_date']:'0000-00-00 00:00:00';
+
 if( $settings['due_date'] != '0000-00-00 00:00:00' ) {
 	if (!(isset($settings['after_registration_sync']) && $settings['after_registration_sync'])) {
 		$settings['site_url'] = $spnxAdminManage->spinkx_cont_get_site_url();
@@ -24,7 +30,6 @@ if( $settings['due_date'] != '0000-00-00 00:00:00' ) {
 } else {
 	//$registration_complete = false;
 }
-$site_id = $settings['site_id'];
 $spnxAdminManage = new spnxAdminManage();
 $custom_date = $spnxAdminManage->spinkx_cont_last_30_days();
 $from_date = date('Y-m-d', $custom_date[0]);
@@ -62,7 +67,7 @@ $custom_js .= '
 		$(document).ready(function(){			
 			jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: '.$todaydate.'}); });';
 
-	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
+$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
 wp_enqueue_script( 'jquery-countdown-js', $js_url . 'jquery.countdown.min.js' );
 wp_add_inline_script( 'jquery-countdown-js', $custom_js );
 if( $registration_complete ) {
@@ -83,6 +88,7 @@ if( $registration_complete ) {
 					$result = json_decode($wp_output['body']);
 				}
 				if ('License Invalid' !== $result) {
+                    if( $settings['due_date'] != '0000-00-00 00:00:00' ) {
 					?>
 
 						<div class="add_widget_button">+ Add New Widget</div>
@@ -91,7 +97,8 @@ if( $registration_complete ) {
 					<div id="add_new_widget" style="display:none;margin-top: 26px;">
 						<?php require esc_url(SPINKX_CONTENT_PLUGIN_DIR) . 'assets/widgets/create/new-widget.php'; ?>
 					</div>
-					<?php echo $result . '<div style="text-align:center" id="install_guide">
+                    <?php } ?>
+					<?php echo $result  . '<div style="text-align:center" id="install_guide">
 			<a href="http://www.spinkx.com/how-to-install-guide/" style="text-decoration: none;color: #4bacc6;font-weight: 800;font-size: 18px; cursor: pointer;" target="_blank">How to Install Guide</a>
 		</div>';
 				} else {

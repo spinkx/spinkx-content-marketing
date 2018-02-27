@@ -26,9 +26,16 @@ if ($to_date) {
 	$to_date = date('Y-m-d', $custom_date[1]);
 	$enddate = $custom_date[1] * 1000;
 }
+
+$settings['site_id'] = isset($settings['site_id'])?$settings['site_id']:0;
 $site_id = $settings['site_id'];
+$settings['license_code'] = isset($settings['license_code'])?$settings['license_code']:'';
+$settings['reg_email'] = isset($settings['reg_email'])?$settings['reg_email']:'';
+$settings['due_date'] = isset($settings['due_date'])?$settings['due_date']:'0000-00-00 00:00:00';
 $sortby = spnxHelper::getFilterVar('sortby');
 $ptype = spnxHelper::getFilterVar('post_type');
+$p = 0;
+
 if($settings['due_date']=='0000-00-00 00:00:00') {
 	echo 'You are not a registered user. You can create a boost post after registration. Click Here to <a href="admin.php?page=spinkx-site-register">Register</a>';
 } else {
@@ -39,25 +46,27 @@ if($settings['due_date']=='0000-00-00 00:00:00') {
 	$p = ['site_id' => $settings['site_id'], 'license_code' => $settings['license_code'], 'reg_email' => $settings['reg_email'], 'sortby2' => $sortby, 'post_type2' => $ptype, 'from_date' => $from_date, 'to_date' => $to_date, 'plg_url' => esc_url(SPINKX_CONTENT_PLUGIN_URL)];
 	$p = wp_json_encode($p);
 	$url = esc_url($spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/content-playlist');
-	$bwki_sites_display_length = spnxHelper::getFilterVar('bwki_sites_display_length');
-
-	$pageLength = ($bwki_sites_display_length) ? $bwki_sites_display_length : 10;
-
-	$custom_js = 'var pt = ' . $p . '; var pageLength = ' . $pageLength . '; ';
 }
+$bwki_sites_display_length = spnxHelper::getFilterVar('bwki_sites_display_length');
+$pageLength = ($bwki_sites_display_length) ? $bwki_sites_display_length : 10;
+$custom_js = 'var pt = ' . $p . '; var pageLength = ' . $pageLength . '; ';
 $custom_js .= 'var start = moment(' . ($startdate) . ');';
 $custom_js .= 'var end = moment(' . ($enddate) . '); jQuery(function() {';
 $loader = '<img src="' . esc_url(SPINKX_CONTENT_PLUGIN_URL) . 'assets/images/loader.gif" alt="loading"/>';
-
 $custom_js .= 'jQuery(".se-pre-con").fadeOut("slow");';
+if($settings['due_date']!='0000-00-00 00:00:00') {
 $custom_js .= 'jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: ' . $todaydate . '});
 	var $ = jQuery.noConflict();	
 	loadDT(start.format(\'YYYY-MM-DD\'), end.format(\'YYYY-MM-DD\'));	
 	});';
+} else {
+    $custom_js .= '});';
+}
 wp_enqueue_script( 'jquery-youtubeapi', 'https://www.youtube.com/iframe_api' );
 $js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
 wp_enqueue_script( 'jquery-powertip', $js_url . 'jquery.powertip.min.js' );
 wp_add_inline_script( 'jquery-powertip', $custom_js );///
+if($settings['due_date']!='0000-00-00 00:00:00') {
 ?>
 
 <div class="content_playlist_listing">
@@ -223,3 +232,4 @@ wp_add_inline_script( 'jquery-powertip', $custom_js );///
 		});
 	});
 </script>
+<?php } ?>

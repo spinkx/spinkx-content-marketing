@@ -7,7 +7,7 @@ $settings = maybe_unserialize($settings);
 $facebookId="1384299568348126";
 $googleId="424461841098-nb5d1um7foch3e041k7sp7157m1ed6of.apps.googleusercontent.com";
 if (  isset($settings) && $settings ) {
-	$site_id = $settings['site_id'];
+	$site_id = isset($settings['site_id'])?$settings['site_id']:0;
 	$registeredemail = spnxHelper::getFilterVar( 'registeredemail' );
 	if ( $registeredemail ) {
 		$settings['reg_user_email'] = $registeredemail;
