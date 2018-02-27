@@ -405,7 +405,7 @@ function spinkx_header_menu() {
 	?><div><div class="spnx-menu-logo"><span><a href="https://www.spinkx.com"><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/spinkx-logo.png" /></a></span></div>
 	<ul class="nav nav-tabs">
 		<?php if( ! ($settings['due_date'] != '0000-00-00 00:00:00' ) ) { ?>
-		<li <?php echo ('spinkx-site-register.php' === $page)?'class="active"':''?>><a href="?page=spinkx-site-register.php">Registration</a></li>
+		<li <?php echo ('spinkx-site-register' === $page)?'class="active"':''?>><a href="?page=spinkx-site-register">Registration</a></li>
 		<?php } else { ?>
             <li <?php echo ('spinkx_analytics' === $page)?'class="active"':''?>><a href="?page=spinkx_analytics">Analytics</a></li>
         <?php } ?>

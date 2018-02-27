@@ -90,14 +90,16 @@ if($data) {
 					<div class="label-pints-mny-cmn-cls">
 						Valid for
 					</div>
-					<div class="points-cmn-cls-spnx">
-						<?php echo $data['days']?>
-					</div>
-                    <?php  if ( intval( $data['days'] ) < 0 ) { ?>
-					    <div style="font-size: 10px;" class="purchase-plugin dashb-buy-points"><button id="payment-method-buttonpn" class="btn-primary pbuy-now" style="    color: #fff;
+					<?php if($data['days'] !== '0000-00-00') {?>
+						<div class="points-cmn-cls-spnx">
+							<?php echo $data['days']?>
+						</div>
+						<?php  if ( intval( $data['days'] ) < 0 ) { ?>
+							<div style="font-size: 10px;" class="purchase-plugin dashb-buy-points"><button id="payment-method-buttonpn" class="btn-primary pbuy-now" style="    color: #fff;
     background-color: #0170B9;">Buy Now</button></div>
-                    <?php  } ?>
-                </div>
+						<?php  } ?>
+					<?php } else { ?><div class="points-cmn-cls-spnx" style="font-size:13px;"><?php echo "Not Registered";?></div> <?php } ?>
+				</div>
 
 
 			</div>

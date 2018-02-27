@@ -2104,7 +2104,7 @@ vertical-align: sub;
 /**new widget category css **/
 .acc-mn-dv-cntainr {
     border:1px solid #f7f7f7;
-    width:400px;
+    width:450px;
     margin:0 auto;
     background-color: white;
 }
@@ -2118,7 +2118,7 @@ vertical-align: sub;
     top:10px;
     width: 0;
 }
-.active:before{
+.activewidget:before{
     border: 5px solid transparent;
     border-top-color: #adb0b3;
     content: '';
@@ -2168,12 +2168,12 @@ vertical-align: sub;
     display:none;
 }
 .chkbx-cmn-cls-li {
-    float: right;
+    float:unset !important;
     padding:unset !important;
     background:unset !important;
     color:unset !important;
     border-radius: unset !important;
-    margin-right: unset !important;
+    margin-right: 15px !important;
     width: unset !important;
     height:  unset !important;
 }
