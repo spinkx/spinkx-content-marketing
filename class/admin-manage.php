@@ -60,12 +60,10 @@ final class spnxAdminManage {
 			$this->_spinkx_cont_license = 'spinkx_content_license_update';
 		}
 		if(!$this->_spinkx_server_bapi_url) {
-            $this->_spinkx_server_bapi_url = 'http://localhost/spinkx-backend';
-           // $this->_spinkx_server_bapi_url = 'https://backend.spinkx.com';
+            $this->_spinkx_server_bapi_url = 'https://backend.spinkx.com';
         }
 		if(!$this->_spinkx_server_api_url) {
-            $this->_spinkx_server_api_url = 'http://localhost/spinkx-frontend';
-           // $this->_spinkx_server_api_url = 'https://frontend.spinkx.com';
+            $this->_spinkx_server_api_url = 'https://frontend.spinkx.com';
 		}
 		if(!$this->_spinkx_cont_dir) {
 			$this->_spinkx_cont_dir =  plugin_dir_path( __FILE__ );
