@@ -60,11 +60,11 @@ final class spnxAdminManage {
 			$this->_spinkx_cont_license = 'spinkx_content_license_update';
 		}
 		if(!$this->_spinkx_server_bapi_url) {
-            $this->_spinkx_server_bapi_url = 'http://bwdev.local/spinkx-backend';
+            $this->_spinkx_server_bapi_url = 'http://localhost/spinkx-backend';
            // $this->_spinkx_server_bapi_url = 'https://backend.spinkx.com';
         }
 		if(!$this->_spinkx_server_api_url) {
-            $this->_spinkx_server_api_url = 'http://bwdev.local/spinkx-frontend';
+            $this->_spinkx_server_api_url = 'http://localhost/spinkx-frontend';
            // $this->_spinkx_server_api_url = 'https://frontend.spinkx.com';
 		}
 		if(!$this->_spinkx_cont_dir) {
@@ -641,10 +641,9 @@ final class spnxAdminManage {
 		$post['form_serialized_data'] = $this->get_default_form_serialized_data($post['widget_name']);
 		unset($post['widget_name']);
 		$post['mode'] = 'update';
-
-		$url = esc_url( $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/widget/update' );
-		$response = spnxHelper::doCurl( $url, $post);
-		echo json_decode($response);
+        $url = esc_url( $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/widget/update' );
+		$response = spnxHelper::doCurl( $url, $post );
+        echo json_decode($response);
 		wp_die();
 	}
 
