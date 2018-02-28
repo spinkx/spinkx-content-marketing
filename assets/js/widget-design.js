@@ -94,7 +94,7 @@ jQuery(document).ready(function($) {
 });
 
 function updatewidget(){
-    jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+   // jQuery('.se-pre-con').bPopup( { modalClose: false } );
     $.ajax({
         url : ajaxurl,
         type : "get",
@@ -107,7 +107,7 @@ function updatewidget(){
         },
         success : function(data){
             var data = JSON.parse(data);
-            jQuery('#bpopup_ajax_loading').bPopup().close();
+            jQuery('.se-pre-con').bPopup().close();
             $.each(data,function(key,stat){
                 cell_imp = table.cell("#w_"+key, 4);
                 if( cell_imp[0].length > 0 ) {
