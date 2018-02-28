@@ -53,16 +53,16 @@ jQuery(document).ready(function($) {
         });
     });
     $(".mn-txt-cmn-dv").click(function() {
-        if(!$(this).hasClass('active')) {
-            $('.cmn-cls-cntnr .mn-txt-cmn-dv').removeClass('active');
+        if(!$(this).hasClass('activewidget')) {
+            $('.cmn-cls-cntnr .mn-txt-cmn-dv').removeClass('activewidget');
             $('.sb-ctgry-cmn-cls').hide(300);
         }
         $(this).next('.sb-ctgry-cmn-cls').toggle();
-        $(this).toggleClass("active");
+        $(this).toggleClass("activewidget");
         var height=$(".acc-mn-dv-cntainr").height();
 
 
-        var test=$(this).hasClass("active");
+        var test=$(this).hasClass("activewidget");
         if(!(test)) {
             $(".acc-mn-dv-cntainr").css("height",198+"px");
         }

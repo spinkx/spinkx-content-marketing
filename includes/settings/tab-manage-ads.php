@@ -24,13 +24,14 @@
 		$to_date = date('Y-m-d', $custom_date[1]);
 		$enddate = $custom_date[1] * 1000;
 	}
-
+    $settings['site_id'] = isset($settings['site_id'])?$settings['site_id']:0;
 	$site_id = $settings['site_id'];
+	$settings['license_code'] = isset($settings['license_code'])?$settings['license_code']:'';
+	$settings['reg_email'] = isset($settings['reg_email'])?$settings['reg_email']:'';
+    $settings['due_date'] = isset($settings['due_date'])?$settings['due_date']:'0000-00-00 00:00:00';
 	$sortby = spnxHelper::getFilterVar( 'sortby' );
 	$ptype = spnxHelper::getFilterVar( 'post_type' );
 
-	//$p = [ 'site_id' => $settings['site_id'],'license_code' => md5( $settings['license_code'] ),'sortby' => $sortby,'post_type' => $ptype, 'from_date' => $from_date, 'to_date' => $to_date ];
-	//$p = wp_json_encode( $p );
 	$p = ['site_id' => $settings['site_id'], 'license_code' => $settings['license_code'], 'from_date' => $from_date, 'to_date' => $to_date, 'reg_email' => $settings['reg_email'], 'sortby' => $sortby,'post_type' => $ptype, 'plg_url' => esc_url( SPINKX_CONTENT_PLUGIN_URL )];
 	$p = wp_json_encode( $p );
 	$url = $spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/campaign';
@@ -51,12 +52,14 @@
 	$css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/css/' );
 	wp_enqueue_style( 'campaign-css', $css_url . 'master.css' );
 	wp_add_inline_style( 'campaign-css', $css_output );
+
 	$custom_js .= 'var todaydate = start; var pageLength = ' . $pageLength . ';
 	var pt = '.$p.'; jQuery(function() {  jQuery(".se-pre-con").fadeOut("slow");
 	jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: '.$todaydate.'});	
 	var $ = jQuery.noConflict();
 	loadDT(start, end);		
 	});';
+
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
 	$css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/css/' );
 	wp_enqueue_style( 'bootstrap-datetimepicker-css', $css_url . 'bootstrap-datetimepicker.css' );
@@ -73,7 +76,7 @@
 	wp_enqueue_script( 'jquery-daterange-picker', '//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js' );
 	$css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/styles/' );
 	$post = spnxHelper::getFilterPost();
-if( is_array( $settings ) && isset($settings['site_id'])) {
+if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']) {
 	if (isset($post['add_camp'])) {
 		$validate = (new spnxHelper())->campaignValidation($post);
 		if( isset( $validate['success'] ) && $validate['success']) {
@@ -141,7 +144,11 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 	if($output['error'] === false) {
 		wp_localize_script('jquery-bootstrap-js', 'spinkxJs', array('categories' =>$categories, 'languages' =>$languages, 'countries' => $countries, 'currencyClass' => $currencyClass, 'cpm' => $cpm,'cpc' => $cpc, 'groupList' => $group_name));
 	}
+} else {
+
+    $output =  array('error' => 'You are not a registered user. You can create a boost post after registration. Click Here to <a href="admin.php?page=spinkx-site-register">Register</a>');;
 }
+
 ?>
 <?php if($output['error'] === false) {?>
 	<div class="campaign_page col-sm-12 col-md-12">
@@ -149,7 +156,9 @@ if( is_array( $settings ) && isset($settings['site_id'])) {
 
 	</div>
 <?php } else {
+
 	echo $output['error'];
+
 }	?>
 <?php if($output['error'] === false) {?>
 <div class="content_playlist_listing">

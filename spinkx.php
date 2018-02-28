@@ -57,17 +57,18 @@ function spinkx_cont_server_plugin_uninstall( $network_wide ) {
  * @return void
  * @internal param void
  */
-function spinkx_cont_site_registration( $blog_id = 0 ) {
+function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 	$site_id = false;
 	global $wpdb;
 	$spnxAdminManage = new spnxAdminManage();
 	$url = esc_url( $spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/site/create' );
 	$mflag = is_multisite();
 	if ( $mflag ) {
-		if( isset( $blog_id ) && $blog_id > 0) {
+		if(  $blog_id > 0 &&  $from == 'add_new_blog' ) {
 			$siteArr = array( array( 'blog_id' => $blog_id ) );
 		} else {
 			$siteArr = $wpdb->get_results('SELECT blog_id FROM `wp_blogs` WHERE public = 1', ARRAY_A);
+
 		}
 	} else {
 		$siteArr = array( array( 'blog_id' => get_current_blog_id() ) );
@@ -79,6 +80,7 @@ function spinkx_cont_site_registration( $blog_id = 0 ) {
 		if ( $mflag ) {
 			switch_to_blog( $currentSite['blog_id'] );
 		}
+
 		$data['site_email'] = get_option( 'admin_email' );
 		$data['site_name'] = get_bloginfo( 'name' );
 		$data['site_url'] = get_site_url();
@@ -91,20 +93,26 @@ function spinkx_cont_site_registration( $blog_id = 0 ) {
 				$data['site_url'] = $temp;
 			}
 		}
-		$data['sflag'] = 'site_create';
-		$response = spnxHelper::doCurl( $url, $data );
+        $data['sflag'] = 'site_create';
+        $response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );
+        if ( $response && !$site_id ) {
+            $output = json_decode($response, TRUE);
+            if (!isset($output['message'])) {
 
-		if ( $response && !$site_id ) {
-			$output = json_decode($response, TRUE);
-			if (!isset($output['message'])) {
+                //$output['current_blog_id'] = $currentSite['blog_id'];
+                $s = maybe_serialize($output);
+                update_option($spnxAdminManage->spinkx_cont_get_license(), $s);
+            }
+        }
 
-				//$output['current_blog_id'] = $currentSite['blog_id'];
-				$s = maybe_serialize($output);
-				update_option($spnxAdminManage->spinkx_cont_get_license(), $s);
-			}
-		}
-	}
+    }
+
 }
+
+function spinkx_cont_wpmu_add_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
+    spinkx_cont_site_registration( $blog_id, 'add_new_blog' );
+}
+add_action('wpmu_new_blog',  'spinkx_cont_wpmu_add_new_blog', 10, 6);
 
 /**
  *

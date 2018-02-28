@@ -629,7 +629,7 @@ else
                                                             $checked = 'checked';
                                                         }
                                                         ?>
-                                                        <li><?php echo $svalue?> <span class="chkbx-cmn-cls-li"><input  type="checkbox" name="global_blocked_categories_textarea[]" value="<?php echo $skey?>" <?php echo $checked?>></span>
+                                                        <li> <span class="chkbx-cmn-cls-li"><input  type="checkbox" name="global_blocked_categories_textarea[]" value="<?php echo $skey?>" <?php echo $checked?>></span><?php echo $svalue?>
                                                         </li>
                                                     <?php } ?>
                                                 </ul>
@@ -698,8 +698,8 @@ else
 						</tr>
 		</table>
 					</div>
-					<div style="width:400px;float: left;margin-left: 50px;">
-					<table class="form-table global-allow blocked-url" style="display: none;">
+					<div style="width:400px;float: left;margin-left: 50px; display: none;">
+					<table class="form-table global-allow blocked-url" >
 						<tr>
 							<td>
 
