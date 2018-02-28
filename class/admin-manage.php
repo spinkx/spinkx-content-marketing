@@ -85,7 +85,7 @@ final class spnxAdminManage {
 			//add_action('wp_dashboard_setup', array($this, 'spinkx_cont_add_dashboard_widgets')); // Call hook after admin dashboard setup.
 			add_action('spinkx_views_update_hook', 'spinkx_views_update_function');
 			add_filter('the_content', array($this, 'spinkx_cont_content_add'));
-			add_action('wpmu_new_blog', array($this, 'spinkx_cont_wpmu_add_new_blog'), 10, 6);
+
 
 			add_action('update_option_permalink_structure', array($this, 'spinkx_cont_permalink_update'), 10, 2);
 			add_action('publish_to_publish', array($this, 'spinkx_cont_update_on_publish_to_publish'), 10, 3);
@@ -448,7 +448,7 @@ final class spnxAdminManage {
 		$site_id = $request['site_id'];
 		$license_code = $request['license_code'];
 		$reg_email = $request['reg_email'];
-		$site_url = $request['site_url'];
+		$site_url = isset($request['site_url'])?$request['site_url']:'';
 		$current_blog_id = isset($request['current_blog_id'])?$request['current_blog_id']:0;
 		$array_to_serialize = array();
 		if(  ( isset(  $request['after_registration_sync'] ) && $request['after_registration_sync'] ) ) {
@@ -584,7 +584,7 @@ final class spnxAdminManage {
 		if(  ( isset(  $request['after_registration_sync'] ) && $request['after_registration_sync'] ) ) {
 			$post_array['after_registration_sync'] = true;
 		}
-		if( $post_array['after_registration_sync'] || ( count($post_array) && count($post_array['posts']) > 0 ) ) {
+		if( isset($post_array['after_registration_sync']) || ( count($post_array) && count($post_array['posts']) > 0 ) ) {
 			$post_array['license_code'] = $license_code;
 			$post_array['site_id'] = $site_id;
 			$post_array['site_url'] = $site_url;
@@ -1391,9 +1391,7 @@ final class spnxAdminManage {
 		}
 	}
 
-	public function spinkx_cont_wpmu_add_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
-		spinkx_cont_site_registration( $blog_id, 'add_new_blog' );
-	}
+
 
 	public function spinkx_cont_content_add( $content ) {
 		$content .= '<div id="spinkx_cont_aritcle_end"></div>';

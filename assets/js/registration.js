@@ -51,10 +51,12 @@ jQuery(document).ready(function($) {
     $("#geography-spnx-reg").click(function () {
       $("#site-gerography-select").trigger('click');
     });
-    $("button[type=submit]").click(function(){
+    $("button[type=submit]").click(function(event){
+        event.preventDefault();
         if (!$('input[name=agree]:checked').val() ) {
             alert("Please Check Terms and conditions");
-            return;
+            return false;
         }
+        $(this).parents('form').submit();
     });
 });

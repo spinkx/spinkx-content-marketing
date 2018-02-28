@@ -75,7 +75,7 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 	}
 	$data = array();
     $spinkx_version =  $spnxAdminManage->spinkx_cont_get_version();
-    error_log(print_r($siteArr, true));
+
 	foreach ( $siteArr as $currentSite ) {
 		if ( $mflag ) {
 			switch_to_blog( $currentSite['blog_id'] );
@@ -94,9 +94,7 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 			}
 		}
         $data['sflag'] = 'site_create';
-        $response = spnxHelper::doCurl( $url, $data );
-
-
+        $response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );
         if ( $response && !$site_id ) {
             $output = json_decode($response, TRUE);
             if (!isset($output['message'])) {
@@ -110,6 +108,11 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
     }
 
 }
+
+function spinkx_cont_wpmu_add_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
+    spinkx_cont_site_registration( $blog_id, 'add_new_blog' );
+}
+add_action('wpmu_new_blog',  'spinkx_cont_wpmu_add_new_blog', 10, 6);
 
 /**
  *
