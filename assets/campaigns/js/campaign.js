@@ -1177,7 +1177,7 @@ function loadDT(startDate,endDate) {
         },
         "ajax": {
             beforeSend: function(){
-                jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+                //jQuery('.se-pre-con').bPopup( { modalClose: false } );
             },
             headers: {
                 "Accept" : "application/json; charset=utf-8",
@@ -1193,7 +1193,7 @@ function loadDT(startDate,endDate) {
                 jQuery('.camp-group-name').parent().next().remove();
                 jQuery('.camp-group-name').parent().next().remove();
                 //$datalength = jQuery('.camp-group-name').attr('data-length');
-                    jQuery('#bpopup_ajax_loading').bPopup().close();
+                jQuery('.se-pre-con').bPopup().close();
             },
         },
 

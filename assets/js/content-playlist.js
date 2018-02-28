@@ -1121,7 +1121,7 @@ function loadDT(startDate, endDate) {
         },
         "ajax": {
             beforeSend: function(){
-                jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+               // jQuery('.se-pre-con').bPopup( { modalClose: false } );
             },
             headers: {
                 "Accept" : "application/json; charset=utf-8",
@@ -1132,7 +1132,7 @@ function loadDT(startDate, endDate) {
             "dataType": "jsonp",
             data: pt,
             complete: function(){
-                jQuery('#bpopup_ajax_loading').bPopup().close();
+                jQuery('.se-pre-con').bPopup().close();
                 jQuery('#wpcontent').css('height',jQuery('#bwki_sites_display').height()+250);
             },
         },

@@ -315,13 +315,16 @@
           $urlArr = $url.split('page=');
           if($urlArr.length == 2) {
             if($urlArr[1] == 'spinkx_analytics' ) {
+              jQuery('.se-pre-con').bPopup( { modalClose: false } );
               get_stat_now($stDate, $enDate);
-              console.log('spinkx dashboard');
             } else  if($urlArr[1].indexOf('spinkx_content_play_list' ) >= 0 ) {
+              jQuery('.se-pre-con').bPopup( { modalClose: false } );
               loadDT($stDate, $enDate);
             } else  if($urlArr[1] == 'spinkx_widget_design' )  {
+                jQuery('.se-pre-con').bPopup( { modalClose: false } );
               updatewidget();
             } else  if($urlArr[1].indexOf('spinkx_campaigns' ) >= 0  )  {
+              jQuery('.se-pre-con').bPopup( { modalClose: false } );
               loadDT($stDate, $enDate);
             }
            
