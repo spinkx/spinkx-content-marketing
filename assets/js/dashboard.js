@@ -2,7 +2,7 @@ function get_stat_now(start, end){
     try {
         $.ajax({
             beforeSend: function(){
-                jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+               // jQuery('.se-pre-con').bPopup( { modalClose: false } );
             },
             url : ajaxurl,
             type: 'get',
@@ -14,10 +14,10 @@ function get_stat_now(start, end){
                 'to_date' : end,
             },
             complete: function(){
-                jQuery('#bpopup_ajax_loading').bPopup().close();
+                //jQuery('.se-pre-con').bPopup().close();
             },
             success: function(data){
-                 jQuery('#bpopup_ajax_loading').bPopup().close();   
+                jQuery('.se-pre-con').bPopup().close();
                 var data = JSON.parse(data);
                 spinkx_data = data
                 currency = spinkx_data.currency;
@@ -44,7 +44,7 @@ function get_stat_now(start, end){
                 drawChart();
             },
             error: function(xhr, status, error){
-                jQuery('#bpopup_ajax_loading').bPopup().close();   
+                jQuery('.se-pre-con').bPopup().close();   
                 jQuery.growl.error({ message: xhr.status,
                 location: 'tr',
                 size: 'large' });
@@ -93,7 +93,7 @@ jQuery(document).ready(function() {
                 try {
                     $.ajax({
                         beforeSend: function () {
-                            jQuery('#bpopup_ajax_loading').bPopup({modalClose: false});
+                            jQuery('.se-pre-con').bPopup({modalClose: false});
                         },
                         url: ajaxurl,
                         type: 'get',
@@ -102,15 +102,15 @@ jQuery(document).ready(function() {
                             'action': 'spinkx_cont_withdraw_money_request',
                         },
                         complete: function () {
-                            jQuery('#bpopup_ajax_loading').bPopup().close();
+                            jQuery('.se-pre-con').bPopup().close();
                         },
                         success: function (data) {
-                            jQuery('#bpopup_ajax_loading').bPopup().close();
+                            jQuery('.se-pre-con').bPopup().close();
                             var data = JSON.parse(data);
                             alert(data.msg);
                         },
                         error: function (xhr, status, error) {
-                            jQuery('#bpopup_ajax_loading').bPopup().close();
+                            jQuery('.se-pre-con').bPopup().close();
                             jQuery.growl.error({
                                 message: xhr.status,
                                 location: 'tr',

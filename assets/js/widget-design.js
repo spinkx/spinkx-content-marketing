@@ -94,7 +94,7 @@ jQuery(document).ready(function($) {
 });
 
 function updatewidget(){
-   // jQuery('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+   // jQuery('.se-pre-con').bPopup( { modalClose: false } );
     $.ajax({
         url : ajaxurl,
         type : "get",
