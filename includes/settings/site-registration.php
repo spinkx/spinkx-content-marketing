@@ -65,6 +65,7 @@ if ( isset($_POST['agree']) &&  $_POST['agree']) {
 			$settings['due_date'] = $output['due_date'] ;
 			$s = maybe_serialize( $settings );
 			update_option( $spnxAdminManage->spinkx_cont_get_license(), $s );
+            update_option('spnx_reg_update', true);
 			$js_output = "<script>jQuery(document).ready(function () {
 					$.growl.notice({
 						message: '".$output['message']."',

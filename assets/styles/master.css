@@ -2073,7 +2073,7 @@ vertical-align: sub;
 .camp-group-name img {
     margin-right: 10px;
 }
-.notice-error, .notice-warning, .notice-success, .notice-info, .update-nag {
+.notice-error, .notice-warning, .notice-success, .notice-info, .update-nag, .error {
     display: none !important;
 }
 .notice-spinkx, .notice-spnx {
