@@ -115,7 +115,7 @@ function spinkx_cont_common_css_js( $page  ) {
 
 	$css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/css/' );
 	wp_enqueue_style( 'bootstrap', $css_url . 'bootstrap.min.css' );
-	wp_enqueue_style( 'font-awesome', $css_url . 'font-awesome.min.css' );
+	wp_enqueue_style( 'font-awesome', $css_url . 'fontawesome-all.min.css' );
 	$css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/styles/' );
 	if ( $page !== 'spinkx_campaigns' ) {
 		wp_enqueue_style( 'jquery-ui', $css_url . 'jquery-ui.css' );

@@ -45,12 +45,12 @@ if( is_array($data)) {
                     </div>
 
                 </div>
-                <div class="spnx-thrd-chld-mn-cntr spnx-flex-end ">
+                <div class="spnx-thrd-chld-mn-cntr spnx-flex-end">
                     <div class="label-pints-mny-cmn-cls">
                         Money
                     </div>
                     <div class="points-cmn-cls-spnx">
-                        <span class="credit-wallet-currency"><?php echo $data['currency']?></span> <span class="credit-wallet-bal"><?php echo $data['wallet_bal']?></span>
+                        <span class="credit-wallet-currency"><?php echo $data['currencyEnglish']?></span> <span class="credit-wallet-bal"><?php echo $data['wallet_bal']?></span>
                     </div>
                     <div class="withdraw-money dashb-buy-points">
                         <button >Withdraw Money</button>
