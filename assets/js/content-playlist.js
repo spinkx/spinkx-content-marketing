@@ -62,6 +62,7 @@ jQuery( document ).ready(function() {
             selectAll: true
         });
     };
+    jQuery('.notice-spnx').show();
 
     /*jQuery('.spinkx-popover-close').on('click', function(){
         jQuery(this).parent().hide();

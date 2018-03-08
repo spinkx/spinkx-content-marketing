@@ -233,14 +233,12 @@ if( is_array($data)) {
     <script type="text/javascript" defer>
         google.charts.load('current', {'packages': ['corechart']});
         var spinkx_data = <?php echo json_encode($data2); ?>;
-
         <?php if(isset($data['buy_now'])) { ?>
         jQuery(document).ready(function(){
             function pluginPaymentSuccessHandler(transaction){transaction.amount =pnoptions.amount; pluginPayment(transaction);}
             <?php echo $data['buy_now']?>;
         });
         <?php } ?>
-
     </script>
     <?php
 } else {
