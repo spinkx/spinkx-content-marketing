@@ -138,9 +138,9 @@ function spinkx_cont_common_css_js( $page  ) {
 	 * JS Loading
 	 */
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
-	//wp_enqueue_script( 'smooch-js', $js_url .'smooch.min.js' );
+	wp_enqueue_script( 'smooch-js', $js_url .'smooch.min.js' );
 
-	//wp_add_inline_script('smooch-js', "Smooch.init({ appToken: 'aa9cksz2rzpy071aqxhe31yvs' });");
+	wp_add_inline_script('smooch-js', "Smooch.init({ appId: '585e57e650cedf70007fab2e' });");
 	wp_enqueue_script( 'jquery-ui-js', $js_url . 'jquery-ui.js' );
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
 	wp_enqueue_script( 'bootstrap-js', $js_url . 'bootstrap.min.js' );
