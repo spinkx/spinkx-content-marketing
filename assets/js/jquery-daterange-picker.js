@@ -156,9 +156,9 @@
     setDefaultSelectOption: function () {
       var self = this;
       self._$selectedDateRange.find('option').each(function(i, option) {
-        if (option.value === self.settings.defaultDateRange) {
-          $(option).attr('selected', 'selected');    
-        }
+if (option.value === self.settings.defaultDateRange) {
+  $(option).attr('selected', 'selected');
+   }
       });
     },
 
@@ -172,8 +172,9 @@
       $enDate = new Date(dateRange.end);
       $stDate = $stDate.getFullYear() +'-'+($stDate.getMonth()+1)+'-'+$stDate.getDate()
       $enDate = $enDate.getFullYear() +'-'+($enDate.getMonth()+1)+'-'+$enDate.getDate();
-      global_start_date = $stDate;
-      global_end_date = $enDate;
+      window.global_start_date = $stDate;
+      window.global_end_date = $enDate;
+
       localStorage.setItem('default_date_range', this.settings.defaultDateRange);
     },
 
@@ -309,8 +310,8 @@
           $endParDate = $.datepicker.parseDate('M dd, yy', self._$endDate.val());
           $stDate = $stParDate.getFullYear() +'-'+($stParDate.getMonth()+1)+'-'+$stParDate.getDate()
           $enDate = $endParDate.getFullYear() +'-'+($endParDate.getMonth()+1)+'-'+$endParDate.getDate();
-          global_start_date = $stDate;
-          global_end_date = $enDate;
+          window.global_start_date = $stDate;
+          window.global_end_date = $enDate;
           $url =  window.location.href;
           $urlArr = $url.split('page=');
           if($urlArr.length == 2) {
@@ -377,5 +378,3 @@
 
 
 })(jQuery, window, document);
-var global_start_date = null;
-var global_end_date = null;

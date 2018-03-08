@@ -98,7 +98,6 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
         if ( $response && !$site_id ) {
             $output = json_decode($response, TRUE);
             if (!isset($output['message'])) {
-
                 //$output['current_blog_id'] = $currentSite['blog_id'];
                 $s = maybe_serialize($output);
                 update_option($spnxAdminManage->spinkx_cont_get_license(), $s);
@@ -107,13 +106,25 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 
     }
 
+
 }
 
 function spinkx_cont_wpmu_add_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
     spinkx_cont_site_registration( $blog_id, 'add_new_blog' );
 }
 add_action('wpmu_new_blog',  'spinkx_cont_wpmu_add_new_blog', 10, 6);
+function spinkx_registration_redirect( ) {
+    $page = spnxHelper::getFilterVar('page');
+    if($page == 'spinkx_widget_design' || $page == 'spinkx_content_play_list'  || $page == 'spinkx_campaigns' ) {
+        $spnx_reg_update = get_option('spnx_reg_update');
+        if( !$spnx_reg_update ) {
+            exit( wp_redirect( admin_url( 'admin.php?page=spinkx-site-register' ) ) );
+        }
+    }
 
+
+}
+add_action('init', 'spinkx_registration_redirect');
 /**
  *
  * This function fire when plugin deactivate and send status update server

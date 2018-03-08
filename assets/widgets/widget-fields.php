@@ -623,12 +623,17 @@ else
 
                                             <div class="sb-ctgry-cmn-cls">
                                                 <ul class="ul-mn-cls-chkbx">
+                                                    <li><a href="javascript:;void(0)" class="chkbx-cmn-cls-li select-deselect" style="color: #337ab7 !important;box-sizing: border-box;font-size: 9px;
+    font-weight: 300;
+    text-transform: capitalize;">Select All</a><input type="hidden" value="0" /></li>
+
                                                     <?php foreach ($category[1] as $skey => $svalue) {
                                                         $checked = '';
                                                         if(in_array($skey, $global_blocked_categories_textarea2)) {
                                                             $checked = 'checked';
                                                         }
                                                         ?>
+
                                                         <li> <span class="chkbx-cmn-cls-li"><input  type="checkbox" name="global_blocked_categories_textarea[]" value="<?php echo $skey?>" <?php echo $checked?>></span><?php echo $svalue?>
                                                         </li>
                                                     <?php } ?>
@@ -813,11 +818,31 @@ else
 		var gsite_id = '<?php echo $settings['site_id']?>';
 		$('#manual_boost_post').on('change',function(){
 			if($(this).prop("checked")) {
-				$('#auto_boost_post').prop('checked', false);
+				$('#auto_boost_post').attr('checked', 'checked');
 			} else {
-				$('#auto_boost_post').prop('checked', true);
+				$('#auto_boost_post').removeAttr('checked');
 			}
 		});
+
+		$('.select-deselect').click(function(){
+            arr = $(this).parents('li').siblings().find('input:checkbox');
+            chkbox = $(this).next().val() * 1;
+            console.log(chkbox);
+            if( chkbox > 0  ) {
+                $(this).next().val(0)
+            } else {
+                $(this).next().val(1)
+            }
+            if(!chkbox) {
+                $.each(arr, function(index, item){
+                   $(item).prop('checked', true);
+                });
+             } else {
+                $.each(arr, function(index, item){
+                    $(item).prop('checked', false);
+                });
+             }
+        });
 
 		$('#auto_boost_post').on('change',function(){
 			if($(this).prop("checked")) {

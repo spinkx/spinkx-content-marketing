@@ -159,11 +159,14 @@ function getpoints() {
         show: true
     });
 }
+
 google.charts.setOnLoadCallback(drawChart);
-var startdate = new Date(global_start_date);
-var enddate = new Date(global_end_date);
 var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 function drawChart() {
+    var startdate_arr = window.global_start_date.split('-');
+    var enddate_arr =  window.global_end_date.split('-');
+    var startdate = new Date(startdate_arr[0], startdate_arr[1]-1, startdate_arr[2]);
+    var enddate = new Date(enddate_arr[0], enddate_arr[1]-1, enddate_arr[2]);
     //Create Object Visualization
     var widget= new google.visualization.DataTable();
     var local_post= new google.visualization.DataTable();
@@ -190,8 +193,8 @@ function drawChart() {
     boost_post.addColumn('number', 'CTR');
     boost_post.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
 
-    var startdate = new Date(global_start_date);
-    var enddate = new Date(global_end_date);
+    // var startdate = new Date(window.global_start_date);
+    // var enddate = new Date(window.global_end_date);
     var dataWidImp = [];
     var dataWidClk=[];
     $key = '';
@@ -207,6 +210,7 @@ function drawChart() {
         $key = yyyy+"-"+mm+"-"+dd;
 
         widclkcounter++;
+
         $widgetArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].wd.clicks * 1, showWidgetToolTip($key,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) , spinkx_data[$key].wd.ctr * 1, showWidgetToolTip($key,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) );
 
         $lpArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].lp.clicks * 1, showWidgetToolTip($key,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) , spinkx_data[$key].lp.ctr * 1, showWidgetToolTip($key,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) );
@@ -235,14 +239,16 @@ function drawChart() {
             left: "5%",
             top: "15%",
             height: "75%",
-            width: "85%"
+            width: "89%"
         },
+        vAxis: {minValue: 1},
         hAxis: {
             baselineColor: 'none',
             ticks: [10, 20, 30],
             gridlines: {
                 color: 'transparent'
-            }
+            },
+
 
         },
 
@@ -264,6 +270,7 @@ function drawChart() {
             height: "75%",
             width: "90%"
         },
+        vAxis: {minValue: 1},
         hAxis: {
             baselineColor: 'none',
             ticks: [10, 20, 30],
@@ -289,6 +296,7 @@ function drawChart() {
             height: "75%",
             width: "90%"
         },
+        vAxis: {minValue: 1},
         hAxis: {
             baselineColor: 'none',
             ticks: [10, 20, 30],
@@ -304,6 +312,8 @@ function drawChart() {
     var bp_chart =  new google.visualization.LineChart(document.getElementById('bp_chart'));
     bp_chart.draw(boost_post,BPoptions);
 }
+
+
 function showWidgetToolTip($dt, $vw, $ctr) {
     return '<div style="white-space: nowrap; padding:5px;"><b>Date </b>: ' + $dt + '<br>' +
         '<b>Clicks</b>: ' + $vw + '<br/><b>CTR</b>: ' + $ctr + '%</div>';
@@ -331,4 +341,3 @@ function pluginPayment(transaction) {
      }
      http.send(params);
 }
-

@@ -63,6 +63,10 @@ jQuery( document ).ready(function() {
         });
     };
 
+    /*jQuery('.spinkx-popover-close').on('click', function(){
+        jQuery(this).parent().hide();
+
+    });*/
 
     jQuery(document).on("click","button.updatecategories",function() {
         var dataid = jQuery(this).attr('data-id');

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 
 function spinkx_cont_icon_css() {
-	echo '<style>.toplevel_page_spinkx-site-register .wp-menu-image img, .toplevel_page_spinkx_analytics .wp-menu-image img {
+    echo '<style>.toplevel_page_spinkx-site-register .wp-menu-image img, .toplevel_page_spinkx_analytics .wp-menu-image img {
 		padding: 6px 0 0 !important;
 		opacity: .9 !important;
 		max-width: 65%;
@@ -138,9 +138,9 @@ function spinkx_cont_common_css_js( $page  ) {
 	 * JS Loading
 	 */
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
-	wp_enqueue_script( 'smooch-js', $js_url .'smooch.min.js' );
+	//wp_enqueue_script( 'smooch-js', $js_url .'smooch.min.js' );
 
-	wp_add_inline_script('smooch-js', "Smooch.init({ appToken: 'aa9cksz2rzpy071aqxhe31yvs' });");
+	//wp_add_inline_script('smooch-js', "Smooch.init({ appToken: 'aa9cksz2rzpy071aqxhe31yvs' });");
 	wp_enqueue_script( 'jquery-ui-js', $js_url . 'jquery-ui.js' );
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
 	wp_enqueue_script( 'bootstrap-js', $js_url . 'bootstrap.min.js' );
@@ -402,9 +402,9 @@ function spinkx_header_menu() {
 	$settings = maybe_unserialize( $settings );
 	$site_id = isset($settings['site_id'])?$settings['site_id']:0;
     $settings['due_date'] = isset($settings['due_date'])?$settings['due_date']:'0000-00-00 00:00:00';
-	?><div><div class="spnx-menu-logo"><span><a href="https://www.spinkx.com"><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/spinkx-logo.png" /></a></span></div>
+    ?><div><div class="spnx-menu-logo"><span><a href="https://www.spinkx.com"><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/spinkx-logo.png" /></a></span></div>
 	<ul class="nav nav-tabs">
-		<?php if( ! ($settings['due_date'] != '0000-00-00 00:00:00' ) ) { ?>
+        <?php if(  $settings['due_date'] == '0000-00-00 00:00:00'  ) {?>
 		<li <?php echo ('spinkx-site-register' === $page)?'class="active"':''?>><a href="?page=spinkx-site-register">Registration</a></li>
 		<?php } else { ?>
             <li <?php echo ('spinkx_analytics' === $page)?'class="active"':''?>><a href="?page=spinkx_analytics">Analytics</a></li>

@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		<div class="wrap-inner" style="margin: 10px auto 10px auto;">
 			<div class="tab-contents">
 				<div id="content_play_list">
-					<?php require esc_url( SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/tab-get-posts.php' ); ?>
+                    <?php require esc_url( SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/tab-get-posts.php' ); ?>
 				</div>
 
 			</div>

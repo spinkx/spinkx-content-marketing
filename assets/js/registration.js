@@ -57,6 +57,10 @@ jQuery(document).ready(function($) {
             alert("Please Check Terms and conditions");
             return false;
         }
+        if($('.categories').val() === null) {
+            alert("Please select at least one additional category");
+            return false;
+        }
         $(this).parents('form').submit();
     });
 });

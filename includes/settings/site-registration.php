@@ -39,11 +39,12 @@ if ( isset($_POST['agree']) &&  $_POST['agree']) {
 		}
 	}
 
-	if ( $response && ! $site_id ) {
+	if ( $response && !$site_id ) {
 		$output = json_decode( $response,true );
 		if ( ! isset( $output['message'] ) ) {
 			$s = maybe_serialize( $output );
 			update_option( $spnxAdminManage->spinkx_cont_get_license(),$s );
+            update_option('spnx_reg_update', true);
 			// sync posts here.
 			$settings = get_option( $spnxAdminManage->spinkx_cont_get_license() );
 			$settings = maybe_unserialize( $settings );
@@ -84,6 +85,7 @@ if ( isset($_POST['agree']) &&  $_POST['agree']) {
 			$settings['reg_user'] = $output['reg_user'];
 			$s = maybe_serialize( $settings );
 			update_option( $spnxAdminManage->spinkx_cont_get_license(), $s );
+            update_option('spnx_reg_update', true);
 			echo '<script>window.location.replace("?page=spinkx_widget_design");</script>';
 		} else {
 			if ( isset( $output['message'] ) ) {

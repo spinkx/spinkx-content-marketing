@@ -12,7 +12,7 @@ $custom_js .= 'jQuery(function() { jQuery(".se-pre-con").fadeOut("slow");';
 $custom_js .= 'jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: '.$todaydate.'});
 });';
 $js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
-wp_enqueue_script( 'jquery-custom-js', $js_url . 'dashboard.js' );
+wp_enqueue_script( 'jquery-dashboard', $js_url . 'dashboard.js' );
 wp_enqueue_script( 'jquery-custom-js', $js_url . 'widget-design.js' );
 wp_add_inline_script( 'jquery-custom-js', $custom_js );
 ?>

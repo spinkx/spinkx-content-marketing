@@ -12,8 +12,16 @@ $data = json_decode( $data, true );
 $spnxAdminManage = new spnxAdminManage();
 $settings = get_option($spnxAdminManage->spinkx_cont_get_license());
 $settings = unserialize($settings);
+$data2 = [];
 if( is_array($data)) {
-    ?><div class="spnx-dshb-mn-cntr">
+    $data2 = $data;
+    unset($data2['tot_pts_earn'],$data2['tot_money_earn'],$data2['credit_points'],$data2['tot_money_spent'],$data2['tot_pts_spent'],$data2['camp_active']);
+   unset($data2['bp_active'],$data2['lp_active'],$data2['wd_active'],$data2['min_bal'],$data2['currency'],$data2['price'],$data2['wallet_bal'],$data2['days']);
+   unset($data2['surl'],$data2['semail'],$data2['uname'],$data2['lkey'],$data2['wd_clicks'],$data2['wd_views'],$data2['wd_ctr'],$data2['bp_views'],$data2['reach']);
+   unset($data2['bp_clicks'],$data2['bp_ctr'],$data2['lp_views'],$data2['lp_clicks'],$data2['lp_ctr'],$data2['cmo_views'],$data2['cmp_clicks'],$data2['cmp_ctr'], $data2['buy_points']);
+    ?>
+    <script src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.30','packages':['corechart']}]}"></script>
+    <div class="spnx-dshb-mn-cntr">
         <div class="spnx-sec-mn-cntr">
             <div class="spnx-sec-one-chld-mn-cntnr cmn-cls-spnx-tab">
                 <div class="spnx-thrd-chld-mn-cntr spnx-flex-strt spnx-flex-new-cmn">
@@ -222,9 +230,10 @@ if( is_array($data)) {
         </div>
     </div>
     </div>
-    <script type="text/javascript">
+    <script type="text/javascript" defer>
         google.charts.load('current', {'packages': ['corechart']});
-        var spinkx_data = <?php echo json_encode($data); ?>;
+        var spinkx_data = <?php echo json_encode($data2); ?>;
+
         <?php if(isset($data['buy_now'])) { ?>
         jQuery(document).ready(function(){
             function pluginPaymentSuccessHandler(transaction){transaction.amount =pnoptions.amount; pluginPayment(transaction);}
