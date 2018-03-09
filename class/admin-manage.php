@@ -64,6 +64,7 @@ final class spnxAdminManage {
         }
 		if(!$this->_spinkx_server_api_url) {
             $this->_spinkx_server_api_url = 'https://content.spinkx.com';
+
 		}
 		if(!$this->_spinkx_cont_dir) {
 			$this->_spinkx_cont_dir =  plugin_dir_path( __FILE__ );
@@ -74,8 +75,7 @@ final class spnxAdminManage {
 		
 
 		if($loading) {
-
-			add_action('admin_menu', array($this, 'spinkx_cont_spinkx_admin_menu'));
+            add_action('admin_menu', array($this, 'spinkx_cont_spinkx_admin_menu'));
 			//add_action('admin_bar_menu', array($this, 'spinkx_cont_show_notification'));
 			add_action('admin_notices', array($this, 'spinkx_cont_show_notice')); // call spinkx_show_notice.
 			add_action('admin_head', 'spinkx_cont_icon_css');
@@ -126,7 +126,9 @@ final class spnxAdminManage {
 		return $this->_spinkx_server_api_url;
 	}
 
-
+    public function spinkx_cont_cdn_url() {
+        return 'https://storage.googleapis.com/spinkx/';
+    }
 
 	function spinkx_cont_show_notification() {
 		global $wp_admin_bar;
