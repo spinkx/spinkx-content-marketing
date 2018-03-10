@@ -36,9 +36,9 @@ function get_stat_now(start, end){
                 jQuery('.bp-ctr').text(spinkx_data.bp_ctr);
                 jQuery('.bp-active').text(spinkx_data.bp_active);
                 jQuery('.tot-pts-spent').text(spinkx_data.tot_pts_spent);
-                jQuery('.total-money-earn').text(currency + ' ' + spinkx_data.tot_money_earn);
+                jQuery('.total-money-earn').text(  spinkx_data.tot_money_earn);
                 jQuery('.total-pts-earn').text(spinkx_data.tot_pts_earn);
-                jQuery('.credit-wallet-currency').text(currency);
+                jQuery('.credit-wallet-currency').text(currencyEnglish);
                 jQuery('.credit-wallet-bal').text(spinkx_data.wallet_bal);
                 jQuery('.credit-points').text(spinkx_data.credit_points);
                 drawChart();
@@ -88,7 +88,6 @@ jQuery(document).ready(function() {
     $=jQuery;
     $('.withdraw-money').click(function(){
         $wall_bal = parseFloat($('.credit-wallet-bal').text()).toFixed(2);
-        if(spinkx_data.min_bal > 0) {
             if (spinkx_data.wallet_bal >= spinkx_data.min_bal) {
                 try {
                     $.ajax({
@@ -126,27 +125,29 @@ jQuery(document).ready(function() {
                     });
                 }
             } else {
-                alert('Sorry, you can\'t withdraw money. We have minimum payout ' + spinkx_data.currency + ' ' + spinkx_data.min_bal + '.');
+                alert('Sorry you cannot withdraw money at this point. We have a minimum payout of ' + spinkx_data.currency + ' ' + spinkx_data.min_bal + '. We request you to wait till you collect the minimum payout amount.');
             }
-        } else {
-            alert('You are not Registered.');
-        }
+
     });
 
     jQuery('#buy_point').on('keyup', function(event){
-        var points = $(this).val();
+        var points = parseInt($(this).val());
+        if(points === undefined || isNaN(points)) {
+            document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
+            alert('Please enter amount in a number.');
+            return;
+        }
         if (points < 100) {
-            document.getElementById('payment-method-button').disabled = true;
             document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
             alert('A minimum of 100 points are required for a purchase.');
             return;
         }
-        document.getElementById('payment-method-button').style.backgroundColor = '#337ab7';
+        document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
         jQuery.ajax({
             url : spinkx_server_baseurl + '/wp-json/spnx/v1/site/get-point-price',
             type : "post",
             beforeSend: function() {
-                $('button#payment-method-button').prop('disabled', false);
+                document.getElementById('payment-method-button').disabled = true;
             },
             data : {
                 "site_id" : g_site_id,
@@ -159,6 +160,7 @@ jQuery(document).ready(function() {
                 $('#amount').text(data.price);
                 $('#point_amount').val(data.price);
                 $('button#payment-method-button').prop('disabled', false);
+                document.getElementById('payment-method-button').style.backgroundColor = '#337ab7';
             }
         });
     });
@@ -244,7 +246,7 @@ function drawChart() {
         title: 'Widget Clicks / CTR',
         width: '100%',
         height: 300,
-        legend: 'none',
+        legend: { position: 'top', alignment: 'end' },
         pointsVisible: true,
         pointShape: 'circle',
         pointSize: 3,
@@ -273,7 +275,7 @@ function drawChart() {
         title: 'Local Post Clicks / CTR',
         width: '100%',
         height: 300,
-        legend: 'none',
+        legend: { position: 'top', alignment: 'end' },
         pointsVisible: true,
         pointShape: 'circle',
         pointSize: 3,
@@ -299,7 +301,7 @@ function drawChart() {
         title: 'Boost Post Clicks / CTR',
         width: '100%',
         height: 300,
-        legend: 'none',
+        legend: { position: 'top', alignment: 'end' },
         pointsVisible: true,
         pointShape: 'circle',
         pointSize: 3,

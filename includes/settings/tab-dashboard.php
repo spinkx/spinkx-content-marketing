@@ -94,16 +94,18 @@ if( is_array($data)) {
                         Valid for
                     </div>
                     <?php if($data['days'] !== '0000-00-00') {?>
-                        <div class="points-cmn-cls-spnx">
-                            <?php echo $data['days']?>
-                        </div>
                         <?php  if ( intval( $data['days'] ) < 0 ) { ?>
+                            <div class="points-cmn-cls-spnx" style="width: 240px;font-size: 11px;font-weight: 600;">
+                                <?php echo $data['buy_msg']?>
+                            </div>
                             <div style="font-size: 10px;" class="purchase-plugin dashb-buy-points"><button id="payment-method-buttonpn" class="btn-primary pbuy-now" style="    color: #fff;
     background-color: #0170B9;">Buy Now</button></div>
                         <?php  } else { ?>
-
+                           <div ><span class="label-pints-mny-cmn-cls">Membership Expirey: </span><?php echo $data['due_date']?></div>
                         <?php } ?>
-                    <?php } else { ?><div class="points-cmn-cls-spnx" style="font-size:13px;"><?php echo "Not Registered";?></div> <?php } ?>
+                    <?php } else { ?><div class="points-cmn-cls-spnx" style="width: 240px;font-size: 11px;font-weight: 600;">
+                        <?php echo $data['buy_msg']?>
+                        </div> <?php } ?>
                 </div>
 
 
@@ -204,7 +206,7 @@ if( is_array($data)) {
                     <?php if(isset($data['reach'])) { ?>
                         <div class="form-group">
                             <label for="point_amount">Points</label><br/>
-                            <br/><input	type="text" class="form-control" id="buy_point"  style="display: inline;width:40%;" value="100"/>
+                            <br/><input	type="number" class="form-control" id="buy_point"  style="display: inline;width:40%;" value="100"/>
                         </div>
                         <div class="form-group">
                             <label>Reach</label>

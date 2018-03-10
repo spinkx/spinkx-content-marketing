@@ -185,7 +185,7 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 				<?php if(isset($response['reach'])) { ?>
 					<div class="form-group">
 						<label for="point_amount">Points</label><br/>
-						<br/><input	type="text" class="form-control" id="buy_point" style="display: inline;width:40%;" value="100"/>
+						<br/><input	type="number" class="form-control" id="buy_point" style="display: inline;width:40%;" value="100"/>
 					</div>
 					<div class="form-group">
 						<label>Reach</label>
@@ -213,19 +213,23 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 <script>
     jQuery(document).ready(function($) {
         jQuery('#buy_point').on('keyup', function(event){
-            var points = $(this).val();
+            var points = parseInt($(this).val());
+            if(points === undefined || isNaN(points)) {
+                document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
+                alert('Please enter amount in a number.');
+                return;
+            }
             if (points < 100) {
-                document.getElementById('payment-method-button').disabled = true;
                 document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
                 alert('A minimum of 100 points are required for a purchase.');
                 return;
             }
-            document.getElementById('payment-method-button').style.backgroundColor = '#337ab7';
+            document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
             jQuery.ajax({
                 url : spinkx_server_baseurl + '/wp-json/spnx/v1/site/get-point-price',
                 type : "post",
                 beforeSend: function() {
-                    $('button#payment-method-button').prop('disabled', false);
+                    document.getElementById('payment-method-button').disabled = true;
                 },
                 data : {
                     "site_id" : g_site_id,
@@ -238,6 +242,7 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
                     $('#amount').text(data.price);
                     $('#point_amount').val(data.price);
                     $('button#payment-method-button').prop('disabled', false);
+                    document.getElementById('payment-method-button').style.backgroundColor = '#337ab7';
                 }
             });
         });

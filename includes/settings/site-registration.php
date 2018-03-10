@@ -498,7 +498,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 			<div class="continue-spnx-reg-button-cntnr">
 				<span style="font-size:13px;">
 					<input type="checkbox" name="agree" id="checked-registration" <?php echo isset( $settings['reg_user'] ) ? 'checked' : ''; ?> >
-					I agree the
+					I agree with the
 					<a target="_blank" href="http://www.spinkx.com/terms-conditions/">
 						Terms & Conditions
 					</a>
