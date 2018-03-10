@@ -508,7 +508,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		</div>
 		<div class="lower-text-cmon-cls-spnx-reg">
 			<div>
-				<span class="lower-color-cmn-cls-spnx-reg">Earn 2X Boost Points & 2X Revenue on Purchase Spinkx Yearly Membership for $60.</span>
+				<span class="lower-color-cmn-cls-spnx-reg"><?php echo $dropdown->selected_site->msg_buy?></span>
 				<span class="spnx-knw-more-cmn-cls buy-now-shrt-code"><?php echo do_shortcode( $buy_now );?></span>
 			</div>
 		</div>

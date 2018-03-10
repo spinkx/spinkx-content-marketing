@@ -211,25 +211,38 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 </div>
 </div>
 <script>
-	jQuery(document).ready(function($) {
-		$('#buy_point').change(function(){
-			var points = $(this).val();
-			$.ajax({
-				url : spinkx_server_baseurl + '/wp-json/spnx/v1/site/get-point-price',
-				type : "post",
-				data : {
-					"site_id" : g_site_id,
-					"points": points,
-					"license_code": '<?php echo $settings['license_code']?>',
-					"reg_email": '<?php echo $settings['reg_email']?>',
-				},
-				success : function(data) {
-					$('#reach').text(data.reach);
-					$('#amount').text(data.price);
-					$('#point_amount').val(data.price);
-				}
-			});
-		});
-	});
+    jQuery(document).ready(function($) {
+        jQuery('#buy_point').on('keyup', function(event){
+            var points = $(this).val();
+            if (points < 100) {
+                document.getElementById('payment-method-button').disabled = true;
+                document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
+                alert('A minimum of 100 points are required for a purchase.');
+                return;
+            }
+            document.getElementById('payment-method-button').style.backgroundColor = '#337ab7';
+            jQuery.ajax({
+                url : spinkx_server_baseurl + '/wp-json/spnx/v1/site/get-point-price',
+                type : "post",
+                beforeSend: function() {
+                    $('button#payment-method-button').prop('disabled', false);
+                },
+                data : {
+                    "site_id" : g_site_id,
+                    "points": points,
+                    "license_code": '<?php echo $settings['license_code']?>',
+                    "reg_email": '<?php echo $settings['reg_email']?>',
+                },
+                success : function(data) {
+                    $('#reach').text(data.reach);
+                    $('#amount').text(data.price);
+                    $('#point_amount').val(data.price);
+                    $('button#payment-method-button').prop('disabled', false);
+                }
+            });
+        });
+
+    });
+
 </script>
 <?php } ?>

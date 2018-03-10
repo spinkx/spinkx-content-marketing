@@ -233,6 +233,7 @@ http.send(params);
 };';
 
 				$js_output .= 'document.getElementById(\'payment-method-button\').onclick = function(e){
+				
 ' . $temp_variable . '
 	rzp1.open();
 	e.preventDefault();  

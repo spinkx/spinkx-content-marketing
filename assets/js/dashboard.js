@@ -132,11 +132,22 @@ jQuery(document).ready(function() {
             alert('You are not Registered.');
         }
     });
-    $('#buy_point').change(function(){
+
+    jQuery('#buy_point').on('keyup', function(event){
         var points = $(this).val();
-        $.ajax({
+        if (points < 100) {
+            document.getElementById('payment-method-button').disabled = true;
+            document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
+            alert('A minimum of 100 points are required for a purchase.');
+            return;
+        }
+        document.getElementById('payment-method-button').style.backgroundColor = '#337ab7';
+        jQuery.ajax({
             url : spinkx_server_baseurl + '/wp-json/spnx/v1/site/get-point-price',
             type : "post",
+            beforeSend: function() {
+                $('button#payment-method-button').prop('disabled', false);
+            },
             data : {
                 "site_id" : g_site_id,
                 "points": points,
@@ -147,9 +158,12 @@ jQuery(document).ready(function() {
                 $('#reach').text(data.reach);
                 $('#amount').text(data.price);
                 $('#point_amount').val(data.price);
+                $('button#payment-method-button').prop('disabled', false);
             }
         });
     });
+
+
 });
 function getpoints() {
     jQuery('#boostmodal').modal('hide');

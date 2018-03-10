@@ -1,14 +1,14 @@
 === Spinkx Content Marketing ===
 Contributors: spinkx
 Donate link: www.spinkx.com
-Tags: Content Marketing, Ad Revenue, Traffic Builder, Ad-Exchange, Native Ads
+Tags: Content Marketing, Ad Revenue, Ad Widget, Ad Exchange, Native Ads
 Requires at least: 4.5
 Tested up to: 4.9.4
 Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A content marketing plugin: Free Traffic Exchange, Traffic Building, SEO Backlinks, Social Media Marketing, Advertising Campaigns, Trending Posts, Ad network, Native Campaigns, Native Advertising, Monetisation & Revenue on your sidebar widget.
+Content marketing plugin for ‘Bloggers & Marketers’ who want to grow their traffic for free and earn ad revenue. Advertisers & Ad agencies create globally targeted campaigns, displayed across Spinkx Network. Free Traffic Exchange, Traffic Building, SEO Backlinks, Advertising Campaigns, Trending Posts, Ad network, Native Ads, Monetisation & Ad Revenue on your sidebar widget.
 
 == Description ==
 Spinkx Content Marketing Plugin, is for Bloggers who want to Grow their Traffic via 'Free Ad Exchange' and Earn Revenue from Advertisers. Content Marketeers can start getting their content discovered across Spinkx Network of websites, before SEO kicks in, Create SEO Backlinks in real-time and start getting customers to read your stories. Advertiser can take advantage of Bot-free traffic, low cost and high ROI native ads. Powerful AI (artificial intelligence) & ML (machine learning) over Google Cloud Infrastructures, are being used in Spinkx 'Distribution of Content' algorithms, to help reach the right content to the right audience at the right time. 
@@ -31,9 +31,11 @@ The Spinkx widget when placed on your *Sidebar or Below Post,* automatically dis
 
 = 1.5 Now Social Share multiple links of the same post (with different image and headlines but same landing page) and get Free organic social traffic multiple times for the same post by creating ‘Variations’. Count clicks to your website for each social platform: Facebook, Google+, LinkedIn, Pinterest.
 
-= 1.6 **NEW FEATURE**  'Auto Boost' starts distributing your blog stories across the network as soon as you hot the Publish Button. Faster than SEO can kick in, start growing your traffic.
+**NEW FEATURES**
 
-= 1.7 **NEW FEATURE** Powerful Analytics Dash board, to help you derive meaningful analysis out of Data. All in real time. 
+= 1.6 'Auto Boost' starts distributing your blog stories across the network as soon as you hot the Publish Button. Faster than SEO can kick in, start growing your traffic.
+
+= 1.7 Powerful Analytics Dash board, to help you derive meaningful analysis out of Data. All in real time. 
  
 
 == 2. Ad Revenue & Monetisation. Native ads. ==
@@ -129,7 +131,7 @@ This plugin has been tested from WordPress version 4.5 onwards. Please backup yo
 
 == Screenshots ==
 
-1. Who can use this plugin. Blogger, Content Marketeers, Advertisers, Ad-Agency.
+1. Who can use this plugin! Bloggers, Marketers, Advertisers and Ad-Agencies.
 2. Front-end Display of the Widget
 3. Content Playlist, Boost Post & Variation Headlines
 

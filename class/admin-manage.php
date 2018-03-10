@@ -54,17 +54,18 @@ final class spnxAdminManage {
 	private $_frontend_actions = array( 'display_widget_content', 'mobile_widget_data' );
 	public function __construct( $loading = false ) {
 		if(!$this->_spinkx_cont_version) {
-			$this->_spinkx_cont_version = '2.2.2';
+			$this->_spinkx_cont_version = '3.0';
 		}
 		if(!$this->_spinkx_cont_license) {
 			$this->_spinkx_cont_license = 'spinkx_content_license_update';
 		}
 		if(!$this->_spinkx_server_bapi_url) {
-            $this->_spinkx_server_bapi_url = 'https://backend.spinkx.com';
+            $this->_spinkx_server_bapi_url = 'http://localhost/spinkx-backend';
+           // $this->_spinkx_server_bapi_url = 'https://backend.spinkx.com';
         }
 		if(!$this->_spinkx_server_api_url) {
-            $this->_spinkx_server_api_url = 'https://content.spinkx.com';
-
+            $this->_spinkx_server_api_url = 'http://localhost/spinkx-frontend';
+           // $this->_spinkx_server_api_url = 'https://content.spinkx.com';
 		}
 		if(!$this->_spinkx_cont_dir) {
 			$this->_spinkx_cont_dir =  plugin_dir_path( __FILE__ );
@@ -88,9 +89,7 @@ final class spnxAdminManage {
 			add_action('update_option_permalink_structure', array($this, 'spinkx_cont_permalink_update'), 10, 2);
 			add_action('publish_to_publish', array($this, 'spinkx_cont_update_on_publish_to_publish'), 10, 3);
 			add_action('transition_post_status', array($this, 'spinkx_cont_update_status_transitions'), 10, 3);
-			
-
-			//add_action('wp_footer', 'spinkx_mobile_widget_setup');
+            //add_action('wp_footer', 'spinkx_mobile_widget_setup');
 			add_shortcode('spinkx-cont-payment-method', 'spinkx_cont_payment_method_list');
 
 			foreach ($this->_ajax_actions as $action) {
@@ -527,12 +526,15 @@ final class spnxAdminManage {
 				}
 			}
 			$post_status = 1;
-			if ($post->post_status == 'publish') {
-				$counter++;
-				if ($counter > 20) {
-					$post_status = 0;
-				}
+			if ($post->post_status != 'publish') {
+				continue;
 			}
+            $post_excerpt = get_the_excerpt();
+            if($post_excerpt) {
+                $post_excerpt = $this->spinkx_cont_get_excerpt_by_id($post_excerpt);
+            } else {
+                continue;
+            }
 			$post_array['posts'][$all_posts_count]['post_title'] = $post->post_title;
 			$post_array['posts'][$all_posts_count]['post_status'] = $post_status;
 			$post_array['posts'][$all_posts_count]['post_publish_date'] = $post->post_date_gmt;
@@ -540,12 +542,7 @@ final class spnxAdminManage {
 				continue;
 			}*/
 			//$post = get_post($pid);
-			$post_excerpt = get_the_excerpt();
-			if($post_excerpt) {
-				$post_excerpt = $this->spinkx_cont_get_excerpt_by_id($post_excerpt);
-			} else {
 
-			}
 			$post_array['posts'][$all_posts_count]['post_excerpt'] = base64_encode ( $post_excerpt ); // viksedit we need post_excerpt
 			$post_array['posts'][$all_posts_count]['post_author_email'] = get_the_author_meta('email'); // Vikash
 			$post_array['posts'][$all_posts_count]['post_author_name'] = get_the_author_meta('display_name');   // Vikash
