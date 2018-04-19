@@ -591,4 +591,4 @@ function spinkx_mobile_widget_setup() {
 	}
 }
 
-add_action( 'admin_print_scripts', 'spinkx_admin_add_inline_js' );
+add_action( 'admin_print_scripts', 'spinkx_admin_add_inline_js', 99 );
