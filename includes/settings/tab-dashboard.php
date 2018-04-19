@@ -14,11 +14,6 @@ $settings = get_option($spnxAdminManage->spinkx_cont_get_license());
 $settings = unserialize($settings);
 $data2 = [];
 if( is_array($data)) {
-    $data2 = $data;
-    unset($data2['tot_pts_earn'],$data2['tot_money_earn'],$data2['credit_points'],$data2['tot_money_spent'],$data2['tot_pts_spent'],$data2['camp_active']);
-   unset($data2['bp_active'],$data2['lp_active'],$data2['wd_active'],$data2['min_bal'],$data2['currency'],$data2['price'],$data2['wallet_bal'],$data2['days']);
-   unset($data2['surl'],$data2['semail'],$data2['uname'],$data2['lkey'],$data2['wd_clicks'],$data2['wd_views'],$data2['wd_ctr'],$data2['bp_views'],$data2['reach']);
-   unset($data2['bp_clicks'],$data2['bp_ctr'],$data2['lp_views'],$data2['lp_clicks'],$data2['lp_ctr'],$data2['cmo_views'],$data2['cmp_clicks'],$data2['cmp_ctr'], $data2['buy_points']);
     ?>
     <script src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.30','packages':['corechart']}]}"></script>
     <div class="spnx-dshb-mn-cntr">
@@ -99,14 +94,18 @@ if( is_array($data)) {
                         Valid for
                     </div>
                     <?php if($data['days'] !== '0000-00-00') {?>
-                        <div class="points-cmn-cls-spnx">
-                            <?php echo $data['days']?>
-                        </div>
                         <?php  if ( intval( $data['days'] ) < 0 ) { ?>
+                            <div class="points-cmn-cls-spnx" style="width: 240px;font-size: 11px;font-weight: 600;">
+                                <?php echo $data['buy_msg']?>
+                            </div>
                             <div style="font-size: 10px;" class="purchase-plugin dashb-buy-points"><button id="payment-method-buttonpn" class="btn-primary pbuy-now" style="    color: #fff;
     background-color: #0170B9;">Buy Now</button></div>
-                        <?php  } ?>
-                    <?php } else { ?><div class="points-cmn-cls-spnx" style="font-size:13px;"><?php echo "Not Registered";?></div> <?php } ?>
+                        <?php  } else { ?>
+                           <div ><span class="label-pints-mny-cmn-cls">Membership Expirey: </span><?php echo $data['due_date']?></div>
+                        <?php } ?>
+                    <?php } else { ?><div class="points-cmn-cls-spnx" style="width: 240px;font-size: 11px;font-weight: 600;">
+                        <?php echo $data['buy_msg']?>
+                        </div> <?php } ?>
                 </div>
 
 
@@ -207,7 +206,7 @@ if( is_array($data)) {
                     <?php if(isset($data['reach'])) { ?>
                         <div class="form-group">
                             <label for="point_amount">Points</label><br/>
-                            <br/><input	type="text" class="form-control" id="buy_point"  style="display: inline;width:40%;" value="100"/>
+                            <br/><input	type="number" class="form-control" id="buy_point"  style="display: inline;width:40%;" value="100"/>
                         </div>
                         <div class="form-group">
                             <label>Reach</label>
@@ -232,16 +231,16 @@ if( is_array($data)) {
     </div>
     <script type="text/javascript" defer>
         google.charts.load('current', {'packages': ['corechart']});
-        var spinkx_data = <?php echo json_encode($data2); ?>;
-
+        var spinkx_data = <?php echo json_encode($data); ?>;
         <?php if(isset($data['buy_now'])) { ?>
         jQuery(document).ready(function(){
             function pluginPaymentSuccessHandler(transaction){transaction.amount =pnoptions.amount; pluginPayment(transaction);}
             <?php echo $data['buy_now']?>;
         });
         <?php } ?>
-
     </script>
+
+
     <?php
 } else {
     echo $data;

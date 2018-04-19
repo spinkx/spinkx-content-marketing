@@ -4,8 +4,6 @@ $site_id = false;
 $spnxAdminManage = new spnxAdminManage();
 $settings = get_option($spnxAdminManage->spinkx_cont_get_license());
 $settings = maybe_unserialize($settings);
-$facebookId="1384299568348126";
-$googleId="424461841098-nb5d1um7foch3e041k7sp7157m1ed6of.apps.googleusercontent.com";
 if (  isset($settings) && $settings ) {
 	$site_id = isset($settings['site_id'])?$settings['site_id']:0;
 	$registeredemail = spnxHelper::getFilterVar( 'registeredemail' );
@@ -18,6 +16,7 @@ if (  isset($settings) && $settings ) {
 
 if ( isset($_POST['agree']) &&  $_POST['agree']) {
 	$post = $_POST;
+	$post['cuser_email'] = $spnxAdminManage->getCurrentUserEmail();
 	// site info  is being updated
 	$post['spinkx_version'] = $spnxAdminManage->spinkx_cont_get_version();
 	if ( $site_id ) {
@@ -65,6 +64,7 @@ if ( isset($_POST['agree']) &&  $_POST['agree']) {
 			$settings['due_date'] = $output['due_date'] ;
 			$s = maybe_serialize( $settings );
 			update_option( $spnxAdminManage->spinkx_cont_get_license(), $s );
+            update_option('spnx_reg_update', true);
 			$js_output = "<script>jQuery(document).ready(function () {
 					$.growl.notice({
 						message: '".$output['message']."',
@@ -497,7 +497,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 			<div class="continue-spnx-reg-button-cntnr">
 				<span style="font-size:13px;">
 					<input type="checkbox" name="agree" id="checked-registration" <?php echo isset( $settings['reg_user'] ) ? 'checked' : ''; ?> >
-					I agree the
+					I agree with the
 					<a target="_blank" href="http://www.spinkx.com/terms-conditions/">
 						Terms & Conditions
 					</a>
@@ -507,7 +507,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		</div>
 		<div class="lower-text-cmon-cls-spnx-reg">
 			<div>
-				<span class="lower-color-cmn-cls-spnx-reg">Earn 2X Boost Points & 2X Revenue on Purchase Spinkx Yearly Membership for $60.</span>
+				<span class="lower-color-cmn-cls-spnx-reg"><?php echo $dropdown->selected_site->msg_buy?></span>
 				<span class="spnx-knw-more-cmn-cls buy-now-shrt-code"><?php echo do_shortcode( $buy_now );?></span>
 			</div>
 		</div>

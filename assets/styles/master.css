@@ -2073,12 +2073,11 @@ vertical-align: sub;
 .camp-group-name img {
     margin-right: 10px;
 }
-.notice-error, .notice-warning, .notice-success, .notice-info, .update-nag {
-    display: none;
+.notice-error, .notice-warning, .notice-success, .notice-info, .update-nag, .error, .updated {
+    display: none !important;
 }
-
-.notice-spinkx {
-    display: inline-block;
+.notice-spinkx, .notice-spnx {
+    display: inline-block !important;
 }
 .select-drtn-cls .ms-options-wrap > .ms-options {
     background-color:#f3f3f3 !important;
@@ -2183,3 +2182,52 @@ vertical-align: sub;
 
 }
 /**new widget category ends css **/
+
+.ntf-cntnt-mn-dv {
+    border: 1px solid #d1d1d1;
+    margin-top: 10px;
+    position: relative;
+    display: none;
+}
+.ntf-cntnt-mn-dv>div:first-child {
+    text-align:center;
+    border-bottom: 1px solid #d1d1d1;
+    padding: 15px 10px;
+}
+.ntf-cntnt-mn-dv>div:last-child {
+    text-align:right;
+    padding: 15px 10px;
+
+}
+.cm-fst-cnt-cls-mn-dv-chld {
+    display: inline-block;
+    vertical-align: top;
+}
+.fst-cnt-cls-mn-dv {
+    padding: 10px;
+    border-bottom: 1px solid #d1d1d1;
+}
+.fst-cnt-cls-mn-dv>div:last-child {
+    float: right;
+}
+.fst-cnt-cls-mn-dv>div:first-child {
+    margin-right: 10px;
+}
+.fnt-sz-rsz-cm-cl-n>div:last-child {
+    font-size: 12px;
+    margin-top: 5px;
+}
+.ntf-cntnt-mn-dv:before {
+    content: ' \25BE';
+    display: inline-block;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    position: absolute;
+    right: 46px;
+    top: -17px;
+    font-size: 26px;
+    color: #888888;
+}

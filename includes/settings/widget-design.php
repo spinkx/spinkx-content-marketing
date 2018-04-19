@@ -11,11 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 <div class="se-pre-con"></div>
 <div class="wrap">
-	<div class="bpopup" id="bpopup_ajax_loading" style="display: none; background-color:transparent;">
-			<div class="popup_div" style="display: block;" >
-				<img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL )?>assets/images/loader.gif" alt="loading"/>
-			</div>
-		</div>
+
 	<!-- Main tabs here  -->
 	<!--div class="distribution-main-tabs"-->
 		<!--<h2 style="font-weight: bold; padding:0px;">spinkx Distribution Settings</h2>

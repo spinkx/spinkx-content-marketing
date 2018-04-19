@@ -54,6 +54,25 @@ jQuery( document ).ready(function() {
                 changePostStatus(jQuery(this));
         }
     });
+    var bp_datatable = jQuery("#bwki_sites_display").DataTable();
+
+    jQuery('input.column_filter').on( 'keyup click', function () {
+        jQuery('.se-pre-con').addClass('se-pre-con2').removeClass('se-pre-con');
+        filterColumn( 0 );
+    } );
+
+    jQuery('input.column_filter').on( 'blur', function () {
+        jQuery('.se-pre-con2').addClass('se-pre-con').removeClass('se-pre-con2');
+        filterColumn( 0 );
+    } );
+
+    jQuery(document).on('mouseover', function(e){
+        if((jQuery(e.target).attr('class') === 'column_filter')) {
+            jQuery('.se-pre-con').addClass('se-pre-con2').removeClass('se-pre-con');
+        } else {
+            jQuery('.se-pre-con2').addClass('se-pre-con').removeClass('se-pre-con2');
+        }
+    });
     window.onload = function() {
         jQuery('.categories').multiselect({
             columns: 1,
@@ -62,6 +81,7 @@ jQuery( document ).ready(function() {
             selectAll: true
         });
     };
+    jQuery('.notice-spnx').show();
 
     /*jQuery('.spinkx-popover-close').on('click', function(){
         jQuery(this).parent().hide();
@@ -109,9 +129,11 @@ jQuery( document ).ready(function() {
                 console.log(data);
             }
         });
+
+       
     });
 
-    jQuery("#sortby_local_reach").click(function () {
+    /*jQuery("#sortby_local_reach").click(function () {
         console.log(global_start_date);
         //var start = jQuery('#drp-input-startdate')._$startDate.val().format('YYYY-MM-DD');
         //var end =  jQuery('#daterange').data('daterangepicker').endDate.format('YYYY-MM-DD');
@@ -150,7 +172,7 @@ jQuery( document ).ready(function() {
         url = addParameter(url, "to_date", global_end_date);
         window.location.href = url;
 
-    });
+    });*/
 
     jQuery('.spnx-sync').powerTip({
         placement: 'n',
@@ -682,7 +704,7 @@ function changePostStatus(the_element) {
                     });
                     the_element.prop("checked", false);
                 } else {
-                    if (data.msg == "active" || data.msg == 1) {
+                    if (data.msg == "active" || data.msg == 1 || data.msg == 3) {
                         the_element.prop("checked", true);
                     } else {
                         the_element.prop("checked", false);
@@ -1159,4 +1181,12 @@ function modifiedcategory($id) {
         selectAll: true
     });
     jQuery(".modified-category-"+$id).toggle();
+}
+
+function filterColumn ( i ) {
+    jQuery("#bwki_sites_display").DataTable().column( i ).search(
+        jQuery('#col'+i+'_filter').val(),
+        false,
+        true
+    ).draw();
 }

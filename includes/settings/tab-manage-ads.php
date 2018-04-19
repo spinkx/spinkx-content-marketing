@@ -210,7 +210,7 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 				<div class="modal-body">
 					<div class="form-group">
 						<div class="cmpgn-dv-entr-amnt" for="point_amount">Enter Amount</div>
-						<input	type="text" class="form-control" id="wallet_amount" style="display: inline;width:40%;" value="100"/>
+						<i class="fa <?php echo $currencyClass?>"></i><input	type="text" class="form-control" id="wallet_amount" style="display: inline;width:40%;" value="100"/>
 					</div>
 					<?php
 						if ( isset( $output['add_money'] ) && $output['add_money']) {

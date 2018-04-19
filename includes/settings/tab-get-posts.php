@@ -53,7 +53,7 @@ $custom_js = 'var pt = ' . $p . '; var pageLength = ' . $pageLength . '; ';
 $custom_js .= 'var start = moment(' . ($startdate) . ');';
 $custom_js .= 'var end = moment(' . ($enddate) . '); jQuery(function() {';
 $loader = '<img src="' . esc_url(SPINKX_CONTENT_PLUGIN_URL) . 'assets/images/loader.gif" alt="loading"/>';
-$custom_js .= 'jQuery(".se-pre-con").fadeOut("slow");';
+//$custom_js .= 'jQuery(".se-pre-con").fadeOut("slow");';
 if($settings['due_date']!='0000-00-00 00:00:00') {
 $custom_js .= 'jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: ' . $todaydate . '});
 	var $ = jQuery.noConflict();	
@@ -79,12 +79,10 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 
 			</td>
 
-			<td  style="padding: 0px;text-align: center;">
-				<span><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"><a href="#" id="sortby_local_reach">Views</a>|<a href="#" id="sortby_local_ctr">Engagement</a></span>
+			<td  colspan="2" style="padding: 0px;text-align: center;">
 
-			</td>
-			<td  style="padding: 0px;text-align: center;">
-				<span style=""><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"> <a href="#" id="sortby_global_reach">Views</a>|<a href="#" id="sortby_global_ctr">Engagement</a></span>
+                <input type="text" class="column_filter" id="col0_filter">
+
 			</td>
 		</tr>
 		<tr style="background-color: #e4eff4 !important;height: 27px;font-size: 12px; color:#a93671;">
@@ -185,7 +183,7 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 				<?php if(isset($response['reach'])) { ?>
 					<div class="form-group">
 						<label for="point_amount">Points</label><br/>
-						<br/><input	type="text" class="form-control" id="buy_point" style="display: inline;width:40%;" value="100"/>
+						<br/><input	type="number" class="form-control" id="buy_point" style="display: inline;width:40%;" value="100"/>
 					</div>
 					<div class="form-group">
 						<label>Reach</label>
@@ -211,25 +209,43 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 </div>
 </div>
 <script>
-	jQuery(document).ready(function($) {
-		$('#buy_point').change(function(){
-			var points = $(this).val();
-			$.ajax({
-				url : spinkx_server_baseurl + '/wp-json/spnx/v1/site/get-point-price',
-				type : "post",
-				data : {
-					"site_id" : g_site_id,
-					"points": points,
-					"license_code": '<?php echo $settings['license_code']?>',
-					"reg_email": '<?php echo $settings['reg_email']?>',
-				},
-				success : function(data) {
-					$('#reach').text(data.reach);
-					$('#amount').text(data.price);
-					$('#point_amount').val(data.price);
-				}
-			});
-		});
-	});
+    jQuery(document).ready(function($) {
+        jQuery('#buy_point').on('keyup', function(event){
+            var points = parseInt($(this).val());
+            if(points === undefined || isNaN(points)) {
+                document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
+                alert('Please enter amount in a number.');
+                return;
+            }
+            if (points < 100) {
+                document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
+                alert('A minimum of 100 points are required for a purchase.');
+                return;
+            }
+            document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
+            jQuery.ajax({
+                url : spinkx_server_baseurl + '/wp-json/spnx/v1/site/get-point-price',
+                type : "post",
+                beforeSend: function() {
+                    document.getElementById('payment-method-button').disabled = true;
+                },
+                data : {
+                    "site_id" : g_site_id,
+                    "points": points,
+                    "license_code": '<?php echo $settings['license_code']?>',
+                    "reg_email": '<?php echo $settings['reg_email']?>',
+                },
+                success : function(data) {
+                    $('#reach').text(data.reach);
+                    $('#amount').text(data.price);
+                    $('#point_amount').val(data.price);
+                    $('button#payment-method-button').prop('disabled', false);
+                    document.getElementById('payment-method-button').style.backgroundColor = '#337ab7';
+                }
+            });
+        });
+
+    });
+
 </script>
 <?php } ?>

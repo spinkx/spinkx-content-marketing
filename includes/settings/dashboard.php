@@ -16,7 +16,7 @@ wp_enqueue_script( 'jquery-dashboard', $js_url . 'dashboard.js' );
 wp_enqueue_script( 'jquery-custom-js', $js_url . 'widget-design.js' );
 wp_add_inline_script( 'jquery-custom-js', $custom_js );
 ?>
-<!--<div class="se-pre-con"></div>-->
+<div class="se-pre-con"></div>
 <div class="wrap">
 	<div class="bpopup" id="bpopup_ajax_loading" style="display: none;width:100px">
 			<div class="popup_div" style="display: block;" >

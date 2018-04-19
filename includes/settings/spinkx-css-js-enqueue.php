@@ -48,6 +48,19 @@ span.spinkx-notify-text-active{
 }
 
 /**
+*
+* This function for add inline css on spinkx icon
+* spinkx_cont_icon_css()
+*
+ * @return void
+    * @internal param $void
+*/
+function spinkx_admin_add_inline_js(){
+    echo "<script type='text/javascript'>\n";
+    echo 'vjQuery(document).ready(function($) {$(document).on("click", function(e) {if (e.target.id =="ntf-bl-sh-hd") {$(".ntf-cntnt-mn-dv").toggle();} else {$(".ntf-cntnt-mn-dv").hide();}});});';
+    echo "\n</script>";
+}
+/**
  *
  * This function for add inline css on spinkx icon
  * spinkx_icon_css()
@@ -138,9 +151,9 @@ function spinkx_cont_common_css_js( $page  ) {
 	 * JS Loading
 	 */
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
-	//wp_enqueue_script( 'smooch-js', $js_url .'smooch.min.js' );
+	wp_enqueue_script( 'smooch-js', $js_url .'smooch.min.js' );
 
-	//wp_add_inline_script('smooch-js', "Smooch.init({ appToken: 'aa9cksz2rzpy071aqxhe31yvs' });");
+	wp_add_inline_script('smooch-js', "Smooch.init({ appId: '585e57e650cedf70007fab2e' });");
 	wp_enqueue_script( 'jquery-ui-js', $js_url . 'jquery-ui.js' );
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
 	wp_enqueue_script( 'bootstrap-js', $js_url . 'bootstrap.min.js' );
@@ -402,7 +415,7 @@ function spinkx_header_menu() {
 	$settings = maybe_unserialize( $settings );
 	$site_id = isset($settings['site_id'])?$settings['site_id']:0;
     $settings['due_date'] = isset($settings['due_date'])?$settings['due_date']:'0000-00-00 00:00:00';
-    ?><div><div class="spnx-menu-logo"><span><a href="https://www.spinkx.com"><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/spinkx-logo.png" /></a></span></div>
+    ?><div><div class="spnx-menu-logo"><span><a href="https://www.spinkx.com"><img src="<?php echo $spnxAdminManage->spinkx_cont_cdn_url(); ?>media/spinkx-logo.png" /></a></span></div>
 	<ul class="nav nav-tabs">
         <?php if(  $settings['due_date'] == '0000-00-00 00:00:00'  ) {?>
 		<li <?php echo ('spinkx-site-register' === $page)?'class="active"':''?>><a href="?page=spinkx-site-register">Registration</a></li>
@@ -415,7 +428,7 @@ function spinkx_header_menu() {
 
 	</ul>
 	<?php if ('spinkx_content_play_list' === $page) { ?>
-	<div class="spnx-sync" title="Post ReSync"><img  id="posts_<?php echo $site_id ?>" class="posts_sync" src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sync-icon.png"  /></div>
+	<div class="spnx-sync" title="Post ReSync"><img  id="posts_<?php echo $site_id ?>" class="posts_sync" src="<?php echo $spnxAdminManage->spinkx_cont_cdn_url(); ?>media/sync-icon.png"  /></div>
 	<?php } ?>
 
 	<?php  if ('edit-widget' !== $tab ) { ?>

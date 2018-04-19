@@ -54,16 +54,18 @@ final class spnxAdminManage {
 	private $_frontend_actions = array( 'display_widget_content', 'mobile_widget_data' );
 	public function __construct( $loading = false ) {
 		if(!$this->_spinkx_cont_version) {
-			$this->_spinkx_cont_version = '2.2.2';
+			$this->_spinkx_cont_version = '3.0';
 		}
 		if(!$this->_spinkx_cont_license) {
 			$this->_spinkx_cont_license = 'spinkx_content_license_update';
 		}
 		if(!$this->_spinkx_server_bapi_url) {
-            $this->_spinkx_server_bapi_url = 'https://backend.spinkx.com';
+            $this->_spinkx_server_bapi_url = 'http://localhost/spinkx-backend';
+          // $this->_spinkx_server_bapi_url = 'https://backend.spinkx.com';
         }
 		if(!$this->_spinkx_server_api_url) {
-            $this->_spinkx_server_api_url = 'https://frontend.spinkx.com';
+            $this->_spinkx_server_api_url = 'http://localhost/spinkx-frontend';
+          // $this->_spinkx_server_api_url = 'https://content.spinkx.com';
 		}
 		if(!$this->_spinkx_cont_dir) {
 			$this->_spinkx_cont_dir =  plugin_dir_path( __FILE__ );
@@ -74,9 +76,8 @@ final class spnxAdminManage {
 		
 
 		if($loading) {
-
-			add_action('admin_menu', array($this, 'spinkx_cont_spinkx_admin_menu'));
-			//add_action('admin_bar_menu', array($this, 'spinkx_cont_show_notification'));
+            add_action('admin_menu', array($this, 'spinkx_cont_spinkx_admin_menu'));
+			add_action('admin_bar_menu', array($this, 'spinkx_cont_show_notification'));
 			add_action('admin_notices', array($this, 'spinkx_cont_show_notice')); // call spinkx_show_notice.
 			add_action('admin_head', 'spinkx_cont_icon_css');
 			add_action('admin_enqueue_scripts', 'spinkx_cont_js_var');
@@ -88,9 +89,7 @@ final class spnxAdminManage {
 			add_action('update_option_permalink_structure', array($this, 'spinkx_cont_permalink_update'), 10, 2);
 			add_action('publish_to_publish', array($this, 'spinkx_cont_update_on_publish_to_publish'), 10, 3);
 			add_action('transition_post_status', array($this, 'spinkx_cont_update_status_transitions'), 10, 3);
-			
-
-			//add_action('wp_footer', 'spinkx_mobile_widget_setup');
+            //add_action('wp_footer', 'spinkx_mobile_widget_setup');
 			add_shortcode('spinkx-cont-payment-method', 'spinkx_cont_payment_method_list');
 
 			foreach ($this->_ajax_actions as $action) {
@@ -126,7 +125,9 @@ final class spnxAdminManage {
 		return $this->_spinkx_server_api_url;
 	}
 
-
+    public function spinkx_cont_cdn_url() {
+        return 'https://storage.googleapis.com/spinkx/';
+    }
 
 	function spinkx_cont_show_notification() {
 		global $wp_admin_bar;
@@ -139,12 +140,48 @@ final class spnxAdminManage {
 		}
 		$args = array(
 			'id' => 'spinkx_notification',
-			'href' => admin_url('/edit.php?post_status=pending&post_type=page'),
-			'parent' => 'top-secondary'
+			'href' => '#',
+            'parent' => 'top-secondary'
 		);
 		$title = 'Spinkx Notification';
 		$args['meta']['title'] = $title;
-		$display = '<span class="spinkx-notify-update-bubble">'.$pending.'</span><span class="spinkx-notify-text-active"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/icon-bell.png"/></span>';
+		//$args['meta']['onclick'] =  'javascript:;test()';
+		$args['meta']['id'] = 'ntf-bl-sh-hd';
+ 		$display = '<span class="spinkx-notify-update-bubble">'.$pending.'</span><span class="spinkx-notify-text-active"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/icon-bell.png"/></span>
+        <div class="ntf-mn-cntnr">
+    <div class="ntf-cntnt-mn-dv">
+        <div>
+            Notifications
+        </div>
+        <div class="al-cntnt-mn-dv">
+            <div class="fst-cnt-cls-mn-dv">
+                    <div class="cm-fst-cnt-cls-mn-dv-chld"><img src="settings-work-tool.png" /></div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-sz-rsz-cm-cl-n">
+                        <div>Update firewall rule default-allow-internal </div>
+                        <div>Spinkx</div>
+                    </div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld">
+                        2d
+                    </div>
+
+            </div>
+            <div class="fst-cnt-cls-mn-dv">
+                <div class="cm-fst-cnt-cls-mn-dv-chld"><img src="settings-work-tool.png" /></div>
+                <div class="cm-fst-cnt-cls-mn-dv-chld fnt-sz-rsz-cm-cl-n">
+                    <div>Update firewall rule default-allow-internal </div>
+                    <div>Spinkx</div>
+                </div>
+                <div class="cm-fst-cnt-cls-mn-dv-chld">
+                    2d
+                </div>
+
+            </div>
+
+        </div>
+        <div>
+            SEE ALL ACTIVITY
+        </div>
+    </div>';
 		$args['title'] = $display;
 		$wp_admin_bar->add_node($args);
 	}
@@ -402,7 +439,7 @@ final class spnxAdminManage {
 		global $wpdb;
 		$url = $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/widget/activation/';
 		$get = spnxHelper::getFilterGet();
-		$output = spnxHelper::doCurl( $url, $get, false );
+        $output = spnxHelper::doCurl( $url, $get, false );
 		if( $output ) {
 			$this->update_widget_list();
 		}
@@ -525,12 +562,15 @@ final class spnxAdminManage {
 				}
 			}
 			$post_status = 1;
-			if ($post->post_status == 'publish') {
-				$counter++;
-				if ($counter > 20) {
-					$post_status = 0;
-				}
+			if ($post->post_status != 'publish') {
+				continue;
 			}
+            $post_excerpt = get_the_excerpt();
+            if($post_excerpt) {
+                $post_excerpt = $this->spinkx_cont_get_excerpt_by_id($post_excerpt);
+            } else {
+                continue;
+            }
 			$post_array['posts'][$all_posts_count]['post_title'] = $post->post_title;
 			$post_array['posts'][$all_posts_count]['post_status'] = $post_status;
 			$post_array['posts'][$all_posts_count]['post_publish_date'] = $post->post_date_gmt;
@@ -538,12 +578,7 @@ final class spnxAdminManage {
 				continue;
 			}*/
 			//$post = get_post($pid);
-			$post_excerpt = get_the_excerpt();
-			if($post_excerpt) {
-				$post_excerpt = $this->spinkx_cont_get_excerpt_by_id($post_excerpt);
-			} else {
 
-			}
 			$post_array['posts'][$all_posts_count]['post_excerpt'] = base64_encode ( $post_excerpt ); // viksedit we need post_excerpt
 			$post_array['posts'][$all_posts_count]['post_author_email'] = get_the_author_meta('email'); // Vikash
 			$post_array['posts'][$all_posts_count]['post_author_name'] = get_the_author_meta('display_name');   // Vikash
@@ -608,6 +643,7 @@ final class spnxAdminManage {
 
 	function spinkx_cont_widget_clone() {
 		$post = spnxHelper::getFilterPost();
+		$post['cuser_email'] = (new spnxAdminManage())->getCurrentUserEmail();
 		$post = wp_json_encode($post);
 		$url = esc_url( $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/widget/clone' );
 		$response = spnxHelper::doCurl( $url, $post, false );
@@ -617,6 +653,7 @@ final class spnxAdminManage {
 
 	function spinkx_cont_widget_delete() {
 		$post = spnxHelper::getFilterPost();
+        $post['cuser_email'] = (new spnxAdminManage())->getCurrentUserEmail();
 		$post = wp_json_encode($post);
 		$url = esc_url( $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/widget/delete' );
 		$response = spnxHelper::doCurl( $url, $post, false );
@@ -627,6 +664,7 @@ final class spnxAdminManage {
 	function spinkx_cont_widget_update() {
 		$post = spnxHelper::getFilterPost();
 		$post['mode'] = 'update';
+        $post['cuser_email'] = (new spnxAdminManage())->getCurrentUserEmail();
 		$url = esc_url( $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/widget/update' );
 		unset($post['action']);
 		$response = spnxHelper::doCurl( $url, $post );
@@ -638,7 +676,8 @@ final class spnxAdminManage {
 		$post = spnxHelper::getFilterPost();
 		$post['form_serialized_data'] = $this->get_default_form_serialized_data($post['widget_name']);
 		unset($post['widget_name']);
-		$post['mode'] = 'update';
+        $post['cuser_email'] = (new spnxAdminManage())->getCurrentUserEmail();
+		$post['mode'] = 'reset';
         $url = esc_url( $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/widget/update' );
 		$response = spnxHelper::doCurl( $url, $post );
         echo json_decode($response);
@@ -648,6 +687,7 @@ final class spnxAdminManage {
 	function spinkx_cont_widget_create() {
 		$post = spnxHelper::getFilterPost();
 		$post['mode'] = 'create';
+        $post['cuser_email'] = (new spnxAdminManage())->getCurrentUserEmail();
 		$url = esc_url( $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/widget/create' );
 		$response = spnxHelper::doCurl( $url, $post );
 		$response = json_decode($response);
@@ -1538,5 +1578,10 @@ final class spnxAdminManage {
 		echo $output;
 		exit;
 	}
+
+	public function getCurrentUserEmail() {
+        $current_user = wp_get_current_user();
+        return $current_user->user_email;
+    }
 }
 endif;
