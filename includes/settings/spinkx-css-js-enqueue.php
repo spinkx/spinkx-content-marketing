@@ -105,7 +105,9 @@ float: right;
 */
 function spinkx_admin_add_inline_js(){
     echo "<script type='text/javascript'>\n";
-    echo 'vjQuery(document).ready(function($) {$(document).on("click", function(e) {if (e.target.id =="ntf-bl-sh-hd") {$(".ntf-cntnt-mn-dv").toggle();} else {$(".ntf-cntnt-mn-dv").hide();}});});';
+    echo "jQuery(document).ready(function(){jQuery('#wp-admin-bar-spinkx_notification').click(function(){
+    jQuery('.ntf-mn-cntnr').toggle();
+})});";
     echo "\n</script>";
 }
 /**
