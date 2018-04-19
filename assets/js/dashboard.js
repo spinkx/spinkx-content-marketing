@@ -125,7 +125,7 @@ jQuery(document).ready(function() {
                     });
                 }
             } else {
-                alert('Sorry you cannot withdraw money at this point. We have a minimum payout of ' + spinkx_data.currency + ' ' + spinkx_data.min_bal + '. We request you to wait till you collect the minimum payout amount.');
+                alert('Sorry you cannot withdraw money at this point. We have a minimum payout of ' + spinkx_data.currencyEnglish + ' ' + spinkx_data.min_bal + '. We request you to wait till you collect the minimum payout amount.');
             }
 
     });

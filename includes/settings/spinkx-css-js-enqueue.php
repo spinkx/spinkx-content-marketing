@@ -48,6 +48,19 @@ span.spinkx-notify-text-active{
 }
 
 /**
+*
+* This function for add inline css on spinkx icon
+* spinkx_cont_icon_css()
+*
+ * @return void
+    * @internal param $void
+*/
+function spinkx_admin_add_inline_js(){
+    echo "<script type='text/javascript'>\n";
+    echo 'vjQuery(document).ready(function($) {$(document).on("click", function(e) {if (e.target.id =="ntf-bl-sh-hd") {$(".ntf-cntnt-mn-dv").toggle();} else {$(".ntf-cntnt-mn-dv").hide();}});});';
+    echo "\n</script>";
+}
+/**
  *
  * This function for add inline css on spinkx icon
  * spinkx_icon_css()

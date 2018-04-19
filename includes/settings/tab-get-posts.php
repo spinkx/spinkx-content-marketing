@@ -53,7 +53,7 @@ $custom_js = 'var pt = ' . $p . '; var pageLength = ' . $pageLength . '; ';
 $custom_js .= 'var start = moment(' . ($startdate) . ');';
 $custom_js .= 'var end = moment(' . ($enddate) . '); jQuery(function() {';
 $loader = '<img src="' . esc_url(SPINKX_CONTENT_PLUGIN_URL) . 'assets/images/loader.gif" alt="loading"/>';
-$custom_js .= 'jQuery(".se-pre-con").fadeOut("slow");';
+//$custom_js .= 'jQuery(".se-pre-con").fadeOut("slow");';
 if($settings['due_date']!='0000-00-00 00:00:00') {
 $custom_js .= 'jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: ' . $todaydate . '});
 	var $ = jQuery.noConflict();	
@@ -79,12 +79,10 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 
 			</td>
 
-			<td  style="padding: 0px;text-align: center;">
-				<span><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"><a href="#" id="sortby_local_reach">Views</a>|<a href="#" id="sortby_local_ctr">Engagement</a></span>
+			<td  colspan="2" style="padding: 0px;text-align: center;">
 
-			</td>
-			<td  style="padding: 0px;text-align: center;">
-				<span style=""><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"> <a href="#" id="sortby_global_reach">Views</a>|<a href="#" id="sortby_global_ctr">Engagement</a></span>
+                <input type="text" class="column_filter" id="col0_filter">
+
 			</td>
 		</tr>
 		<tr style="background-color: #e4eff4 !important;height: 27px;font-size: 12px; color:#a93671;">

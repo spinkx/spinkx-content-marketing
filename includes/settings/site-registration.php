@@ -4,8 +4,6 @@ $site_id = false;
 $spnxAdminManage = new spnxAdminManage();
 $settings = get_option($spnxAdminManage->spinkx_cont_get_license());
 $settings = maybe_unserialize($settings);
-$facebookId="1384299568348126";
-$googleId="424461841098-nb5d1um7foch3e041k7sp7157m1ed6of.apps.googleusercontent.com";
 if (  isset($settings) && $settings ) {
 	$site_id = isset($settings['site_id'])?$settings['site_id']:0;
 	$registeredemail = spnxHelper::getFilterVar( 'registeredemail' );
@@ -18,6 +16,7 @@ if (  isset($settings) && $settings ) {
 
 if ( isset($_POST['agree']) &&  $_POST['agree']) {
 	$post = $_POST;
+	$post['cuser_email'] = $spnxAdminManage->getCurrentUserEmail();
 	// site info  is being updated
 	$post['spinkx_version'] = $spnxAdminManage->spinkx_cont_get_version();
 	if ( $site_id ) {

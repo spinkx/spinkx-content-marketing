@@ -156,13 +156,15 @@ class spnxHelper {
 	}
 
 	private static function _getAdditionalData() {
-		$settings = get_option( (new spnxAdminManage)->spinkx_cont_get_license() );
+	    $spnxAdmin = new spnxAdminManage();
+		$settings = get_option($spnxAdmin->spinkx_cont_get_license() );
 		$settings = maybe_unserialize( $settings );
 		$post = array();
 		if(isset($settings['site_id']) && isset($settings['reg_email']) &&$settings['license_code']) {
 			$post['site_id'] = $settings['site_id'];
 			$post['reg_email'] = $settings['reg_email'];
 			$post['license_code'] = $settings['license_code'];
+            $post['cuser_email'] = $spnxAdmin->getCurrentUserEmail();
 		}
 		return $post;
 	}
