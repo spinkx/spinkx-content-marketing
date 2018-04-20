@@ -43,20 +43,34 @@ span.spinkx-notify-text-active{
     color: #91b1c6 !important;
     font-weight: bold !important;
     text-shadow: 0px 0px 1px #000 !important;
-}.ntf-cntnt-mn-dv {
-    border: 1px solid #d1d1d1;
-    margin-top: 10px;
-    position: relative;
-    display: none;
+}
+.ntf-mn-cntnr {
+ background-color: white;
+ color: black;
+ position: absolute !important;
+ top:32px;
+ right: -26px;
+ width: 380px !important;
+ -webkit-font-smoothing: antialiased;
+ color: rgba(0,0,0,.987) !important;
+ display: none;
+ max-height: 311px !important;
+}
+.ntf-cntnt-mn-dv {
+    border: 1.1px solid lightgrey;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2) !important;
 }
 .ntf-cntnt-mn-dv>div:first-child {
     text-align:center;
-    border-bottom: 1px solid #d1d1d1;
-    padding: 15px 10px;
+    border-bottom: 1.1px solid #e7e7e7;
+    padding: 7px 10px !important;
+    font-size: 15px !important;
 }
 .ntf-cntnt-mn-dv>div:last-child {
     text-align:right;
-    padding: 15px 10px;
+    padding: 3px 10px !important;
+    font-size: 11px !important;
+    text-transform:uppercase !important;
 
 }
 .cm-fst-cnt-cls-mn-dv-chld {
@@ -64,32 +78,136 @@ display: inline-block;
     vertical-align: top;
 }
 .fst-cnt-cls-mn-dv {
-    padding: 10px;
-    border-bottom: 1px solid #d1d1d1;
+    padding: 2px 10px !important;
+    border-bottom: 1.1px solid #e7e7e7;
+    cursor: pointer;
 }
 .fst-cnt-cls-mn-dv>div:last-child {
 float: right;
+font-size: 11px !important;
+
 }
 .fst-cnt-cls-mn-dv>div:first-child {
-    margin-right: 10px;
+    margin-right: 10px !important;
 }
 .fnt-sz-rsz-cm-cl-n>div:last-child {
-    font-size: 12px;
-    margin-top: 5px;
+    font-size: 11px !important;
+    margin-top: -13px !important;
 }
 .ntf-cntnt-mn-dv:before {
     content: \' \25BE\';
     display: inline-block;
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
+    -webkit-transform: scale(-1.7,-0.8);
+    -moz-transform: scale(-1.7,-0.8);
+    -o-transform: scale(-1.7,-0.8);
+    -ms-transform:scale(-1.7,-0.8);
+    transform:scale(-1.7,-0.8);
     position: absolute;
     right: 46px;
-    top: -17px;
-    font-size: 26px;
-    color: #888888;
+    top: -15px;
+    font-size: 36px;
+    color:white;
+}
+.fnt-opc-mn-dv {
+opacity: .654;
+font-weight: 600 !important;
+}
+.upd-mn-dv-cls {
+font-weight: 600 !important;
+font-size: 12px !important;
+}
+.al-cntnt-mn-dv {
+max-height:168px !important;
+overflow-y:scroll;
+}
+/* width */
+.al-cntnt-mn-dv::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.al-cntnt-mn-dv::-webkit-scrollbar-track {
+    background:white; 
+}
+ 
+/* Handle */
+.al-cntnt-mn-dv::-webkit-scrollbar-thumb {
+    background:lightgrey; 
+}
+
+/* Handle on hover */
+.al-cntnt-mn-dv::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+.al-cntnt-mn-dv .fst-cnt-cls-mn-dv:hover {
+background-color: #eee;
+}
+/** top bar bell css **/
+.bl-mn-dv-cntnr-ntf-br {
+    background-color: grey !important;
+    border-radius: 50px !important;
+    width: 90px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+    height: 26px !important;
+    margin-top: 3px !important;
+    position: relative !important;
+    cursor: pointer;
+}
+.bl-mn-dv-cntnr-ntf-br {
+position: relative !important; 
+}
+.bl-mn-dv-cntnr-ntf-br .img-cntnr-gf-mn-dv img{
+vertical-align: unset !important;
+}
+.bl-mn-dv-cntnr-ntf-br .img-cntnr-gf-mn-dv {
+margin-top: -1px !important;
+}
+.rnd-cmn-cls-dv-mn-cntr-rng {
+    border: 1px solid grey;
+    border-top: 2px solid #3498db;
+    width: 22px !important;
+    height: 22px !important;
+    text-align: center;
+    border-radius: 50px !important;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 1.2s linear infinite;
+    margin-top: 0px !important;
+    position: absolute !important;
+    top: 0px;
+    left: 80px !important;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.bl-mn-dv-cntnr-ntf-br span img {
+width: 15px !important;
+}
+.bl-mn-dv-cntnr-ntf-br span:first-child img {
+width: 15px !important;
+}
+#wp-admin-bar-spinkx_notification >.ab-item:hover {
+background: transparent !important; 
+}
+#wp-admin-bar-spinkx_notification >.ab-empty-item:hover {
+background: transparent !important; 
+}
+#wp-admin-bar-spinkx_notification >.ab-item:focus {
+background: transparent !important; 
+}
+#wp-admin-bar-spinkx_notification >.ab-empty-item:focus {
+background: transparent !important; 
+}
+#wp-admin-bar-spinkx_notification:hover {
+background-color: transparent !important; 
 }
 </style>';
 
@@ -103,13 +221,32 @@ float: right;
  * @return void
     * @internal param $void
 */
-function spinkx_admin_add_inline_js(){
-    echo "<script type='text/javascript'>\n";
-    echo "jQuery(document).ready(function(){jQuery('#wp-admin-bar-spinkx_notification').click(function(){
-    jQuery('.ntf-mn-cntnr').toggle();
-})});";
-    echo "\n</script>";
+
+/**  function spinkx_admin_add_inline_js(){
+	echo "<script type='text/javascript'>\n";
+	echo "jQuery(document).ready(function(){jQuery(document).on('click', function(e) {
+           if (e.target.id =='#wp-admin-bar-spinkx_notification') {
+           alert('dfsdf');
+			jQuery('.ntf-mn-cntnr').toggle();
+		} else {
+			jQuery('.ntf-mn-cntnr').hide();
+		}
+	})});";
+	echo "\n</script>";
 }
+ **/
+function spinkx_admin_add_inline_js(){
+	echo "<script type='text/javascript'>\n";
+	echo "jQuery(document).ready(function(){jQuery('#wp-admin-bar-spinkx_notification').click(function(){
+    jQuery('.ntf-mn-cntnr').toggle();
+})
+jQuery('#wp-admin-bar-spinkx_notification').hover(function () {
+jQuery('#wp-admin-bar-spinkx_notification .ab-item').css('background','transparent');
+})
+});";
+	echo "\n</script>";
+}
+
 /**
  *
  * This function for add inline css on spinkx icon

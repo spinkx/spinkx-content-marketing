@@ -266,12 +266,11 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				</span>
 			</div>
 		</div>
-		<?php if ( isset( $user_key ) && $user_key ) {
-		?>
+
 		<div class="spnx-box-reg-cmn-cls">
 			<div class="header-cmn-cls-spnx">Tell us about your goals. Choose one</div>
 			<div class="spnx-rdio-dv-cmn-cls">
-				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" name="plugin-type" value="1" checked="checked" <?php if($plugin_type_id==1) { echo "checked='checked'"; }?>/></div>
+				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" name="plugin-type" value="1"  <?php if($plugin_type_id==1) { echo "checked='checked'"; }?>/></div>
 				<div class="label-cntnr-mn-cls-cmommon-sec"> I want to only earn Revenue. I have more than 100,000 visitors per month.</div>
 			</div>
 			<div class="spnx-rdio-dv-cmn-cls">
@@ -300,31 +299,20 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 			</div>
 			<div class="spnx-knw-more-cmn-cls"><a href="#">Know More</a></div>
 		</div>
-		<?php }?>
+
 	</div>
 	<div class="spnx-sec-mn-cntainter">
 		<div class="spnx-stckr-cmn-class spnx-box-reg-cmn-cls">
-			<input type="hidden" id="user_key" name="user_key" value="<?php if ( isset( $user_key ) && $user_key ) {
-				echo $user_key;
-			} ?>" readonly>
-			<?php if (empty($user_key)) { ?>
-				<iframe class="spinx-log-reg-iframe"
-					src="<?php echo esc_url( $spnxAdminManage->spinkx_cont_bapi_url() ) ?>/spinkx-login?loginFacebook=1&redirect=<?php echo esc_url($spnxAdminManage->spinkx_cont_bapi_url()) ?>/viewkey?url=<?php echo get_site_url(); ?>"
-					id="info" class="iframe" scrolling="no" name="info" width="100%" height="90%"></iframe>
-
-			<?php } else { ?>
 			<div class="vrticl-align-cmn-cls-spnx-reg">
 				<span class=" catog-des-cmn-cls-spnx-reg">Registered site email</span>
 				<span class="horizntal-align-cmn-cls-spnx-reg"><?php echo $settings['reg_email']; ?> <br/></span>
 			</div>
-			<div class="vrticl-align-cmn-cls-spnx-reg ">
+			<div class="vrticl-align-cmn-cls-spnx-reg " style="display: none;">
 				<span class=" catog-des-cmn-cls-spnx-reg">Registered user email</span>
 				<span class="horizntal-align-cmn-cls-spnx-reg"><?php echo isset( $settings['reg_user_email'] )?$settings['reg_user_email']:''; ?></span>
 			</div>
-			<?php } ?>
+
 		</div>
-		<?php if ( isset( $user_key ) && $user_key ) {
-		?>
 		<div class="spnx-box-reg-cmn-cls">
 			<div class="header-cmn-cls-spnx">Geography & Language</div>
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Country</div>
@@ -341,7 +329,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 						echo '<option  value="' . $key . '" ' . $countries . '>' . $value . '</option>';
 					} ?>
 				</select>
-					<span class="cmn-arw-cmn-clas-dv"><i class="fa fa-sort-desc fa-lg" aria-hidden="true"></i></span>
+					<span class="cmn-arw-cmn-clas-dv"><i class="fa fa-sort-down fa-lg" aria-hidden="true"></i></span>
 				</div>
 			</div>
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Language</div>
@@ -355,10 +343,10 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 						} elseif (  isset(  $dropdown->selected_site->language_id ) &&  $key == $dropdown->selected_site->language_id  ) {
 							$languages = "selected='selected'";
 						}
-						echo '<option style="background-color:red !important; font-size:100px !important;" value="' . $key . '" ' . $languages . '>' . $value . '</option>';
+						echo '<option  value="' . $key . '" ' . $languages . '>' . $value . '</option>';
 					} ?>
 				</select>
-					<span class="cmn-arw-cmn-clas-dv"><i class="fa fa-sort-desc fa-lg" aria-hidden="true"></i></span>
+					<span class="cmn-arw-cmn-clas-dv"><i class="fa fa-sort-down fa-lg" aria-hidden="true"></i></span>
 
 				</div>
 			</div>
@@ -383,7 +371,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 					} ?>
 				<option value="0">Select Primary category</option>
 				</select>
-					<span class="cmn-arw-cmn-clas-dv"><i class="fa fa-sort-desc fa-lg" aria-hidden="true"></i></span>
+					<span class="cmn-arw-cmn-clas-dv"><i class="fa fa-sort-down fa-lg" aria-hidden="true"></i></span>
 			</div>
 
 
@@ -454,7 +442,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 						} ?>
 					</select>
 				</div>
-				<span class="font-awesome-icon-align-cmn-cls-down"><i class="fa fa-sort-desc fa-lg" aria-hidden="true"></i></span>
+				<span class="font-awesome-icon-align-cmn-cls-down"><i class="fa fa-sort-down fa-lg" aria-hidden="true"></i></span>
 			</div>
 			<div class="cmn-cls-verticl-bus-spnx-reg">
 				<div class="catog-des-cmn-cls-spnx-reg">Street address</div>
@@ -512,7 +500,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 			</div>
 		</div>
 	</div>
-		<?php }?>
+
 	</form>
 </div>
 
