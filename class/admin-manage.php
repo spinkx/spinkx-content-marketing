@@ -140,46 +140,83 @@ final class spnxAdminManage {
 		}
 		$args = array(
 			'id' => 'spinkx_notification',
-			'href' => '#',
             'parent' => 'top-secondary'
 		);
 		$title = 'Spinkx Notification';
 		$args['meta']['title'] = $title;
 		//$args['meta']['onclick'] =  'javascript:;test()';
 		$args['meta']['id'] = 'ntf-bl-sh-hd';
- 		$display = '<span class="spinkx-notify-update-bubble">'.$pending.'</span><span class="spinkx-notify-text-active"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/icon-bell.png"/></span>
-        <div class="ntf-mn-cntnr">
+ 		// $display = '<span class="spinkx-notify-update-bubble">'.$pending.'</span><span class="spinkx-notify-text-active"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/icon-bell.png"/></span>
+		$display = '<div class="bl-mn-dv-cntnr-ntf-br"><span class="img-cntnr-gf-mn-dv"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/spinkx-ico.svg"/></span><span class="rnd-cmn-cls-dv-mn-cntr-rng"></span><span class="img-cntnr-gf-mn-dv"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/notification-spnx.png"/></span></div>
+    <div class="ntf-mn-cntnr">
     <div class="ntf-cntnt-mn-dv">
-        <div>
+        <div class="fnt-opc-mn-dv">
             Notifications
         </div>
         <div class="al-cntnt-mn-dv">
             <div class="fst-cnt-cls-mn-dv">
-                    <div class="cm-fst-cnt-cls-mn-dv-chld"><img src="settings-work-tool.png" /></div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld"><svg viewBox="0 0 14 14"><g stroke="none" stroke-width="1">  <g fill="#00B8D4">    <g transform="translate(6.292893, 7.000000)          rotate(-315.000000)          translate(-6.292893, -7.000000)          translate(1.792893, -0.500000)">      <path d="M6.5,0.704972086 C7.96591517,1.29835946            9,2.73552479 9,4.41421356 C9,6.62335256            7.209139,8.41421356 5,8.41421356            C2.790861,8.41421356           1,6.62335256 1,4.41421356 C1,2.73552479            2.03408483,1.29835946 3.5,0.704972086            L3.5,4.41421356 L6.5,4.41421356 L6.5,0.704972086            L6.5,0.704972086 Z"></path>      <rect x="3" y="6" width="4" height="9" rx="2"></rect>    </g>  </g></g></svg></div>
                     <div class="cm-fst-cnt-cls-mn-dv-chld fnt-sz-rsz-cm-cl-n">
-                        <div>Update firewall rule default-allow-internal </div>
-                        <div>Spinkx</div>
+                        <div class="upd-mn-dv-cls">Update firewall rule default-allow-internal </div>
+                        <div class="fnt-opc-mn-dv">Spinkx</div>
                     </div>
-                    <div class="cm-fst-cnt-cls-mn-dv-chld">
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-opc-mn-dv">
                         2d
                     </div>
-
-            </div>
-            <div class="fst-cnt-cls-mn-dv">
-                <div class="cm-fst-cnt-cls-mn-dv-chld"><img src="settings-work-tool.png" /></div>
-                <div class="cm-fst-cnt-cls-mn-dv-chld fnt-sz-rsz-cm-cl-n">
-                    <div>Update firewall rule default-allow-internal </div>
-                    <div>Spinkx</div>
-                </div>
-                <div class="cm-fst-cnt-cls-mn-dv-chld">
-                    2d
-                </div>
-
-            </div>
-
+			</div>
+			 <div class="fst-cnt-cls-mn-dv">
+                    <div class="cm-fst-cnt-cls-mn-dv-chld"><svg viewBox="0 0 14 14"><g stroke="none" stroke-width="1"><g fill="#00B8D4"><g transform="translate(6.292893, 7.000000) rotate(-315.000000) translate(-6.292893, -7.000000)          translate(1.792893, -0.500000)">      <path d="M6.5,0.704972086 C7.96591517,1.29835946            9,2.73552479 9,4.41421356 C9,6.62335256            7.209139,8.41421356 5,8.41421356            C2.790861,8.41421356           1,6.62335256 1,4.41421356 C1,2.73552479            2.03408483,1.29835946 3.5,0.704972086            L3.5,4.41421356 L6.5,4.41421356 L6.5,0.704972086            L6.5,0.704972086 Z"></path>      <rect x="3" y="6" width="4" height="9" rx="2"></rect>    </g>  </g></g></svg></div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-sz-rsz-cm-cl-n">
+                        <div class="upd-mn-dv-cls">Update firewall rule default-allow-internal </div>
+                        <div class="fnt-opc-mn-dv">Spinkx</div>
+                    </div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-opc-mn-dv">
+                        2d
+                    </div>
+			</div>
+			<div class="fst-cnt-cls-mn-dv">
+                    <div class="cm-fst-cnt-cls-mn-dv-chld"><svg viewBox="0 0 14 14"><g stroke="none" stroke-width="1">  <g fill="#00B8D4">    <g transform="translate(6.292893, 7.000000)          rotate(-315.000000)          translate(-6.292893, -7.000000)          translate(1.792893, -0.500000)">      <path d="M6.5,0.704972086 C7.96591517,1.29835946            9,2.73552479 9,4.41421356 C9,6.62335256            7.209139,8.41421356 5,8.41421356            C2.790861,8.41421356           1,6.62335256 1,4.41421356 C1,2.73552479            2.03408483,1.29835946 3.5,0.704972086            L3.5,4.41421356 L6.5,4.41421356 L6.5,0.704972086            L6.5,0.704972086 Z"></path>      <rect x="3" y="6" width="4" height="9" rx="2"></rect>    </g>  </g></g></svg></div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-sz-rsz-cm-cl-n">
+                        <div class="upd-mn-dv-cls">Update firewall rule default-allow-internal </div>
+                        <div class="fnt-opc-mn-dv">Spinkx</div>
+                    </div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-opc-mn-dv">
+                        2d
+                    </div>
+			</div>
+			<div class="fst-cnt-cls-mn-dv">
+                    <div class="cm-fst-cnt-cls-mn-dv-chld"><svg viewBox="0 0 14 14"><g stroke="none" stroke-width="1">  <g fill="#00B8D4">    <g transform="translate(6.292893, 7.000000)          rotate(-315.000000)          translate(-6.292893, -7.000000)          translate(1.792893, -0.500000)">      <path d="M6.5,0.704972086 C7.96591517,1.29835946            9,2.73552479 9,4.41421356 C9,6.62335256            7.209139,8.41421356 5,8.41421356            C2.790861,8.41421356           1,6.62335256 1,4.41421356 C1,2.73552479            2.03408483,1.29835946 3.5,0.704972086            L3.5,4.41421356 L6.5,4.41421356 L6.5,0.704972086            L6.5,0.704972086 Z"></path>      <rect x="3" y="6" width="4" height="9" rx="2"></rect>    </g>  </g></g></svg></div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-sz-rsz-cm-cl-n">
+                        <div class="upd-mn-dv-cls">Update firewall rule default-allow-internal </div>
+                        <div class="fnt-opc-mn-dv">Spinkx</div>
+                    </div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-opc-mn-dv">
+                        2d
+                    </div>
+			</div>
+			<div class="fst-cnt-cls-mn-dv">
+                    <div class="cm-fst-cnt-cls-mn-dv-chld"><svg viewBox="0 0 14 14"><g stroke="none" stroke-width="1">  <g fill="#00B8D4">    <g transform="translate(6.292893, 7.000000)          rotate(-315.000000)          translate(-6.292893, -7.000000)          translate(1.792893, -0.500000)">      <path d="M6.5,0.704972086 C7.96591517,1.29835946            9,2.73552479 9,4.41421356 C9,6.62335256            7.209139,8.41421356 5,8.41421356            C2.790861,8.41421356           1,6.62335256 1,4.41421356 C1,2.73552479            2.03408483,1.29835946 3.5,0.704972086            L3.5,4.41421356 L6.5,4.41421356 L6.5,0.704972086            L6.5,0.704972086 Z"></path>      <rect x="3" y="6" width="4" height="9" rx="2"></rect>    </g>  </g></g></svg></div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-sz-rsz-cm-cl-n">
+                        <div class="upd-mn-dv-cls">Update firewall rule default-allow-internal </div>
+                        <div class="fnt-opc-mn-dv">Spinkx</div>
+                    </div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-opc-mn-dv">
+                        2d
+                    </div>
+			</div>
+			<div class="fst-cnt-cls-mn-dv">
+                    <div class="cm-fst-cnt-cls-mn-dv-chld"><svg viewBox="0 0 14 14"><g stroke="none" stroke-width="1">  <g fill="#00B8D4">    <g transform="translate(6.292893, 7.000000)          rotate(-315.000000)          translate(-6.292893, -7.000000)          translate(1.792893, -0.500000)">      <path d="M6.5,0.704972086 C7.96591517,1.29835946            9,2.73552479 9,4.41421356 C9,6.62335256            7.209139,8.41421356 5,8.41421356            C2.790861,8.41421356           1,6.62335256 1,4.41421356 C1,2.73552479            2.03408483,1.29835946 3.5,0.704972086            L3.5,4.41421356 L6.5,4.41421356 L6.5,0.704972086            L6.5,0.704972086 Z"></path>      <rect x="3" y="6" width="4" height="9" rx="2"></rect>    </g>  </g></g></svg></div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-sz-rsz-cm-cl-n">
+                        <div class="upd-mn-dv-cls">Update firewall rule default-allow-internal </div>
+                        <div class="fnt-opc-mn-dv">Spinkx</div>
+                    </div>
+                    <div class="cm-fst-cnt-cls-mn-dv-chld fnt-opc-mn-dv">
+                        2d
+                    </div>
+			</div>
         </div>
-        <div>
-            SEE ALL ACTIVITY
+        <div class="fnt-opc-mn-dv">
+            see all activity
         </div>
     </div>';
 		$args['title'] = $display;
@@ -1583,5 +1620,19 @@ final class spnxAdminManage {
         $current_user = wp_get_current_user();
         return $current_user->user_email;
     }
+	public function spinkx_cont_db_setup() {
+		global $wpdb;
+		$table_name = $wpdb->prefix."spnx_notifications";
+		$charset_collate = $wpdb->get_charset_collate();
+		$sql = "CREATE TABLE IF NOT EXISTS {$table_name} ( `log_id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `task_name` varchar(100) NOT NULL,
+  `task_status` tinyint(1) NOT NULL,
+  `comment` text,
+  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_email` text NOT NULL,
+  PRIMARY KEY  (log_id)
+)$charset_collate;";
+		$wpdb->query($sql);
+	}
 }
 endif;
