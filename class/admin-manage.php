@@ -1114,19 +1114,19 @@ final class spnxAdminManage
 		if ( current_user_can( 'manage_network_options' ) || current_user_can( 'manage_options' ) ) {
             $settings = get_option( $this->spinkx_cont_get_license() );
             $settings = maybe_unserialize( $settings );
-            $parent_menu_slug = isset($settings['due_date'])?'spinkx_analytics':'spinkx-site-register';
+            //$parent_menu_slug = isset($settings['due_date'])?'spinkx_analytics':'spinkx-site-register';
 
             add_menu_page('Spinkx Options', 'Spinkx', 'manage_options', $parent_menu_slug, array($this, 'spinkx_cont_show_page'), SPINKX_CONTENT_PLUGIN_URL . 'assets/images/spinkx-ico.svg', '2.56');
-            if(isset($settings['due_date'])) {
-                add_submenu_page($parent_menu_slug, 'Analytics | Spinkx', 'Analytics', 'manage_options', 'spinkx_analytics', array($this, 'spinkx_cont_show_page'));
-                add_submenu_page($parent_menu_slug, 'Registration | Spinkx', 'Registration', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'));
-            } else {
-                add_submenu_page($parent_menu_slug, 'Registration | Spinkx', 'Registration', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'));
-                add_submenu_page($parent_menu_slug, 'Analytics | Spinkx', 'Analytics', 'manage_options', 'spinkx_analytics', array($this, 'spinkx_cont_show_page'));
-            }
-            add_submenu_page($parent_menu_slug, 'Widget Settings | Spinkx', 'Widget Settings', 'manage_options', 'spinkx_widget_design', array($this, 'spinkx_cont_show_page'));
-			add_submenu_page($parent_menu_slug, 'Boost Post | Spinkx', 'Free Boost Post', 'manage_options', 'spinkx_content_play_list', array($this, 'spinkx_cont_show_page'));
-			add_submenu_page($parent_menu_slug, 'Campaigns | Spinkx', 'Paid Campaigns', 'manage_options', 'spinkx_campaigns', array($this, 'spinkx_cont_show_page'));
+            /*if(  $settings['due_date'] == '0000-00-00 00:00:00'  ) {
+                add_submenu_page('spinkx-site-register', 'Analytics | Spinkx', 'Analytics', 'manage_options', 'spinkx_analytics', array($this, 'spinkx_cont_show_page'));
+                add_submenu_page('spinkx-site-register', 'Registration | Spinkx', 'Registration', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'));
+            } else {*/
+                add_submenu_page('spinkx-site-register', 'Registration | Spinkx', 'Registration', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'));
+                add_submenu_page('spinkx-site-register', 'Analytics | Spinkx', 'Analytics', 'manage_options', 'spinkx_analytics', array($this, 'spinkx_cont_show_page'));
+            //}
+            add_submenu_page('spinkx-site-register', 'Widget Settings | Spinkx', 'Widget Settings', 'manage_options', 'spinkx_widget_design', array($this, 'spinkx_cont_show_page'));
+			add_submenu_page('spinkx-site-register', 'Boost Post | Spinkx', 'Free Boost Post', 'manage_options', 'spinkx_content_play_list', array($this, 'spinkx_cont_show_page'));
+			add_submenu_page('spinkx-site-register', 'Campaigns | Spinkx', 'Paid Campaigns', 'manage_options', 'spinkx_campaigns', array($this, 'spinkx_cont_show_page'));
         }
 	}
 
