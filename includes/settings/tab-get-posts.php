@@ -81,7 +81,7 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 
 			<td  colspan="2" style="padding: 0px;text-align: center;">
 
-                <input type="text" class="column_filter" id="col0_filter">
+                <!--<input type="text" class="column_filter" id="col0_filter"> -->
 
 			</td>
 		</tr>
