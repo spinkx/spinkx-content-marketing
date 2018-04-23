@@ -155,7 +155,7 @@ final class spnxAdminManage
         // $display = '<span class="spinkx-notify-update-bubble">'.$pending.'</span><span class="spinkx-notify-text-active"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/icon-bell.png"/></span>
 		$display = '<div class="bl-mn-dv-cntnr-ntf-br"><span class="img-cntnr-gf-mn-dv"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/spinkx-ico.svg"/></span>
 <span class="rnd-cmn-cls-dv-mn-cntr-rng"></span><span class="img-cntnr-gf-mn-dv"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/notification-spnx.png"/></span>
-<span class="img-cntnr-gf-mn-dv"><span class="spinkx-notify-update-bubble">'.$pending.'</span></div>
+<!--<span class="img-cntnr-gf-mn-dv"><span class="spinkx-notify-update-bubble">'.$pending.'</span> --></div>
     <div class="ntf-mn-cntnr">
 
     <div class="ntf-cntnt-mn-dv">
@@ -163,7 +163,6 @@ final class spnxAdminManage
             Notifications
         </div>
         <div class="al-cntnt-mn-dv">
-           
         </div>
         <div class="fnt-opc-mn-dv">
             see all activity

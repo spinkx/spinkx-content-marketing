@@ -343,8 +343,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 						} elseif (  isset(  $dropdown->selected_site->language_id ) &&  $key == $dropdown->selected_site->language_id  ) {
 							$languages = "selected='selected'";
 						}
-                        echo '<option value="' . $key . '" ' . $languages . '>' . $value . '</option>';
-
+						echo '<option  value="' . $key . '" ' . $languages . '>' . $value . '</option>';
 					} ?>
 				</select>
 					<span class="cmn-arw-cmn-clas-dv"><i class="fa fa-sort-down fa-lg" aria-hidden="true"></i></span>
@@ -378,7 +377,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 
 			</div>
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Additional category</div>
-			<div class="select-div-common-class-spnx-reg select-vrticl-align-cmn-cls" style="position: relative; width:90%; ">
+			<div class="select-div-common-class-spnx-reg select-vrticl-align-cmn-cls" style="position: relative; width:100%; ">
 				<div class="select-drtn-cls">
 					<select class="categories"  id="categories" multiple name="site_cat[]">
 						<?php
@@ -399,6 +398,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 							echo '<option  value="' . $key . '" ' . $category . '>' . $value . '</option>';
 						} }?>
 					</select>
+					<div class="error-cmn-clas-spnx error-cmn-clas-spnx-additional-act">Please select at least one additional category</div>
 				</div>
 				<!--<span class="font-awesome-icon-align-cmn-cls-down-ctegry"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
 
@@ -422,9 +422,10 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		<div class="spnx-box-reg-cmn-cls">
 			<div class="cmn-cls-verticl-bus-spnx-reg">
 				<div class="catog-des-cmn-cls-spnx-reg">Business name</div>
-				<div><input class="awsome_input-spnx-reg" type="text" name="bussiness_name" value="<?php echo $business_name;?>">
+				<div>
+					<input class="awsome_input-spnx-reg" type="text" name="bussiness_name" value="<?php echo $business_name;?>" id="bussiness-name-spnx">
 					<span class="awsome_input_border-spnx-reg"></span>
-
+					<div class="error-cmn-clas-spnx">Business Name Required</div>
 				</div>
 				<span class="font-awesome-icon-align-cmn-cls"><i class="fa fa-user" aria-hidden="true"></i></span>
 			</div>
@@ -446,36 +447,54 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				<span class="font-awesome-icon-align-cmn-cls-down"><i class="fa fa-sort-down fa-lg" aria-hidden="true"></i></span>
 			</div>
 			<div class="cmn-cls-verticl-bus-spnx-reg">
-				<div class="catog-des-cmn-cls-spnx-reg">Street address</div>
-				<div><input class="awsome_input-spnx-reg" type="text" name="bussiness_street" value="<?php echo $business_address; ?>">
-					<span class="awsome_input_border-spnx-reg"></span></div>
+				<div class="catog-des-cmn-cls-spnx-reg">Street Address</div>
+				<div>
+					<input class="awsome_input-spnx-reg" type="text" name="bussiness_street" value="<?php echo $business_address; ?>" id="street-ad-bs-spnx">
+					<span class="awsome_input_border-spnx-reg"></span>
+					<div class="error-cmn-clas-spnx">Street Address Required</div>
+				</div>
 			</div>
 			<div class="cmn-cls-verticl-bus-spnx-reg">
 				<div class="catog-des-cmn-cls-spnx-reg">City </div>
-				<div><input class="awsome_input-spnx-reg" type="text" name="bussiness_city" value="<?php echo $business_city; ?>">
-					<span class="awsome_input_border-spnx-reg"></span></div>
+				<div><input class="awsome_input-spnx-reg" type="text" name="bussiness_city" value="<?php echo $business_city; ?>" id="city-bs-spnx">
+					<span class="awsome_input_border-spnx-reg"></span>
+					<div class="error-cmn-clas-spnx">City Required</div>
+				</div>
 			</div>
 			<div class="cmn-cls-verticl-bus-spnx-reg">
 				<div class="pin-code-main-cntnr">
 					<div class="catog-des-cmn-cls-spnx-reg">Zip code</div>
-					<div><input class="awsome_input-spnx-reg" type="number" id="zip_code_number" name="bussiness_zip" value="<?php  echo $business_pincode;?>">
-						<span class="awsome_input_border-spnx-reg"></span></div>
+					<div>
+						<input class="awsome_input-spnx-reg" type="number" id="zip_code_number" name="bussiness_zip" value="<?php  echo $business_pincode;?>">
+						<span class="awsome_input_border-spnx-reg"></span>
+						<div class="error-cmn-clas-spnx">Please Enter Valid Zip code</div>
+					</div>
 				</div>
 				<div class="state-main-cntnr">
 					<div class="catog-des-cmn-cls-spnx-reg">State</div>
-					<div><input class="awsome_input-spnx-reg" type="text" name="bussiness_state" value="<?php echo $business_state; ?>">
-						<span class="awsome_input_border-spnx-reg"></span></div>
+					<div>
+						<input class="awsome_input-spnx-reg" type="text" name="bussiness_state" value="<?php echo $business_state; ?>" id="state-ad-bs-spnx">
+						<span class="awsome_input_border-spnx-reg"></span>
+						<div class="error-cmn-clas-spnx">State Required</div>
+					</div>
 				</div>
 			</div>
 			<div class="cmn-cls-verticl-bus-spnx-reg">
 				<div class="catog-des-cmn-cls-spnx-reg">Main business phone</div>
-				<div><input class="awsome_input-spnx-reg" type="number" name="bussiness_phone" value="<?php echo $business_phone;?>">
-					<span class="awsome_input_border-spnx-reg"></span></div>
+				<div>
+					<input class="awsome_input-spnx-reg" type="number" name="bussiness_phone" value="<?php echo $business_phone;?>" id="phone-ad-bs-spnx">
+					<span class="awsome_input_border-spnx-reg"></span>
+					<div class="error-cmn-clas-spnx">Please Enter Valid Phone Number</div>
+				</div>
 			</div>
 		</div>
 		<div class="spnx-box-reg-cmn-cls money-trnsfer-main-class-spnx-cntnr">
 			<div class="header-cmn-cls-spnx">Money Tranfer to your account</div>
-			<div><input type="email" placeholder="Paypal email id" name="paypal_id" value="<?php echo $business_paypal_id;?>"></div>
+			<div>
+				<input type="email" placeholder="Paypal email id" name="paypal_id" value="<?php echo $business_paypal_id;?>" id="paypal-bs-spnx">
+				<div class="error-cmn-clas-spnx error-cmn-clas-spnx-paypl">Please Enter Valid Email</div>
+
+			</div>
 		</div>
 		<div class="lower-text-cmon-cls-spnx-reg">
 			<div>
@@ -485,13 +504,14 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		<div class="spnx-box-reg-cmn-cls">
 			<div class="continue-spnx-reg-button-cntnr">
 				<span style="font-size:13px;">
-					<input type="checkbox" name="agree" id="checked-registration" <?php echo isset( $settings['reg_user'] ) ? 'checked' : ''; ?> >
+					<input type="checkbox" name="agree" id="checked-registration" <?php echo isset( $settings['reg_user'] ) ? 'checked' : ''; ?> />
 					I agree with the
 					<a target="_blank" href="http://www.spinkx.com/terms-conditions/">
 						Terms & Conditions
 					</a>
 				</span>
 				<span style="text-align: right;"><button type="submit" >SUBMIT</button></span>
+				<div class="error-cmn-clas-spnx error-cmn-clas-spnx-terms-condition">Please Check Terms and conditions</div>
 			</div>
 		</div>
 		<div class="lower-text-cmon-cls-spnx-reg">

@@ -76,7 +76,7 @@ span.spinkx-notify-text-active{
 }
 .cm-fst-cnt-cls-mn-dv-chld {
 display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
 }
 .fst-cnt-cls-mn-dv {
     padding: 2px 10px !important;
@@ -146,26 +146,20 @@ background-color: #eee;
 /** top bar bell css **/
 .bl-mn-dv-cntnr-ntf-br {
     background-color: grey !important;
-    border-radius: 50px !important;
     width: 90px !important;
     display: flex !important;
     justify-content: space-between !important;
     padding-right: 10px !important;
     padding-left: 10px !important;
-    height: 26px !important;
-    margin-top: 3px !important;
-    position: relative !important;
     cursor: pointer;
 }
 .bl-mn-dv-cntnr-ntf-br {
 position: relative !important; 
 }
 .bl-mn-dv-cntnr-ntf-br .img-cntnr-gf-mn-dv img{
-vertical-align: unset !important;
+    vertical-align: sub !important;
 }
-.bl-mn-dv-cntnr-ntf-br .img-cntnr-gf-mn-dv {
-margin-top: -1px !important;
-}
+
 .rnd-cmn-cls-dv-mn-cntr-rng {
     border: 1px solid grey;
     border-top: 2px solid #3498db;
@@ -177,7 +171,7 @@ margin-top: -1px !important;
     animation: spin 1.2s linear infinite;
     margin-top: 0px !important;
     position: absolute !important;
-    top: 0px;
+    top: 4px;
     left: 80px !important;
 }
 @-webkit-keyframes spin {
