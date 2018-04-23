@@ -16,8 +16,15 @@ jQuery(document).ready(function($){
             if(data[$i].log_read_status == 0) {
                 spnx_notify_unread++;
             }
+            svg = '';
+            if(data[$i].log_status == true) {
+                svg = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 303.477 303.477" style="enable-background:new 0 0 303.477 303.477;" xml:space="preserve" width="20px" height="20px"><g><path d="M298.604,64.209l-49.978,49.979L204.907,98.57L189.29,54.852l49.979-49.979c-32.791-10.97-70.418-3.42-96.529,22.692  c-25.629,25.629-33.373,62.349-23.281,94.704c-1.359,1.07-2.676,2.222-3.93,3.476L12.884,228.389  c-17.178,17.177-17.178,45.027,0,62.205c17.178,17.178,45.029,17.178,62.207,0l102.645-102.645c1.254-1.254,2.404-2.57,3.475-3.929  c32.355,10.092,69.074,2.347,94.703-23.282C302.024,134.626,309.575,97.001,298.604,64.209z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#1CAFC7"/></g>' +
+                    '</svg>';
+            } else {
+                svg = '<svg id="" width="25" height="30" viewBox="0 0 18 18" fit="" preserveAspectRatio="xMidYMid meet" focusable="false" class=""><g><path d="M9 2a7 7 0 1 1 0 14A7 7 0 0 1 9 2zm-1 8h2V5H8v5zm0 3h2v-2H8v2z" fill="#DA4236" fill-rule="evenodd" data-original="#DA4236" class="active-path" style="fill:#DA4236"/></g> </svg>';
+            }
             $html = '<div class="fst-cnt-cls-mn-dv" data-read="'+data[$i].log_read_status+'" data-id="'+data[$i].log_id+'">';
-            $html += '<div class="cm-fst-cnt-cls-mn-dv-chld" style="width: 22px !important; height: 22px !important;"><svg viewBox="0 0 22 22"><g stroke="none" stroke-width="1">  <g fill="#00B8D4">    <g transform="translate(6.292893, 7.000000)          rotate(-315.000000)          translate(-6.292893, -7.000000)          translate(1.792893, -0.500000)">      <path d="M6.5,0.704972086 C7.96591517,1.29835946            9,2.73552479 9,4.41421356 C9,6.62335256            7.209139,8.41421356 5,8.41421356            C2.790861,8.41421356           1,6.62335256 1,4.41421356 C1,2.73552479            2.03408483,1.29835946 3.5,0.704972086            L3.5,4.41421356 L6.5,4.41421356 L6.5,0.704972086            L6.5,0.704972086 Z"></path>      <rect x="3" y="6" width="4" height="9" rx="2"></rect>    </g>  </g></g></svg></div>';
+            $html += '<div class="cm-fst-cnt-cls-mn-dv-chld">'+svg+'</div>';
             $html += '<div class="cm-fst-cnt-cls-mn-dv-chld fnt-sz-rsz-cm-cl-n"><div class="upd-mn-dv-cls">'+data[$i].log_action+'</div> ' +
                 '<div class="fnt-opc-mn-dv">'+data[$i].log_by_email+'</div></div><div class="cm-fst-cnt-cls-mn-dv-chld fnt-opc-mn-dv">'+data[$i].log_date+'</div></div>';
             jQuery('.al-cntnt-mn-dv').append($html);
