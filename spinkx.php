@@ -80,8 +80,7 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 		if ( $mflag ) {
 			switch_to_blog( $currentSite['blog_id'] );
 		}
-        $spnxAdminManage->spinkx_cont_db_setup();
-		$data['site_email'] = get_option( 'admin_email' );
+        $data['site_email'] = get_option( 'admin_email' );
 		$data['site_name'] = get_bloginfo( 'name' );
 		$data['site_url'] = get_site_url();
 		$data['spinkx_version'] = $spinkx_version;
