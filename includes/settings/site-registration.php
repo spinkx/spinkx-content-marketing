@@ -343,7 +343,8 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 						} elseif (  isset(  $dropdown->selected_site->language_id ) &&  $key == $dropdown->selected_site->language_id  ) {
 							$languages = "selected='selected'";
 						}
-						echo '<option  value="' . $key . '" ' . $languages . '>' . $value . '</option>';
+                        echo '<option value="' . $key . '" ' . $languages . '>' . $value . '</option>';
+
 					} ?>
 				</select>
 					<span class="cmn-arw-cmn-clas-dv"><i class="fa fa-sort-down fa-lg" aria-hidden="true"></i></span>

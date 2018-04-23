@@ -67,7 +67,7 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 		if(  $blog_id > 0 &&  $from == 'add_new_blog' ) {
 			$siteArr = array( array( 'blog_id' => $blog_id ) );
 		} else {
-			$siteArr = $wpdb->get_results('SELECT blog_id FROM `wp_blogs` WHERE public = 1', ARRAY_A);
+            $siteArr = $wpdb->get_results('SELECT blog_id FROM `wp_blogs` WHERE public = 1', ARRAY_A);
 
 		}
 	} else {
@@ -80,7 +80,7 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 		if ( $mflag ) {
 			switch_to_blog( $currentSite['blog_id'] );
 		}
-
+        $spnxAdminManage->spinkx_cont_db_setup();
 		$data['site_email'] = get_option( 'admin_email' );
 		$data['site_name'] = get_bloginfo( 'name' );
 		$data['site_url'] = get_site_url();
@@ -152,7 +152,9 @@ function spinkx_cont_server_plugin_deactivate( $network_wide ) {
 	$url = $spnxAdminManage->spinkx_cont_bapi_url(). '/wp-json/spnx/v1/site/deactivate';
 	$result = spnxHelper::doCurl( $url, $post, false );
 }
-
+function spinkx_cont_db_setup() {
+    include_once 'includes/seettings/db-setup.php';
+}
 register_uninstall_hook( __FILE__, 'spinkx_cont_server_plugin_uninstall');
 register_activation_hook( __FILE__,   'spinkx_cont_site_registration' );
 register_deactivation_hook( __FILE__,  'spinkx_cont_server_plugin_deactivate' );
@@ -591,4 +593,4 @@ function spinkx_mobile_widget_setup() {
 	}
 }
 
-add_action( 'admin_print_scripts', 'spinkx_admin_add_inline_js', 99 );
+add_action( 'admin_enqueue_scripts', 'spinkx_admin_add_inline_js', 99 );
