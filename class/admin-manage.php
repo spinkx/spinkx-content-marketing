@@ -1116,7 +1116,7 @@ final class spnxAdminManage
             $settings = maybe_unserialize( $settings );
             //$parent_menu_slug = isset($settings['due_date'])?'spinkx_analytics':'spinkx-site-register';
 
-            add_menu_page('Spinkx Options', 'Spinkx', 'manage_options', $parent_menu_slug, array($this, 'spinkx_cont_show_page'), SPINKX_CONTENT_PLUGIN_URL . 'assets/images/spinkx-ico.svg', '2.56');
+            add_menu_page('Spinkx Options', 'Spinkx', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'), SPINKX_CONTENT_PLUGIN_URL . 'assets/images/spinkx-ico.svg', '2.56');
             /*if(  $settings['due_date'] == '0000-00-00 00:00:00'  ) {
                 add_submenu_page('spinkx-site-register', 'Analytics | Spinkx', 'Analytics', 'manage_options', 'spinkx_analytics', array($this, 'spinkx_cont_show_page'));
                 add_submenu_page('spinkx-site-register', 'Registration | Spinkx', 'Registration', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'));
