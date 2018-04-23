@@ -297,6 +297,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="7" name="plugin-type" <?php if($plugin_type_id==7) {echo "checked='checked'";}?>/></div>
 				<div  class="label-cntnr-mn-cls-cmommon-sec">I would like to build my own Ad network. i want a White Labeled version of Spinkx. I can earn large commission from the network i build. </div>
 			</div>
+            <div class="error-cmn-clas-spnx chck-radio-btn-error-cls">Please Select Your Goal</div>
 			<div class="spnx-knw-more-cmn-cls"><a href="#">Know More</a></div>
 		</div>
 
@@ -516,8 +517,8 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		</div>
 		<div class="lower-text-cmon-cls-spnx-reg">
 			<div>
-				<span class="lower-color-cmn-cls-spnx-reg"><?php echo $dropdown->selected_site->msg_buy?></span>
-				<span class="spnx-knw-more-cmn-cls buy-now-shrt-code"><?php echo do_shortcode( $buy_now );?></span>
+				<span class="lower-color-cmn-cls-spnx-reg"><?php echo isset($dropdown->selected_site->msg_buy)?$dropdown->selected_site->msg_buy:''?></span>
+				<span class="spnx-knw-more-cmn-cls buy-now-shrt-code"><?php echo ($buy_now)?do_shortcode( $buy_now ):'';?></span>
 			</div>
 		</div>
 	</div>

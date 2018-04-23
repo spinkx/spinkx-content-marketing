@@ -2,8 +2,20 @@ jQuery(document).ready(function($){
     jQuery('#wp-admin-bar-spinkx_notification').hover(function () {
         jQuery('#wp-admin-bar-spinkx_notification .ab-item').css('background','transparent');
     })
-    jQuery('#wp-admin-bar-spinkx_notification span.img-cntnr-gf-mn-dv').click(function(){
+    jQuery('#wp-admin-bar-spinkx_notification span.img-cntnr-gf-mn-dv:last-child').click(function(){
         jQuery('.ntf-mn-cntnr').toggle();
+    });
+    jQuery(document).on('click', function(event){
+       $target = event.target;
+       if($target.src == undefined) {
+           console.log($($target).parents('div.bl-mn-dv-cntnr-ntf-br').next());
+           if($target.class != 'ntf-mn-cntnr' ) {
+             str = $target.src
+              console.log(str);
+           //if(str.indexOf('notification-spnx.png') == -1) {
+               jQuery('.ntf-mn-cntnr').hide();
+           }
+       }
     });
     var spnx_notify_unread = 0;
     jQuery.ajax({url: ajaxurl+'?action=spinkx_cont_notifications', async: false, success: function(data) {
