@@ -31,11 +31,12 @@ function spinkx_cont_icon_css() {
     padding: 3px !important;
     font-size: 11px !important;
     line-height: 10px !important;
-    display: inline-block !important;
+    display: none;
     text-align: center !important;
     text-shadow: none !important;
     font-weight: bold !important;
     z-index: 2;
+    
 }
 span.spinkx-notify-text-active{
     position: relative !important;
@@ -236,15 +237,7 @@ background-color: transparent !important;
 }
  **/
 function spinkx_admin_add_inline_js(){
-	echo "<script type='text/javascript'>\n";
-	echo "jQuery(document).ready(function(){jQuery('#wp-admin-bar-spinkx_notification').click(function(){
-    jQuery('.ntf-mn-cntnr').toggle();
-})
-jQuery('#wp-admin-bar-spinkx_notification').hover(function () {
-jQuery('#wp-admin-bar-spinkx_notification .ab-item').css('background','transparent');
-})
-});";
-	echo "\n</script>";
+    wp_enqueue_script( 'spinkx-top-notifications', SPINKX_CONTENT_PLUGIN_URL . 'assets/js/common.js' );
 }
 
 /**
