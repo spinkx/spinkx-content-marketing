@@ -1648,10 +1648,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 @media screen and (max-width: 770px) {
     .cmn-arw-cmn-clas-dv {
-        top:25px !important;
+        top:17px !important;
     }
     .font-awesome-icon-align-cmn-cls-down {
-        top:49px !important;
+        top:35px !important;
     }
     .text-spninks {
         align-items: unset !important;
@@ -1773,7 +1773,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .cmn-arw-cmn-clas-dv {
     position: absolute;
-    top: 16px;
+    top:9px;
     right: 0px;
 }
 .cmn-arw-cmn-clas-dv i {
@@ -1801,7 +1801,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: bolder;
 }
 .cmn-cls-verticl-bus-spnx-reg {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     position: relative;
 }
 .font-awesome-icon-align-cmn-cls {
@@ -1812,7 +1812,7 @@ input[type=number]::-webkit-outer-spin-button {
 .font-awesome-icon-align-cmn-cls-down {
     position: absolute;
     right: 2px;
-    top:42px;
+    top:27px;
 }
 .font-awesome-icon-align-cmn-cls-down .fa-sort-down:before {
     content: ' ';
@@ -1888,12 +1888,15 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: 600;
     color:#a7a7a7;
 }
+.select-div-common-class-spnx-reg select {
+    margin-bottom:0px !important;
+}
 .cntry-rgn-cmn-cls-spnx-reg select{
-    margin-top:15px;
+
     width: 100%;
 }
 .select-vrticl-align-cmn-cls select {
-    margin-top:8px;
+
     width: 100%;
 }
 .pin-code-main-cntnr {
@@ -2296,6 +2299,9 @@ input[type=number]::-webkit-outer-spin-button {
 .chck-radio-btn-error-cls {
     margin-top: 12px;
     text-align: left;
+}
+.bs-cmn-class-thrd {
+    padding: 15px 20px 5px 20px;
 }
 
 

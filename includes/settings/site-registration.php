@@ -357,7 +357,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				</div>
 			</div>
 
-			<div class="spnx-knw-more-cmn-cls"></div>
+			<div class="spnx-knw-more-cmn-cls" style="margin-top: 11px;"></div>
 		</div>
 
 		<div class="spnx-box-reg-cmn-cls">
@@ -425,7 +425,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		</div>
 	</div>
 	<div class="spnx-sec-mn-cntainter">
-		<div class="spnx-box-reg-cmn-cls">
+		<div class="spnx-box-reg-cmn-cls bs-cmn-class-thrd">
 			<div class="cmn-cls-verticl-bus-spnx-reg">
 				<div class="catog-des-cmn-cls-spnx-reg">Business name</div>
 				<div>
@@ -438,7 +438,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 			<div class="cmn-cls-verticl-bus-spnx-reg cntry-rgn-cmn-cls-spnx-reg">
 				<div class="catog-des-cmn-cls-spnx-reg">Country / Region </div>
 				<div>
-					<select name="bussiness_region">
+					<select name="bussiness_region" class="random">
 						<?php foreach ( $dropdown->countries as $key => $value ) {
 							$countries = '';
 							if ( isset(  $dropdown->selected_site->country) && $key == 1 && !$dropdown->selected_site->country) {
