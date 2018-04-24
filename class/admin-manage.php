@@ -608,7 +608,7 @@ final class spnxAdminManage
 			$post_array['site_id'] = $site_id;
 			$post_array['site_url'] = $site_url;
 			$post_array['reg_email'] = $reg_email;
-
+			$post_array['cuser_email'] = $this->getCurrentUserEmail();
 			$json_posts_array = base64_encode(maybe_serialize($post_array));
 			$curl_url = $this->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/content-playlist/post/sync';
 			$postData = array('post' => $json_posts_array);

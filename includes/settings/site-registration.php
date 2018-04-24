@@ -1,6 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly	
 $site_id = false;
+global $wpdb;
 $spnxAdminManage = new spnxAdminManage();
 $settings = get_option($spnxAdminManage->spinkx_cont_get_license());
 $settings = maybe_unserialize($settings);
@@ -27,6 +28,7 @@ if ( isset($_POST['agree']) &&  $_POST['agree']) {
 		$post['sflag'] = 'site_create';
 	}
 	$post['site_email'] = get_option( 'admin_email' );
+	$post['site_url'] = get_site_url();
 	$response = spnxHelper::doCurl( $url,$post );
 
 	// Site name editing couldn't be completed as there are some associated issues for the license validation
@@ -40,6 +42,7 @@ if ( isset($_POST['agree']) &&  $_POST['agree']) {
 
 	if ( $response && !$site_id ) {
 		$output = json_decode( $response,true );
+		
 		if ( ! isset( $output['message'] ) ) {
 			$s = maybe_serialize( $output );
 			update_option( $spnxAdminManage->spinkx_cont_get_license(),$s );
@@ -75,19 +78,21 @@ if ( isset($_POST['agree']) &&  $_POST['agree']) {
 			echo $js_output;
 		}
 	} elseif ( $response ) {
+
 			// when user forgets to agree to terms etc.
 			$output = json_decode( $response,true );
-
-
-		if ( isset($output['reg_user']) && $output['reg_user'] ) {
+		if (  $output['message']  === 'Updated Successfully' ) {
 			$settings = get_option( $spnxAdminManage->spinkx_cont_get_license() );
 			$settings = maybe_unserialize( $settings );
 			$settings['reg_user'] = $output['reg_user'];
+			$settings['due_date'] = $output['due_date'] ;
 			$s = maybe_serialize( $settings );
 			update_option( $spnxAdminManage->spinkx_cont_get_license(), $s );
             update_option('spnx_reg_update', true);
+
 			echo '<script>window.location.replace("?page=spinkx_widget_design");</script>';
 		} else {
+
 			if ( isset( $output['message'] ) ) {
 
 					echo "<script>jQuery(document).ready(function () {
@@ -339,7 +344,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				<select name="site_language">
 					<?php foreach ( $dropdown->languages as $key => $value ) {
 						$languages = '';
-						if ( isset($dropdown->selected_site->language_id ) && $key == 1 && ! count( $dropdown->selected_site->language_id ) ) {
+						if ( isset($dropdown->selected_site->language_id ) && $key == 1 && ! $dropdown->selected_site->language_id ) {
 							$languages = "selected='selected'";
 						} elseif (  isset(  $dropdown->selected_site->language_id ) &&  $key == $dropdown->selected_site->language_id  ) {
 							$languages = "selected='selected'";

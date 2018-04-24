@@ -1422,6 +1422,8 @@ textarea.splcaheholder:-ms-input-placeholder { color: #337ab7; }
     color: #b5b5b5;
     float: right;
     cursor: pointer;
+    font-size: 11px !important;
+    margin-top: 4px !important;
 }
 .fnt-awsm-spn i:hover {
     color:#545556;
