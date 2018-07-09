@@ -84,7 +84,7 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 		$siteArr = array( array( 'blog_id' => get_current_blog_id() ) );
 	}
 	$data = array();
-    $spinkx_version =  $spnxAdminManage->spinkx_cont_get_version();
+    $spinkx_version =  SPINKX_CONTENT_VERSION;
 
 	foreach ( $siteArr as $currentSite ) {
 		if ( $mflag ) {
