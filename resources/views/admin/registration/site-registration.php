@@ -26,7 +26,7 @@ if ( isset($_POST['agree']) &&  $_POST['agree']) {
 	}
 	$post['cuser_email'] = $spnxAdminManage->getCurrentUserEmail();
 	// site info  is being updated
-	$post['spinkx_version'] = $spnxAdminManage->spinkx_cont_get_version();
+	$post['spinkx_version'] = SPINKX_CONTENT_VERSION;
 	if ( $site_id ) {
 		$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/site/update';
 		$post['sflag'] = 'site_update';
