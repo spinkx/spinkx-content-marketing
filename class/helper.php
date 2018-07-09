@@ -157,7 +157,7 @@ class spnxHelper {
 
 	private static function _getAdditionalData() {
 	    $spnxAdmin = new spnxAdminManage();
-		$settings = get_option($spnxAdmin->spinkx_cont_get_license() );
+		$settings = get_option( SPINKX_CONTENT_LICENSE );
 		$settings = maybe_unserialize( $settings );
 		$post = array();
 		if(isset($settings['site_id']) && isset($settings['reg_email']) &&$settings['license_code']) {

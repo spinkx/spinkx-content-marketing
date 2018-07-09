@@ -14,16 +14,27 @@ Author URI: www.spinkx.com
 Version: 3.0
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-define( 'SPINKX_CONTENT_PLUGIN_DIR', plugin_dir_path( __FILE__ )  );
+define( 'SPINKX_CONTENT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SPINKX_CONTENT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+$data = file_get_contents ("env.json", FILE_USE_INCLUDE_PATH);
+$data = json_decode( $data );
+foreach($data as $key => $value) {
+    if( !defined( $key ) ) {
+        if(in_array($key, array('SPINKX_CONTENT_ADMIN_VIEW', 'SPINKX_CONTENT_FRONEND_VIEW','SPINKX_CONTENT_DIST'))) {
+	        define( $key.'_DIR', SPINKX_CONTENT_PLUGIN_DIR.$value );
+	        define( $key.'_URL', SPINKX_CONTENT_PLUGIN_URL.$value );
+        } else {
+	        define( $key, $value );
+        }
+
+    }
+}
 
 require_once SPINKX_CONTENT_PLUGIN_DIR . 'class/admin-manage.php';
 require_once SPINKX_CONTENT_PLUGIN_DIR . 'class/helper.php';
 require_once SPINKX_CONTENT_PLUGIN_DIR . 'class/mobiledetect.php';
-require_once SPINKX_CONTENT_PLUGIN_DIR . 'includes/settings/spinkx-css-js-enqueue.php';
-require_once SPINKX_CONTENT_PLUGIN_DIR . 'assets/widgets/create/save-widget-position.php';
-require_once SPINKX_CONTENT_PLUGIN_DIR . 'assets/campaigns/campajx.php';
-include_once SPINKX_CONTENT_PLUGIN_DIR . 'payment-method.php';
+require_once SPINKX_CONTENT_PLUGIN_DIR . 'resources/views/admin/spinkx-css-js-enqueue.php';
+include_once SPINKX_CONTENT_PLUGIN_DIR . 'resources/views/admin/payments/payment-method.php';
 
 $all_post_ids = 0;
 $views_options = array( 'count' => 1, 'exclude_bots' => 1,'use_ajax' => 1 );
@@ -61,15 +72,14 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 	$site_id = false;
 	global $wpdb;
 	$spnxAdminManage = new spnxAdminManage();
-	$url = esc_url( $spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/site/create' );
+	$url = esc_url( SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/site/create' );
 	$mflag = is_multisite();
 	if ( $mflag ) {
 		if(  $blog_id > 0 &&  $from == 'add_new_blog' ) {
 			$siteArr = array( array( 'blog_id' => $blog_id ) );
 		} else {
-            $siteArr = $wpdb->get_results('SELECT blog_id FROM `wp_blogs` WHERE public = 1', ARRAY_A);
-
-		}
+            $siteArr = $wpdb->get_results("SELECT blog_id FROM `{$wpdb->prefix}blogs` WHERE public = 1", ARRAY_A);
+        }
 	} else {
 		$siteArr = array( array( 'blog_id' => get_current_blog_id() ) );
 	}
@@ -99,7 +109,7 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
             if (!isset($output['message'])) {
                 //$output['current_blog_id'] = $currentSite['blog_id'];
                 $s = maybe_serialize($output);
-                update_option($spnxAdminManage->spinkx_cont_get_license(), $s);
+                update_option(SPINKX_CONTENT_LICENSE, $s);
             }
         }
 
@@ -119,8 +129,6 @@ function spinkx_registration_redirect( ) {
             exit( wp_redirect( admin_url( 'admin.php?page=spinkx-site-register' ) ) );
         }
     }
-
-
 }
 add_action('init', 'spinkx_registration_redirect');
 /**
@@ -136,11 +144,11 @@ function spinkx_cont_server_plugin_deactivate( $network_wide ) {
 	$spnxAdminManage = new spnxAdminManage();
 	$post = array();
 	if( is_multisite() ) {
-		$siteArr = $wpdb->get_results( 'SELECT blog_id FROM `wp_blogs` WHERE public = 1', ARRAY_A );
+		$siteArr = $wpdb->get_results( "SELECT blog_id FROM `{$wpdb->prefix}blogs` WHERE public = 1", ARRAY_A );
 		$data = array();
 		foreach ( $siteArr as $currentSite ) {
 			switch_to_blog($currentSite['blog_id']);
-			$temp = maybe_unserialize(get_option( $spnxAdminManage->spinkx_cont_get_license() ));
+			$temp = maybe_unserialize(get_option( SPINKX_CONTENT_LICENSE ));
 			$data[] = $temp['site_id'];
 		}
 		$post['ids'] = $data;
@@ -148,11 +156,11 @@ function spinkx_cont_server_plugin_deactivate( $network_wide ) {
 	if(!count($post)) {
 		$post = true;
 	}
-	$url = $spnxAdminManage->spinkx_cont_bapi_url(). '/wp-json/spnx/v1/site/deactivate';
+	$url = SPINKX_CONTENT_BAPI_URL. '/wp-json/spnx/v1/site/deactivate';
 	$result = spnxHelper::doCurl( $url, $post, false );
 }
 function spinkx_cont_db_setup() {
-    include_once 'includes/seettings/db-setup.php';
+    include_once 'includes/settings/db-setup.php';
 }
 register_uninstall_hook( __FILE__, 'spinkx_cont_server_plugin_uninstall');
 register_activation_hook( __FILE__,   'spinkx_cont_site_registration' );
@@ -171,10 +179,10 @@ add_action( 'wp_head', function(){
     if(!spinkx_cont_bot_detection() && shortcode_exists( 'spinkx' ) && !is_admin() ) {
     global $post;
     $spnxAdminManage = new spnxAdminManage;
-    $license = get_option( $spnxAdminManage->spinkx_cont_get_license() );
+    $license = get_option( SPINKX_CONTENT_LICENSE );
     $license_arr = maybe_unserialize( $license );
 	$widget_list = get_option('spnx_widget_list');
-	$md = new Mobile_Detect;
+	$md = new SpnxMobileDetect;
 	if($widget_list) {
 		$widget_list = maybe_unserialize($widget_list);
 	} else {
@@ -214,7 +222,7 @@ add_action( 'wp_head', function(){
 	}
     ?>   
 	<script>
-    var spnx_server_base_url = '<?php echo $spnxAdminManage->spinkx_cont_api_url()?>/';
+    var spnx_server_base_url = '<?php echo SPINKX_CONTENT_API_URL?>/';
     var server_base_url = spnx_server_base_url;
     var assetsurl = '<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/';
     var sx_id = "";
@@ -301,7 +309,7 @@ function spinkx_cont_process_postviews() {
 			if ( $should_count && ( ( isset( $views_options['use_ajax'] ) && intval( $views_options['use_ajax'] ) === 0 ) || ( ! defined( 'WP_CACHE' ) || ! WP_CACHE ) ) ) {
 					update_post_meta( $id, 'spx_views', ( $post_views + 1 ) );
 
-				//$url = $spnxAdminManage->spinkx_cont_bapi_url() . '/wp-json/spnx/v1/site/statistics';
+				//$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/site/statistics';
 
 			}
 		}
@@ -431,10 +439,10 @@ add_action( 'plugins_loaded', 'spinkx_cont_add_custom_action_after_plugins_loade
 function spinkx_cont_get_default_shortcode_output() {
 	$atts = array();
 	$spnxAdminManage = new spnxAdminManage;
-	$license = get_option( $spnxAdminManage->spinkx_cont_get_license() );
+	$license = get_option( SPINKX_CONTENT_LICENSE );
 	if ( isset( $license['reg_user'] ) ) {
 		if ( 0 === $license['reg_user'] ) {
-			$license = get_option( $spnxAdminManage->spinkx_cont_get_license() );
+			$license = get_option( SPINKX_CONTENT_LICENSE );
 			$atts['id'] = $license['default_widget_id'];
 			$atts['site_id'] = $license['site_id'];
 			$atts['user_id'] = $license['reg_user'];
@@ -464,6 +472,15 @@ function spinkx_cont_above_comment_widget_default() {
 	}
 }
 
+add_filter( 'widget_update_callback', function( $instance, $new, $old, $obj )
+{
+    if( 'text' === $obj->id_base && ! empty( $instance['text'] ) )
+    {
+        print_r($instance);
+
+    }
+    return $instance;
+}, 10, 4 );
 
 /**
  *
@@ -507,10 +524,14 @@ function spinkx_cont_media_selector_print_scripts( ) {
 			var set_to_post_id = <?php echo $my_saved_attachment_post_id; ?>; // Set this
 
 			//jQuery('#upload_image_button').on('click', function( event ){
-			jQuery(document).on('click', 'form.create-ad-form span.playlist_img, form.create-variation-form span.playlist_img', function( event ){
-
-				event.preventDefault();
-
+			jQuery(document).on('click', 'form.create-ad-form span.playlist_img, form.create-variation-form span.playlist_img, .reg-upload-logo', function( event ){
+                event.preventDefault();
+                ptitle = 'Select a image to add campaign';
+                ptext= 'Add Campaign Image';
+                if($(this).attr('class') === 'reg-upload-logo') {
+                    ptitle = 'Select a image to add Logo';
+                    ptext= 'Add Logo';
+                }
 				// If the media frame already exists, reopen it.
 				if ( file_frame ) {
 					// Set the post ID to what we want
@@ -526,9 +547,9 @@ function spinkx_cont_media_selector_print_scripts( ) {
 
 				// Create the media frame.
 				file_frame = wp.media.frames.file_frame = wp.media({
-					title: 'Select a image to add campaign',
+					title: ptitle,
 					button: {
-						text: 'Add Campaign Image',
+						text: ptext,
 					},
 					multiple: false	// Set to true to allow multiple files to be selected
 				});
@@ -580,7 +601,7 @@ function spinkx_cont_media_selector_print_scripts( ) {
 function spinkx_mobile_widget_setup() {
 	if( ! is_admin() && wp_is_mobile() ) {
 		$spnxAdminManage = new spnxAdminManage();
-		$url = $spnxAdminManage->spinkx_cont_bapi_url().'/wp-json/spnx/v1/widget/is_mobile_widget_exist';
+		$url = SPINKX_CONTENT_BAPI_URL.'/wp-json/spnx/v1/widget/is_mobile_widget_exist';
 		$wp_output = spnxHelper::doCurl($url, true);
 		$wp_output = json_decode( $wp_output );
 
@@ -591,5 +612,5 @@ function spinkx_mobile_widget_setup() {
 		}
 	}
 }
-
 add_action( 'admin_enqueue_scripts', 'spinkx_admin_add_inline_js', 99 );
+
