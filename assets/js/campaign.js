@@ -90,6 +90,9 @@ jQuery( document ).ready(function() {
 
 function createAd(buttonObj, campaign_id, $data) {
     //console.log( campaign_id )
+    if(jQuery('.create-ad-main-div').length > 0) {
+        return;
+    }
     var campaign_image = '../wp-content/plugins/spinkx-content-marketing/assets/images/becreative.jpg';
     var campaign_headline = '';
     var campaign_excerpt = '';
@@ -254,6 +257,7 @@ function createAd(buttonObj, campaign_id, $data) {
             "15 Days": [moment(), moment().add(14, "days")],
             "30 Days": [moment(), moment().add(29, "days")]
         },
+
     }, cb_camp);
     cb_camp(start_camp, end_camp);
     jQuery("#start_date").val(start_camp.format("YYYY-MM-DD"));
@@ -601,7 +605,7 @@ function cb_camp(start_camp, end_camp) {
 }
 var start_camp =  moment();
 var m = moment();
-m.add('days', 6);
+m.add( 6, 'days');
 
 var end_camp =  moment(m);
 var first_time_call = 0;
