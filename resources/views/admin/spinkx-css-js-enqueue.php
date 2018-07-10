@@ -60,7 +60,7 @@ function spinkx_cont_js_var() {
 	$settings = get_option( SPINKX_CONTENT_LICENSE );
 	$settings = maybe_unserialize( $settings );
     $settings['site_id'] = isset($settings['site_id'])? $settings['site_id']:0;
-	$custom_js = '<script>var SPINKX_CONTENT_PLUGIN_DIR = "' . SPINKX_CONTENT_PLUGIN_DIR . '";
+	$custom_js = '<script>var SPINKX_CONTENT_PLUGIN_DIR = "' . realpath(SPINKX_CONTENT_PLUGIN_DIR ). '";
 	var spinkx_server_baseurl = "' . SPINKX_CONTENT_BAPI_URL . '";
 	var SPINKX_CONTENT_PLUGIN_URL = "' . SPINKX_CONTENT_PLUGIN_URL . '";
 	
