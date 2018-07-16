@@ -61,7 +61,8 @@ function spinkx_cont_js_var() {
 	$settings = maybe_unserialize( $settings );
     $settings['site_id'] = isset($settings['site_id'])? $settings['site_id']:0;
 	$custom_js = '<script>
-	var spinkx_server_baseurl = "' . SPINKX_CONTENT_BAPI_URL . '";
+
+    var spinkx_server_baseurl = "' . SPINKX_CONTENT_BAPI_URL . '";
 	var SPINKX_CONTENT_PLUGIN_URL = "' . SPINKX_CONTENT_PLUGIN_URL . '";
 	
 	var g_site_id =  "' . $settings['site_id'] . '";
@@ -209,6 +210,7 @@ function spinkx_cont_widget_css_js($path) {
     wp_enqueue_script( 'jquery-multiselect', $vendor . 'jQuery-multiselect/js/jquery.multiselect.js' );
 	wp_enqueue_script( 'jquery-custom-js', $path[0] . 'js/widget-design.js' );
 	wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+
 }
 
 /**
