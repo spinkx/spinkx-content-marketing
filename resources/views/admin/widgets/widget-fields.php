@@ -131,7 +131,7 @@ if( $is_mobile_widget == 0 ) {
 				</td>
 				<td  id="widget-fixed" >
 					<input type="radio" id="widget_layout_type" class="widget_layout_fixed" name="widget_layout_type" <?php if ( $widget_layout_type=="fixed-width" ) { echo "checked"; };?> value="fixed-width" /><strong>Fixed Width & Height </strong>
-					<div id="widget-fixed-input" <?php if ( $widget_layout_type!="fixed-width" ) { echo 'style="display: none"'; } ?>>
+					<div id="widget-fixed-inputt" <?php if ( $widget_layout_type!="fixed-width" ) { echo 'style="display: none"'; } ?>>
 						<label>No of Row</label>
 						<input type="text" name="no_of_row" id="no_of_row" min="1" max="10" value="<?php echo $no_of_row?>"  />
 						<label>No of Columns</label>
@@ -182,10 +182,10 @@ if( $is_mobile_widget == 0 ) {
 			</tr>
 			<tr>
 				<td class="content-left-td" >
-					<input type="text" id="result1" value="<?php echo $no_of_columns; ?>" name="no_of_columns" placeholder="<?php echo $no_of_columns; ?>" readonly />
+					<input type="text" id="result11" value="<?php echo $no_of_columns; ?>" name="no_of_columns" placeholder="<?php echo $no_of_columns; ?>" readonly />
 					<input type="hidden" id="mob_views"  name="no_col_mob_view"  value="<?php echo $no_col_mob_view; ?>" />
 
-					<div id="slider-range-min" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" >
+					<div id="slider-range-minn" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" >
 						<div class="ui-slider-range ui-widget-header ui-slider-range-min" style="width: 0%;"></div>
 						<?php
 						$widget_no_of_cols_val = 1;
@@ -263,7 +263,7 @@ if( $is_mobile_widget == 0 ) {
 			</tr>
 			<tr>
 				<td  class="content-left-td">
-					<input type="text" id="bg_color" value="<?php echo $unit_bg_color; ?>" name="unit_bg_color" placeholder="<?php echo $unit_bg_color; ?>" />
+					<input type="text" id="bg_colorr" value="<?php echo $unit_bg_color; ?>" name="unit_bg_color" placeholder="<?php echo $unit_bg_color; ?>" />
 					</br>	Pick a background color (default #ffffff).
 				</td>
 			</tr>
@@ -282,7 +282,7 @@ if( $is_mobile_widget == 0 ) {
 			</tr>
 			<tr>
 				<td class="content-left-td">
-					<input type="text" id="fg_color" value="<?php echo $unit_fg_color; ?>" name="unit_fg_color" placeholder="<?php echo $unit_fg_color; ?>" /></br>
+					<input type="text" id="fg_colorr" value="<?php echo $unit_fg_color; ?>" name="unit_fg_color" placeholder="<?php echo $unit_fg_color; ?>" /></br>
 					Pick a foreground color (default #FEFEFE).
 				</td>
 			</tr>
@@ -316,7 +316,7 @@ if( $is_mobile_widget == 0 ) {
 						<option <?php if( $unit_border_style == "outset" ) { echo "selected"; }; ?> value="outset">outset</option>
 					</select>
 					<div class="border-color">
-						<input type="text" id="unit_border_color" value="<?php echo $unit_border_color; ?>" name="unit_border_color" placeholder="<?php echo $unit_border_color; ?>" title="border-color"/>
+						<input type="text" id="unit_border_colorr" value="<?php echo $unit_border_color; ?>" name="unit_border_color" placeholder="<?php echo $unit_border_color; ?>" title="border-color"/>
 					</div>
 				</td>
 			</tr>
@@ -364,7 +364,7 @@ if( $is_mobile_widget == 0 ) {
 					<option <?php if( $unit_title_font_style == "bolder" ) { echo "selected"; }; ?> value="bolder">bolder</option>
 				</select>
 			<div class="border-color">
-				<input type="text" id="unit_title_font_color" value="<?php echo $unit_title_font_color; ?>" name="unit_title_font_color" placeholder="<?php echo $unit_title_font_color; ?>" title="font-color"/>
+				<input type="text" id="unit_title_font_colorr" value="<?php echo $unit_title_font_color; ?>" name="unit_title_font_color" placeholder="<?php echo $unit_title_font_color; ?>" title="font-color"/>
 			</div>
 			<p style="display:none">Google Font:
 				<select id="unit_title_font_family" name="unit_title_font_family" title="font-family">
@@ -437,7 +437,7 @@ if( $is_mobile_widget == 0 ) {
 						<option <?php if( $unit_excerpt_font_style == "bolder" ) { echo "selected"; }; ?> value="bolder">bolder</option>
 					</select>
 				<div class="border-color">
-					<input type="text" id="unit_excerpt_font_color" value="<?php echo $unit_excerpt_font_color; ?>" name="unit_excerpt_font_color" placeholder="<?php echo $unit_excerpt_font_color; ?>" title="font-color"/>
+					<input type="text" id="unit_excerpt_font_colorr" value="<?php echo $unit_excerpt_font_color; ?>" name="unit_excerpt_font_color" placeholder="<?php echo $unit_excerpt_font_color; ?>" title="font-color"/>
 					</div>
 				<p style="display:none">Google Font:
 					<select id="unit_excerpt_font_family" name="unit_excerpt_font_family" title="font-family">

@@ -74,18 +74,23 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 	<table id="bwki_sites_display" class="wp-list-table table-responsive " style="width:1024px;"><thead  style="border-bottom:1px solid #469fa1">
 		<tr>
 			<td  style="padding: 0px;text-align: right;">
-				<span class="duration-text-first-span-span-crnt">Current points: <span id="credit_points_value"><?php echo $spnxAdminManage->spinkx_cont_get_credit_points();?></span></span>
+				<span class="duration-text-first-span-span-crnt">Current Points: <span id="credit_points_value"><?php echo $spnxAdminManage->spinkx_cont_get_credit_points();?></span></span>
 				<button  class=" buy-more-point" id="buy-more-point" onclick="getpoints()">Buy More Point</button>
 
 			</td>
-
-			<td  colspan="2" style="padding: 0px;text-align: center;">
-
-               <!-- <input type="text" class="column_filter" id="col0_filter"> -->
+			<td>
+				
 
 			</td>
+			<td  style="padding: 0px;text-align:left;">
+				<span class="duration-text-first-span-span-crnt glbl_stngs_lbl">Global Settings</span>
+				<span class="glbl_setng_cb"><i class="fa fa-cog" aria-hidden="true"></i></span>
+
+			</td>
+			
+
 		</tr>
-		<tr style="background-color: #e4eff4 !important;height: 27px;font-size: 12px; color:#a93671;">
+		<tr style="background-color: #e4eff4 !important;height: 27px;font-size: 12px; color:#0170b6;">
 			<th style="padding: 0px;border:none;width:475px;">&nbsp;&nbsp;&nbsp;Post Details</th>
 			<th style=" padding: 0 0 0 12px;border:none;width:252px;">&nbsp;&nbsp;&nbsp;Your Post Stats <div class="onoff_header" >
 					<div class="onoffswitch">

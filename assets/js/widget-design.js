@@ -53,18 +53,18 @@ jQuery(document).ready(function($) {
         });
     });
     $(".mn-txt-cmn-dv").click(function() {
-        if(!$(this).hasClass('activewidget')) {
-            $('.cmn-cls-cntnr .mn-txt-cmn-dv').removeClass('activewidget');
-            $('.sb-ctgry-cmn-cls').hide(300);
+        if(!$(this).children('i').hasClass('activewidget')) {
+            $('.cmn-cls-cntnr .mn-txt-cmn-dv >i').removeClass('activewidget');
+            $('.sb-ctgry-cmn-cls').hide();
         }
         $(this).next('.sb-ctgry-cmn-cls').toggle();
-        $(this).toggleClass("activewidget");
+        $(this).children('i').toggleClass("activewidget");
         var height=$(".acc-mn-dv-cntainr").height();
 
 
-        var test=$(this).hasClass("activewidget");
+        var test=$(this).children('i').hasClass("activewidget");
         if(!(test)) {
-            $(".acc-mn-dv-cntainr").css("height",198+"px");
+            $(".acc-mn-dv-cntainr").css({'height':198+'px','overflow':'hidden'});
         }
         else {
             $(".acc-mn-dv-cntainr").css({'height':400+'px','overflow-y':'scroll'})
@@ -109,6 +109,17 @@ jQuery(document).ready(function($) {
             }
         });
     });
+
+    
+     $(".edit_cat_spnx_wdgt").click(function() {
+        $(this).parent().next(".cat_wdgt_mn_cntnr_spkx").toggle();
+    }); 
+     $(".cmn_wdgt_tb_mn_cntnr>div:first-child").click(function() {
+        
+        $(this).toggleClass('bbtm_tgl_clas');
+        $(this).next().slideToggle(300);
+        $(this).children('.fa-chevron-right').toggleClass('dst_ar_dwn');
+     })
 
 });
 

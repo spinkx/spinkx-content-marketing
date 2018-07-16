@@ -251,22 +251,22 @@
 
 		/* ColorPicker Script Starts Here */
 		/* // Initiate the ColorPicker */
-		$("#bg_color").colorpicker({
+		$("#bg_color").wpColorPicker({
 			color: "' . $unit_bg_color .'"
 		});
-		$("#fg_color").colorpicker({
+		$("#fg_color").wpColorPicker({
 			color: "' . $unit_fg_color .'"
 		});
-		$("#unit_border_color").colorpicker({
+		$("#unit_border_color").wpColorPicker({
 			color: "' . $unit_border_color .'"
 		});
-		$("#unit_title_font_color").colorpicker({
+		$("#unit_title_font_color").wpColorPicker({
 			color: "' . $unit_title_font_color .'"
 		});
-		$("#unit_add_line_color").colorpicker({
+		$("#unit_add_line_color").wpColorPicker({
 			color: "' . $unit_add_line_color . '"
 		});
-		$("#unit_excerpt_font_color").colorpicker({
+		$("#unit_excerpt_font_color").wpColorPicker({
 			color: "' . $unit_excerpt_font_color .'"
 		});
 

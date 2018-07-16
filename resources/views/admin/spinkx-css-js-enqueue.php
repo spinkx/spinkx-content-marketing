@@ -60,7 +60,7 @@ function spinkx_cont_js_var() {
 	$settings = get_option( SPINKX_CONTENT_LICENSE );
 	$settings = maybe_unserialize( $settings );
     $settings['site_id'] = isset($settings['site_id'])? $settings['site_id']:0;
-	$custom_js = '<script>var SPINKX_CONTENT_PLUGIN_DIR = "' . realpath(SPINKX_CONTENT_PLUGIN_DIR ). '";
+	$custom_js = '<script>
 	var spinkx_server_baseurl = "' . SPINKX_CONTENT_BAPI_URL . '";
 	var SPINKX_CONTENT_PLUGIN_URL = "' . SPINKX_CONTENT_PLUGIN_URL . '";
 	
@@ -197,6 +197,7 @@ function spinkx_cont_registration_css_js($path) {
 function spinkx_cont_widget_css_js($path) {
 	$vendor = $path[1] . 'vendor/';
 	wp_enqueue_style( 'css-multiselect', $vendor . 'jQuery-multiselect/css/jquery.multiselect.css' );
+	wp_enqueue_style( 'wp-color-picker' );
 	$custom_css = ' .no-js #loader, .notice { display: none;  }
 	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.se-pre-con { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 9999;	
@@ -207,6 +208,7 @@ function spinkx_cont_widget_css_js($path) {
 	wp_enqueue_script( 'form-validator-js', esc_url( '//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js' ) );
     wp_enqueue_script( 'jquery-multiselect', $vendor . 'jQuery-multiselect/js/jquery.multiselect.js' );
 	wp_enqueue_script( 'jquery-custom-js', $path[0] . 'js/widget-design.js' );
+	wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
 }
 
 /**

@@ -114,8 +114,8 @@ final class spnxAdminManage
 		$args['meta']['id'] = 'ntf-bl-sh-hd';
         // $display = '<span class="spinkx-notify-update-bubble">'.$pending.'</span><span class="spinkx-notify-text-active"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/icon-bell.png"/></span>
 		$display = '<div class="bl-mn-dv-cntnr-ntf-br"><span class="img-cntnr-gf-mn-dv"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/spinkx-ico.svg"/></span>
-<span class="rnd-cmn-cls-dv-mn-cntr-rng"></span><span class="img-cntnr-gf-mn-dv"><img style="width: 20px !important;" src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/notification-spnx.png"/>
-<span class="img-cntnr-gf-mn-dv" style="position: absolute; right: 44px; top:-4px;"><span class="spinkx-notify-update-bubble">'.$pending.'</span></span>
+<span class="rnd-cmn-cls-dv-mn-cntr-rng"></span><span class="img-cntnr-gf-mn-dv"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/notification-spnx.png"/>
+<span class="img-cntnr-gf-mn-dv" style="position: absolute; right: 40px; top:-4px;"><span class="spinkx-notify-update-bubble">'.$pending.'</span></span>
 </div>
     <div class="ntf-mn-cntnr">
 

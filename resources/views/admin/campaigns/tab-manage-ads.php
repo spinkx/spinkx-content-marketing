@@ -50,12 +50,7 @@
 	$bwki_sites_display_length	= spnxHelper::getFilterVar( 'bwki_sites_display_length' );
 	$pageLength = ( $bwki_sites_display_length )?$bwki_sites_display_length:10;
 	$loader = '<img src="'.esc_url( SPINKX_CONTENT_PLUGIN_URL ).'assets/images/loader.gif" alt="loading"/>';
-	$css_output = "
-	ul.select2-choices li.select2-search-choice {display:none};
-	";
-
-	wp_enqueue_style( 'campaign-css', $dist . 'css/camp-master.'.$css );
-	wp_add_inline_style( 'campaign-css', $css_output );
+	
 
 	$custom_js .= 'var todaydate = start; var pageLength = ' . $pageLength . ';
 	var pt = '.$p.'; jQuery(function() {  jQuery(".se-pre-con").fadeOut("slow");
@@ -163,7 +158,7 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 }	?>
 <?php if($output['error'] === false) {?>
 <div class="content_playlist_listing">
-	<table id="bwki_sites_display" class="wp-list-table table-responsive"  style="width:1024px;"><thead  style="border-bottom:1px solid #469fa1">
+	<table id="bwki_sites_display" class="wp-list-table table-responsive"  style="width:1024px;"><thead>
 		<tr>
 			<td style="padding: 0px;text-align: right;">
 			<span class="duration-text-first-span-span-crnt">Wallet Balance: <i class="fa <?php echo $currencyClass?>"></i><?php  printf('%.2f', $output['user_bal'])?></span>
@@ -182,7 +177,7 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 				<span style=""><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"> <a href="#" id="sortby_global_reach">Views</a>|<a href="#" id="sortby_global_ctr">Engagement</a></span>
 				</td>
 		</tr>
-		<tr style="background-color: #e4eff4 !important;height: 30px;font-size: 12px; color:#a93671;">
+		<tr style="background-color: #e4eff4 !important;height: 30px;font-size: 12px; color:#0170b6;">
 			<th style="padding: 0px;border:none;width:475px;">&nbsp;&nbsp;&nbsp;Campaign Details</th>
 			<th style="padding: 0 0 0 12px;border:none;width:252px;">&nbsp;&nbsp;&nbsp;Campaign Statistics </th>
 			<th style="padding: 0 0 0 0px;border:none;width:252px; text-align:center; background-color: #337ab7 !important;">&nbsp;&nbsp;&nbsp; <button  id="button-create-ad" onclick="createAd(this)"><span  style="font-size:12px;">Create Ad </span><span style="font-size:13px;">+</span></button></th>

@@ -752,10 +752,6 @@ img.variation_imgs{
     border-color: transparent;
 }
 
-.content_playlist_listing table td {
-    vertical-align: top;
-}
-
 td ul {
     padding: 0;
 }
@@ -794,22 +790,10 @@ li.lgof span {
 td li i {
     float: right;
 }
-td div span {
-    /*padding: 2px 8px;
-    background: #469fa1;
-    color: white;
-    border-radius: 10px;
-    cursor : pointer;
-    width: 30px;
-    height: 30px; */
-}
+
 td span.off_danger {
     background: #f0563c;
     border: 1px solid #469fa1;
-}
-.content_playlist_listing{
-    background: transparent;
-    padding: 0px;
 }
 .on_after {
     padding:0;
@@ -819,7 +803,7 @@ td span.off_danger {
     content: "/";
     margin-left: 5px;
 }
-.pull-right{
+.pull-right {
     font-size: 13px !important;
     font-weight: 500;
 }
@@ -886,9 +870,6 @@ input[type="file"][name="image"] {
 
 #campaign_subtabs {
     border: 0;
-}
-.campaign_page {
-    border: 0 !important;
 }
 .backgroundGreen {
     background: green;
@@ -1021,7 +1002,6 @@ source: https://proto.io/freebies/onoff/
 */
 div.onoffswitch {
     float:left;
-    margin-left:10px;
     position: relative; width: 36px;
     webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
@@ -1241,7 +1221,7 @@ div.create-ad-field{ height:35px;}
 }
 #daterange {
     cursor: pointer;
-    width: 180px;
+    width: 188px;
     z-index: 9;
 }
 input.form-control2:hover,input.form-control2:focus { background-color: #e4eff4; box-shadow: inset 0 1px 1px rgba(0,0,0,.075); }
@@ -1300,7 +1280,7 @@ textarea.splcaheholder:-ms-input-placeholder { color: #337ab7; }
 .ms-options-wrap > .ms-options {
     background-color: #e4eff4 !important;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075); border: 0;
-    border-radius: 7px;
+    border-radius: 3px;
 }
 .ms-options-wrap  .ms-options  ul li {
     height: 20px;
@@ -1349,7 +1329,7 @@ textarea.splcaheholder:-ms-input-placeholder { color: #337ab7; }
     text-transform: capitalize;
 }
 .ms-options-wrap > .ms-options > .ms-search input {
-    border-bottom: none;
+    border-bottom: none !important;
 }
 .ms-options-wrap > button:after {
     content: ' ';
@@ -2085,10 +2065,9 @@ input[type=number]::-webkit-outer-spin-button {
     background: #337ab7;
     color: #fbfbfb;
     border: unset;
-    padding: 4px 10px 6px 10px;
+    padding: 4px 10px;
     outline: none;
     cursor: pointer;
-    width: 105px;
 
 }
 .buy-now-shrt-code button {
@@ -2139,6 +2118,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #f0ad4e !important;
     border-color: #eea236 !important;
     font-size: 9px;
+    border:1px solid;
 }
 .btn-cancle-spnx-main-cls:active {
     outline: 5px auto -webkit-focus-ring-color;
@@ -2196,26 +2176,9 @@ input[type=number]::-webkit-outer-spin-button {
     margin:0 auto;
     background-color: white;
 }
-.mn-txt-cmn-dv:before {
-    border: 5px solid transparent;
-    border-left-color: #adb0b3;
-    content: '';
-    display: block;
-    height: 0;
-    position: absolute;
-    top:10px;
-    width: 0;
-}
-.activewidget:before{
-    border: 5px solid transparent;
-    border-top-color: #adb0b3;
-    content: '';
-    display: block;
-    height: 0;
-    left: 7px;
-    position: absolute;
-    top: 13px;
-    width: 0;
+
+.activewidget {
+    transform: rotate(90deg);
 }
 .mn-txt-cmn-dv {
     position:relative;
@@ -2318,3 +2281,269 @@ input[type=number]::-webkit-outer-spin-button {
     top: 10px;
     z-index: 8;
 }
+
+/** campaign css starts here **/
+
+.campaign_page {
+    padding: 20px 15px;
+}
+.cad-icons .landing_url { 
+     font-size: 10px;
+     height: 24px;
+     margin-left: 7px;
+     border-radius: 4px;
+     border: 0;color: rgba(0,0,0,0.4);
+     font-weight:700;
+     width: 700px;
+     padding: 4px;
+     background: rgba(0,0,0,0);
+     box-shadow: none; 
+ }
+.cad-icons .landing_url:focus,.cad-icons .landing_url:hover { 
+     border:0;
+     box-shadow: none; 
+     background: rgba(0,0,0,0); 
+ }
+.cad-icons .utm-source, .cad-icons .utm-source:hover, .cad-icons .utm-source:focus
+  {
+     font-size: 10px;
+     height: 24px;
+     border-radius: 4px;
+     border: 0;
+     color:#337ABB;
+     font-weight:700;
+     width: 36px;
+     padding:0;
+     background: rgba(0,0,0,0);
+     box-shadow: none; 
+  }
+.cad-icons .utm-campaign, .cad-icons .utm-campaign:hover, .cad-icons .utm-campaign:focus {
+    font-size: 10px;
+    height: 24px;
+    border-radius: 4px;
+    border: 0;
+    color: #337ABB;
+    font-weight:700;
+    width: 83px;
+    padding:0;
+    background: rgba(0,0,0,0);
+    box-shadow: none;
+    }
+.cad-icons .targeting-categories, .cad-icons .targeting-languages, .cad-icons .targeting-countries  {
+    display: inline;
+    float: left;
+    margin-left: 13px;
+}
+.cad-icons .budget-optimise-for {
+    float: left;
+    margin-left: 13px;
+    font-size: 10px;
+}
+.cad-icons .budget-optimise-for i.sub-heading.fa {
+    display: inline;
+    margin-left: 5px;
+    vertical-align: text-bottom;
+    color: #337ab7;
+}
+.cad-icons .budget-optimise-for #budget_amount {
+    padding: 0;
+    font-weight: 600;
+    color: #337ab7;
+    margin-top: 3px;
+    width: 44px;
+    height: 20px;
+    border-radius: 5px;
+    padding-left: 3px;
+    border: 0;
+    margin-left: 3px;
+    padding-top: 2px;
+}
+span.cpm-outer-main, .cad-icons .add-money-message {
+    font-size: 10px;
+    font-weight: 600;
+    height: 20px;
+    line-height: 25px;
+    color: #a93671;
+}
+.cad-icons .add-money-message {
+    margin-left: 10px;
+}
+.cad-icons #test-landing-url, .cad-icons .camp_agreement {
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: 36px;
+}
+.cad-icons .camp_agreement input[type="checkbox"]:checked:before{
+    margin: -3px 0 0 -4px;
+    font-size: 17px;
+}
+.cad-icons .targeting-categories {
+    width:220px;
+}
+.cad-icons .targeting-languages .ms-options-wrap, .cad-icons .targeting-countries .ms-options-wrap  {
+    min-width: 150px;
+}
+.cad-icons .budget-date { 
+    float: left;
+    display: inline;
+}
+.cad-icons .budget-date .date { 
+    float: left; 
+    display: block ;
+}
+.cad-icons .budget-date > span {     
+    font-size: 10px;
+    margin-left: 10px;
+    height: 20px;
+    vertical-align: bottom;
+}
+.cad-icons .budget-date #reportrange_camp {
+    font-size: 9px !important;
+    height: 20px;
+    border: 0;
+    border-radius: 5px;
+    line-height: 10px;
+    margin-left: 5px;
+    margin-top: 3px;
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+.cad-icons .budget-date .date .track { 
+    width: 63px; 
+    font-size: 9px; 
+    height: 20px; 
+    margin-top: 5px; 
+    padding: 0 0 0 6px;
+}
+.cad-icons .budget-date .input-group-addon { 
+    height: 20px; 
+    margin-top: 5px;
+}
+.cad-icons .budget-date .glyphicon { 
+    height: 20px;
+    top: -5px;
+}
+
+#call-to-action {    
+    padding: 2px;
+    line-height: 20px;
+    height: 20px;
+    vertical-align: middle;
+    font-size: 9px;
+    font-weight: 600;
+    margin-top: 4px;
+    float: right;
+    width: 100%;
+    border: 0;
+    background: #fff;
+}
+
+
+.ms-options-wrap  .ms-options ul li label input[type="checkbox"], .cad-icons input[type="checkbox"] {
+    border: 1px solid #b4b9be;
+    border-radius: 3px;
+    background: #fff;
+    color: #555;
+    clear: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 0;
+    height: 13px;
+    margin: -4px 4px 0 0;
+    outline: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 13px;
+    min-width: 10px;
+    -webkit-appearance: none;
+    -webkit-box-shadow: inset 0 1px 2px rgba( 0, 0, 0, 0.1 );
+    box-shadow: inset 0 1px 2px rgba( 0, 0, 0, 0.1 );
+    -webkit-transition: .05s border-color ease-in-out;
+    transition: .05s border-color ease-in-out;
+}
+
+.ms-options-wrap > .ms-options > .ms-search input {
+    font-size: 9px;
+    font-weight: 300;
+}
+.ms-options-wrap > button:after {
+    content: ' ';
+    height: 0;
+    position: absolute;
+    top: 57%;
+    right: 5px;
+    width: 0;
+    border: 4px solid rgba(0, 0, 0, 0);
+    border-top-color: #999;
+    margin-top: -3px;
+}
+.ms-options-wrap  .ms-options  ul li input[type="checkbox"]:checked:before {
+    margin: -2px 0 0 -3px;
+    color: #ec971f;
+    font-size: 16px;
+}
+.ms-options-wrap > .ms-options > ul li.selected label, .ms-options-wrap > .ms-options > ul label:hover {
+    background: none;
+}
+.camp-error {
+    color: red;
+}
+.create-ad-image .playlist_img img { 
+    cursor: pointer; 
+}
+.create-ad-form #optimise_for {
+    font-size: 9px;
+    font-weight: 600;
+    background: #fff !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+    color: #aaa;
+    margin-right: 8px;
+    border: 0;
+    height: 22px;
+    line-height: 20px;
+    width: 110px;
+}
+.budget-amount-alert {
+    border: 1px solid red !important;
+}
+.cad-icons #campaign_display_name {
+    height: 25px;
+    line-height: 10px;
+    font-size: 10px;
+    margin-top: 0px;
+    color: #337ab7;
+    width: 200px;
+    border-radius: 5px;
+    margin-left: 7px;
+    font-weight: 700;
+    text-align: center;
+}
+
+tr td div.camp-group-name {
+    background-color: #d5e4eb !important;
+    flex: 1 100%;
+    height: 30px;
+    padding-top: 5px;
+    padding-left: 15px;
+    border-radius: 5px;
+    color: #0170b6;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.ui-widget-header .ui-icon {
+  background-image: none !important;
+}
+/**campaign css ends here **/
+.glbl_setng_cb {
+    margin-left:10px;
+    cursor:pointer;
+}
+ .glbl_setng_cb i {
+ color:#747575;
+ }
+ .glbl_stngs_lbl {
+   margin-left:21px;
+ }
