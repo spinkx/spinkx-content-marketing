@@ -56,7 +56,7 @@
 		 }); */
 
 		//$("input[id=widget_name]").focus();
-		$(".add_widget_button").click(function(){
+		/**$(".add_widget_button").click(function(){
 			$(this).hide();
 			$("#wpfooter").hide();
 			$(".spnx-statistcs").hide();			
@@ -68,6 +68,7 @@
 			$("#widget_name").focus();
 
 		});
+		**/
 		/* display tabs starts here */
 		$("#website_content_auto").click(function(){
 			$(this).css("color","#469fa1");

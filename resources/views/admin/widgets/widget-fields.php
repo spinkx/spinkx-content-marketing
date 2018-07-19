@@ -52,14 +52,14 @@ if( $is_mobile_widget == 0 ) {
 						$clear_widget_name = $widget_name;
 					}
 					?>
-					<input type="text" id="widget_name" value="<?php echo $clear_widget_name; ?>" name="widget_name" placeholder="Widget Name Here" required />
+					<input type="text" id="widget_namee" value="<?php echo $clear_widget_name; ?>" name="widget_name" placeholder="Widget Name Here" required />
 				</td>
 				<?php if($main_widget_id > 0 && $widget_auto_id > 0 ) {?>
 				<td class="widget_shortcode_td">
-					<input type="hidden" id="main_widget_id" value="<?php echo $main_widget_id; ?>" name="main_widget_id" placeholder="" readonly />
+					<input type="hidden" id="main_widget_idd" value="<?php echo $main_widget_id; ?>" name="main_widget_id" placeholder="" readonly />
 					<div class="bw-shortcode">[spinkx id = "<?php echo $widget_auto_id; ?>"] </div>
 					
-					<input type="hidden" id="add_shortcode" value='[spinkx id=<?php echo $widget_auto_id; ?>]' name="add_shortcode" placeholder="Shortcode" />
+					<input type="hidden" id="add_shortcodee" value='[spinkx id=<?php echo $widget_auto_id; ?>]' name="add_shortcode" placeholder="Shortcode" />
 				</td>
 				<?php } ?>
 			</tr>
@@ -127,15 +127,15 @@ if( $is_mobile_widget == 0 ) {
 		<table class="form-table">
 			<tr>
 				<td  id="widget-masonry">
-					<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" <?php if ( $widget_layout_type=="masonry" ) { echo "checked"; };?> value="masonry" /><strong>Pinterest style </strong>
+					<input type="radio" id="widget_layout_typee" class="widget_layout_masonary" name="widget_layout_type" <?php if ( $widget_layout_type=="masonry" ) { echo "checked"; };?> value="masonry" /><strong>Pinterest style </strong>
 				</td>
 				<td  id="widget-fixed" >
-					<input type="radio" id="widget_layout_type" class="widget_layout_fixed" name="widget_layout_type" <?php if ( $widget_layout_type=="fixed-width" ) { echo "checked"; };?> value="fixed-width" /><strong>Fixed Width & Height </strong>
+					<input type="radio" id="widget_layout_typee" class="widget_layout_fixed" name="widget_layout_type" <?php if ( $widget_layout_type=="fixed-width" ) { echo "checked"; };?> value="fixed-width" /><strong>Fixed Width & Height </strong>
 					<div id="widget-fixed-inputt" <?php if ( $widget_layout_type!="fixed-width" ) { echo 'style="display: none"'; } ?>>
 						<label>No of Row</label>
-						<input type="text" name="no_of_row" id="no_of_row" min="1" max="10" value="<?php echo $no_of_row?>"  />
+						<input type="text" name="no_of_row" id="no_of_roww" min="1" max="10" value="<?php echo $no_of_row?>"  />
 						<label>No of Columns</label>
-						<input type="text" name="no_of_columns" id="no_of_columns" value="<?php echo $no_of_columns?>" />
+						<input type="text" name="no_of_columns" id="no_of_columnss" value="<?php echo $no_of_columns?>" />
 						<!--<label>Image Width</label>
 						<input type="text" name="image_width" id="image_width" value="<?php echo $image_width?>"/>
 						<label>Image Height</label>
@@ -160,10 +160,10 @@ if( $is_mobile_widget == 0 ) {
 		?>
 			<tr style="display:none">
 				<td  id="unit-tall" >
-					<input type="radio" id="unit_layout_type" class="unit_layout_tall" name="unit_layout_type" <?php if ( $unit_layout_type=="tall" ) { echo "checked"; };?> value="tall" /><strong>Tall </strong>
+					<input type="radio" id="unit_layout_typee" class="unit_layout_tall" name="unit_layout_type" <?php if ( $unit_layout_type=="tall" ) { echo "checked"; };?> value="tall" /><strong>Tall </strong>
 				</td>
 				<td  id="unit-wide">
-					<input type="radio" id="unit_layout_type" class="unit_layout_wide" name="unit_layout_type" <?php if ( $unit_layout_type=="wide" ) { echo "checked"; };?> value="wide" /><strong>Wide</strong>
+					<input type="radio" id="unit_layout_typee" class="unit_layout_wide" name="unit_layout_type" <?php if ( $unit_layout_type=="wide" ) { echo "checked"; };?> value="wide" /><strong>Wide</strong>
 				</td>
 			</tr>
 		</table>
@@ -183,7 +183,7 @@ if( $is_mobile_widget == 0 ) {
 			<tr>
 				<td class="content-left-td" >
 					<input type="text" id="result11" value="<?php echo $no_of_columns; ?>" name="no_of_columns" placeholder="<?php echo $no_of_columns; ?>" readonly />
-					<input type="hidden" id="mob_views"  name="no_col_mob_view"  value="<?php echo $no_col_mob_view; ?>" />
+					<input type="hidden" id="mob_viewss"  name="no_col_mob_view"  value="<?php echo $no_col_mob_view; ?>" />
 
 					<div id="slider-range-minn" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" >
 						<div class="ui-slider-range ui-widget-header ui-slider-range-min" style="width: 0%;"></div>
@@ -223,10 +223,10 @@ if( $is_mobile_widget == 0 ) {
 			</tr>
 			<tr>
 				<td class="form-table image-crop-fields content-left-td" style="padding:0;width: 240px;">
-					<strong>Width</strong> &nbsp;<input id="img_crop_width" type="text" title="Unit Width" value="<?php echo $img_crop_width; ?>" name="img_crop_width" placeholder="<?php echo $img_crop_width; ?>" /> <strong> px</strong> |
+					<strong>Width</strong> &nbsp;<input id="img_crop_widthh" type="text" title="Unit Width" value="<?php echo $img_crop_width; ?>" name="img_crop_width" placeholder="<?php echo $img_crop_width; ?>" /> <strong> px</strong> |
 				</td>
 				<td class="form-table image-crop-fields" style="padding:0;">
-					&nbsp;<strong>Height</strong> <input id="img_crop_height" type="text" title="Unit Height" value="<?php echo $img_crop_height; ?>" name="img_crop_height" placeholder="<?php echo $img_crop_height; ?>"  /> <strong>px</strong>
+					&nbsp;<strong>Height</strong> <input id="img_crop_heightt" type="text" title="Unit Height" value="<?php echo $img_crop_height; ?>" name="img_crop_height" placeholder="<?php echo $img_crop_height; ?>"  /> <strong>px</strong>
 				</td>
 				<td id="im_height_td" class="form-table image-crop-fields content-left-td" style="padding:0;width: 290px;">
 					<strong>Image Height</strong>&nbsp;<input id="img_height" type="text" title="Image Height" value="<?php echo $img_height; ?>" name="img_height" /><strong>px</strong>
@@ -242,7 +242,7 @@ if( $is_mobile_widget == 0 ) {
 			</tr>
 			<tr>
 				<td colspan="2" class="content-left-td">
-					<strong>Pixel </strong><input type="number" max="40" min="4" name="unit_spacing" value="<?php echo $unit_spacing; ?>" id="unit_spacing" /> <strong>px</strong>
+					<strong>Pixel </strong><input type="number" max="40" min="4" name="unit_spacing" value="<?php echo $unit_spacing; ?>" id="unit_spacingg" /> <strong>px</strong>
 				</td>
 			</tr>
 		</table>
@@ -301,9 +301,9 @@ if( $is_mobile_widget == 0 ) {
 			</tr>
 			<tr>
 				<td class="content-left-td">
-					<input type="number" id="unit_border_width" value="<?php echo $unit_border_width; ?>" name="unit_border_width" min="0" max="45" title="border-width">px
+					<input type="number" id="unit_border_widthh" value="<?php echo $unit_border_width; ?>" name="unit_border_width" min="0" max="45" title="border-width">px
 
-					<select id="unit_border_style" name="unit_border_style" title="border-style" >
+					<select id="unit_border_stylee" name="unit_border_style" title="border-style" >
 						<option <?php if( $unit_border_style == "none" ) { echo "selected"; }; ?> value="none">none</option>
 						<option <?php if( $unit_border_style == "dotted" ) { echo "selected"; }; ?> value="dotted">dotted</option>
 						<option <?php if( $unit_border_style == "dashed" ) { echo "selected"; }; ?> value="dashed">dashed</option>
@@ -332,7 +332,7 @@ if( $is_mobile_widget == 0 ) {
 					<span class="badge">8</span>
 					<p class="content-view-td"  >Unit Corner Radius</p>
 
-					<div id="corner-div"><input type="number" id="unit_border_radius" value="<?php echo $unit_border_radius; ?>" name="unit_border_radius" min="0" max="45" title="border-radius">px</div>
+					<div id="corner-div"><input type="number" id="unit_border_radiuss" value="<?php echo $unit_border_radius; ?>" name="unit_border_radius" min="0" max="45" title="border-radius">px</div>
 				</td>
 			</tr>
 		</table>
@@ -353,11 +353,11 @@ if( $is_mobile_widget == 0 ) {
 			</tr>
 			<tr>
 				<td class="content-left-td">
-					<input type="number" id="unit_title_font_size" value="<?php echo $unit_title_font_size; ?>" name="unit_title_font_size" min="0" max="60" title="font-size">px
+					<input type="number" id="unit_title_font_sizee" value="<?php echo $unit_title_font_size; ?>" name="unit_title_font_size" min="0" max="60" title="font-size">px
 
-					<input type="number" id="unit_title_line_height" value="<?php echo $unit_title_line_height; ?>" name="unit_title_line_height" min="0" max="90" title="line-height">px
+					<input type="number" id="unit_title_line_heightt" value="<?php echo $unit_title_line_height; ?>" name="unit_title_line_height" min="0" max="90" title="line-height">px
 
-				<select id="unit_title_font_style" name="unit_title_font_style" title="font-weight" class="font_style">
+				<select id="unit_title_font_stylee" name="unit_title_font_style" title="font-weight" class="font_style">
 					<option <?php if( $unit_title_font_style == "lighter" ) { echo "selected"; }; ?> value="lighter">lighter</option>
 					<option <?php if( $unit_title_font_style == "normal" ) { echo "selected"; }; ?> value="normal">normal</option>
 					<option <?php if( $unit_title_font_style == "bold" ) { echo "selected"; }; ?> value="bold">bold</option>
@@ -367,14 +367,14 @@ if( $is_mobile_widget == 0 ) {
 				<input type="text" id="unit_title_font_colorr" value="<?php echo $unit_title_font_color; ?>" name="unit_title_font_color" placeholder="<?php echo $unit_title_font_color; ?>" title="font-color"/>
 			</div>
 			<p style="display:none">Google Font:
-				<select id="unit_title_font_family" name="unit_title_font_family" title="font-family">
+				<select id="unit_title_font_familyy" name="unit_title_font_family" title="font-family">
 					<option <?php if( $unit_title_font_family == "Carrois Gothic" ) { echo "selected"; }; ?> value="Carrois Gothic">Carrois Gothic</option>
 					<option <?php if( $unit_title_font_family == "Open Sans" ) { echo "selected"; }; ?> value="Open Sans">Open Sans</option>
 					<option <?php if( $unit_title_font_family == "Arial" ) { echo "selected"; }; ?> value="Arial">Arial</option>
 				</select>
 			</p>
 
-				<select id="unit_title_font_case" name="unit_title_font_case" title="text-transform" class="font_case" style="display: block;">
+				<select id="unit_title_font_casee" name="unit_title_font_case" title="text-transform" class="font_case" style="display: block;">
 					<option <?php if( $unit_title_font_case == "none" ) { echo "selected"; }; ?> value="none">none</option>
 					<option <?php if( $unit_title_font_case == "uppercase" ) { echo "selected"; }; ?> value="uppercase">uppercase</option>
 					<option <?php if( $unit_title_font_case == "lowercase" ) { echo "selected"; }; ?> value="lowercase">lowercase</option>
@@ -400,11 +400,11 @@ if( $is_mobile_widget == 0 ) {
 				<td>
 					<span class="badge badge-double" >10</span>
 					<p class="content-view-td" >Headline Placement</p>
-					<select id="unit_add_line_style" name="unit_add_tall_style" title="line-style" class="line-style-tall" style="<?php if( $unit_layout_type == "wide" ) { echo "display:none;"; } ?>width:150px;">
+					<select id="unit_add_line_stylee" name="unit_add_tall_style" title="line-style" class="line-style-tall" style="<?php if( $unit_layout_type == "wide" ) { echo "display:none;"; } ?>width:150px;">
 						<option <?php if( $unit_add_line_style == "aboveimg"  ) { echo "selected"; }; ?> value="aboveimg">Above Image</option>
 						<option <?php if( $unit_add_line_style == "belowimg" ) { echo "selected"; }; ?> value="belowimg">Below Image</option>
 					</select>
-					<select id="unit_add_line_styles" name="unit_add_wide_style" title="line-style" class="line-style-wide" style="<?php if( $unit_layout_type == "tall" ) { echo "display:none;"; } ?>width:150px;">
+					<select id="unit_add_line_styless" name="unit_add_wide_style" title="line-style" class="line-style-wide" style="<?php if( $unit_layout_type == "tall" ) { echo "display:none;"; } ?>width:150px;">
 						<option <?php if( $unit_add_line_style == "left" && $unit_layout_type == "wide") { echo "selected"; }; ?> value="left">Image Left</option>
 						<option <?php if( $unit_add_line_style == "right" && $unit_layout_type == "wide" ) { echo "selected"; }; ?> value="right">Image Right</option>
 					</select>
@@ -426,11 +426,11 @@ if( $is_mobile_widget == 0 ) {
 			</tr>
 			<tr>
 				<td class="content-left-td">
-					<input type="number" id="unit_excerpt_font_size" value="<?php echo $unit_excerpt_font_size; ?>" name="unit_excerpt_font_size" min="0" max="60" title="font-size">px
+					<input type="number" id="unit_excerpt_font_sizee" value="<?php echo $unit_excerpt_font_size; ?>" name="unit_excerpt_font_size" min="0" max="60" title="font-size">px
 
-					<input type="number" id="unit_excerpt_line_height" value="<?php echo $unit_excerpt_line_height; ?>" name="unit_excerpt_line_height" min="0" max="90" title="line-height">px
+					<input type="number" id="unit_excerpt_line_heightt" value="<?php echo $unit_excerpt_line_height; ?>" name="unit_excerpt_line_height" min="0" max="90" title="line-height">px
 
-					<select id="unit_excerpt_font_style" name="unit_excerpt_font_style" title="font-weight" class="font_style">
+					<select id="unit_excerpt_font_stylee" name="unit_excerpt_font_style" title="font-weight" class="font_style">
 						<option <?php if( $unit_excerpt_font_style == "lighter" ) { echo "selected"; }; ?> value="lighter">lighter</option>
 						<option <?php if( $unit_excerpt_font_style == "normal" ) { echo "selected"; }; ?> value="normal">normal</option>
 						<option <?php if( $unit_excerpt_font_style == "bold" ) { echo "selected"; }; ?> value="bold">bold</option>
@@ -440,13 +440,13 @@ if( $is_mobile_widget == 0 ) {
 					<input type="text" id="unit_excerpt_font_colorr" value="<?php echo $unit_excerpt_font_color; ?>" name="unit_excerpt_font_color" placeholder="<?php echo $unit_excerpt_font_color; ?>" title="font-color"/>
 					</div>
 				<p style="display:none">Google Font:
-					<select id="unit_excerpt_font_family" name="unit_excerpt_font_family" title="font-family">
+					<select id="unit_excerpt_font_familyy" name="unit_excerpt_font_family" title="font-family">
 						<option <?php if( $unit_excerpt_font_family == "Carrois Gothic" ) { echo "selected"; }; ?> value="Carrois Gothic">Carrois Gothic</option>
 						<option <?php if( $unit_excerpt_font_family == "Open Sans" ) { echo "selected"; }; ?> value="Open Sans">Open Sans</option>
 						<option <?php if( $unit_excerpt_font_family == "Arial" ) { echo "selected"; }; ?> value="Arial">Arial</option>
 					</select>
 				</p>
-					<select id="unit_excerpt_font_case" name="unit_excerpt_font_case" title="text-transform" class="font_case" style="display: block;">
+					<select id="unit_excerpt_font_casee" name="unit_excerpt_font_case" title="text-transform" class="font_case" style="display: block;">
 						<option <?php if( $unit_excerpt_font_case == "none" ) { echo "selected"; }; ?> value="none">none</option>
 						<option <?php if( $unit_excerpt_font_case == "uppercase" ) { echo "selected"; }; ?> value="uppercase">uppercase</option>
 						<option <?php if( $unit_excerpt_font_case == "lowercase" ) { echo "selected"; }; ?> value="lowercase">lowercase</option>
@@ -467,11 +467,11 @@ if( $is_mobile_widget == 0 ) {
 				<td>
 					<span class="badge badge-double" >12</span>
 					<p class="content-view-td" >Excerpt Placement</p>
-					<select id="excerpt_add_line_style" name="unit_excerpt_tall_style" title="line-style" class="line-style-tall" style="<?php if( $unit_layout_type == "wide" ) { echo "display:none;"; } ?>width:150px;">
+					<select id="excerpt_add_line_stylee" name="unit_excerpt_tall_style" title="line-style" class="line-style-tall" style="<?php if( $unit_layout_type == "wide" ) { echo "display:none;"; } ?>width:150px;">
 						<option <?php if( $unit_excerpt_line_style == "aboveimg" ) { echo "selected"; }; ?> value="aboveimg">Above Image</option>
 						<option <?php if( $unit_excerpt_line_style == "belowimg" ) { echo "selected"; }; ?> value="belowimg">Below Image</option>
 					</select>
-					<select id="excerpt_add_line_styles" name="unit_excerpt_wide_style" title="line-style" class="line-style-wide" <?php if ( $unit_layout_type=="wide" ) { echo "disabled='true'"; }?> style="<?php if( $unit_layout_type == "tall" ) { echo "display:none;"; } ?>width:150px;">
+					<select id="excerpt_add_line_styless" name="unit_excerpt_wide_style" title="line-style" class="line-style-wide" <?php if ( $unit_layout_type=="wide" ) { echo "disabled='true'"; }?> style="<?php if( $unit_layout_type == "tall" ) { echo "display:none;"; } ?>width:150px;">
 						<option <?php if( $unit_excerpt_line_style == "left" ) { echo "selected"; }; ?> value="left">Image Left</option>
 						<option <?php if( $unit_excerpt_line_style == "right" ) { echo "selected"; }; ?> value="right">Image Right</option>
 					</select>
@@ -485,7 +485,7 @@ if( $is_mobile_widget == 0 ) {
 				<td>
 					<span class="badge badge-double">13</span>
 					<p class="content-view-td" >Excerpt Character Limit</p>
-					<input type="text" id="unit_excerpt_word_limit" value="<?php echo $unit_excerpt_word_limit; ?>" name="unit_excerpt_word_limit" placeholder="<?php echo $unit_excerpt_word_limit; ?>" title="excerpt-limit"/> (0 to 100, if 0 then excerpt will not show)
+					<input type="text" id="unit_excerpt_word_limitt" value="<?php echo $unit_excerpt_word_limit; ?>" name="unit_excerpt_word_limit" placeholder="<?php echo $unit_excerpt_word_limit; ?>" title="excerpt-limit"/> (0 to 100, if 0 then excerpt will not show)
 				</td>
 			</tr>
 		</table>
@@ -496,7 +496,7 @@ if( $is_mobile_widget == 0 ) {
 					<p class="content-view-td" >Show Views</p>
 					<div style="float: right; margin-top: 10px;">
 					<div class="onoffswitch">
-							<input type="checkbox" name="unit_show_views" class="onoffswitch-checkbox" id="unit_show_views" value="1" <?php echo ($unit_show_views)?'checked':''; ?>>
+							<input type="checkbox" name="unit_show_views" class="onoffswitch-checkbox" id="unit_show_viewss" value="1" <?php echo ($unit_show_views)?'checked':''; ?>>
 							<label class="onoffswitch-label" for="unit_show_views">
 								<span class="onoffswitch-inner"></span>
 								<span class="onoffswitch-switch"></span>

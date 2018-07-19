@@ -266,7 +266,21 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
     </div>
 	<form method="post" enctype="multipart/form-data">
 	<div class="spnx-sec-mn-cntainter">
+
 		<div class="spnx-stckr-cmn-class spnx-box-reg-cmn-cls">
+
+			<div class="cmn-cls-verticl-bus-spnx-reg-sitename">
+                <div style="width:80px; height: 40px; margin-bottom: 10px; display: inline-block;">
+                <img  alt="" id="image-preview" class="reg-upload-logo" style="height: 100%;" src="http://localhost/wordpress/wp-content/plugins/spinkx-content-marketing/assets/images/your_logo.png">
+                <input type="hidden" name="image_attachment_id" id="image_attachment_id">
+                </div>
+                <span class="reg_upload_file_type catog-des-cmn-cls-spnx-reg">
+                	<i class="fas fa-file"></i>
+                	Add Logo
+                </span>
+                
+				
+            </div>
 			<div class="vrticl-align-cmn-cls-spnx-reg">
 				<span class="catog-des-cmn-cls-spnx-reg">Site url </span>
 				<span class="horizntal-align-cmn-cls-spnx-reg align-spnx-css"> <?php echo $selected_url; ?></span>
@@ -282,15 +296,9 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				<?php } ?>
 				</span>
 			</div>
-            <div class="cmn-cls-verticl-bus-spnx-reg-sitename ">
-                <span class="catog-des-cmn-cls-spnx-reg">Site Logo</span>
-                <span class="horizntal-align-cmn-cls-spnx-reg">
-                    <img  alt="" id="image-preview" class="reg-upload-logo" style="width: 100px; height:100px;" src="<?php echo $dropdown->selected_site->logo_url?>">
-                <input type="hidden" name="image_attachment_id" id="image_attachment_id">
-				</span>
-            </div>
+            
 		</div>
-
+<!--<?php echo $dropdown->selected_site->logo_url?> -->
 		<div class="spnx-box-reg-cmn-cls">
 			<div class="header-cmn-cls-spnx">Tell us about your goals. Choose one</div>
 			<div class="spnx-rdio-dv-cmn-cls">
@@ -385,7 +393,8 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Primary category</div>
 			<div class="select-div-common-class-spnx-reg select-vrticl-align-cmn-cls">
 				<div style="position: relative;"><select name="primary_category">
-					<?php foreach ($dropdown->primary_categories as $key => $value ) {
+				    <option value="0">Select Primary category</option>
+                     <?php foreach ($dropdown->primary_categories as $key => $value ) {
 						$primary_cat = '';
 						if ( isset($dropdown->selected_site->pri_cat_id ) && $key == 1 && ! count( $dropdown->selected_site->pri_cat_id ) ) {
 							$primary_cat = "selected='selected'";
@@ -394,7 +403,6 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 						}
 						echo '<option value="' . $key . '" ' . $primary_cat . '>' . $value . '</option>';
 					} ?>
-				<option value="0">Select Primary category</option>
 				</select>
 					<span class="cmn-arw-cmn-clas-dv"><i class="fa fa-sort-down fa-lg" aria-hidden="true"></i></span>
 			</div>
