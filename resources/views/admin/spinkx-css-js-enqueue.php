@@ -68,7 +68,7 @@ function spinkx_cont_js_var() {
 	var g_site_id =  "' . $settings['site_id'] . '";
 	</script>';
 	echo $custom_js;
-	$path = array(SPINKX_CONTENT_DIST_URL, SPINKX_CONTENT_PLUGIN_URL.'/');
+	$path = array(SPINKX_CONTENT_DIST_URL, SPINKX_CONTENT_PLUGIN_URL);
 	$page = spnxHelper::getFilterVar( 'page' );
 	
 	if ( $page && $page === 'spinkx_content_play_list' ) {

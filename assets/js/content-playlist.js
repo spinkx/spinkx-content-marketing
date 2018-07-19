@@ -111,13 +111,14 @@ jQuery( document ).ready(function() {
                         location: 'tr',
                         size: 'large'
                     });
-                    window.location.reload();
+                    jQuery(".modified-category-"+dataid).toggle();
                 } else {
                     jQuery.growl.error({
                         message: data.msg,
                         location: 'tr',
                         size: 'large'
                     });
+                    jQuery(".modified-category-"+dataid).toggle();
                 }
             },
             failure: function (data) {
@@ -127,11 +128,10 @@ jQuery( document ).ready(function() {
                     location: 'tr',
                     size: 'large'
                 });
-                console.log(data);
+                jQuery(".modified-category-"+dataid).toggle();
+                //console.log(data);
             }
         });
-
-       
     });
 
     /*jQuery("#sortby_local_reach").click(function () {
@@ -195,8 +195,7 @@ jQuery( document ).ready(function() {
                 jQuery('.se-pre-con').bPopup().close();
             }
         });
-    });    
-    
+    });
 });
 function all_onoff(type){
    // var dataid = jQuery("#playpauseswitch_"+type+"_all").attr("data-id");

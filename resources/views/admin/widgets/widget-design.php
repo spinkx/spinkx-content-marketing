@@ -10,7 +10,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $spnxAdminManage = new spnxAdminManage();
 ?>
-<div class="se-pre-con"></div>
 <div class="wrap">
     <!-- Main tabs here  -->
 	<!--div class="distribution-main-tabs"-->

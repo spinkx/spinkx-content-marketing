@@ -6,7 +6,6 @@ $settings = maybe_unserialize( $settings );
 $todaydate = 0;
 $enddate = 0;
 $startdate = 0;
-
 $custom_date = $spnxAdminManage->spinkx_cont_last_30_days();
 $from_date = spnxHelper::getFilterVar('from_date');
 $to_date = spnxHelper::getFilterVar('to_date');
@@ -35,11 +34,13 @@ $settings['due_date'] = isset($settings['due_date'])?$settings['due_date']:'0000
 $sortby = spnxHelper::getFilterVar('sortby');
 $ptype = spnxHelper::getFilterVar('post_type');
 $p = 0;
-
+$catlists = [];
 if($settings['due_date']=='0000-00-00 00:00:00') {
 	echo 'You are not a registered user. You can create a boost post after registration. Click Here to <a href="admin.php?page=spinkx-site-register">Register</a>';
 } else {
 
+    $url      = esc_url( SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/system/cat-lists' );
+    $catlists = json_decode( spnxHelper::doCurl( $url, true ), true );
 
 	$url = esc_url(SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/site/get-auto-boost');
 	$auto_boost = json_decode(spnxHelper::doCurl($url, true), true);
@@ -83,9 +84,41 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 
 			</td>
 			<td  style="padding: 0px;text-align:left;">
+                <?php if(is_array($catlists) && count($catlists) > 0) { ?>
 				<span class="duration-text-first-span-span-crnt glbl_stngs_lbl">Global Settings</span>
-				<span class="glbl_setng_cb"><i class="fa fa-cog" aria-hidden="true"></i></span>
+				<span class="glbl_setng_cb"><i class="fa fa-cog" aria-hidden="true" aria-hidden="true" onclick="modifiedcategory('g')"></i></span>
+                    <div class="cntnr-main-drn-cls modified-category-g" style="display:none;">
 
+
+                        <div class="select-drtn-cls">
+                            <select class="categories" id="bp_categories_g" multiple="">
+	                            <?php 
+                                $flag = isset($catlists[1]);
+                                foreach ($catlists[0] as $key => $value) {
+	                                $selected='';
+	                                if($flag) {
+		                                if ( in_array( $key, $catlists[1] ) ) {
+			                                $selected = 'selected';
+		                                }
+	                                }
+                                    echo '<option value="'.$key.'" '.$selected.'>'.$value.'</option>';
+	                             }
+	                             ?>
+
+                            </select>
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                        <div style="margin-top:10px;">
+                                  <span style="display:none;" class="tt-txt-btn-cmn-cls-input">
+                                    <span class="duration-text-first-span">Duration</span>
+                                       <input type="number" id="bp_categories_g" class="txt-box-days" min="1" max="9999" placeholder="∞">
+                                  </span>
+                            <button class="clrsave updatecategories" type="button" data-id="g">save</button>
+                        </div>
+
+                    </div>
+               <?php } ?>
 			</td>
 			
 

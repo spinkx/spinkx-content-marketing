@@ -1137,9 +1137,9 @@ final class spnxAdminManage
 		/*if( $spnx_widget != false  || 'not-exist' == $spnx_widget) {*/
 
 		if (isset($atts['is_mobile']) && intval($atts['is_mobile']) == 1) {
-			require_once SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/show-widget-mobile-data.php';
+			require_once SPINKX_CONTENT_FRONEND_VIEW_DIR . 'widget-mobile.php';
 		} else {
-			require_once SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/show-widget.php';
+				require_once SPINKX_CONTENT_FRONEND_VIEW_DIR . 'widget-desktop.php';
 		}
 		return $shortcode_output;
 	}
@@ -1147,7 +1147,7 @@ final class spnxAdminManage
 	public function  spinkx_cont_mobile_widget_data() {
 		$widget_id = $_REQUEST['widget_id'];
 		$shortcode_output = '';
-		require SPINKX_CONTENT_PLUGIN_DIR . 'includes/display/show-widget-mobile-data.php';
+		require SPINKX_CONTENT_FRONEND_VIEW_DIR . 'widget-mobile.php';
 		echo $shortcode_output;
 		exit;
 	}

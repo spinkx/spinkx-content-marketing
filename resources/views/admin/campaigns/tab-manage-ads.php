@@ -114,7 +114,7 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 	$output = spnxHelper::doCurl($url,true);
 	$output = json_decode($output, TRUE);
     $currencyClass = '';
-	if(isset($output['countries'])) {
+    if(isset($output['countries'])) {
 		$countries = $output['countries'];
 	}
 	if(isset($output['categories'])) {

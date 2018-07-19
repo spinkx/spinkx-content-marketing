@@ -44,7 +44,7 @@ function get_stat_now(start, end){
                 drawChart();
             },
             error: function(xhr, status, error){
-                jQuery('.se-pre-con').bPopup().close();   
+                jQuery('.se-pre-con').bPopup().close();
                 jQuery.growl.error({ message: xhr.status,
                 location: 'tr',
                 size: 'large' });
@@ -53,7 +53,7 @@ function get_stat_now(start, end){
     } catch ( ex ) {
          jQuery.growl.error({ message: 'Something went wrong with the request. Data not loaded.',
                 location: 'tr',
-                size: 'large' });            
+                size: 'large' });
     }
 };
 
@@ -64,19 +64,19 @@ jQuery(document).ready(function() {
         window.scrollTo(0, 0);
         switch (id) {
             case 'widget_design':
-                var currentPage	=	'Widget Design';
+                var currentPage = 'Widget Design';
                 break;
             case 'content_play_list':
-                var currentPage	=	'Content Play List';
+                var currentPage = 'Content Play List';
                 break;
             case 'dashboard':
-                var currentPage	=	'Dashboard';
+                var currentPage = 'Dashboard';
                 break;
             case 'campaigns':
-                var currentPage	=	'Campaigns';
+                var currentPage = 'Campaigns';
                 break;
             case 'account_setup':
-                var currentPage	=	'Account Setup';
+                var currentPage = 'Account Setup';
                 break;
         }
         jQuery('#toplevel_page_spinkx-site-register ul li').removeClass( "current" );
