@@ -601,7 +601,7 @@ function cb_camp(start_camp, end_camp) {
 }
 var start_camp =  moment();
 var m = moment();
-m.add('days', 6);
+m.add(6, 'days');
 
 var end_camp =  moment(m);
 var first_time_call = 0;

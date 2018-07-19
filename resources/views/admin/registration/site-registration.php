@@ -302,31 +302,31 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		<div class="spnx-box-reg-cmn-cls">
 			<div class="header-cmn-cls-spnx">Tell us about your goals. Choose one</div>
 			<div class="spnx-rdio-dv-cmn-cls">
-				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" name="plugin-type" value="1"  <?php if($plugin_type_id==1) { echo "checked='checked'"; }?>/></div>
+				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" name="plugin-type" id="plugin-type-1" value="1"  <?php if($plugin_type_id==1) { echo "checked='checked'"; }?>/></div>
 				<div class="label-cntnr-mn-cls-cmommon-sec"> I want to only earn Revenue. I have more than 100,000 visitors per month.</div>
 			</div>
 			<div class="spnx-rdio-dv-cmn-cls">
-				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="2" name="plugin-type" <?php if($plugin_type_id==2) {echo "checked='checked'"; }?>/></div>
+				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="2" name="plugin-type" id="plugin-type-2" <?php if($plugin_type_id==2) {echo "checked='checked'"; }?>/></div>
 				<div  class="label-cntnr-mn-cls-cmommon-sec"> I want to grow my website traffic for free + SEO + Backlinks & multiply my Ad Revenue by upto 15% per mon</div>
 			</div>
 			<div class="spnx-rdio-dv-cmn-cls">
-				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="3" name="plugin-type" <?php if($plugin_type_id==3) {echo "checked='checked'"; }?>/></div>
+				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="3" name="plugin-type" id="plugin-type-3" <?php if($plugin_type_id==3) {echo "checked='checked'"; }?>/></div>
 				<div  class="label-cntnr-mn-cls-cmommon-sec"> My site is new. I want to grow my website traffic for Free + SEO + Backlinks </div>
 			</div>
 			<div class="spnx-rdio-dv-cmn-cls">
-				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="4" name="plugin-type" <?php if($plugin_type_id==4) { echo "checked='checked'"; }?>/></div>
+				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="4" name="plugin-type" id="plugin-type-4" <?php if($plugin_type_id==4) { echo "checked='checked'"; }?>/></div>
 				<div  class="label-cntnr-mn-cls-cmommon-sec"> I want to promote my website. Product or Services. I do not do any blogging or content marketing.</div>
 			</div>
 			<div class="spnx-rdio-dv-cmn-cls">
-				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="5" name="plugin-type" <?php if($plugin_type_id==5) { echo "checked='checked'"; }?>/></div>
+				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="5" name="plugin-type" id="plugin-type-5" <?php if($plugin_type_id==5) { echo "checked='checked'"; }?>/></div>
 				<div  class="label-cntnr-mn-cls-cmommon-sec"> I am a Digital Ad-agency. I would like to run campaigns for my Clients & make money from client margins.</div>
 			</div>
 			<div class="spnx-rdio-dv-cmn-cls">
-				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="6" name="plugin-type" <?php if($plugin_type_id==6) { echo "checked='checked'"; }?>/></div>
+				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="6" name="plugin-type" id="plugin-type-6" <?php if($plugin_type_id==6) { echo "checked='checked'"; }?>/></div>
 				<div  class="label-cntnr-mn-cls-cmommon-sec"> I am a Multisite Network. I want to earn commissions out of every sales of plugin or Ad Revenue.</div>
 			</div>
 			<div class="spnx-rdio-dv-cmn-cls">
-				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="7" name="plugin-type" <?php if($plugin_type_id==7) {echo "checked='checked'";}?>/></div>
+				<div class="radio-cntnr-mn-cls-cmommon"><input type="radio" value="7" name="plugin-type" id="plugin-type-6" <?php if($plugin_type_id==7) {echo "checked='checked'";}?>/></div>
 				<div  class="label-cntnr-mn-cls-cmommon-sec">I would like to build my own Ad network. i want a White Labeled version of Spinkx. I can earn large commission from the network i build. </div>
 			</div>
             <div class="error-cmn-clas-spnx chck-radio-btn-error-cls">Please Select Your Goal</div>
