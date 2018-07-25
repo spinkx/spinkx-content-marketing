@@ -280,11 +280,14 @@ $(".sh_hide_wdgt_grph").click(function() {
     var inner_text = $(this).text();
     if(inner_text=='Edit Widget') {
         $(this).html("Show Graph");
+        $(this).parents('.wdgt_mn_cntnr_spkx').find(".spnx_wdgt_wrapper").show();
 
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr').show();
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').hide();
     } else {
         $(this).html("Edit Widget");
+        $(this).parents('.wdgt_mn_cntnr_spkx').find(".spnx_wdgt_wrapper").hide();
+
          $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr').hide();
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').show();
     }
@@ -311,8 +314,18 @@ $(".sh_hide_wdgt_grph").click(function() {
             }
         });
     });
+    
     $(".edit_cat_spnx_wdgt").click(function() {
-        $(this).parent().next(".cat_wdgt_mn_cntnr_spkx").toggle();
+        var text = $(this).text();
+        
+        if(text == 'Edit Categories') {
+          
+         $(this).html("Close Categories");
+        } else {
+
+          $(this).html('Edit Categories');
+        }
+         $(this).parent().next(".cat_wdgt_mn_cntnr_spkx").toggle();
     });
     $(".cmn_wdgt_tb_mn_cntnr>div:first-child").click(function() {
         $(this).toggleClass('bbtm_tgl_clas');
