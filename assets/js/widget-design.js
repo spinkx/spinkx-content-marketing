@@ -1,41 +1,8 @@
 jQuery(document).ready(function($) {
-    jQuery('.se-pre-con').fadeOut('slow');
-    jQuery('.nav-tabs a').click(function(){
-        var id =	jQuery(this).attr('href').substr(1);
-        window.location.hash = id;
-        window.scrollTo(0, 0);
-        switch (id) {
-            case 'widget_design':
-                var currentPage	=	'Widget Design';
-                break;
-            case 'content_play_list':
-                var currentPage	=	'Content Play List';
-                break;
-            case 'dashboard':
-                var currentPage	=	'Dashboard';
-                break;
-            case 'campaigns':
-                var currentPage	=	'Campaigns';
-                break;
-            case 'account_setup':
-                var currentPage	=	'Account Setup';
-                break;
-        }
-        jQuery('#toplevel_page_spinkx-site-register ul li').removeClass( 'current' );
-        jQuery( '#toplevel_page_spinkx-site-register ul li' ).each(function() {
-            if(jQuery(this).text()==currentPage)
-                jQuery(this).addClass( 'current' );
-        });
-
-    });
-
-    jQuery('#tabse').tabs();
-    //jQuery('#campaign_subtabs').tabs();
-    //added for tab stabilty
-
     $(".widget-checkbox").on("click", function(){
         var site_id = g_site_id;
         var widget_id = $(this).attr("data-id");
+        var name = $(this).attr("name");
         var status = $(this).prop("checked");
         $.ajax({
             url : ajaxurl,
@@ -46,6 +13,7 @@ jQuery(document).ready(function($) {
                 "site_id" : site_id,
                 "widget_id": widget_id,
                 "status": status,
+                "name": name
             },
             success : function(data){
 
@@ -191,8 +159,7 @@ $("#excerpt_add_line_style").bind('change',function() {
 });
 
 $("#unit_border_width").bind('blur',function() {
-   
-   var unit_border_width = $(this).val();
+    var unit_border_width = $(this).val();
    if(unit_border_width<0) {
      $(this).addClass('error_widget_val')
      return;
@@ -310,16 +277,12 @@ $(".add_widget_button").click(function() {
 });
 
 $(".sh_hide_wdgt_grph").click(function() {
-    
     var inner_text = $(this).text();
-
     if(inner_text=='Edit Widget') {
         $(this).html("Show Graph");
 
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr').show();
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').hide();
-
-        
     } else {
         $(this).html("Edit Widget");
          $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr').hide();
@@ -348,17 +311,16 @@ $(".sh_hide_wdgt_grph").click(function() {
             }
         });
     });
-
-    
-     $(".edit_cat_spnx_wdgt").click(function() {
+    $(".edit_cat_spnx_wdgt").click(function() {
         $(this).parent().next(".cat_wdgt_mn_cntnr_spkx").toggle();
-    }); 
-     $(".cmn_wdgt_tb_mn_cntnr>div:first-child").click(function() {
-        
+    });
+    $(".cmn_wdgt_tb_mn_cntnr>div:first-child").click(function() {
         $(this).toggleClass('bbtm_tgl_clas');
         $(this).next().slideToggle(300);
         $(this).children('.fa-chevron-right').toggleClass('dst_ar_dwn');
      })
+
+    google.charts.setOnLoadCallback(drawChart);
 
 });
 
@@ -406,4 +368,88 @@ function updatewidget(){
             });
         }
     });
+}
+
+var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function drawChart() {
+    var startdate_arr = window.global_start_date.split('-');
+    var enddate_arr =  window.global_end_date.split('-');
+    var startdate =null;
+    var enddate = null;
+    //Create Object Visualization
+    $wd_counter = 0;
+    for(var index in spinkx_data) {
+        if(!spinkx_data.hasOwnProperty(index)) continue;
+        item = spinkx_data[index];
+        var widget = null;
+        widget = new google.visualization.DataTable();
+        widget.addColumn('number', 'Day');
+        widget.addColumn('number', 'Clicks');
+        widget.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
+        widget.addColumn('number', 'CTR');
+        widget.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
+        var $key = '';
+        var dataWidImp = [];
+        var dataWidClk = [];
+        $widgetArr = [];
+         startdate = new Date(startdate_arr[0], startdate_arr[1]-1, startdate_arr[2]);
+         enddate = new Date(enddate_arr[0], enddate_arr[1]-1, enddate_arr[2]);
+        var counter = widclkcounter = $key = 0;
+        //var dateFormatter = new google.visualization.DateFormat({pattern: 'Y,M,d,H'});
+        for (; startdate <= enddate;) {
+            mm = ((startdate.getMonth() + 1) >= 10) ? (startdate.getMonth() + 1) : '0' + (startdate.getMonth() + 1);
+            dd = ((startdate.getDate()) >= 10) ? (startdate.getDate()) : '0' + (startdate.getDate());
+            yyyy = startdate.getFullYear();
+            $key = yyyy + "-" + mm + "-" + dd;
+            widclkcounter++;
+            if (typeof item[$key] === 'undefined') {
+                $widgetArr[counter] = new Array(widclkcounter * 1, 0, showWidgetToolTip($key, 0, 0), 0, showWidgetToolTip($key, 0, 0));
+            } else {
+                $widgetArr[counter] = new Array(widclkcounter * 1, item[$key].clicks * 1, showWidgetToolTip($key, item[$key].clicks, item[$key].ctr), item[$key].ctr * 1, showWidgetToolTip($key, item[$key].clicks, item[$key].ctr));
+                if(index == 1939) {
+                    console.log($widgetArr);
+                }
+            }
+            counter++;
+            var newDate = startdate.setDate(startdate.getDate() + 1);
+            startdate = new Date(newDate);
+        }
+
+        widget.addRows($widgetArr);
+        var widImpoptions = {
+            tooltip: {isHtml: true},    // CSS styling affects only HTML tooltips.
+            width: '100%',
+            height: 300,
+            legend: {position: 'top', alignment: 'end'},
+            pointsVisible: true,
+            pointShape: 'circle',
+            pointSize: 3,
+            backgroundColor: 'transparent',
+            chartArea: {
+                left: "5%",
+                top: "15%",
+                height: "75%",
+                width: "89%"
+            },
+            vAxis: {minValue: 1},
+            hAxis: {
+                baselineColor: 'none',
+                ticks: [10, 20, 30],
+                gridlines: {
+                    color: 'transparent'
+                },
+
+
+            },
+
+        };
+
+        var widget_views_chart = new google.visualization.LineChart(document.getElementById('widget-chart-'+index));
+        widget_views_chart.draw(widget, widImpoptions);
+    }
+}
+
+function showWidgetToolTip($dt, $vw, $ctr) {
+    return '<div style="white-space: nowrap; padding:5px;"><b>Date </b>: ' + $dt + '<br>' +
+        '<b>Clicks</b>: ' + $vw + '<br/><b>CTR</b>: ' + $ctr + '%</div>';
 }

@@ -261,7 +261,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 </script>
 <div class="spnx-reg-mn-cntainter">
 	<div class="text-spninks">
-	<div class="image-container-cls-reg-spnx"><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/spinkx-logo.png" /></div>
+	<div class="image-container-cls-reg-spnx"><img src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/spinkx-logo.png" /></div>
 	<div class="reg-lbl-txt">REGISTRATION</div>
     </div>
 	<form method="post" enctype="multipart/form-data">
@@ -271,10 +271,10 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 
 			<div class="cmn-cls-verticl-bus-spnx-reg-sitename">
                 <div style="width:80px; height: 40px; margin-bottom: 10px; display: inline-block;">
-                <img  alt="" id="image-preview" class="reg-upload-logo" style="height: 100%;" src="http://localhost/wordpress/wp-content/plugins/spinkx-content-marketing/assets/images/your_logo.png">
+                <img  alt="" id="image-preview"  style="height: 100%;" src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/your_logo.png">
                 <input type="hidden" name="image_attachment_id" id="image_attachment_id">
                 </div>
-                <span class="reg_upload_file_type catog-des-cmn-cls-spnx-reg">
+                <span class="reg_upload_file_type catog-des-cmn-cls-spnx-reg reg-upload-logo">
                 	<i class="fas fa-file"></i>
                 	Add Logo
                 </span>
@@ -463,7 +463,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				<span class="font-awesome-icon-align-cmn-cls"><i class="fa fa-user" aria-hidden="true"></i></span>
 			</div>
 			<div class="cmn-cls-verticl-bus-spnx-reg cntry-rgn-cmn-cls-spnx-reg">
-				<div class="catog-des-cmn-cls-spnx-reg">Country / Region </div>
+				<div class="xcatog-des-cmn-cls-spnx-reg">Country / Region </div>
 				<div>
 					<select name="bussiness_region" class="random">
 						<?php foreach ( $dropdown->countries as $key => $value ) {

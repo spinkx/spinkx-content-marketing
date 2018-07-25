@@ -150,7 +150,7 @@ function spinkx_cont_common_css_js( $page, $path  ) {
 
 	if ( $page !== 'spinkx_options' ) {
 		if ( $page !== 'spinkx_campaigns' ) {
-			wp_enqueue_script('select2-js', $vendor . 'select2/js/select2.min.js');
+			//wp_enqueue_script('select2-js', $vendor . 'select2/js/select2.min.js');
 		}
 
 		wp_enqueue_script( 'growl-js', $vendor . 'jQuery-growl/js/jquery.growl.js' );
@@ -206,10 +206,10 @@ function spinkx_cont_widget_css_js($path) {
 	 table.dataTable { border-collapse: collapse; border-spacing: 0px; }
 	 ';
 	wp_add_inline_style( 'master', $custom_css );
+	wp_enqueue_script( 'jquery-google-chart', $vendor . 'google-chart/loader.js' );
 	wp_enqueue_script( 'form-validator-js', esc_url( '//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js' ) );
     wp_enqueue_script( 'jquery-multiselect', $vendor . 'jQuery-multiselect/js/jquery.multiselect.js' );
-	wp_enqueue_script( 'jquery-custom-js', $path[0] . 'js/widget-design.js' );
-	wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+    wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
 
 }
 
