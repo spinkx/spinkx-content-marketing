@@ -139,7 +139,7 @@ if( $registration_complete ) {
 										<span>Background Color</span>
 
 										 <div class="clr_pic_cmn_cls">
-                                        	<input type="text" id="bg_color" value="transparent" name="unit_bg_color" placeholder="transparent" class="colorPicker evo-cp0">
+                                        	<input type="text" id="bg_color" value="transparent"  name="unit_bg_color" placeholder="transparent" class="colorPicker evo-cp0">
                                         </div>
 
 									</div>
