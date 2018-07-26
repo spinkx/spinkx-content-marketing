@@ -65,6 +65,13 @@ jQuery(document).ready(function($) {
         else {
             $('input[name=plugin-type]').parents('div.spnx-box-reg-cmn-cls').find('div.error-cmn-clas-spnx').css('display', 'none');
         }
+        if((!$("#image_attachment_id").val()) ||($("#image-preview").attr('src')=='')) {
+            $(".reg_upload_file_type ").next().css('display','inline-block');
+            flag=1;
+        } else {
+            $(".reg_upload_file_type ").next().css('display','none');
+
+        }
         $("#bussiness-name-spnx, #street-ad-bs-spnx, #city-bs-spnx, #zip_code_number, #state-ad-bs-spnx, #phone-ad-bs-spnx").trigger('blur');
         if($('.error-cmn-clas-spnx').is(':visible') || flag) {
             return false;
@@ -81,6 +88,8 @@ jQuery(document).ready(function($) {
         }
 
     });
+
+    
 
     $("#paypal-bs-spnx").blur(function () {
         if($(this).val()) {

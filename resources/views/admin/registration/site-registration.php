@@ -271,13 +271,15 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 
 			<div class="cmn-cls-verticl-bus-spnx-reg-sitename">
                 <div style="width:80px; height: 40px; margin-bottom: 10px; display: inline-block;">
-                <img  alt="" id="image-preview"  style="height: 100%;" src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/your_logo.png">
-                <input type="hidden" name="image_attachment_id" id="image_attachment_id">
+	                <img  alt="" id="image-preview"  style="height: 100%;" src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/your_logo.png">
+	                <input type="hidden" name="image_attachment_id" id="image_attachment_id">
                 </div>
                 <span class="reg_upload_file_type catog-des-cmn-cls-spnx-reg reg-upload-logo">
                 	<i class="fas fa-file"></i>
                 	Add Logo
                 </span>
+                <span class="error-cmn-clas-spnx">Logo Required</span>
+
                 
 				
             </div>
@@ -393,7 +395,6 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Primary category</div>
 			<div class="select-div-common-class-spnx-reg select-vrticl-align-cmn-cls">
 				<div style="position: relative;"><select name="primary_category">
-				    <option value="0">Select Primary category</option>
                      <?php foreach ($dropdown->primary_categories as $key => $value ) {
 						$primary_cat = '';
 						if ( isset($dropdown->selected_site->pri_cat_id ) && $key == 1 && ! count( $dropdown->selected_site->pri_cat_id ) ) {
