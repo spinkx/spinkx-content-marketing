@@ -164,8 +164,7 @@ jQuery(document).ready(function() {
             }
         });
     });
-
-
+    google.charts.setOnLoadCallback(drawChart);
 });
 function getpoints() {
     jQuery('#boostmodal').modal('hide');
@@ -176,7 +175,7 @@ function getpoints() {
     });
 }
 
-google.charts.setOnLoadCallback(drawChart);
+
 var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 function drawChart() {
     var startdate_arr = window.global_start_date.split('-');

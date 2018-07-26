@@ -18,12 +18,16 @@ $spnxAdminManage = new spnxAdminManage();
 		<br/>-->
 
 	<!-- Main tabs here  -->
+    <div class="spnx_wdgt_wrapper">
+        <div class="cssload-loader"></div>
+    </div>
+
 	<div id="distributiontabs" style="width:100%;">
 		<?php spinkx_header_menu() ?>
 		<div class="wrap-inner" style="width: 100%;">
 			<div class="tab-contents" style="width: 98%;">
 				<div id="widget_design">           <!--Widget Design -->
-					<?php require SPINKX_CONTENT_ADMIN_VIEW_DIR. 'widgets/tab-manage-widgets.php'; ?>
+                    <?php require SPINKX_CONTENT_ADMIN_VIEW_DIR. 'widgets/tab-manage-widgets.php'; ?>
 				</div>
 			</div>
 		</div>

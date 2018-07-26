@@ -71,12 +71,12 @@ wp_add_inline_script( 'jquery-custom-js', $custom_js );
 if( $registration_complete ) {
 	?>
     <script src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.30','packages':['corechart']}]}"></script>
-	<div id="widget_data" style="min-height: 475px;">
+	<div id="widget_data" style="min-height: 475px; display: none;">
 		<?php
 			$tab = spnxHelper::getFilterVar('tab');
 			$widget_id = spnxHelper::getFilterVar('widget_id');
 			if (empty($tab) && empty($widget_id)) {
-				$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/' . $settings['site_id'] . '/' . md5($settings['license_code']);
+				$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/fetch/' . $settings['site_id'] . '/' . md5($settings['license_code']);
 				$wp_output = wp_remote_post($url,
 					array(
 						'method' => 'GET',
@@ -95,8 +95,8 @@ if( $registration_complete ) {
                             $checked = 'checked="checked"';
                         }
 					?>
-	
-	<div class="wd_n_ad_nw_mn_cntnr">   
+
+	<div class="wd_n_ad_nw_mn_cntnr">
 
 		   <div class="wi_mn_cntr_wd_spx">
 			   	<input type="checkbox" name="widget_install" value="1" <?php echo $checked?>/>
@@ -112,8 +112,11 @@ if( $registration_complete ) {
 				</div>	
 		   </div> 
 	</div>				
-	<div class="ad_nw_wdgt_mn_cntainer">
+	<div class="ad_nw_wdgt_mn_cntainer" >
 
+
+
+        <form id="SPINKX_create_form" class="SPINKX_form" action="" method="post">
 		        <div class="wdgt_hdr_mn_hldr_spkx">
 					<span>
 						<i class="fas fa-mobile-alt"></i>
@@ -141,9 +144,9 @@ if( $registration_complete ) {
 
 									</div>
 									<div class="shrtcode_fnt_cls cntnt_dstr_shrt_cde " style="display: none;">
-										[spinkx id = "1840"]
-										<input type="hidden" id="main_widget_id" value="1840" name="main_widget_id" placeholder="" readonly="">
-										<input type="hidden" id="add_shortcode" value="[spinkx id=1840]" name="add_shortcode" placeholder="Shortcode">
+                                        <span class="display-shortcode">[spinkx id="1840"]</span>
+										<input type="hidden" id="main_widget_id" value="" name="main_widget_id" placeholder="" readonly="">
+										<input type="hidden" id="add_shortcode" value="" name="add_shortcode" placeholder="Shortcode">
 									</div>
 								</div>
 							</div>
@@ -184,12 +187,12 @@ if( $registration_complete ) {
 								</div>
 
 									<div class="wdgt_hdn_cntnt_spkx_cntnr">
-										<input type="number" id="result1" value="1" name="no_of_columns" placeholder="1" readonly="" min="1" max="6">
+										<input type="number" id="no_of_columns" value="1" name="no_of_columns" placeholder="1" readonly="" min="1" max="6">
 					                    <input type="hidden" id="mob_views" name="no_col_mob_view" value="1">
                                         <div id="slider-range-min" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
 						                <div class="ui-slider-range ui-widget-header ui-slider-range-min" style="width: 0%;"></div>
-										<a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 16.6667%;"></a>
-					                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 16.6667%;">
+										<a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 20%;"></a>
+					                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 20%;">
 					                   </div>
 					                   </div>
 									</div>
@@ -500,10 +503,11 @@ if( $registration_complete ) {
 							</div>
 							<div class="wdgt_updt_btn_mn_cntnr">
 								<div class="wdgt_updt_btn_sub_cntnr">
-									<a id="ajax_update_button" class="button ajax_update_button" alt="Update" href="javascript:;void(0)" style="background-color: #23bf4a;">Save</a>
-									<a id="ajax_cancel_button" class="button " alt="Update" href="?page=spinkx_widget_design">Cancel</a>
+                                    <input  type="submit" name="update" id="ajax_create_button" class="button ajax_create_button" alt="Update" value="Save" />
+									<!--<a id="ajax_update_button" class="button ajax_update_button" alt="Update" href="javascript:;void(0)" style="background-color: #23bf4a;">Save</a>-->
+									<a id="ajax_cancel_button" class="button " alt="Update" href="javascript:;void(0)">Cancel</a>
 									<!--  SPINKX AJAX Update Settings Ends Here  -->
-									<a id="ajax_reset_button" class="button ajax_reset_button" alt="Reset" href="javascript:;void(0)">Reset Widget</a>
+									<a id="ajax_reset_button" class="button ajax_reset_button" alt="Reset" href="javaScript:;void(0)">Reset Widget</a>
 
 								</div>
 							</div>
@@ -573,7 +577,7 @@ if( $registration_complete ) {
 						</div>
 					</div>
 				</div>
-
+        </form>
 	</div>
 
 

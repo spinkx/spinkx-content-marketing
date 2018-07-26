@@ -1,4 +1,5 @@
 jQuery(document).ready(function($) {
+
     $(".widget-checkbox").on("click", function(){
         var site_id = g_site_id;
         var widget_id = $(this).attr("data-id");
@@ -281,14 +282,13 @@ $(".sh_hide_wdgt_grph").click(function() {
     if(inner_text=='Edit Widget') {
         $(this).html("Show Graph");
         $(this).parents('.wdgt_mn_cntnr_spkx').find(".spnx_wdgt_wrapper").show();
-
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr').show();
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').hide();
+        jQuery('.grph_wdgt_cntnr_grp').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
     } else {
         $(this).html("Edit Widget");
         $(this).parents('.wdgt_mn_cntnr_spkx').find(".spnx_wdgt_wrapper").hide();
-
-         $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr').hide();
+        $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr').hide();
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').show();
     }
 
@@ -335,10 +335,123 @@ $(".sh_hide_wdgt_grph").click(function() {
 
     google.charts.setOnLoadCallback(drawChart);
 
-});
 
+      //  $(".ajax_create_button").attr("disabled",false);
+        $( ".ajax_create_button" ).click(function( e ) {
+            e.preventDefault();
+            alert('sds')
+            var form_serialized_data = $("form#SPINKX_create_form").serialize();
+            var main_widget_id = $("#main_widget_id").val();
+            /*------------------------------------------------------------------------------*/
+            var page_url = window.location.href;
+            var page_new_url = page_url.split("?")[0];
+            var add_shortcode = $("#add_shortcode").val();
+            var wp_section = $("#wp_section").val();
+            /*------------------------------------------------------------------------------*/
+            $("#bpopup_ajax_loading").bPopup( { modalClose: false } );
+            $.ajax({
+                url : ajaxurl,
+                data : {
+                    "action": "spinkx_cont_widget_create",
+                    "form_serialized_data" : form_serialized_data,
+                    "main_widget_id" : main_widget_id,
+                },
+                type : "post",
+                datatype : "json",
+                success : function(data){
+                    //alert(data);
+                    $.growl.notice({ message: "Successfully Updated!",
+                        location: "tr",
+                        size: "large" });
+                        location.reload();
+                },
+                failure : function(data){
+                    $("#bpopup_ajax_loading").bPopup().close();
+                    $.growl.error({ message: "Failed to Update !",
+                        location: "tr",
+                        size: "large" });
+                }
+            });
+        });
+
+
+    $( ".ajax_reset_button" ).click(function( e ) {
+        e.preventDefault();
+        if($(this).attr("disabled")=='disabled')
+            return false;
+        var widget_name = $('form #widget_name').val();
+        var main_widget_id = $('#main_widget_id').val();
+        /*------------------------------------------------------------------------------*/
+        var page_url = window.location.href;
+        var page_new_url = page_url.split("?")[0];
+        var add_shortcode = $('#add_shortcode').val();
+        var wp_section = $('#wp_section').val();
+        /*------------------------------------------------------------------------------*/
+        $('#bpopup_ajax_loading').bPopup( { modalClose: false } );
+        $.ajax({
+            url : ajaxurl,
+            data : {
+                'action': 'spinkx_cont_widget_reset',
+                'widget_name' : widget_name,
+                'main_widget_id' : main_widget_id,
+                'mode' : 'reset',
+            },
+            type : 'post',
+            datatype : 'json',
+            success : function(data){
+                $('#bpopup_ajax_loading').bPopup().close();
+                $.growl.notice({ message: "Successfully Reset!",
+                    location: 'tr',
+                    size: 'large' });
+                window.location.reload();
+            },
+            failure : function(data){
+                $('#bpopup_ajax_loading').bPopup().close();
+                $.growl.error({ message: "Failed to Update!",
+                    location: 'tr',
+                    size: 'large' });
+            }
+        });
+    });
+
+    $('a#ajax_cancel_button').click(function(e) {
+        e.preventDefault();
+        var default_data = {'widget_name': 'My First Widget',  'no_of_columns':1,
+        'unit_border_width': 1, 'unit_border_style': 'solid',  'unit_border_radius': '6', 'unit_spacing':'20',
+         'unit_title_font_size': 14, 'unit_title_line_height': 18, 'unit_title_font_style': 'bold',
+        'unit_title_font_case': 'none',  'unit_add_line_style': 'belowimg', 'unit_excerpt_font_size': 14,
+        'unit_excerpt_line_height': 18, 'unit_excerpt_font_style': 'normal', 'unit_excerpt_font_case': 'none',
+            'excerpt_add_line_style': 'belowimg', 'unit_excerpt_word_limit': 100};
+        for(var id in default_data) {
+            if (!default_data.hasOwnProperty(id)) continue;
+            key_value = default_data[id];
+            $('#' + id).val(key_value);
+        }
+        default_data = {'widget_layout_type': 'masonry' }
+        for(var id in default_data) {
+            if (!default_data.hasOwnProperty(id)) continue;
+            key_value = default_data[id];
+            $('#'+id).trigger('click');
+        }
+        default_data = {'bg_color': 'transparent', 'unit_border_color': '#d8d8d8','fg_color': '#fefefe', 'unit_title_font_color': '#d8d8d8',
+        'unit_excerpt_font_color': '#d8d8d8'}
+        for(var id in default_data) {
+            if (!default_data.hasOwnProperty(id)) continue;
+            key_value = default_data[id];
+            if(id === 'bg_color') {
+                 $('#' + id).iris('color', '#FFFFFFFF');
+            } else {
+                $('#' + id).iris('color', key_value);
+            }
+       }
+
+    });
+    $('#widget_data').show();
+});
+jQuery('.grph_wdgt_cntnr_grp').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
 function updatewidget(){
    // jQuery('.se-pre-con').bPopup( { modalClose: false } );
+    jQuery('.grph_wdgt_cntnr_grp').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
     $.ajax({
         url : ajaxurl,
         type : "get",
@@ -350,35 +463,32 @@ function updatewidget(){
             "to_date" : global_end_date,
         },
         success : function(data){
-            var data = JSON.parse(data);
-            jQuery('.se-pre-con').bPopup().close();
-            $.each(data,function(key,stat){
-                cell_imp = table.cell("#w_"+key, 4);
-                if( cell_imp[0].length > 0 ) {
+            //console.log(data)
+            data = JSON.parse(data);
 
+            var update_data = data;
+            $.each(data,function(key,stat) {
+                $.each(stat, function(k, s){
 
-                    //var cell = table.cell( this );
-                    cell_imp.data( stat.total_impressions ).draw();
-                    //this.data()[3] = "sdf";
-                    //console.log(cell_imp.data());
-                    cell_click = table.cell("#w_"+key, 5);
-                    cell_click.data( stat.total_clicks ).draw();
-
-                    cell_ctr = table.cell("#w_"+key, 6);
-                    cell_ctr.data( stat.widget_ctr ).draw();
-                } else {
-                    var mobile_widget_table = $("#bwki_mobile_widgets_display").DataTable();
-                    cell_imp = mobile_widget_table.cell("#w_"+key, 3);
-                    cell_imp.data( stat.total_impressions ).draw();
-                    //this.data()[3] = "sdf";
-                    //console.log(cell_imp.data());
-                    cell_click = mobile_widget_table.cell("#w_"+key, 4);
-                    cell_click.data( stat.total_clicks ).draw();
-
-                    cell_ctr = mobile_widget_table.cell("#w_"+key, 5);
-                    cell_ctr.data( stat.widget_ctr ).draw();
-                }
+                    if(k == 1) {
+                        $('.wd-views-' + key).text(s);
+                    } else if(k == 2) {
+                        $('.wd-clicks-' + key).text(s);
+                    } else if(k == 3) {
+                        $('.wd-ctr-' + key).text(s);
+                    }
+                });
             });
+            $.each(update_data, function(key, stat){
+               $.each(stat, function(k, s){
+                   if(k > 0) {
+                       (update_data[key]).splice(k, 3);
+                       return false;
+                   }
+                });
+            });
+
+            drawChart();
         }
     });
 }
@@ -427,8 +537,12 @@ function drawChart() {
             var newDate = startdate.setDate(startdate.getDate() + 1);
             startdate = new Date(newDate);
         }
-
         widget.addRows($widgetArr);
+        point_size = parseInt(counter/10) + 1;
+        ticks = [];
+        for(i = 1; i < point_size; i++ ) {
+            ticks[i-1] = i * 10;
+        }
         var widImpoptions = {
             tooltip: {isHtml: true},    // CSS styling affects only HTML tooltips.
             width: '100%',
@@ -436,7 +550,7 @@ function drawChart() {
             legend: {position: 'top', alignment: 'end'},
             pointsVisible: true,
             pointShape: 'circle',
-            pointSize: 3,
+            pointSize: point_size,
             backgroundColor: 'transparent',
             chartArea: {
                 left: "5%",
@@ -447,7 +561,7 @@ function drawChart() {
             vAxis: {minValue: 1},
             hAxis: {
                 baselineColor: 'none',
-                ticks: [10, 20, 30],
+                ticks: ticks,
                 gridlines: {
                     color: 'transparent'
                 },
@@ -460,6 +574,7 @@ function drawChart() {
         var widget_views_chart = new google.visualization.LineChart(document.getElementById('widget-chart-'+index));
         widget_views_chart.draw(widget, widImpoptions);
     }
+    jQuery('.spnx_wdgt_wrapper').remove();
 }
 
 function showWidgetToolTip($dt, $vw, $ctr) {

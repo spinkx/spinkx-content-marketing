@@ -351,7 +351,7 @@ final class spnxAdminManage
 	}
 
 	function spinkx_cont_get_widget_stat() {
-		$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/statistics/';
+		$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/statistics/new/';
 		$get = spnxHelper::getFilterGet();
 		$output = spnxHelper::doCurl( $url, $get );
 		echo $output;

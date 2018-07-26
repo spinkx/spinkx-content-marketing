@@ -464,49 +464,7 @@
 
 	}
 	/*------------------------------------------------------------------------------*/
-	jQuery(document).ready(function( $ ) {
-		$(".ajax_create_button").attr("disabled",false);
-		$( ".ajax_create_button" ).click(function( e ) {
-			e.preventDefault();
-			var form_serialized_data = $("form#SPINKX_create_form").serialize();
-			var main_widget_id = $("#main_widget_id").val();
-			/*------------------------------------------------------------------------------*/
-			var page_url = window.location.href;
-			var page_new_url = page_url.split("?")[0];
-			var add_shortcode = $("#add_shortcode").val();
-			var wp_section = $("#wp_section").val();
-			/*------------------------------------------------------------------------------*/
-			$("#bpopup_ajax_loading").bPopup( { modalClose: false } );
-			$.ajax({
-				url : ajaxurl,
-				data : {
-						"action": "spinkx_cont_widget_create",
-						"form_serialized_data" : form_serialized_data,
-						"main_widget_id" : main_widget_id,
-					},
-				type : "post",
-				datatype : "json",
-				success : function(data){
-					//alert(data);
-					$.growl.notice({ message: "Successfully Updated!",
-					location: "tr",
-					size: "large" });
-					
-//					$(".ajax_create_button").value("Update");
-//					$(".ajax_create_button").prop("id", "Update");
-					location.reload();
-					//location.reload();
-				},
-				failure : function(data){
-					console.log(data);
-					$("#bpopup_ajax_loading").bPopup().close();
-					$.growl.error({ message: "Failed to Update !",
-						location: "tr",
-						size: "large" });
-				}
-			});
-		});
-	});
+	
 ';
 	$handle = 'jquery-evol';
 	$list = 'enqueued';

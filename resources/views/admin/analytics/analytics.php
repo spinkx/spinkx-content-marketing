@@ -13,8 +13,8 @@ $custom_js .= 'jQuery("#daterange").dateRangePicker({container: "#daterange-pick
 });';
 $js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
 wp_enqueue_script( 'jquery-dashboard', $js_url . 'dashboard.js' );
-wp_enqueue_script( 'jquery-custom-js', $js_url . 'widget-design.js' );
-wp_add_inline_script( 'jquery-custom-js', $custom_js );
+// wp_enqueue_script( 'jquery-custom-js', $js_url . 'widget-design.js' );
+wp_add_inline_script( 'jquery-dashboard', $custom_js );
 ?>
 <div class="wrap">
 	<div class="bpopup" id="bpopup_ajax_loading" style="display: none;width:100px">

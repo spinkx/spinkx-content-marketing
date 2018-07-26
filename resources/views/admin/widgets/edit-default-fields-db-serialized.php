@@ -21,8 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	$no_of_row = 1;
 	$image_width = 100;
 	$image_height = 100;
-
-	
 	if( $result['widget']['is_mobile_widget'] == 0 ) {
 		$site_name = $result['site_name'];
 
