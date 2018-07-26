@@ -411,7 +411,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 
 			</div>
 			<div class="catog-des-cmn-cls-spnx-reg vrticl-btm-cmn-cls-reg">Additional category</div>
-			<div class="select-div-common-class-spnx-reg select-vrticl-align-cmn-cls" style="position: relative; width:100%; ">
+			<div class="select-div-common-class-spnx-reg select-vrticl-align-cmn-cls select-add-cat" style="position: relative; width:100%; display:none;">
 				<div class="select-drtn-cls">
 					<select class="categories"  id="categories" multiple name="site_cat[]">
 						<?php
