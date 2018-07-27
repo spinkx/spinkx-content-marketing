@@ -240,6 +240,19 @@ function drawChart() {
     widget.addRows($widgetArr);
     local_post.addRows($lpArr);
     boost_post.addRows($bpArr);
+    wid_point_size = parseInt($widgetArr.length/10) + 1;
+    lp_point_size = parseInt($lpArr.length/10) + 1;
+    bp_point_size = parseInt($bpArr.length/10) + 1;
+    wd_ticks = lp_ticks = bp_ticks = [];
+    for(i = 1; i < wid_point_size; i++ ) {
+        wd_ticks[i-1] = i * 10;
+    }
+    for(i = 1; i < lp_point_size; i++ ) {
+        lp_ticks[i-1] = i * 10;
+    }
+    for(i = 1; i < bp_point_size; i++ ) {
+        bp_ticks[i-1] = i * 10;
+    }
     var widImpoptions = {
         tooltip: { isHtml: true },    // CSS styling affects only HTML tooltips.
         title: 'Widget Clicks / CTR',
@@ -248,7 +261,7 @@ function drawChart() {
         legend: { position: 'top', alignment: 'end' },
         pointsVisible: true,
         pointShape: 'circle',
-        pointSize: 3,
+        pointSize: wid_point_size,
         backgroundColor: 'transparent',
         chartArea: {
             left: "5%",
@@ -259,7 +272,7 @@ function drawChart() {
         vAxis: {minValue: 1},
         hAxis: {
             baselineColor: 'none',
-            ticks: [10, 20, 30],
+            ticks: wd_ticks,
             gridlines: {
                 color: 'transparent'
             },
@@ -277,7 +290,7 @@ function drawChart() {
         legend: { position: 'top', alignment: 'end' },
         pointsVisible: true,
         pointShape: 'circle',
-        pointSize: 3,
+        pointSize: lp_point_size,
         backgroundColor: 'transparent',
         chartArea: {
             left: "5%",
@@ -288,7 +301,7 @@ function drawChart() {
         vAxis: {minValue: 1},
         hAxis: {
             baselineColor: 'none',
-            ticks: [10, 20, 30],
+            ticks: lp_ticks,
             gridlines: {
                 color: 'transparent'
             }
@@ -303,7 +316,7 @@ function drawChart() {
         legend: { position: 'top', alignment: 'end' },
         pointsVisible: true,
         pointShape: 'circle',
-        pointSize: 3,
+        pointSize: bp_point_size,
         backgroundColor: 'transparent',
         chartArea: {
             left: "5%",
@@ -314,7 +327,7 @@ function drawChart() {
         vAxis: {minValue: 1},
         hAxis: {
             baselineColor: 'none',
-            ticks: [10, 20, 30],
+            ticks: bp_ticks,
             gridlines: {
                 color: 'transparent'
             }
