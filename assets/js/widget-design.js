@@ -265,7 +265,6 @@ $("#unit_excerpt_word_limit").bind('blur',function() {
 });
 
 $(".add_widget_button").click(function() {
-    
     var inner_text=$(this).text();
     if(inner_text=='+ Add New Widget') {
         $(this).html("Cancel");
