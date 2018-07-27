@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $spnxAdminManage = new spnxAdminManage();
 ?>
+<div class="spnx_wdgt_wrapper" id="spnx-wdgt-wrapper-loader"><div class="cssload-loader"></div></div>
 <div class="wrap">
     <!-- Main tabs here  -->
 	<div id="distributiontabs" style="width:100%;">
