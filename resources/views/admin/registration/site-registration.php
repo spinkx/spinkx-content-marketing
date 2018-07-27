@@ -464,7 +464,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				<span class="font-awesome-icon-align-cmn-cls"><i class="fa fa-user" aria-hidden="true"></i></span>
 			</div>
 			<div class="cmn-cls-verticl-bus-spnx-reg cntry-rgn-cmn-cls-spnx-reg">
-				<div class="xcatog-des-cmn-cls-spnx-reg">Country / Region </div>
+				<div class="catog-des-cmn-cls-spnx-reg">Country / Region </div>
 				<div>
 					<select name="bussiness_region" class="random">
 						<?php foreach ( $dropdown->countries as $key => $value ) {

@@ -282,14 +282,14 @@ $(".sh_hide_wdgt_grph").click(function() {
     if(inner_text=='Edit Widget') {
         $(this).html("Show Graph");
         $(this).parents('.wdgt_mn_cntnr_spkx').find(".spnx_wdgt_wrapper").show();
-        $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr').show();
-        $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').hide();
-        jQuery('.grph_wdgt_cntnr_grp').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+        $(this).parents('.wdgt_mn_cntnr_spkx').find('.cntnt_dstr_cntnr').css('display','flex');
+        $(this).parents('.wdgt_mn_cntnr_spkx').find('.graph-cmn-cls-spnx').hide();
+        $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
     } else {
         $(this).html("Edit Widget");
         $(this).parents('.wdgt_mn_cntnr_spkx').find(".spnx_wdgt_wrapper").hide();
-        $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr').hide();
-        $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').show();
+        $(this).parents('.wdgt_mn_cntnr_spkx').find('.cntnt_dstr_cntnr').hide();
+        $(this).parents('.wdgt_mn_cntnr_spkx').find('.graph-cmn-cls-spnx').show();
     }
 
 });

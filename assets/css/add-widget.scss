@@ -733,7 +733,9 @@ div.wdgt_hdr_mn_hldr_spkx {
 .cntnt_dstr_cntnr {
 	display: flex;
 	justify-content:space-between;
+	display:none;
 }
+
 .wdgt_edit_cmn_cls_spx {
   display: none;
 }
