@@ -104,8 +104,6 @@ $("#unit_add_line_style").bind('change',function() {
      var container = $('.design_unit_hdline_container');
      $(".design_unit_hdline_container").remove();
      $(container).clone().insertAfter(".design_unit_site_view_container");
-
-
    }
 
 });
@@ -451,6 +449,7 @@ $(".sh_hide_wdgt_grph").click(function() {
                 $('#' + id).iris('color', key_value);
             }
        }
+        $(".add_widget_button").trigger('click');
 
     });
     $('#widget_data').show();
