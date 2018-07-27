@@ -194,7 +194,7 @@ EOD;
 		$js_output = '';
 		if( $showFlag ) {
 			$js_output = "var loadingWindow = false;  var sx_cont_amount = $row->amount; var displayAmount = $disAmount; function paymentSuccessHandler(transaction) {		
-var http = new XMLHttpRequest();
+	var http = new XMLHttpRequest();
 var url = '" . $url . "';
 var params = 'razorpay_payment_id='+transaction.razorpay_payment_id+'&amount=' + displayAmount;
 http.open('POST', url, true);

@@ -89,8 +89,6 @@ jQuery(document).ready(function($) {
 
     });
 
-    
-
     $("#paypal-bs-spnx").blur(function () {
         if($(this).val()) {
             //$(this).next().css('display', 'none');
@@ -133,4 +131,5 @@ jQuery(document).ready(function($) {
         return pattern.test(email );
     }
     $('.select-add-cat').show();
+    jQuery('.spnx_wdgt_wrapper').hide();
 });

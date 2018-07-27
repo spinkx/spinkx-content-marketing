@@ -1,4 +1,7 @@
 function get_stat_now(start, end){
+    jQuery('#widget_chart').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+    jQuery('#lp_chart').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+    jQuery('#bp_chart').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
     try {
         $.ajax({
             beforeSend: function(){
@@ -17,7 +20,6 @@ function get_stat_now(start, end){
                 //jQuery('.se-pre-con').bPopup().close();
             },
             success: function(data){
-                jQuery('.se-pre-con').bPopup().close();
                 var data = JSON.parse(data);
                 spinkx_data = data
                 currency = spinkx_data.currency;
@@ -42,9 +44,10 @@ function get_stat_now(start, end){
                 jQuery('.credit-wallet-bal').text(spinkx_data.wallet_bal);
                 jQuery('.credit-points').text(spinkx_data.credit_points);
                 drawChart();
+                jQuery('.spnx_wdgt_wrapper').remove();
+
             },
             error: function(xhr, status, error){
-                jQuery('.se-pre-con').bPopup().close();
                 jQuery.growl.error({ message: xhr.status,
                 location: 'tr',
                 size: 'large' });
@@ -164,6 +167,10 @@ jQuery(document).ready(function() {
             }
         });
     });
+    jQuery('.spnx_wdgt_wrapper').remove();
+    jQuery('#widget_chart').prepend('<div class="spnx_wdgt_wrapper" style="left: 27%; top:30%;"><div class="cssload-loader"></div></div>');
+    jQuery('#lp_chart').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+    jQuery('#bp_chart').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
     google.charts.setOnLoadCallback(drawChart);
 });
 function getpoints() {

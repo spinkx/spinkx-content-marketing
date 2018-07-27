@@ -255,6 +255,7 @@ if ( isset($settings['due_date']) && $settings['due_date'] != '0000-00-00 00:00:
 }
 $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->selected_site->plugin_type_id:0;
 ?>
+<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>
 <script type='text/javascript'>
 	/* <![CDATA[ */
 	var spnx_sec_cats = <?php echo wp_json_encode(isset($dropdown->categories)?$dropdown->categories:'')?>; /* ]]> */

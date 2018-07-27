@@ -196,6 +196,7 @@ jQuery( document ).ready(function() {
             }
         });
     });
+
 });
 function all_onoff(type){
    // var dataid = jQuery("#playpauseswitch_"+type+"_all").attr("data-id");
@@ -1133,7 +1134,7 @@ function submitVideoVariationForm(formObj) {
     return false;
 }
 function loadDT(startDate, endDate) {
-    //jQuery('.se-pre-con').bPopup( { modalClose: false } );
+    jQuery('.spnx_wdgt_wrapper').show();
     pt.from_date = startDate;
     pt.to_date = endDate;
     var table = jQuery("#bwki_sites_display").DataTable({
@@ -1158,7 +1159,7 @@ function loadDT(startDate, endDate) {
             "dataType": "jsonp",
             data: pt,
             complete: function(){
-                jQuery('.se-pre-con').bPopup().close();
+                jQuery('.spnx_wdgt_wrapper').hide();
                 jQuery('#wpcontent').css('height',jQuery('#bwki_sites_display').height()+250);
             },
         },
