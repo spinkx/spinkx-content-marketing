@@ -284,7 +284,7 @@ if( $registration_complete ) {
 	        					  	<div class="mb_sd_cm_cl">
 	        					  		<span>Border Color</span>
 							           <div class="clr_pic_cmn_cls">
-                                        	<input type="text" id="unit_border_color" value="#d8d8d8" name="unit_border_color" placeholder="#d8d8d8" class="">
+                                        	<input type="text" id="unit_border_color" value="#d8d8d8" name="unit_border_color" placeholder="#000000" class="">
                                         </div>
 							        </div>
 						             <div class="mb_sd_cm_cl">
@@ -369,7 +369,7 @@ if( $registration_complete ) {
 									<div class="mb_sd_cm_cl">
 										<span>Font Color</span>
 										<div class="clr_pic_cmn_cls">
-                                        	<input type="text" id="unit_title_font_color" value="#d8d8d8" name="unit_title_font_color" placeholder="#d8d8d8" class="">
+                                        	<input type="text" id="unit_title_font_color" value="#000000" name="unit_title_font_color" placeholder="#000000" class="">
                                         </div>
 									</div>
 									<div>
@@ -445,7 +445,7 @@ if( $registration_complete ) {
                                     <div class="mb_sd_cm_cl">
                                     	<span>Font Color</span>
                                         <div class="clr_pic_cmn_cls">
-                                        	<input type="text" id="unit_excerpt_font_color" value="#d8d8d8" name="unit_excerpt_font_color" placeholder="#d8d8d8" class="">
+                                        	<input type="text" id="unit_excerpt_font_color" value="#333333" name="unit_excerpt_font_color" placeholder="#000000" class="">
                                         </div>
 
 									</div>
@@ -503,11 +503,13 @@ if( $registration_complete ) {
 							</div>
 							<div class="wdgt_updt_btn_mn_cntnr">
 								<div class="wdgt_updt_btn_sub_cntnr">
-                                    <input  type="submit" name="update" id="ajax_create_button" class="button ajax_create_button" alt="Update" value="Save" />
-									<!--<a id="ajax_update_button" class="button ajax_update_button" alt="Update" href="javascript:;void(0)" style="background-color: #23bf4a;">Save</a>-->
+                                    <input  style="background-color: #23bf4a;" type="submit" name="update" id="ajax_create_button" class="button ajax_create_button" alt="Update" value="Save" />
+									<!--<a id="ajax_update_button" class="button ajax_update_button" alt="Update" href="javascript:;void(0)">Save</a> -->
 									<a id="ajax_cancel_button" class="button " alt="Update" href="javascript:;void(0)">Cancel</a>
 									<!--  SPINKX AJAX Update Settings Ends Here  -->
+									<!--
 									<a id="ajax_reset_button" class="button ajax_reset_button" alt="Reset" href="javaScript:;void(0)">Reset Widget</a>
+								-->
 
 								</div>
 							</div>

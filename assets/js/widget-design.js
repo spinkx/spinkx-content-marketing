@@ -426,15 +426,20 @@ $(".sh_hide_wdgt_grph").click(function() {
             if (!default_data.hasOwnProperty(id)) continue;
             key_value = default_data[id];
             $('#' + id).val(key_value);
-        }
+            if($('#'+id).attr('type')=='text' || $('#'+id).attr('type')=='number') {
+                $('#'+id).trigger('blur');
+            } else {
+                $('#'+id).trigger('change');
+              }
+          }
         default_data = {'widget_layout_type': 'masonry' }
         for(var id in default_data) {
             if (!default_data.hasOwnProperty(id)) continue;
             key_value = default_data[id];
             $('#'+id).trigger('click');
         }
-        default_data = {'bg_color': 'transparent', 'unit_border_color': '#d8d8d8','fg_color': '#fefefe', 'unit_title_font_color': '#d8d8d8',
-        'unit_excerpt_font_color': '#d8d8d8'}
+        default_data = {'bg_color': 'transparent', 'unit_border_color': '#d8d8d8','fg_color': '#fefefe', 'unit_title_font_color': '#000000',
+        'unit_excerpt_font_color': '#333333'}
         for(var id in default_data) {
             if (!default_data.hasOwnProperty(id)) continue;
             key_value = default_data[id];
