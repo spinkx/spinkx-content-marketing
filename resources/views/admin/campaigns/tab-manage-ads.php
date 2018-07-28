@@ -53,7 +53,7 @@
 	
 
 	$custom_js .= 'var todaydate = start; var pageLength = ' . $pageLength . ';
-	var pt = '.$p.'; jQuery(function() {  jQuery(".se-pre-con").fadeOut("slow");
+	var pt = '.$p.'; jQuery(function() {
 	jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: '.$todaydate.'});	
 	var $ = jQuery.noConflict();
 	loadDT(start, end);		
@@ -157,7 +157,7 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 
 }	?>
 <?php if($output['error'] === false) {?>
-<div class="content_playlist_listing">
+<div class="content_playlist_listing" style="display: none;">
 	<table id="bwki_sites_display" class="wp-list-table table-responsive"  style="width:1024px;"><thead>
 		<tr>
 			<td style="padding: 0px;text-align: right;">

@@ -39,9 +39,6 @@ jQuery(document).ready(function($) {
             $(".acc-mn-dv-cntainr").css({'height':400+'px','overflow-y':'scroll'})
 
         }
-
-
-
     });
     $(".ul-mn-cls-chkbx li").click(function () {
         var checkbx = $(this).find("input");

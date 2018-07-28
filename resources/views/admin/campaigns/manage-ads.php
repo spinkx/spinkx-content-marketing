@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $spnxAdminManage = new spnxAdminManage;
 ?>
+<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>
 <div class="wrap">
 
 	<!-- Main tabs here  -->

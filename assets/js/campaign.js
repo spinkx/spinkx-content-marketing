@@ -563,9 +563,7 @@ jQuery(document).ready(function($){
             return false;
         }
     });
-
-
-
+    
 });
 
 function cancelCampaign( cid ) {
@@ -1167,7 +1165,7 @@ function submitVideoVariationForm(formObj) {
     return false;
 }
 function loadDT(startDate,endDate) {
-    //jQuery(\'#bpopup_ajax_loading\').bPopup( { modalClose: false } );
+    jQuery('.spnx_wdgt_wrapper').show();
     pt.from_date = global_start_date;
     pt.to_date = global_end_date;
     var table = jQuery("#bwki_sites_display").DataTable({
@@ -1192,12 +1190,14 @@ function loadDT(startDate,endDate) {
             "dataType": "jsonp",
             data: pt,
             complete: function(){
+                jQuery('.content_playlist_listing').show();
+                jQuery('.spnx_wdgt_wrapper').hide();
                 jQuery('.camp-group-name').parents('tr').addClass("camp-group-tr");
                 jQuery('.camp-group-name').parent().attr('colspan', '3');
                 jQuery('.camp-group-name').parent().next().remove();
                 jQuery('.camp-group-name').parent().next().remove();
                 //$datalength = jQuery('.camp-group-name').attr('data-length');
-                jQuery('.se-pre-con').bPopup().close();
+                
             },
         },
 
