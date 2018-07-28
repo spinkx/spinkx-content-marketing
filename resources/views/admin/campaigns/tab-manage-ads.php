@@ -62,9 +62,6 @@
 	wp_enqueue_style( 'bootstrap-datetimepicker-css', $vendor . 'bootstrap/css/bootstrap-datetimepicker.css' );
 	wp_register_script( 'jquery', ( 'https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js' ), array(), '2.0.3', false );
 	wp_enqueue_script( 'jquery');
-	wp_enqueue_script( 'jquery-dateFormat-js', $vendor . 'jQuery-dateformat/js/jquery-dateFormat.min.js' );
-	wp_enqueue_script( 'jquery-moment-js', $vendor . 'moment/js/moment.min.js' );
-	wp_enqueue_script( 'jquery-datetimepicker-js', $vendor . 'bootstrap/js/bootstrap-datetimepicker.js' );
 	wp_enqueue_script( 'jquery-bootstrap-js', $vendor . 'bootstrap/js/bootstrap.min.js' );
 	wp_localize_script('jquery-bootstrap-js', 'spinkxPUrl', array('pluginsUrl' =>  plugins_url('spinkx-content-marketing/')));
 	wp_enqueue_media();
