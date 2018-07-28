@@ -207,9 +207,9 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 
 		<!-- Modal content-->
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header modal_header_cc_spnkx">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><strong>Buy Points</strong></h4>
+				<h4 class="modal-title"><i class="fas fa-bullseye"></i><strong>Buy Points</strong></h4>
 			</div>
 			<?php
 			$url = esc_url( SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/site/get-point-price' );
@@ -217,31 +217,36 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 			$response = spnxHelper::doCurl( $url, $post);
 			$response = json_decode($response, true);
 			?>
-			<div class="modal-body">
+			<div class="modal-body modal_body_cc_spnkx">
 				<?php if(isset($response['reach'])) { ?>
-					<div class="form-group">
-						<label for="point_amount">Points</label><br/>
-						<br/><input	type="number" class="form-control" id="buy_point" style="display: inline;width:40%;" value="100"/>
+					<div class="cmn_cntnt_body_mdl">
+						<span>Points</span>
+						<input	type="number" class="form-control" id="buy_point"  value="100"/>
 					</div>
-					<div class="form-group">
-						<label>Reach</label>
-						<label id="reach" style="margin-left: 20px"><?php echo $response['reach']?></label>
+					<div class="cmn_cntnt_body_mdl">
+						<span>Views</span>
+						<span id="reach"><?php echo $response['reach']?></span>
 					</div>
 
-					<div class="form-group">
-						<label>Price</label>
-						<label style="margin-left: 20px"><i id="currency_format" class="fa fa-<?php echo strtolower($response['currency_format']) ?>" style="display: inline;"></i><span id="amount"><?php echo $response['price']?></label>
+					<div class="cmn_cntnt_body_mdl">
+						<span>Price</span>
+						<span><i id="currency_format" class="fa fa-<?php echo strtolower($response['currency_format']) ?>" style="display: inline;"></i><span id="amount"><?php echo $response['price']?></label>
 						<input type="hidden" id="point_amount" value="<?php echo $response['price']?>" />
 					</div>
+					</div>
+					<div class="modal-footer modal_footer_cc_spnkx">
 					<?php
 					if(isset($response['buy_points'])) {
 						echo do_shortcode($response['buy_points']);
+						}
+					} else {
+						echo $response;
 					}
-				} else {
-					echo $response;
-				}
-				?>
-			</div>
+					?>
+					<button data-dismiss="modal">CANCEL</button>
+					</div>
+					
+			
 		</div>
 	</div>
 </div>
@@ -278,7 +283,7 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
                     $('#amount').text(data.price);
                     $('#point_amount').val(data.price);
                     $('button#payment-method-button').prop('disabled', false);
-                    document.getElementById('payment-method-button').style.backgroundColor = '#337ab7';
+                    document.getElementById('payment-method-button').style.backgroundColor = '#23bf4a';
                 }
             });
         });

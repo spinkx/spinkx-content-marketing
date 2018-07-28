@@ -1105,7 +1105,6 @@ td.cp_sorting {
 /* Boost Post Modal */
 .modal-footer{
     clear:both;
-    margin-top: 20px;
 }
 
 #left_div_modal_body{
@@ -1223,6 +1222,7 @@ div.create-ad-field{ height:35px;}
     cursor: pointer;
     width: 188px;
     z-index: 9;
+    font-size:13px;
 }
 input.form-control2:hover,input.form-control2:focus { background-color: #e4eff4; box-shadow: inset 0 1px 1px rgba(0,0,0,.075); }
 textarea.splcaheholder::-webkit-input-placeholder { color: #337ab7; }
@@ -2163,11 +2163,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 12px;
     margin-top:16px;
 }
-.cmpgn-dv-entr-amnt {
-    margin-bottom: 19px;
-    font-weight: 600;
-    font-size:12px;
-}
+
 
 /**new widget category css **/
 .acc-mn-dv-cntainr {
@@ -2277,8 +2273,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .drop-down-date {
     position: absolute;
-    right: 4px;
-    top: 10px;
+    right: 5px;
+    top: 11px;
     z-index: 8;
 }
 
@@ -2536,6 +2532,9 @@ tr td div.camp-group-name {
 .ui-widget-header .ui-icon {
   background-image: none !important;
 }
+.ui-icon-circle-triangle-w {
+  background-image: none !important;
+}
 /**campaign css ends here **/
 .glbl_setng_cb {
     margin-left:10px;
@@ -2548,11 +2547,13 @@ tr td div.camp-group-name {
    margin-left:21px;
  }
  .reg_upload_file_type {
-  border: 2px solid #b6baba;
-  padding: 4px 15px;
-  border-radius:5px;
-  vertical-align: middle; 
-  margin-right:10px;
+    border: 2px solid #b6baba;
+    padding: 3px 7px;
+    border-radius: 5px;
+    vertical-align: middle;
+    margin-right: 10px;
+    font-size: 12px;
+    cursor:pointer;
  }
 
  /** loader css starts here **/
@@ -2632,3 +2633,97 @@ tr td div.camp-group-name {
 
 
  /** loader css ends here **/
+ .wdgt_updt_btn_sub_cntnr a, .wdgt_updt_btn_sub_cntnr input, .modal_footer_cc_spnkx button {
+    text-decoration: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 11px !important;
+    border-radius: 5px !important;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26) !important;
+    transition: .25s all ease !important;
+    cursor: pointer !important;
+    text-transform: uppercase !important;
+    width:unset !important;
+}
+.wdgt_updt_btn_sub_cntnr a:hover, .wdgt_updt_btn_sub_cntnr input:hover, .modal_footer_cc_spnkx button:hover {
+    transform: translate3d(0,-2px,0);
+}
+
+/** modal custom css starts here **/
+.modal_header_cc_spnkx i {
+    color:#337ab7;
+    margin-right:7px;
+}
+
+.modal_header_cc_spnkx h4 {
+    font-size:16px !important;
+}
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 350px;
+  }    
+
+}
+.modal_footer_cc_spnkx button {
+    padding: 0 10px 1px;
+    line-height: 26px;
+    margin:0px 2px;
+}
+.modal_footer_cc_spnkx button:first-child {
+    background-color:#23bf4a;
+}
+.modal_footer_cc_spnkx button:nth-child(2) {
+    background-color:#6fb7d5;
+}
+.modal_body_cc_spnkx {
+    padding:15px 40px;
+}
+.modal_body_cc_spnkx >div {
+   margin-bottom:9px; 
+}
+.modal_body_cc_spnkx >div:last-child {
+       margin-bottom:unset; 
+
+}
+.cmn_cntnt_body_mdl span:first-child {
+    font-size: 14px;
+    font-weight: 600;
+    width: 65px;
+    display: inline-block;
+    vertical-align:middle;
+}
+.cmn_cntnt_body_mdl i {
+    margin-right:2px;
+    color:#337ab7;
+}
+.cmn_cntnt_body_mdl input {
+    display: inline;
+    width: 35%;
+    font-size: 13px;
+    height:25px;
+}
+.modal-footer, .modal-header {
+    padding:10px 15px;
+}
+.cmn_cntnt_body_mdl span:nth-child(2) {
+    font-size: 13px;
+
+}
+.note_mny_cmn_class span:first-child {
+    width:unset !important;
+}
+.note_mny_cmn_class {
+    margin-top:20px;
+}
+.note_mny_cmn_class span {
+    font-size: 12px !important;
+    font-style: italic;
+    font-weight: 400 !important;
+}
+.amt_cnttnt_dv_cls span:first-child {
+    width:108px !important;
+}
+
+
+
+/** modal custom css ends here **/

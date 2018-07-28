@@ -875,21 +875,7 @@ span.wdgt_px_cmn_cls_spx {
 .wdgt_updt_btn_mn_cntnr {
 	margin-top:20px;
 }
-.wdgt_updt_btn_sub_cntnr a, .wdgt_updt_btn_sub_cntnr input {
-	text-decoration: none !important;
-    border: none !important;
-    color: white !important;
-    font-size: 11px !important;
-    border-radius: 5px !important;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26) !important;
-    transition: .25s all ease !important;
-    cursor: pointer !important;
-    text-transform: uppercase !important;
-    width:unset !important;
-}
-.wdgt_updt_btn_sub_cntnr a:hover, .wdgt_updt_btn_sub_cntnr input:hover {
-	transform: translate3d(0,-2px,0);
-}
+
 .clr_pic_cmn_cls .iris-slider-offset {
 	height: unset !important;
 	border-radius: unset !important;
