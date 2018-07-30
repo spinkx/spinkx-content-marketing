@@ -63,7 +63,7 @@
         '<option value="LAST_30_DAYS">Last 30 Days</option>' +
         '</select></div>';
 
-      var controls = '<span class="calender-submit-cancel-btn"><button id="drp-btn-apply">Apply</button><button  id="drp-btn-cancel">cancel</button></span>';
+      var controls = '<span class="calender-submit-cancel-btn"><button id="drp-btn-apply">Apply</button><button  id="drp-btn-cancel">Cancel</button></span>';
 
       var datepickerContainer = '<div id="drp-container-datepicker"></div>';
 

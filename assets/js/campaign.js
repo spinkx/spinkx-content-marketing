@@ -126,6 +126,8 @@ function createAd(buttonObj, campaign_id, $data) {
         campaign_utm_source = $data.utm_source;
         campaign_utm_campaign = $data.utm_campaign;
         campaign_categories = $data.categories;
+        campaign_categories = campaign_categories;
+
         campaign_countries = $data.locations;
         campaign_budget_amount = $data.campaign_budget_amount;
         campaign_cpm_value = parseInt((1000/spinkxJs.cpm)*campaign_budget_amount);
@@ -166,7 +168,7 @@ function createAd(buttonObj, campaign_id, $data) {
     addhook_form += '<select name="categories[]" id="categories"  multiple>';
     temp_str = '';
     for( var index in spinkxJs.categories) {
-        temp_str2 = ( campaign_categories.indexOf(index) > -1 )?'selected="selected"':'';
+        temp_str2 = ( campaign_categories.findIndex(index) >= 0 )?'selected="selected"':'';
         temp_str += '<option value="' + index + '" '+ temp_str2 +'>' + spinkxJs.categories[index] + '</option>';
     }
     addhook_form += temp_str;
