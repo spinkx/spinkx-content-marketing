@@ -5,6 +5,7 @@ global $wpdb;
 $spnxAdminManage = new spnxAdminManage();
 $settings = get_option(SPINKX_CONTENT_LICENSE);
 $settings = maybe_unserialize($settings);
+$logo_url = SPINKX_CONTENT_PLUGIN_URL . 'assets/images/your_logo.png';
 if (  isset($settings) && $settings ) {
 	$site_id = isset($settings['site_id'])?$settings['site_id']:0;
 	$registeredemail = spnxHelper::getFilterVar( 'registeredemail' );
@@ -215,6 +216,9 @@ else {
 		$buy_now .= $dropdown->selected_site->buy_now;
 	}
 
+	if(isset( $dropdown->selected_site->logo_url ) &&  $dropdown->selected_site->logo_url  ) {
+	    $logo_url = $dropdown->selected_site->logo_url;
+    }
 	$settings['due_date'] =isset($dropdown->selected_site->due_date)?$dropdown->selected_site->due_date:null;
 	if ( isset( $dropdown->selected_site->registeredemail ) ) {
 		$registeredemail = $dropdown->selected_site->registeredemail;
@@ -272,7 +276,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 
 			<div class="cmn-cls-verticl-bus-spnx-reg-sitename">
                 <div style="width:80px; height: 40px; margin-bottom: 10px; display: inline-block;">
-	                <img  alt="" id="image-preview"  style="height: 100%;" src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/your_logo.png">
+	                <img  alt="" id="image-preview"  style="height: 100%;" src="<?php echo $logo_url?>">
 	                <input type="hidden" name="image_attachment_id" id="image_attachment_id">
                 </div>
                 <span class="reg_upload_file_type catog-des-cmn-cls-spnx-reg reg-upload-logo">
@@ -398,9 +402,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				<div style="position: relative;"><select name="primary_category">
                      <?php foreach ($dropdown->primary_categories as $key => $value ) {
 						$primary_cat = '';
-						if ( isset($dropdown->selected_site->pri_cat_id ) && $key == 1 && ! count( $dropdown->selected_site->pri_cat_id ) ) {
-							$primary_cat = "selected='selected'";
-						} elseif (  isset(  $dropdown->selected_site->pri_cat_id ) &&  $key == $dropdown->selected_site->pri_cat_id  ) {
+						if (  isset(  $dropdown->selected_site->pri_cat_id ) &&  $key == $dropdown->selected_site->pri_cat_id  ) {
 							$primary_cat = "selected='selected'";
 						}
 						echo '<option value="' . $key . '" ' . $primary_cat . '>' . $value . '</option>';

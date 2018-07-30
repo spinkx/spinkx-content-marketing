@@ -189,6 +189,8 @@ function drawChart() {
     var enddate_arr =  window.global_end_date.split('-');
     var startdate = new Date(startdate_arr[0], startdate_arr[1]-1, startdate_arr[2]);
     var enddate = new Date(enddate_arr[0], enddate_arr[1]-1, enddate_arr[2]);
+    var timeDiff = Math.abs(enddate.getTime() - startdate.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     //Create Object Visualization
     var widget= new google.visualization.DataTable();
     var local_post= new google.visualization.DataTable();
@@ -247,18 +249,23 @@ function drawChart() {
     widget.addRows($widgetArr);
     local_post.addRows($lpArr);
     boost_post.addRows($bpArr);
-    wid_point_size = parseInt($widgetArr.length/10) + 1;
-    lp_point_size = parseInt($lpArr.length/10) + 1;
-    bp_point_size = parseInt($bpArr.length/10) + 1;
+    if(diffDays >=  10) {
+        diffDays = 10;
+    } else {
+        diffDays = 1;
+    }
+    wid_point_size = parseInt($widgetArr.length/diffDays) + 1;
+    lp_point_size = parseInt($lpArr.length/diffDays) + 1;
+    bp_point_size = parseInt($bpArr.length/diffDays) + 1;
     wd_ticks = lp_ticks = bp_ticks = [];
     for(i = 1; i < wid_point_size; i++ ) {
-        wd_ticks[i-1] = i * 10;
+        wd_ticks[i-1] = i * diffDays;
     }
     for(i = 1; i < lp_point_size; i++ ) {
-        lp_ticks[i-1] = i * 10;
+        lp_ticks[i-1] = i * diffDays;
     }
     for(i = 1; i < bp_point_size; i++ ) {
-        bp_ticks[i-1] = i * 10;
+        bp_ticks[i-1] = i * diffDays;
     }
     var widImpoptions = {
         tooltip: { isHtml: true },    // CSS styling affects only HTML tooltips.
@@ -288,6 +295,7 @@ function drawChart() {
         },
 
     };
+
 
     var LPoptions = {
         tooltip: { isHtml: true },    // CSS styling affects only HTML tooltips.

@@ -256,12 +256,10 @@ $("input[name='widget_layout_type']").click(function() {
 });
 
 $("#unit_excerpt_word_limit").bind('blur',function() {
-  
   var excerpt_val = $(this).val();
   var text_container_first_val = $(".design_unit_text_continer #excrpt_txt_id_spx_hidden").text().trim();
   var text_container_final_val = text_container_first_val.substring(0,excerpt_val); 
   $(".design_unit_text_continer #excrpt_txt_id_spx").html(text_container_final_val+'..');
-
 });
 
 $(".add_widget_button").click(function() {
@@ -536,6 +534,7 @@ var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", 
 function drawChart() {
     var startdate_arr = window.global_start_date.split('-');
     var enddate_arr =  window.global_end_date.split('-');
+    var timeDiff = diffDays = null;
     var startdate =null;
     var enddate = null;
     //Create Object Visualization
@@ -556,6 +555,8 @@ function drawChart() {
         $widgetArr = [];
          startdate = new Date(startdate_arr[0], startdate_arr[1]-1, startdate_arr[2]);
          enddate = new Date(enddate_arr[0], enddate_arr[1]-1, enddate_arr[2]);
+        timeDiff = Math.abs(enddate.getTime() - startdate.getTime());
+        diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
         var counter = widclkcounter = $key = 0;
         //var dateFormatter = new google.visualization.DateFormat({pattern: 'Y,M,d,H'});
         for (; startdate <= enddate;) {
@@ -577,10 +578,15 @@ function drawChart() {
             startdate = new Date(newDate);
         }
         widget.addRows($widgetArr);
-        point_size = parseInt(counter/10) + 1;
+        if(diffDays >=  10) {
+            diffDays = 10;
+        } else {
+            diffDays = 1;
+        }
+        point_size = parseInt(counter/diffDays) + 1;
         ticks = [];
         for(i = 1; i < point_size; i++ ) {
-            ticks[i-1] = i * 10;
+            ticks[i-1] = i * diffDays;
         }
         var widImpoptions = {
             tooltip: {isHtml: true},    // CSS styling affects only HTML tooltips.
