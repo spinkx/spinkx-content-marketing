@@ -80,7 +80,7 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 
 			</td>
 			<td style="padding: 0px;">
-				<button  class=" buy-more-point" id="buy-more-point" onclick="getpoints()">Buy More Point</button>
+				&nbsp;&nbsp;&nbsp;<button  class=" buy-more-point" id="buy-more-point" onclick="getpoints()">Buy More Point</button>
 
 			</td>
 			<td  style="padding: 0px;text-align:right;">

@@ -2550,6 +2550,7 @@ tr td div.camp-group-name {
 }
 .ui-icon-circle-triangle-w {
   background-image: none !important;
+  font-size: 12px;
 }
 /**campaign css ends here **/
 .glbl_setng_cb {
@@ -2656,19 +2657,23 @@ tr td div.camp-group-name {
 
 
  /** loader css ends here **/
- .wdgt_updt_btn_sub_cntnr a, .wdgt_updt_btn_sub_cntnr input, .modal_footer_cc_spnkx button {
+ .wdgt_updt_btn_sub_cntnr a, .wdgt_updt_btn_sub_cntnr input, .modal_footer_cc_spnkx button , .calender-submit-cancel-btn button  {
     text-decoration: none !important;
     border: none !important;
     color: white !important;
-    font-size: 11px !important;
     border-radius: 5px !important;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.26) !important;
     transition: .25s all ease !important;
     cursor: pointer !important;
-    text-transform: uppercase !important;
+    text-transform: uppercase;
     width:unset !important;
+    font-size: 11px;
 }
-.wdgt_updt_btn_sub_cntnr a:hover, .wdgt_updt_btn_sub_cntnr input:hover, .modal_footer_cc_spnkx button:hover {
+.wdgt_updt_btn_sub_cntnr a, .wdgt_updt_btn_sub_cntnr input {
+        font-size: 12px !important;
+
+}
+.wdgt_updt_btn_sub_cntnr a:hover, .wdgt_updt_btn_sub_cntnr input:hover, .modal_footer_cc_spnkx button:hover, .calender-submit-cancel-btn button:hover {
     transform: translate3d(0,-2px,0);
 }
 
@@ -2749,7 +2754,37 @@ tr td div.camp-group-name {
 .amt_cnttnt_dv_cls span:first-child {
     width:108px !important;
 }
-
+ .calender-submit-cancel-btn button{
+  text-transform: unset;
+  padding: 2px 5px 3px 5px;
+}
+.calender-submit-cancel-btn #drp-btn-apply {
+    background-color:#23bf4a;
+ 
+}
+.calender-submit-cancel-btn #drp-btn-cancel
+ {
+    background-color:#6fb7d5;
+ }
 
 
 /** modal custom css ends here **/
+
+/** date range picker **/
+
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+    margin-left: -11px !important;
+    margin-top: -8.8px !important;
+}
+.ui-datepicker .ui-datepicker-header {
+    padding: unset !important;
+}
+.ui-datepicker-multi .ui-datepicker-group table {
+    width: 100% !important;
+    margin:unset !important;
+}
+#drp-container-datepicker .ui-corner-left,#drp-container-datepicker .ui-corner-right {
+  border-radius: 0px !important; 
+}
+
+/** date range picker ends here **/
