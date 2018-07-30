@@ -1382,6 +1382,7 @@ textarea.splcaheholder:-ms-input-placeholder { color: #337ab7; }
 .duration-text-first-span {
     color: #0170b6;
     font-size: 10px;
+    text-align:left;
 }
 .duration-text-first-span-span-crnt {
     color: #0170b6;
@@ -1397,6 +1398,20 @@ textarea.splcaheholder:-ms-input-placeholder { color: #337ab7; }
     margin-left: 24px;
 
 }
+.glbal_bp_main_cntnr {
+    position:relative;
+}
+.glbal_bp_main_cntnr .duration-text-first-span {
+    float:left;
+    margin-top: 2px;
+} 
+.glbal_bp_main_cntnr .cntnr-main-drn-cls{
+    position: absolute;
+    z-index: 99;
+    right:0;
+    text-align:left !important;
+}
+
 .fnt-awsm-spn {
     clear: both;
 }
