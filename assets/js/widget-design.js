@@ -136,24 +136,27 @@ $(".unit_excerpt_font_case").bind('change',function() {
 
 $(".excerpt_add_line_style").bind('change',function() {
    var line_style = $(this).val();
-   if(line_style=='aboveimg') {
-       if($(this).parents('.cntnt_dstr_cntnr').find(".design_unit_main_container_spnx").children().first().attr('class')=='hd_txt_id_spx_dv') {
-            $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_text_continer").clone().insertAfter(".hd_txt_id_spx_dv");
+    var parent = container = null;
+    if(line_style=='aboveimg') {
+        var container = $(this).parents('.cntnt_dstr_cntnr').find('.design_unit_text_continer');
+       $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_text_continer").remove();
+        if($(this).parents('.cntnt_dstr_cntnr').find(".design_unit_main_container_spnx").children().first().attr('class')=='hd_txt_id_spx_dv') {
+            parent = $(this).parents('.cntnt_dstr_cntnr').find('.hd_txt_id_spx_dv');
+            $(container).clone().insertAfter(parent);
         } else {
-            $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_text_continer").clone().prependTo(".design_unit_main_container_spnx");
-       }
+            parent = $(this).parents('.cntnt_dstr_cntnr').find('.design_unit_main_container_spnx');
+            $(container).clone().prependTo(parent);
+        }
        $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_text_continer").addClass("aboveimg_cls_spx");
-       $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_content_container .design_unit_text_continer").remove();
-   }
+    }
     else {
-    $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_text_continer").removeClass("aboveimg_cls_spx");
-    var container = $(this).parents('.cntnt_dstr_cntnr').find('.design_unit_text_continer');
-       $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_main_container_spnx .design_unit_text_continer").remove();
-     $(container).clone().appendTo(".design_unit_content_container");
+      $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_text_continer").removeClass("aboveimg_cls_spx");
+      container = $(this).parents('.cntnt_dstr_cntnr').find('.design_unit_text_continer');
+      $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_text_continer").remove();
+      parent = $(this).parents('.cntnt_dstr_cntnr').find('.design_unit_content_container');
+      $(container).clone().appendTo(parent);
 
-
-   }
-
+    }
 });
 
 $(".unit_border_width").bind('blur',function() {

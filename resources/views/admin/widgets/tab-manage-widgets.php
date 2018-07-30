@@ -80,7 +80,7 @@ if( $registration_complete ) {
 				$wp_output = wp_remote_post($url,
 					array(
 						'method' => 'GET',
-						'body' => array('from_date' => $from_date, 'to_date' => $to_date),
+						'body' => array('from_date' => $from_date, 'to_date' => $to_date, 'url' => SPINKX_CONTENT_PLUGIN_URL),
 					)
 				);
 				if (!is_wp_error($wp_output)) {
@@ -519,7 +519,7 @@ if( $registration_complete ) {
 
 								<div class="design_unit_main_container_spnx">
 									<div class="design_unit_img_container">
-										 <img src="http://localhost/wordpress/wp-content/uploads/2018/07/india-flag.png">
+										 <img src="<?php  echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/wordpress-content-marketing-plugin.jpg">
 									</div>
 									<div class="design_unit_content_container">
 										<div class="design_unit_site_view_container">
@@ -543,38 +543,7 @@ if( $registration_complete ) {
 									</div>
 								</div>
 
-								<div id="tabsp" style="display: none;">
-								    <div class="tabs-content SPINKX_preview_bg" style="background: transparent;">
-								    	<div id="tabsp-1" aria-labelledby="ui-id-1" class="" role="tabpanel" aria-hidden="false">
-										<!----Start Masonry---->
-											<div class="masonry-grid" style="background: transparent; display: block; position: relative; height: 0px;">
 
-												<div class="SPINKX_preview_fg grid-item grid-item--height" style="height: 300px; background: rgb(254, 254, 254); border-width: 1px; border-style: solid; border-color: rgb(216, 216, 216); border-radius: 6px; margin-bottom: 8px; width: 236px !important; position: absolute; transition-property: transform, opacity; transition-duration: 0.4s;">
-													<!-- block Start -->
-													<h4 class="pre-title SPINKX_preview_title_h3 divider_above_img" style="font-size: 14px; line-height: 18px; font-weight: bold; color: #000000; font-family: Carrois Gothic text-transform: none;display: none;">India</h4>
-													<p class="pre-desc alter excerpt_content SPINKX_preview_content excerpt_aboveimg excerpt_content_1" id="content" style="font-size: 14px; line-height: 18px;display: none; color:#333333; text-transform: none; font-weight: normal;">
-														India is a vast South Asian country with diverse terrain – from Himalayan peaks to Indian Ocean co...		</p>
-													<div class="pre-img">
-														<img src="http://localhost/wordpress/wp-content/uploads/2018/07/india-flag.png" alt="">
-													</div>
-													<div class="site_name" style="font-size: 10px;padding: 5px 3px;color: grey;display: block;line-height: normal; width:100%; ">
-														<span style="max-width:60%;float:left;margin:0;padding-left: 6px">spinkx_testing
-														</span>
-														<span style="float:right;padding-right:3px;">     <i style="margin-right: 2px;" class="fa fa-eye" aria-hidden="true"></i>0.0d</span></div>
-													<h4 class="pre-title SPINKX_preview_title_h3 divider_below_img" style="font-size: 14px; line-height: 18px; font-weight: bold; color: #000000; font-family: Carrois Gothic text-transform: none;display: block;">India</h4>
-
-
-													<p class="pre-desc alter excerpt_content SPINKX_preview_content excerpt_belowimg excerpt_content_1" id="content" style="font-size: 14px; line-height: 18px;display: block; color:#333333; text-transform: none; font-weight: normal;">
-														India is a vast South Asian country with diverse terrain – from Himalayan peaks to Indian Ocean co...		</p>
-													<ul class="likes">
-													</ul>
-												</div>
-										    </div>
-									<!----End masonry----->
-		                               </div>
-								    </div>
-
-								</div>
 
 
 						</div>
