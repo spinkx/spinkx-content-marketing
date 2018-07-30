@@ -197,33 +197,36 @@ if( is_array($data)) {?>
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header modal_header_cc_spnkx">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><strong>Buy Points</strong></h4>
+                    <h4 class="modal-title"><i class="fas fa-bullseye"></i><strong>Buy Points</strong></h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body modal_body_cc_spnkx">
                     <?php if(isset($data['reach'])) { ?>
-                        <div class="form-group">
-                            <label for="point_amount">Points</label><br/>
-                            <br/><input	type="number" class="form-control" id="buy_point"  style="display: inline;width:40%;" value="100"/>
+                        <div class="cmn_cntnt_body_mdl">
+                           <span>Points</span>
+                            <input	type="number" class="form-control" id="buy_point" value="100"/>
                         </div>
-                        <div class="form-group">
-                            <label>Reach</label>
-                            <label id="reach" style="margin-left: 20px"><?php echo $data['reach']?></label>
+                        <div class="cmn_cntnt_body_mdl">
+                           <span>Views</span>
+                            <span id="reach"><?php echo $data['reach']?></span>
                         </div>
 
-                        <div class="form-group">
-                            <label>Price</label>
-                            <label style="margin-left: 20px"><i id="currency_format" class="fa fa-<?php echo strtolower($data['currency']) ?>" style="display: inline;"></i><span id="amount"><?php echo $data['price']?></label>
+                        <div class="cmn_cntnt_body_mdl">
+                            <span>Price</span>
+                            <span ><i id="currency_format" class="fa fa-<?php echo strtolower($data['currency']) ?>" style="display: inline;"></i><span id="amount"><?php echo $data['price']?></span>
                             <input type="hidden" id="point_amount" value="<?php echo $data['price']?>" />
                         </div>
-                        <?php
+                    </div>
+                    <div class="modal-footer modal_footer_cc_spnkx">
+                         <?php
                         if(isset($data['buy_points'])) {
                             echo do_shortcode($data['buy_points']);
                         }
                     }
                     ?>
-                </div>
+                    <button data-dismiss="modal">CANCEL</button>
+                    </div>
             </div>
         </div>
     </div>
