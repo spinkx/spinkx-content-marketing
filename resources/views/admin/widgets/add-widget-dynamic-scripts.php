@@ -252,9 +252,7 @@
 
 		/* ColorPicker Script Starts Here */
 		/* // Initiate the ColorPicker */
-		$("#bg_color").wpColorPicker({
-			color: "' . $unit_bg_color .'"
-		});
+		
 		$("#fg_color").wpColorPicker({
 			color: "' . $unit_fg_color .'"
 		});
