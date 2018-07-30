@@ -76,11 +76,11 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 		<tr>
 			<td  style="padding: 0px;text-align: right;">
 				<span class="duration-text-first-span-span-crnt">Current Points: <span id="credit_points_value"><?php echo $spnxAdminManage->spinkx_cont_get_credit_points();?></span></span>
-				<button  class=" buy-more-point" id="buy-more-point" onclick="getpoints()">Buy More Point</button>
+				
 
 			</td>
-			<td>
-				
+			<td style="padding: 0px;">
+				<button  class=" buy-more-point" id="buy-more-point" onclick="getpoints()">Buy More Point</button>
 
 			</td>
 			<td  style="padding: 0px;text-align:right;">
@@ -234,7 +234,7 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 
 					<div class="cmn_cntnt_body_mdl">
 						<span>Price</span>
-						<span><i id="currency_format" class="fa fa-<?php echo strtolower($response['currency_format']) ?>" style="display: inline;"></i><span id="amount"><?php echo $response['price']?></label>
+						<span><i id="currency_format" class="fa fa-<?php echo strtolower($response['currency_format']) ?>" style="display: inline;"></i><span id="amount"><?php echo $response['price']?></span>
 						<input type="hidden" id="point_amount" value="<?php echo $response['price']?>" />
 					</div>
 					</div>

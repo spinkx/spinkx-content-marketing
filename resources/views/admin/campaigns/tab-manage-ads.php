@@ -159,19 +159,19 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 		<tr>
 			<td style="padding: 0px;text-align: right;">
 			<span class="duration-text-first-span-span-crnt">Wallet Balance: <i class="fa <?php echo $currencyClass?>"></i><?php  printf('%.2f', $output['user_bal'])?></span>
-				<button class=" buy-more-point" id="add_money_wallet"  onclick="jQuery('#campaignmodaladdMoney').modal({
+				
+            </td>
+            <td  style="padding: 0px;">
+            	<button class=" buy-more-point" id="add_money_wallet"  onclick="jQuery('#campaignmodaladdMoney').modal({
     backdrop: 'static',
     keyboard: false,
     show: true
 })">Add Money to Wallet</button>
             </td>
 
-			<td  style="padding: 0px;text-align: center; display: none;">
-				<span><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"><a href="#" id="sortby_local_reach">Views</a>|<a href="#" id="sortby_local_ctr">Engagement</a></span>
-
-			</td>
 			<td  style="padding: 0px;text-align: center;display: none;">
 				<span style=""><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"> <a href="#" id="sortby_global_reach">Views</a>|<a href="#" id="sortby_global_ctr">Engagement</a></span>
+				<span><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"><a href="#" id="sortby_local_reach">Views</a>|<a href="#" id="sortby_local_ctr">Engagement</a></span>
 				</td>
 		</tr>
 		<tr style="background-color: #e4eff4 !important;height: 30px;font-size: 12px; color:#0170b6;">
@@ -193,7 +193,7 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 	?>
 	</div>
 	<div id="campaignmodaladdMoney" style="z-index: 9999;" class="modal fade" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal_dialog_main_cntanr">
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header modal_header_cc_spnkx">

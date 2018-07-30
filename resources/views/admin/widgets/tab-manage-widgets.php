@@ -161,7 +161,7 @@ if( $registration_complete ) {
 										<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" checked="" value="masonry">
 										<strong>Pinterest style </strong>
 									</div>
-									<div>
+									<div style="display: none;">
 										<input type="radio" id="widget_layout_type" class="widget_layout_fixed" name="widget_layout_type" value="fixed-width">
 										<strong>Fixed Width &amp; Height </strong>
 
@@ -263,12 +263,12 @@ if( $registration_complete ) {
 
 									<div class="mb_sd_cm_cl">
 										<span>Border Width</span>
-										<input type="number" id="unit_border_width" value="1" name="unit_border_width" min="0" max="45">
+										<input type="number" class ="unit_border_width" id="unit_border_width" value="1" name="unit_border_width" min="0" max="45">
 										<span class="wdgt_px_cmn_cls_spx">px</span>
 									</div>
 									<div class="mb_sd_cm_cl">
 										<span>Border Style</span>
-                                        <select id="unit_border_style" name="unit_border_style">
+                                        <select class="unit_border_style" id="unit_border_style" name="unit_border_style">
 									         <option value="none">none</option>
 										     <option value="dotted">dotted</option>
 										     <option value="dashed">dashed</option>
@@ -284,17 +284,18 @@ if( $registration_complete ) {
 	        					  	<div class="mb_sd_cm_cl">
 	        					  		<span>Border Color</span>
 							           <div class="clr_pic_cmn_cls">
-                                        	<input type="text" id="unit_border_color" value="#d8d8d8" name="unit_border_color" placeholder="#000000" class="">
+                                        	<input type="text" id="unit_border_color" value="#d8d8d8" name="unit_border_color" placeholder="#000000" class="
+                                        	unit_border_color">
                                         </div>
 							        </div>
 						             <div class="mb_sd_cm_cl">
 									 	<span>Border Radius</span>
-									 	<input type="number" id="unit_border_radius" value="6" name="unit_border_radius" min="0" max="45">
+									 	<input type="number" id="unit_border_radius" value="6" name="unit_border_radius" min="0" max="45" class="unit_border_radius">
 									 	<span class="wdgt_px_cmn_cls_spx">px</span>
 									</div>
 									<div class="mb_sd_cm_cl">
 										<span>Unit Spacing</span>
-										<input type="number" max="40" min="4" name="unit_spacing" value="20" id="unit_spacing">
+										<input type="number" max="40" min="4" name="unit_spacing" value="20" id="unit_spacing" class="unit_spacing">
 										 <span class="wdgt_px_cmn_cls_spx">px</span>
 									</div>
 									<div class="mb_sd_cm_cl cmn_cls_unit_wdth_hght">
@@ -310,7 +311,7 @@ if( $registration_complete ) {
 									<div>
 										<span>Foreground Color</span>
 										<div class="clr_pic_cmn_cls">
-										<input type="text" id="fg_color" value="#fefefe" name="unit_fg_color" placeholder="#fefefe" class="colorPicker evo-cp1 foreground_color_spx">
+										<input type="text" id="fg_color" value="#fefefe" name="unit_fg_color" placeholder="#fefefe" class="colorPicker evo-cp1 foreground_color_spx fg_color">
 									    </div>
 
 								   </div>
@@ -338,18 +339,18 @@ if( $registration_complete ) {
 								<div class="wdgt_hdn_cntnt_spkx_cntnr mr_wdt_dst_cmn_cls_hf">
 									<div class="mb_sd_cm_cl">
 										<span>Font Size</span>
-										<input type="number" id="unit_title_font_size" value="14" name="unit_title_font_size" min="7" max="60">
+										<input type="number" id="unit_title_font_size" value="14" name="unit_title_font_size" min="7" max="60" class="unit_title_font_size">
 										<span class="wdgt_px_cmn_cls_spx">px</span>
 
 									</div>
 									<div class="mb_sd_cm_cl">
 										<span>Line Height</span>
-	                                    <input type="number" id="unit_title_line_height" value="18" name="unit_title_line_height" min="0" max="90">
+	                                    <input type="number" id="unit_title_line_height" value="18" name="unit_title_line_height" min="0" max="90" class="unit_title_line_height">
 	                                    <span class="wdgt_px_cmn_cls_spx">px</span>
 									</div>
 									<div class="mb_sd_cm_cl">
 										<span>Font Weight</span>
-										<select id="unit_title_font_style" name="unit_title_font_style" class="font_style">
+										<select id="unit_title_font_style" name="unit_title_font_style" class="font_style unit_title_font_style">
 											<option value="lighter">lighter</option>
 											<option value="normal">normal</option>
 											<option selected="" value="bold">bold</option>
@@ -358,7 +359,7 @@ if( $registration_complete ) {
 									</div>
 						            <div class="mb_sd_cm_cl">
 										 <span>Text Transform</span>
-                                         <select id="unit_title_font_case" name="unit_title_font_case" class="font_case">
+                                         <select id="unit_title_font_case" name="unit_title_font_case" class="font_case unit_title_font_case">
 											<option selected="" value="none">none</option>
 											<option value="uppercase">uppercase</option>
 											<option value="lowercase">lowercase</option>
@@ -369,12 +370,12 @@ if( $registration_complete ) {
 									<div class="mb_sd_cm_cl">
 										<span>Font Color</span>
 										<div class="clr_pic_cmn_cls">
-                                        	<input type="text" id="unit_title_font_color" value="#000000" name="unit_title_font_color" placeholder="#000000" class="">
+                                        	<input type="text" id="unit_title_font_color" value="#000000" name="unit_title_font_color" placeholder="#000000" class="unit_title_font_color">
                                         </div>
 									</div>
 									<div>
 										<span>Line Style</span>
-										<select id="unit_add_line_style" name="unit_add_tall_style" class="line-style-tall" style="width:150px;">
+										<select id="unit_add_line_style" name="unit_add_tall_style" class="line-style-tall unit_add_line_style" style="width:150px;">
 											<option value="aboveimg">Above Image</option>
 											<option selected="" value="belowimg">Below Image</option>
 										</select>
@@ -415,17 +416,17 @@ if( $registration_complete ) {
 								<div class="wdgt_hdn_cntnt_spkx_cntnr mr_wdt_dst_cmn_cls_hf">
 									<div class="mb_sd_cm_cl">
 										<span>Font Size</span>
-										<input type="number" id="unit_excerpt_font_size" value="14" name="unit_excerpt_font_size" min="7" max="60">
+										<input type="number" id="unit_excerpt_font_size" value="14" name="unit_excerpt_font_size" min="7" max="60" class="unit_excerpt_font_size">
 									    <span class="wdgt_px_cmn_cls_spx">px</span>
 									</div>
 									<div class="mb_sd_cm_cl">
 										<span>Line Height</span>
-										<input type="number" id="unit_excerpt_line_height" value="18" name="unit_excerpt_line_height" min="0" max="90">
+										<input type="number" class="unit_excerpt_line_height" id="unit_excerpt_line_height" value="18" name="unit_excerpt_line_height" min="0" max="90">
                                         <span class="wdgt_px_cmn_cls_spx">px</span>
 									</div>
 									<div class="mb_sd_cm_cl">
 										<span>Font Weight</span>
-										<select id="unit_excerpt_font_style" name="unit_excerpt_font_style" class="font_style">
+										<select id="unit_excerpt_font_style" name="unit_excerpt_font_style" class="font_style unit_excerpt_font_style">
 											<option value="lighter">lighter</option>
 											<option selected="" value="normal">normal</option>
 											<option value="bold">bold</option>
@@ -434,7 +435,7 @@ if( $registration_complete ) {
 									</div>
 									<div class="mb_sd_cm_cl">
 										<span>Text Transform</span>
-										<select id="unit_excerpt_font_case" name="unit_excerpt_font_case" class="font_case">
+										<select id="unit_excerpt_font_case" name="unit_excerpt_font_case" class="font_case unit_excerpt_font_case">
 											<option selected="" value="none">none</option>
 											<option value="uppercase">uppercase</option>
 											<option value="lowercase">lowercase</option>
@@ -445,20 +446,20 @@ if( $registration_complete ) {
                                     <div class="mb_sd_cm_cl">
                                     	<span>Font Color</span>
                                         <div class="clr_pic_cmn_cls">
-                                        	<input type="text" id="unit_excerpt_font_color" value="#333333" name="unit_excerpt_font_color" placeholder="#000000" class="">
+                                        	<input type="text" id="unit_excerpt_font_color" value="#333333" name="unit_excerpt_font_color" placeholder="#000000" class="unit_excerpt_font_color">
                                         </div>
 
 									</div>
 									<div class="mb_sd_cm_cl">
 										<span>Excerpt</span>
-										<select id="excerpt_add_line_style" name="unit_excerpt_tall_style" title="line-style" class="line-style-tall" style="width:150px;">
+										<select id="excerpt_add_line_style" name="unit_excerpt_tall_style" title="line-style" class="line-style-tall excerpt_add_line_style" style="width:150px;">
 											<option value="aboveimg">Above Image</option>
 											<option selected="" value="belowimg">Below Image</option>
 										</select>
 								   </div>
 								   <div>
 										<span>Excerpt Limit</span>
-										<input type="number" id="unit_excerpt_word_limit" value="100" name="unit_excerpt_word_limit" placeholder="100">
+										<input type="number" id="unit_excerpt_word_limit" value="100" name="unit_excerpt_word_limit" placeholder="100" class="unit_excerpt_word_limit">
 									</div>
 									<div style="display:none">
 										<span></span>
@@ -528,14 +529,14 @@ if( $registration_complete ) {
 												0.0d
 											</span>
 										</div>
-										<div class="design_unit_hdline_container" id="hd_txt_id_spx_dv">
-											<h4 id="hd_txt_id_spx">India</h4>
+										<div class="design_unit_hdline_container hd_txt_id_spx_dv" id="hd_txt_id_spx_dv">
+											<h4 class="hd_txt_id_spx" id="hd_txt_id_spx">India</h4>
 										</div>
 										<div class="design_unit_text_continer">
-											<span id="excrpt_txt_id_spx" class="excerpt_txt_mn_cls">
+											<span id="excrpt_txt_id_spx" class="excerpt_txt_mn_cls excrpt_txt_id_spx">
 												India is a vast South Asian country with diverse terrain – from Himalayan peaks to Indian Ocean co...
 											</span>
-											<span id="excrpt_txt_id_spx_hidden" style="display: none;">
+											<span class="excrpt_txt_id_spx_hidden" id="excrpt_txt_id_spx_hidden" style="display: none;">
 												India is a vast South Asian country with diverse terrain – from Himalayan peaks to Indian Ocean co...
 											</span>
 										</div>

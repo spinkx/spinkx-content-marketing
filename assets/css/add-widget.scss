@@ -733,7 +733,6 @@ div.wdgt_hdr_mn_hldr_spkx {
 .cntnt_dstr_cntnr {
 	display: flex;
 	justify-content:space-between;
-	display:none;
 }
 
 .wdgt_edit_cmn_cls_spx {
@@ -744,8 +743,9 @@ div.wdgt_hdr_mn_hldr_spkx {
 	margin-bottom:10px;
 	background-color:#f5f5f5;
     box-shadow:0 1px 1px rgba(0, 0, 0, 0.04);
-
-	
+}
+.cmn_wdgt_tb_mn_cntnr select {
+   width:unset !important;	
 }
 .cmn_wdgt_tb_mn_cntnr>div:first-child {
 	font-weight: bold;
