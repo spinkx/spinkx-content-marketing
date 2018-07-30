@@ -196,21 +196,34 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 		<div class="modal-dialog">
 			<!-- Modal content-->
 			<div class="modal-content">
-				<div class="modal-header">
+				<div class="modal-header modal_header_cc_spnkx">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title"><strong>Add Money to Wallet</strong></h4>
+					<h4 class="modal-title"><i class="far fa-credit-card"></i><strong>Add Money to Wallet</strong></h4>
 				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<div class="cmpgn-dv-entr-amnt" for="point_amount">Enter Amount</div>
-                            <i class="fa <?php echo $currencyClass?>"></i><input	type="text" class="form-control" id="wallet_amount" style="display: inline;width:40%;" value="100"/>
+				<div class="modal-body modal_body_cc_spnkx">
+					<div class="cmn_cntnt_body_mdl amt_cnttnt_dv_cls">
+						<span class="cmpgn-dv-entr-amnt" for="point_amount">Enter Amount</span>
+						    <span> 
+						    	<i class="fa <?php echo $currencyClass?>"></i>
+						    	<input type="text" class="form-control" id="wallet_amount" value="100"/>
+						    </span>
+                           
 					</div>
+					<div class="cmn_cntnt_body_mdl note_mny_cmn_class">
+						<span>You do not need to add money if you already have money in your SPINKX wallet.</span>
+						
+					</div>
+					
+				</div>
+				<div class="modal-footer modal_footer_cc_spnkx">
 					<?php
 						if ( isset( $output['add_money'] ) && $output['add_money']) {
 							$response_money = str_replace('flag="3"', 'flag="4"', $output['add_money']);
 							echo do_shortcode($response_money);
 						}
 					?>
+					<button data-dismiss="modal">CANCEL</button>
+
 				</div>
 			</div>
 		</div>
