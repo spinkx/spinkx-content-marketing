@@ -392,7 +392,7 @@ function spinkx_header_menu() {
 	$settings = maybe_unserialize( $settings );
 	$site_id = isset($settings['site_id'])?$settings['site_id']:0;
     $settings['due_date'] = isset($settings['due_date'])?$settings['due_date']:'0000-00-00 00:00:00';
-    ?><div><div class="spnx-menu-logo"><span><a href="https://www.spinkx.com"><img src="<?php echo SPINKX_CONTENT_CDN_URL; ?>media/spinkx-logo.png" /></a></span></div>
+    ?><div><div class="spnx-menu-logo"><span><a href="https://www.spinkx.com"><img src="<?php echo SPINKX_CONTENT_PLUGIN_URL; ?>assets/images/spinkx-logo.png" /></a></span></div>
 	<ul class="nav nav-tabs">
         <?php if(  $settings['due_date'] == '0000-00-00 00:00:00'  ) {?>
 		<li <?php echo ('spinkx-site-register' === $page)?'class="active"':''?>><a href="?page=spinkx-site-register">Registration</a></li>
