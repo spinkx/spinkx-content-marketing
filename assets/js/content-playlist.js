@@ -196,6 +196,9 @@ jQuery( document ).ready(function() {
             }
         });
     });
+    jQuery('.fnt-click-close-drn').click(function(){
+        jQuery(".modified-category-g").toggle()
+    });
 
 });
 function all_onoff(type){
@@ -1182,6 +1185,8 @@ function modifiedcategory($id) {
         selectAll: true
     });
     jQuery(".modified-category-"+$id).toggle();
+   
+
 }
 
 function filterColumn ( i ) {

@@ -335,7 +335,6 @@ $(".sh_hide_wdgt_grph").click(function() {
       //  $(".ajax_create_button").attr("disabled",false);
         $( ".ajax_create_button" ).click(function( e ) {
             e.preventDefault();
-            alert('sds')
             var form_serialized_data = $("form#SPINKX_create_form").serialize();
             var main_widget_id = $("#main_widget_id").val();
             /*------------------------------------------------------------------------------*/
@@ -369,6 +368,41 @@ $(".sh_hide_wdgt_grph").click(function() {
                 }
             });
         });
+
+    $( ".ajax_update_button" ).click(function( e ) {
+        e.preventDefault();
+        var form_serialized_data = $(this).parents('form#SPINKX_create_form').serialize();
+        var main_widget_id = $('#main_widget_id').val();
+
+        var page_url = window.location.href;
+        var page_new_url = page_url.split("?")[0];
+        var add_shortcode = $('#add_shortcode').val();
+        var wp_section = $('#wp_section').val();
+        $.ajax({
+            url : ajaxurl,
+            data : {
+                'action': 'spinkx_cont_widget_update',
+                'form_serialized_data' : form_serialized_data,
+                'main_widget_id' : main_widget_id,
+                'mode' : 'update',
+            },
+            type : 'post',
+            datatype : 'json',
+            success : function(data){
+                $('#bpopup_ajax_loading').bPopup().close();
+                $.growl.notice({ message: "Successfully Updated!",
+                    location: 'tr',
+                    size: 'large' });
+            },
+            failure : function(data){
+                console.log(data);
+                $('#bpopup_ajax_loading').bPopup().close();
+                $.growl.error({ message: "Failed to Update!",
+                    location: 'tr',
+                    size: 'large' });
+            }
+        });
+    });
 
 
     $( ".ajax_reset_button" ).click(function( e ) {

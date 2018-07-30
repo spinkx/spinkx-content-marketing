@@ -90,7 +90,7 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 				<span class="glbl_setng_cb"><i class="fa fa-cog" aria-hidden="true" aria-hidden="true" onclick="modifiedcategory('g')"></i></span>
                     <div class="cntnr-main-drn-cls modified-category-g" style="display:none;">
                     	<span class="duration-text-first-span"> Modified category</span>
-                                       <span class="fnt-awsm-spn"><i class="fa fa-times fnt-click-disable-drn" aria-hidden="true" onclick="modifiedcategory('1728')"></i></span>
+                                       <span class="fnt-awsm-spn"><i class="fa fa-times fnt-click-disable-drn fnt-click-close-drn" aria-hidden="true" onclick="modifiedcategory('1728')"></i></span>
 
 
                         <div class="select-drtn-cls">
