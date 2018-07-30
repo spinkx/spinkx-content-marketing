@@ -509,7 +509,7 @@ if( $registration_complete ) {
 									<!--  SPINKX AJAX Update Settings Ends Here  -->
 									<!--
 									<a id="ajax_reset_button" class="button ajax_reset_button" alt="Reset" href="javaScript:;void(0)">Reset Widget</a>
-								-->
+								    -->
 
 								</div>
 							</div>
