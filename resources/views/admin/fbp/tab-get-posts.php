@@ -83,11 +83,14 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 				
 
 			</td>
-			<td  style="padding: 0px;text-align:left;">
+			<td  style="padding: 0px;text-align:right;">
                 <?php if(is_array($catlists) && count($catlists) > 0) { ?>
+                <div class="glbal_bp_main_cntnr">	
 				<span class="duration-text-first-span-span-crnt glbl_stngs_lbl">Global Settings</span>
 				<span class="glbl_setng_cb"><i class="fa fa-cog" aria-hidden="true" aria-hidden="true" onclick="modifiedcategory('g')"></i></span>
                     <div class="cntnr-main-drn-cls modified-category-g" style="display:none;">
+                    	<span class="duration-text-first-span"> Modified category</span>
+                                       <span class="fnt-awsm-spn"><i class="fa fa-times fnt-click-disable-drn" aria-hidden="true" onclick="modifiedcategory('1728')"></i></span>
 
 
                         <div class="select-drtn-cls">
@@ -118,6 +121,7 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
                         </div>
 
                     </div>
+                </div>    
                <?php } ?>
 			</td>
 			
