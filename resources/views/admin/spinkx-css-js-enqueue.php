@@ -344,6 +344,9 @@ function spinkx_cont_campaign_set_css_js($path) {
 	}';
 	wp_add_inline_style( 'jquery-ui', $custom_css );
 	wp_enqueue_media();
+	wp_enqueue_script( 'jquery-dateFormat-js', $vendor . 'jQuery-dateformat/js/jquery-dateFormat.min.js' );
+	wp_enqueue_script( 'jquery-moment-js', $vendor . 'moment/js/moment.min.js' );
+	wp_enqueue_script( 'jquery-datetimepicker-js', $vendor . 'bootstrap/js/bootstrap-datetimepicker.js' );
 	wp_enqueue_script( 'jquery-campaign', $path[0] . 'js/campaign.js' );
 	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
 	wp_enqueue_script( 'jquery-multiselect-js', $vendor . 'jQuery-multiselect/js/jquery.multiselect.js' );
