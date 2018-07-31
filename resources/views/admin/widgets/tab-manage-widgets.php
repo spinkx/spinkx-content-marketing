@@ -159,7 +159,7 @@ if( $registration_complete ) {
 								<div class="wdgt_hdn_cntnt_spkx_cntnr">
 									<div class="mb_sd_cm_cl">
 
-										<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" checked="" value="masonry">
+										<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" checked value="masonry">
 										<strong>Pinterest style </strong>
 									</div>
 									<div class="mb_sd_cm_cl" style="display: none;">
@@ -222,7 +222,7 @@ if( $registration_complete ) {
 										<input type="number" class ="unit_border_width" id="unit_border_width" value="1" name="unit_border_width" min="0" max="45">
 										<span class="wdgt_px_cmn_cls_spx">px</span>
 									</div>
-									<div class="mb_sd_cm_cl">
+									<div class="mb_sd_cm_cl" style="display:none;">
 										<span>Image Height</span>
 										<input id="img_height" type="text" title="Image Height" value="" name="img_height" readonly="readonly" style="cursor: not-allowed;">
 										<span class="wdgt_px_cmn_cls_spx">px</span>
