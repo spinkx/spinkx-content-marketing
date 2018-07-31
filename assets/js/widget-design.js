@@ -282,6 +282,16 @@ $(".add_widget_button").click(function() {
 
 });
 
+$("#close_new_widget_create").click(function() {
+   $(".ad_nw_wdgt_mn_cntainer").slideUp();
+
+   var add_wdgt_txt = $(".add_widget_button").text();
+  if(add_wdgt_txt=='Cancel') {
+    $(".add_widget_button").html("+ Add New Widget");
+  }
+})
+
+
 $(".sh_hide_wdgt_grph").click(function() {
     var inner_text = $(this).text();
     if(inner_text=='Edit Widget') {
