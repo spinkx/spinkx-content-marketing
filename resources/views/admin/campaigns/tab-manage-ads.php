@@ -162,7 +162,7 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 				
             </td>
             <td  style="padding: 0px;">
-            	<button class=" buy-more-point" id="add_money_wallet"  onclick="jQuery('#campaignmodaladdMoney').modal({
+            	&nbsp;&nbsp;&nbsp;<button class=" buy-more-point" id="add_money_wallet"  onclick="jQuery('#campaignmodaladdMoney').modal({
     backdrop: 'static',
     keyboard: false,
     show: true
