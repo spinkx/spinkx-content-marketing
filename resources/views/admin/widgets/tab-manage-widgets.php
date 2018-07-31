@@ -144,11 +144,6 @@ if( $registration_complete ) {
                                         </div>
 
 									</div>
-									<div class="shrtcode_fnt_cls cntnt_dstr_shrt_cde " style="display: none;">
-                                        <span class="display-shortcode">[spinkx id="1840"]</span>
-										<input type="hidden" id="main_widget_id" value="" name="main_widget_id" placeholder="" readonly="">
-										<input type="hidden" id="add_shortcode" value="" name="add_shortcode" placeholder="Shortcode">
-									</div>
 								</div>
 							</div>
 							<div class="cmn_wdgt_tb_mn_cntnr">
