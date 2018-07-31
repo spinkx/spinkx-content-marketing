@@ -42,6 +42,8 @@ function spinkx_cont_icon_css() {
 }
  **/
 function spinkx_admin_add_inline_js(){
+	wp_register_style('spinkx_content_marketing_dashicons', SPINKX_CONTENT_DIST_URL .'css/spinkx-content-marketing.css');
+	wp_enqueue_style('spinkx_content_marketing_dashicons');
     wp_enqueue_script( 'spinkx-top-notifications', SPINKX_CONTENT_DIST_URL . 'js/common.js' );
 }
 
