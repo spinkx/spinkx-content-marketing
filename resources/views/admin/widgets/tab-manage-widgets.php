@@ -162,6 +162,17 @@ if( $registration_complete ) {
 										<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" checked="" value="masonry">
 										<strong>Pinterest style </strong>
 									</div>
+									<div class="mb_sd_cm_cl" style="display: none;">
+										<div>
+											<input type="radio" id="unit_layout_type" class="unit_layout_tall" name="unit_layout_type" checked="" value="tall">
+											<strong>Tall</strong>
+										</div>
+										<div>
+											<input type="radio" id="unit_layout_type" class="unit_layout_wide" name="unit_layout_type" value="wide">
+											<strong>Wide</strong>
+										</div>
+										
+									</div>
 									<div style="display: none;">
 										<input type="radio" id="widget_layout_type" class="widget_layout_fixed" name="widget_layout_type" value="fixed-width">
 										<strong>Fixed Width &amp; Height </strong>
@@ -179,6 +190,7 @@ if( $registration_complete ) {
 
 										</div>
 									</div>
+
 								</div>
 							</div>
 							<div class="cmn_wdgt_tb_mn_cntnr">
@@ -197,64 +209,7 @@ if( $registration_complete ) {
 					                   </div>
 					                   </div>
 									</div>
-							</div>
-							<div class="cmn_wdgt_tb_mn_cntnr" style="display: none;">
-								<div>
-									<i class="fa fa-list-alt cmn_icn_dst" aria-hidden="true"></i>Unit Size
-									<i class="fas fa-chevron-right"></i>
-								</div>
-								<div class="wdgt_hdn_cntnt_spkx_cntnr mr_wdt_dst_cmn_cls_spx">
-									<div class="mb_sd_cm_cl">
-										<span>Width</span>
-										<input id="img_crop_widthhhh" type="number" value="236" name="img_crop_width" placeholder="236" readonly="readonly" style="cursor: not-allowed;">
-										<span class="wdgt_px_cmn_cls_spx"> px</span>
-									</div>
-									<div>
-										<span>Height</span>
-										<input id="img_crop_heighttt" type="number" value="300" name="img_crop_height" placeholder="300" readonly="readonly" style="cursor: not-allowed;">
-										<span class="wdgt_px_cmn_cls_spx">px</span>
-									</div>
-
-								</div>
-							</div>
-							<div class="cmn_wdgt_tb_mn_cntnr" style="display: none;">
-								<div>
-									<i class="fa fa-list-alt cmn_icn_dst" aria-hidden="true"></i>Unit Spacing
-									<i class="fas fa-chevron-right"></i>
-								</div>
-								<div class="wdgt_hdn_cntnt_spkx_cntnr mr_wdt_dst_cmn_cls_spx">
-									<div>
-										<span>Pixel </span>
-										<input type="number" max="40" min="4" name="unit_spacingggg" value="20" id="unit_spacingggg">
-										 <span class="wdgt_px_cmn_cls_spx">px</span>
-									</div>
-								</div>
-							</div>
-							<div style="display: none;">COLOR &amp; DISPLAY</div>
-							<div class="cmn_wdgt_tb_mn_cntnr" style="display: none;">
-								<div>
-									<i class="fas fa-tachometer-alt cmn_icn_dst"></i>Widget Background Color
-									<i class="fas fa-chevron-right"></i>
-								</div>
-								<div class="wdgt_hdn_cntnt_spkx_cntnr">
-									<div>
-										<input type="text" id="bg_color" value="transparent" name="unit_bg_color" placeholder="transparent" class="colorPicker evo-cp0">
-
-									</div>
-								</div>
-							</div>
-							<div class="cmn_wdgt_tb_mn_cntnr" style="display: none;">
-								<div>
-									<i class="fa fa-list-alt cmn_icn_dst" aria-hidden="true"></i>Unit Foreground Color
-								    <i class="fas fa-chevron-right"></i>
-								</div>
-								<div class="wdgt_hdn_cntnt_spkx_cntnr">
-									<div>
-										<input type="text" id="fg_colorrr" value="#fefefe" name="unit_fg_color" placeholder="#fefefe" class="colorPicker evo-cp1">
-
-								   </div>
-								</div>
-							</div>
+							</div>							
 							<div class="cmn_wdgt_tb_mn_cntnr">
 								<div>
 									<i class="fa fa-list-alt cmn_icn_dst" aria-hidden="true"></i>Unit Styling
@@ -265,6 +220,11 @@ if( $registration_complete ) {
 									<div class="mb_sd_cm_cl">
 										<span>Border Width</span>
 										<input type="number" class ="unit_border_width" id="unit_border_width" value="1" name="unit_border_width" min="0" max="45">
+										<span class="wdgt_px_cmn_cls_spx">px</span>
+									</div>
+									<div class="mb_sd_cm_cl">
+										<span>Image Height</span>
+										<input id="img_height" type="text" title="Image Height" value="" name="img_height" readonly="readonly" style="cursor: not-allowed;">
 										<span class="wdgt_px_cmn_cls_spx">px</span>
 									</div>
 									<div class="mb_sd_cm_cl">
@@ -318,20 +278,6 @@ if( $registration_complete ) {
 								   </div>
 								</div>
 							</div>
-							<div class="cmn_wdgt_tb_mn_cntnr" style="display: none;">
-								<div>
-									<i class="fa fa-list-alt cmn_icn_dst" aria-hidden="true"></i>Unit Corner Radius
-									<i class="fas fa-chevron-right"></i>
-								</div>
-								 <div class="wdgt_hdn_cntnt_spkx_cntnr mr_wdt_dst_cmn_cls_spx_brdr">
-								 	<div>
-									 	<span>Border Radius</span>
-									 	<input type="number" id="unit_border_radius" value="6" name="unit_border_radius" min="0" max="45">
-									 	<span class="wdgt_px_cmn_cls_spx">px</span>
-									</div>
-								 </div>
-							</div>
-							<div style="display: none;">TEXT FONT &amp; COLOR</div>
 							<div class="cmn_wdgt_tb_mn_cntnr">
 								<div>
 									<i class="fas fa-edit cmn_icn_dst"></i>Headline Styling
@@ -380,6 +326,10 @@ if( $registration_complete ) {
 											<option value="aboveimg">Above Image</option>
 											<option selected="" value="belowimg">Below Image</option>
 										</select>
+										<select id="unit_add_line_styles" name="unit_add_wide_style" title="line-style" class="line-style-wide" style="display:none;">
+											<option value="left">Image Left</option>
+											<option value="right">Image Right</option>
+										</select>
 								    </div>
 									<div>
 										<p style="display:none">Google Font:
@@ -392,21 +342,6 @@ if( $registration_complete ) {
 
 									</div>
 
-								</div>
-							</div>
-							<div class="cmn_wdgt_tb_mn_cntnr" style="display: none;">
-								<div>
-									<i class="fas fa-edit cmn_icn_dst"></i>Headline Placement
-								    <i class="fas fa-chevron-right"></i>
-								</div>
-								<div class="wdgt_hdn_cntnt_spkx_cntnr mr_wdt_dst_cmn_cls_spx_hp">
-									<div>
-										<span>Line Style</span>
-										<select id="unit_add_line_style" name="unit_add_tall_style" class="line-style-tall" style="width:150px;">
-											<option value="aboveimg">Above Image</option>
-											<option selected="" value="belowimg">Below Image</option>
-										</select>
-								    </div>
 								</div>
 							</div>
 							<div class="cmn_wdgt_tb_mn_cntnr">
@@ -453,9 +388,13 @@ if( $registration_complete ) {
 									</div>
 									<div class="mb_sd_cm_cl">
 										<span>Excerpt</span>
-										<select id="excerpt_add_line_style" name="unit_excerpt_tall_style" title="line-style" class="line-style-tall excerpt_add_line_style" style="width:150px;">
+										<select id="excerpt_add_line_style" name="unit_excerpt_tall_style" title="line-style" class="line-style-tall excerpt_add_line_style">
 											<option value="aboveimg">Above Image</option>
 											<option selected="" value="belowimg">Below Image</option>
+										</select>
+										<select id="excerpt_add_line_styles" name="unit_excerpt_wide_style" title="line-style" class="line-style-wide" style="display:none; ">
+											<option value="left">Image Left</option>
+											<option value="right">Image Right</option>
 										</select>
 								   </div>
 								   <div>
@@ -478,28 +417,18 @@ if( $registration_complete ) {
 							</div>
 							<div class="cmn_wdgt_tb_mn_cntnr" style="display: none;">
 								<div>
-									<i class="fas fa-file-alt cmn_icn_dst"></i>Excerpt Placement
+									<i class="fas fa-file-alt cmn_icn_dst"></i>Show View Styling
 								    <i class="fas fa-chevron-right"></i>
 								</div>
-								<div class="wdgt_hdn_cntnt_spkx_cntnr mr_wdt_dst_cmn_cls_spx">
-									<div>
-										<span>Excerpt</span>
-										<select id="excerpt_add_line_style" name="unit_excerpt_tall_style" title="line-style" class="line-style-tall" style="width:150px;">
-											<option value="aboveimg">Above Image</option>
-											<option selected="" value="belowimg">Below Image</option>
-										</select>
-								   </div>
-								</div>
-							</div>
-							<div class="cmn_wdgt_tb_mn_cntnr" style="display: none;">
-								<div>
-									<i class="fas fa-file-alt cmn_icn_dst"></i>Excerpt Character Limit
-								    <i class="fas fa-chevron-right"></i>
-								</div>
-								<div class="wdgt_hdn_cntnt_spkx_cntnr mr_wdt_dst_cmn_cls_spx_brdr">
-									<div>
-										<span>Excerpt Limit</span>
-										<input type="number" id="unit_excerpt_word_limittt" value="100" name="unit_excerpt_word_limit" placeholder="100">
+								<div class="wdgt_hdn_cntnt_spkx_cntnr mr_wdt_dst_cmn_cls_hf">
+									<div class="mb_sd_cm_cl">
+										<div class="onoffswitch">
+											<input type="checkbox" name="unit_show_views" class="onoffswitch-checkbox" id="unit_show_views" value="1" checked="">
+											<label class="onoffswitch-label" for="unit_show_views">
+												<span class="onoffswitch-inner"></span>
+												<span class="onoffswitch-switch"></span>
+											</label>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -507,7 +436,7 @@ if( $registration_complete ) {
 								<div class="wdgt_updt_btn_sub_cntnr">
                                     <input  style="background-color: #23bf4a;" type="submit" name="update" id="ajax_create_button" class="button ajax_create_button" alt="Update" value="Save" />
 									<!--<a id="ajax_update_button" class="button ajax_update_button" alt="Update" href="javascript:;void(0)">Save</a> -->
-									<a id="ajax_cancel_button" class="button " alt="Update" href="javascript:;void(0)">Cancel</a>
+									<a id="close_new_widget_create" class="button" alt="Update" href="javascript:;void(0)">Cancel</a>
 									<!--  SPINKX AJAX Update Settings Ends Here  -->
 									<!--
 									<a id="ajax_reset_button" class="button ajax_reset_button" alt="Reset" href="javaScript:;void(0)">Reset Widget</a>
