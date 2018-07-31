@@ -355,7 +355,7 @@ function spinkx_cont_postview_cache_count_enqueue() {
 				break;
 		}
 		if ( $should_count ) {
-			wp_enqueue_script( 'wp-postviews-cache', plugins_url( 'assets/js/postviews-cache.js', __FILE__ ), array( 'jquery' ), '1.68', true );
+			wp_enqueue_script( 'wp-postviews-cache',  SPINKX_CONTENT_DIST_URL . 'js/postviews-cache.js', array( 'jquery' ), '1.68', true );
 			wp_localize_script( 'wp-postviews-cache', 'viewsCacheL10n', array( 'admin_ajax_url' => admin_url( 'admin-ajax.php' ), 'post_id' => intval( $post->ID ) ) );
 		}
 	}
