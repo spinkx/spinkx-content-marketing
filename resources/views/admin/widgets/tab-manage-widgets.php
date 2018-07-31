@@ -144,11 +144,6 @@ if( $registration_complete ) {
                                         </div>
 
 									</div>
-									<div class="shrtcode_fnt_cls cntnt_dstr_shrt_cde " style="display: none;">
-                                        <span class="display-shortcode">[spinkx id="1840"]</span>
-										<input type="hidden" id="main_widget_id" value="" name="main_widget_id" placeholder="" readonly="">
-										<input type="hidden" id="add_shortcode" value="" name="add_shortcode" placeholder="Shortcode">
-									</div>
 								</div>
 							</div>
 							<div class="cmn_wdgt_tb_mn_cntnr">
@@ -159,7 +154,7 @@ if( $registration_complete ) {
 								<div class="wdgt_hdn_cntnt_spkx_cntnr">
 									<div class="mb_sd_cm_cl">
 
-										<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" checked="" value="masonry">
+										<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" checked value="masonry">
 										<strong>Pinterest style </strong>
 									</div>
 									<div class="mb_sd_cm_cl" style="display: none;">
@@ -222,7 +217,7 @@ if( $registration_complete ) {
 										<input type="number" class ="unit_border_width" id="unit_border_width" value="1" name="unit_border_width" min="0" max="45">
 										<span class="wdgt_px_cmn_cls_spx">px</span>
 									</div>
-									<div class="mb_sd_cm_cl">
+									<div class="mb_sd_cm_cl" style="display:none;">
 										<span>Image Height</span>
 										<input id="img_height" type="text" title="Image Height" value="" name="img_height" readonly="readonly" style="cursor: not-allowed;">
 										<span class="wdgt_px_cmn_cls_spx">px</span>

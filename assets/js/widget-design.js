@@ -1,5 +1,4 @@
 jQuery(document).ready(function($) {
-
     $(".widget-checkbox").on("click", function(){
         var site_id = g_site_id;
         var widget_id = $(this).attr("data-id");
