@@ -138,7 +138,7 @@ function spinkx_cont_common_css_js( $page, $path  ) {
 	/**
 	 * JS Loading
 	 */
-	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
+	$js_url = esc_url( SPINKX_CONTENT_DIST_URL . 'js/' );
 	wp_enqueue_script( 'smooch-js', $vendor .'smooch/js/smooch.min.js' );
 
 	wp_add_inline_script('smooch-js', "Smooch.init({ appId: '585e57e650cedf70007fab2e' });");
@@ -353,7 +353,7 @@ function spinkx_cont_campaign_set_css_js($path) {
 	wp_enqueue_script( 'jquery-moment-js', $vendor . 'moment/js/moment.min.js' );
 	wp_enqueue_script( 'jquery-datetimepicker-js', $vendor . 'bootstrap/js/bootstrap-datetimepicker.js' );
 	wp_enqueue_script( 'jquery-campaign', $path[0] . 'js/campaign.js' );
-	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
+	$js_url = esc_url( SPINKX_CONTENT_DIST_URL . 'js/' );
 	wp_enqueue_script( 'jquery-multiselect-js', $vendor . 'jQuery-multiselect/js/jquery.multiselect.js' );
 }
 
