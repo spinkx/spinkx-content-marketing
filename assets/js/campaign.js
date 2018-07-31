@@ -168,7 +168,7 @@ function createAd(buttonObj, campaign_id, $data) {
     addhook_form += '<select name="categories[]" id="categories"  multiple>';
     temp_str = '';
     for( var index in spinkxJs.categories) {
-        temp_str2 = ( campaign_categories.findIndex(index) >= 0 )?'selected="selected"':'';
+        temp_str2 = ( campaign_categories.indexOf(index) >= 0 )?'selected="selected"':'';
         temp_str += '<option value="' + index + '" '+ temp_str2 +'>' + spinkxJs.categories[index] + '</option>';
     }
     addhook_form += temp_str;
