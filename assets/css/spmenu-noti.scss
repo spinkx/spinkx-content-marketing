@@ -137,7 +137,6 @@ span.spinkx-notify-text-active{
 /** top bar bell css **/
 .bl-mn-dv-cntnr-ntf-br {
 	background-color: grey !important;
-	width: 90px !important;
 	display: flex !important;
 	justify-content: space-between !important;
 	padding-right: 10px !important;
@@ -146,7 +145,7 @@ span.spinkx-notify-text-active{
 }
 .bl-mn-dv-cntnr-ntf-br {
 	position: relative !important;
-	width: 60px !important;
+	width:55px !important;
 }
 .bl-mn-dv-cntnr-ntf-br .img-cntnr-gf-mn-dv img{
 	vertical-align: sub !important;
@@ -165,7 +164,7 @@ span.spinkx-notify-text-active{
 	position: absolute !important;
 	top: 4px;
 	position: absolute !important;
-	left:50px !important;
+	left:45px !important;
 }
 @-webkit-keyframes spin {
 	0% { -webkit-transform: rotate(0deg); }
