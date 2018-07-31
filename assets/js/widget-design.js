@@ -1,4 +1,12 @@
 jQuery(document).ready(function($) {
+    render_saved_field();
+
+    function render_saved_field() {
+     $(".unit_border_width").each(function() {
+        $(this).blur();
+     });
+    }
+
     $(".widget-checkbox").on("click", function(){
         var site_id = g_site_id;
         var widget_id = $(this).attr("data-id");

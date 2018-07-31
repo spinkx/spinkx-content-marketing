@@ -810,7 +810,16 @@ td span.off_danger {
     font-size: 13px !important;
     font-weight: 500;
 }
-.spnx-statistcs { float: left; text-align:right;display: inline-block; margin-top: 12px; width:272px;}
+.spnx-statistcs {display: inline-block; margin-top: 12px; position:realtive; right:29px; width:unset !important; }
+#daterange-picker-container {
+    position:absolute;
+    right: -2px;
+    top:33px;
+}
+.spnx-statistcs .input-group {
+  right:0px;   
+}
+
 .spnx-statistcs > span{ line-height: 29px !important; font-size: 13px; font-weight: 500; }
 .spnx-statistcs #reportrange { background: #fff; cursor: pointer; padding: 5px 10px; margin-right:10px; border: 1px solid #ccc;}
 td span.unclickable{
@@ -1190,7 +1199,7 @@ div.onoff_header input[type=button]{
 .daterangepicker.ltr .calendar.left .calendar-table{ padding-right: 18px; }
 .daterangepicker .calendar th, .daterangepicker .calendar td{ min-width: 25px;height: 16px;}
 .spnx-menu-logo{ display: inline; margin-right: 10px; float: left; }
-.spnx-menu-logo > span img { height: 50px; }
+.spnx-menu-logo > span img { width: 100px; }
 #wpwrap, .wrap, #wpcontent, #wpfooter { background-color: #f3f6f8; }
 .spnx-sync{ display: inline; margin-left: 10px; float: left; cursor: pointer; }
 .spnx-sync img { height: 23px; background: none !important; margin-top: 14px; }
@@ -1225,7 +1234,7 @@ div.create-ad-field{ height:35px;}
     cursor: pointer;
     width: 188px;
     z-index: 9;
-    font-size:13px;
+    font-size:14px;
 }
 input.form-control2:hover,input.form-control2:focus { background-color: #e4eff4; box-shadow: inset 0 1px 1px rgba(0,0,0,.075); }
 textarea.splcaheholder::-webkit-input-placeholder { color: #337ab7; }
@@ -2051,7 +2060,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-left: 18px;
 }
 .image-container-cls-reg-spnx {
-    width: 200px;
+    width: 100px;
 }
 .image-container-cls-reg-spnx img {
     width: 100%;
