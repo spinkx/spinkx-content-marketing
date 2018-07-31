@@ -98,7 +98,7 @@ if( $registration_complete ) {
 
 	<div class="wd_n_ad_nw_mn_cntnr">
 
-		   <div class="wi_mn_cntr_wd_spx">
+		   <div class="wi_mn_cntr_wd_spx" style="display: none;">
 			   	<input type="checkbox" name="widget_install" value="1" <?php echo $checked?>/>
 		        <span>Desktop Widget Install</span>
 		   </div>
@@ -529,7 +529,7 @@ if( $registration_complete ) {
 												0.0d
 											</span>
 										</div>
-										<div class="design_unit_hdline_container hd_txt_id_spx_dv" id="hd_txt_id_spx_dv">
+										<div class="design_unit_hdline_container hd_txt_id_spx_dv">
 											<h4 class="hd_txt_id_spx" id="hd_txt_id_spx">India</h4>
 										</div>
 										<div class="design_unit_text_continer">
