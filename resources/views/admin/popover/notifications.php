@@ -62,7 +62,7 @@
 <div class="spinkx-popover-container">
     <div class="spinkx-popover-close">X</div>
     <div class="spinkx-popover-body">
-        <h1><span class="popover-logo-img"><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/spinkx-logo.png" /></span>Content Marketing</h1>
+        <h1><span class="popover-logo-img"><img src="<?php echo esc_url( SPINKX_CONTENT_DIST_URL ); ?>images/spinkx-logo.png" /></span>Content Marketing</h1>
 
         <div class="spinkx-popover-content">
             <h4>**our features**</h4>

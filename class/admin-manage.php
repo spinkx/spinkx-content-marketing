@@ -113,8 +113,8 @@ final class spnxAdminManage
 
 		$args['meta']['id'] = 'ntf-bl-sh-hd';
         // $display = '<span class="spinkx-notify-update-bubble">'.$pending.'</span><span class="spinkx-notify-text-active"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/icon-bell.png"/></span>
-		$display = '<div class="bl-mn-dv-cntnr-ntf-br"><span class="img-cntnr-gf-mn-dv"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/spinkx-ico.svg"/></span>
-<span class="rnd-cmn-cls-dv-mn-cntr-rng"></span><span class="img-cntnr-gf-mn-dv"><img src="'.SPINKX_CONTENT_PLUGIN_URL.'assets/images/notification-spnx.png"/>
+		$display = '<div class="bl-mn-dv-cntnr-ntf-br"><span class="img-cntnr-gf-mn-dv"><img src="'.SPINKX_CONTENT_DIST_URL.'images/spinkx-ico.svg"/></span>
+<span class="rnd-cmn-cls-dv-mn-cntr-rng"></span><span class="img-cntnr-gf-mn-dv"><img src="'.SPINKX_CONTENT_DIST_URL.'images/notification-spnx.png"/>
 <span class="img-cntnr-gf-mn-dv" style="position: absolute; right: 40px; top:-4px;"><span class="spinkx-notify-update-bubble">'.$pending.'</span></span>
 </div>
     <div class="ntf-mn-cntnr">
@@ -1087,7 +1087,7 @@ final class spnxAdminManage
             $settings = maybe_unserialize( $settings );
             //$parent_menu_slug = isset($settings['due_date'])?'spinkx_analytics':'spinkx-site-register';
 
-            add_menu_page('Spinkx Options', 'Spinkx', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'), SPINKX_CONTENT_PLUGIN_URL . 'assets/images/spinkx-ico.svg', '2.56');
+            add_menu_page('Spinkx Options', 'Spinkx', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'), SPINKX_CONTENT_DIST_URL . 'images/spinkx-ico.svg', '2.56');
             /*if(  $settings['due_date'] == '0000-00-00 00:00:00'  ) {
                 add_submenu_page('spinkx-site-register', 'Analytics | Spinkx', 'Analytics', 'manage_options', 'spinkx_analytics', array($this, 'spinkx_cont_show_page'));
                 add_submenu_page('spinkx-site-register', 'Registration | Spinkx', 'Registration', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'));
@@ -1438,7 +1438,7 @@ final class spnxAdminManage
 				$impPostTotalYesterday = ($jsonity->available_credit_block->impPostTotalYesterday) ? $jsonity->available_credit_block->impPostTotalYesterday : '';
 			}
 			echo '<div style="float:left; width: 48%;">     
-				  <img src="' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . 'assets/images/logo.png" alt="Home" style="  width: 100%; margin: 0px auto; display: block;">
+				  <img src="' . esc_url( SPINKX_CONTENT_DIST_URL ) . 'images/logo.png" alt="Home" style="  width: 100%; margin: 0px auto; display: block;">
 		   </div>';
 			echo '<style>
 	.spinkx_dashwidget_label{ float:left; color:#242E82; font-size:1.2em; height:50%; width:25%; margin: 10% 10px; align-content: center; }

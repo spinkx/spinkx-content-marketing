@@ -87,25 +87,37 @@ jQuery(document).ready(function($){
        // var arr = jQuery('.fst-cnt-cls-mn-dv');
         jQuery('.rnd-cmn-cls-dv-mn-cntr-rng').show();
         var ids = [], i=0;
-        jQuery('.fst-cnt-cls-mn-dv.spinkx-unread-notify').each(function (index, item) {
+        jQuery(".fst-cnt-cls-mn-dv").not(".spinkx-read-notify").each(function (index, item) {
            ids[i++] = $(this).attr('data-id');
         });
-        jQuery.ajax({
-            url: ajaxurl + '?action=spinkx_cont_noti_updstatus',
-            type: "POST",
-            data: {"id": ids},
-            success: function (data) {
-                data = JSON.parse(data);
-                if(data.status) {
-                    jQuery('.fst-cnt-cls-mn-dv.spinkx-unread-notify').attr('data-read', 1);
-                    jQuery('.fst-cnt-cls-mn-dv.spinkx-unread-notify').addClass('spinkx-read-notify');
-                    spnx_notify_unread = 0;
-                    jQuery('.spinkx-notify-update-bubble').text(spnx_notify_unread).hide();
+        if(ids.length> 0) {
+
+            jQuery.ajax({
+                url: ajaxurl + '?action=spinkx_cont_noti_updstatus',
+                type: "POST",
+                data: {"id": ids},
+                success: function (data) {
+                    data = JSON.parse(data);
+                    if (data.status === 1) {
+                        jQuery('.fst-cnt-cls-mn-dv').attr('data-read', 1);
+                        jQuery(".fst-cnt-cls-mn-dv").not(".spinkx-read-notify").each(function (index, item) {
+                            jQuery(item).addClass('spinkx-read-notify');
+                        });
+                        spnx_notify_unread = 0;
+                        jQuery('.rnd-cmn-cls-dv-mn-cntr-rng').hide();
+                        jQuery('.spinkx-notify-update-bubble').text(spnx_notify_unread).hide();
+
+                    } else {
+                        console.log('here');
+                    }
+                },
+                error: function() {
                     jQuery('.rnd-cmn-cls-dv-mn-cntr-rng').hide();
-                }
-            }
-        });
+                },
 
-
+            });
+        } else {
+            jQuery('.rnd-cmn-cls-dv-mn-cntr-rng').hide();
+        }
     });
 });

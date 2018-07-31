@@ -49,10 +49,7 @@
 	}
 	$bwki_sites_display_length	= spnxHelper::getFilterVar( 'bwki_sites_display_length' );
 	$pageLength = ( $bwki_sites_display_length )?$bwki_sites_display_length:10;
-	$loader = '<img src="'.esc_url( SPINKX_CONTENT_PLUGIN_URL ).'assets/images/loader.gif" alt="loading"/>';
-	
-
-	$custom_js .= 'var todaydate = start; var pageLength = ' . $pageLength . ';
+    $custom_js .= 'var todaydate = start; var pageLength = ' . $pageLength . ';
 	var pt = '.$p.'; jQuery(function() {
 	jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: '.$todaydate.'});	
 	var $ = jQuery.noConflict();
@@ -170,8 +167,8 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
             </td>
 
 			<td  style="padding: 0px;text-align: center;display: none;">
-				<span style=""><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"> <a href="#" id="sortby_global_reach">Views</a>|<a href="#" id="sortby_global_ctr">Engagement</a></span>
-				<span><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/sort-icon.png" style="height: 15px; margin-right: 7px;"><a href="#" id="sortby_local_reach">Views</a>|<a href="#" id="sortby_local_ctr">Engagement</a></span>
+				<span style=""><img src="<?php echo esc_url( SPINKX_CONTENT_DIST_URL ); ?>images/sort-icon.png" style="height: 15px; margin-right: 7px;"> <a href="#" id="sortby_global_reach">Views</a>|<a href="#" id="sortby_global_ctr">Engagement</a></span>
+				<span><img src="<?php echo esc_url( SPINKX_CONTENT_DIST_URL ); ?>images/sort-icon.png" style="height: 15px; margin-right: 7px;"><a href="#" id="sortby_local_reach">Views</a>|<a href="#" id="sortby_local_ctr">Engagement</a></span>
 				</td>
 		</tr>
 		<tr style="background-color: #e4eff4 !important;height: 30px;font-size: 12px; color:#0170b6;">

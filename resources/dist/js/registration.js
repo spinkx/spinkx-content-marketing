@@ -65,6 +65,13 @@ jQuery(document).ready(function($) {
         else {
             $('input[name=plugin-type]').parents('div.spnx-box-reg-cmn-cls').find('div.error-cmn-clas-spnx').css('display', 'none');
         }
+        if((!$("#image_attachment_id").val()) ||($("#image-preview").attr('src')=='')) {
+            $(".reg_upload_file_type ").next().css('display','inline-block');
+            flag=1;
+        } else {
+            $(".reg_upload_file_type ").next().css('display','none');
+
+        }
         $("#bussiness-name-spnx, #street-ad-bs-spnx, #city-bs-spnx, #zip_code_number, #state-ad-bs-spnx, #phone-ad-bs-spnx").trigger('blur');
         if($('.error-cmn-clas-spnx').is(':visible') || flag) {
             return false;
@@ -123,5 +130,6 @@ jQuery(document).ready(function($) {
         var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
         return pattern.test(email );
     }
-
+    $('.select-add-cat').show();
+    jQuery('.spnx_wdgt_wrapper').hide();
 });

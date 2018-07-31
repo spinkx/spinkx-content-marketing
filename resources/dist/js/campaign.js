@@ -90,7 +90,10 @@ jQuery( document ).ready(function() {
 
 function createAd(buttonObj, campaign_id, $data) {
     //console.log( campaign_id )
-    var campaign_image = '../wp-content/plugins/spinkx-content-marketing/assets/images/becreative.jpg';
+    if(jQuery('.create-ad-main-div').length > 0) {
+        return;
+    }
+    var campaign_image =  SPINKX_CONTENT_DIST_URL + 'images/becreative.jpg';
     var campaign_headline = '';
     var campaign_excerpt = '';
     var campaign_call_to_action = 0;
@@ -123,6 +126,8 @@ function createAd(buttonObj, campaign_id, $data) {
         campaign_utm_source = $data.utm_source;
         campaign_utm_campaign = $data.utm_campaign;
         campaign_categories = $data.categories;
+        campaign_categories = campaign_categories;
+
         campaign_countries = $data.locations;
         campaign_budget_amount = $data.campaign_budget_amount;
         campaign_cpm_value = parseInt((1000/spinkxJs.cpm)*campaign_budget_amount);
@@ -157,13 +162,13 @@ function createAd(buttonObj, campaign_id, $data) {
     addhook_form += '</div></div></div></div>';
     addhook_form += '<div style="display: inline-block; margin: 7px;">';
     addhook_form += '<span class="cad-icons"><input type="text" name="campaign_display_name" id="campaign_display_name" autocomplete="on"  value="'+campaign_display_name+'"/></span>';
-    addhook_form += '<span class="cad-icons"><img src="../wp-content/plugins/spinkx-content-marketing/assets/images/camp-icons/url.png"/><input type="text" maxlength="legth" class="landing_url" name="landing_url" value="'+campaign_landing_url+'" autocomplete="off"/></span>';
-    addhook_form += '<span class="cad-icons"><img src="../wp-content/plugins/spinkx-content-marketing/assets/images/camp-icons/utm.png" /><label style="font-weight: 100;font-size: 10px;margin-left: 10px;margin-top: 6px;">?utm_source=</label><input type="text" maxlength="10" class="utm-source" name="utm_source" value="'+campaign_utm_source+'"/><label style="font-weight: 100;font-size: 10px;margin-top: 6px;" autocomplete="off">&utm_medium=campaign&utm_campaign=</label><input type="text" maxlength="13" class="utm-campaign" name="utm_campaign" value="'+campaign_utm_campaign+'" autocomplete="off"/></span>';
-    addhook_form += '<span class="cad-icons" style="height: 40px;" ><img src="../wp-content/plugins/spinkx-content-marketing/assets/images/camp-icons/targeting.png" style="float: left; margin-top: 4px;"/><div class="targeting-categories">';
+    addhook_form += '<span class="cad-icons"><img src="' + SPINKX_CONTENT_DIST_URL + 'images/camp-icons/url.png"/><input type="text" maxlength="legth" class="landing_url" name="landing_url" value="'+campaign_landing_url+'" autocomplete="off"/></span>';
+    addhook_form += '<span class="cad-icons"><img src="'+ SPINKX_CONTENT_DIST_URL + 'images/camp-icons/utm.png" /><label style="font-weight: 100;font-size: 10px;margin-left: 10px;margin-top: 6px;">?utm_source=</label><input type="text" maxlength="10" class="utm-source" name="utm_source" value="'+campaign_utm_source+'"/><label style="font-weight: 100;font-size: 10px;margin-top: 6px;" autocomplete="off">&utm_medium=campaign&utm_campaign=</label><input type="text" maxlength="13" class="utm-campaign" name="utm_campaign" value="'+campaign_utm_campaign+'" autocomplete="off"/></span>';
+    addhook_form += '<span class="cad-icons" style="height: 40px;" ><img src="' + SPINKX_CONTENT_DIST_URL + 'images/camp-icons/targeting.png" style="float: left; margin-top: 4px;"/><div class="targeting-categories">';
     addhook_form += '<select name="categories[]" id="categories"  multiple>';
     temp_str = '';
     for( var index in spinkxJs.categories) {
-        temp_str2 = ( campaign_categories.indexOf(index) > -1 )?'selected="selected"':'';
+        temp_str2 = ( campaign_categories.indexOf(index) >= 0 )?'selected="selected"':'';
         temp_str += '<option value="' + index + '" '+ temp_str2 +'>' + spinkxJs.categories[index] + '</option>';
     }
     addhook_form += temp_str;
@@ -176,7 +181,7 @@ function createAd(buttonObj, campaign_id, $data) {
     }
     addhook_form += temp_str;
     addhook_form += '</select></div></span>';
-    addhook_form +=  '<span class="cad-icons"><img src="../wp-content/plugins/spinkx-content-marketing/assets/images/camp-icons/budget.png" style="float: left;" /><div class="budget-optimise-for"><span style="vertical-align: middle">Campaign Budget</span>';
+    addhook_form +=  '<span class="cad-icons"><img src="'+SPINKX_CONTENT_DIST_URL+'images/camp-icons/budget.png" style="float: left;" /><div class="budget-optimise-for"><span style="vertical-align: middle">Campaign Budget</span>';
     addhook_form += '<i class="sub-heading fa ' + spinkxJs.currencyClass + '"></i> <input id="budget_amount" name="budget_amount" class="track" type="text" value="0" maxlength="6" autocomplete="off"><span style="font-size: 12px;">&nbsp;|</span>';
     addhook_form += '</div><div class="budget-date"><span>Duration</span><div id="reportrange_camp" class="pull-right"><span></span> <b class="caret"></b></div></div><input type="hidden" name="start_date" id="start_date" /><input type="hidden" name="end_date" id="end_date" /><select name="optimise_for" id="optimise_for">';
     if(optimise_for != 1 ) {
@@ -191,7 +196,7 @@ function createAd(buttonObj, campaign_id, $data) {
         addhook_form += 'Engagement: ';
     }
     addhook_form += '<span id="cpm_value">0</span></span></span>';
-    addhook_form += '<span class="cad-icons"><img src="../wp-content/plugins/spinkx-content-marketing/assets/images/camp-icons/pay.png" /><span class="add-money-message">Campaign Balance&nbsp;<i class="sub-heading fa ' + spinkxJs.currencyClass + '"></i>&nbsp;<span id="camp-money-account">'+camp_balance_amount+' </span><span id="camp-money-account-first" style="display: none">'+camp_balance_amount+' </span><input type="hidden" name="budget_amount_total" id="budget_amount_total" value="'+camp_money_account+'"/></span><span>&nbsp;&nbsp;| </span><button onClick="addMoneyForCampaign('+wallet_balance_amount+')" style="margin-right: 10px; font-size: 10px; font-weight: 500; color: #fff; border:0;background-color: #6fb7d5" type="button">Add Money</button><span style="font-size: 9px; font-weight: 400;">Wallet Balance=&nbsp;<i style="color:#23527c" class="sub-heading fa ' + spinkxJs.currencyClass + '"></i><span id="wallet_money_update">' + wallet_balance_amount + '</span>  <span style="display:none" class="parent-balance-span"><span class="without-percent-text"></span><span id="campain_balance_add">' + 0 + '</span></span>';
+    addhook_form += '<span class="cad-icons"><img src="' + SPINKX_CONTENT_DIST_URL + 'images/camp-icons/pay.png" /><span class="add-money-message">Campaign Balance&nbsp;<i class="sub-heading fa ' + spinkxJs.currencyClass + '"></i>&nbsp;<span id="camp-money-account">'+camp_balance_amount+' </span><span id="camp-money-account-first" style="display: none">'+camp_balance_amount+' </span><input type="hidden" name="budget_amount_total" id="budget_amount_total" value="'+camp_money_account+'"/></span><span>&nbsp;&nbsp;| </span><button onClick="addMoneyForCampaign('+wallet_balance_amount+')" style="margin-right: 10px; font-size: 10px; font-weight: 500; color: #fff; border:0;background-color: #6fb7d5" type="button">Add Money</button><span style="font-size: 9px; font-weight: 400;">Wallet Balance=&nbsp;<i style="color:#23527c" class="sub-heading fa ' + spinkxJs.currencyClass + '"></i><span id="wallet_money_update">' + wallet_balance_amount + '</span>  <span style="display:none" class="parent-balance-span"><span class="without-percent-text"></span><span id="campain_balance_add">' + 0 + '</span></span>';
     addhook_form += '<span class="cad-icons"><span><a href="'+test_lending_url+'" id="test-landing-url" target="_blank">Click here to test Landing URL</a></span><span>&nbsp;&nbsp;| </span><span class="camp_agreement" style="margin-left: 5px;"><input type="checkbox" value="1" name="camp_agreement" checked style="margin: -3px 0 0 -4px;font-size: 17px;"/>&nbsp;&nbsp;<a href="https://www.spinkx.com/campaign-terms-conditions/" target="_blank">I agreee to terms and conditions</a></span></span>'
     addhook_form += '<input type="hidden" id="campaign-id" name="c_id" value="'+campaign_id+'"/>';
     addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn-cancle-spnx-main-cls"  style="float:right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">CANCEL</button></div>';
@@ -254,6 +259,7 @@ function createAd(buttonObj, campaign_id, $data) {
             "15 Days": [moment(), moment().add(14, "days")],
             "30 Days": [moment(), moment().add(29, "days")]
         },
+
     }, cb_camp);
     cb_camp(start_camp, end_camp);
     jQuery("#start_date").val(start_camp.format("YYYY-MM-DD"));
@@ -559,9 +565,7 @@ jQuery(document).ready(function($){
             return false;
         }
     });
-
-
-
+    
 });
 
 function cancelCampaign( cid ) {
@@ -601,7 +605,7 @@ function cb_camp(start_camp, end_camp) {
 }
 var start_camp =  moment();
 var m = moment();
-m.add(6, 'days');
+m.add( 6, 'days');
 
 var end_camp =  moment(m);
 var first_time_call = 0;
@@ -746,7 +750,7 @@ function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_c
 
 function createVariation(buttonObj, parent_campaign_id, campaign_id, $data) {
     //console.log( campaign_id )
-    var campaign_image = '../wp-content/plugins/spinkx-content-marketing/assets/images/becreative.jpg';
+    var campaign_image = SPINKX_CONTENT_DIST_URL + 'images/becreative.jpg';
     var campaign_headline = '';
     var campaign_excerpt = '';
     var call_to_action_arr = ['Call to Action', 'None', 'Apply Now', 'Book Now','Contact Us', 'Download', 'Know More', 'Shop Now', 'Sign Up', 'Reserve', 'Participate'];
@@ -1163,7 +1167,7 @@ function submitVideoVariationForm(formObj) {
     return false;
 }
 function loadDT(startDate,endDate) {
-    //jQuery(\'#bpopup_ajax_loading\').bPopup( { modalClose: false } );
+    jQuery('.spnx_wdgt_wrapper').show();
     pt.from_date = global_start_date;
     pt.to_date = global_end_date;
     var table = jQuery("#bwki_sites_display").DataTable({
@@ -1188,12 +1192,14 @@ function loadDT(startDate,endDate) {
             "dataType": "jsonp",
             data: pt,
             complete: function(){
+                jQuery('.content_playlist_listing').show();
+                jQuery('.spnx_wdgt_wrapper').hide();
                 jQuery('.camp-group-name').parents('tr').addClass("camp-group-tr");
                 jQuery('.camp-group-name').parent().attr('colspan', '3');
                 jQuery('.camp-group-name').parent().next().remove();
                 jQuery('.camp-group-name').parent().next().remove();
                 //$datalength = jQuery('.camp-group-name').attr('data-length');
-                jQuery('.se-pre-con').bPopup().close();
+                
             },
         },
 
