@@ -140,7 +140,7 @@ if( $registration_complete ) {
 										<span>Background Color</span>
 
 										 <div class="clr_pic_cmn_cls">
-                                        	<input type="text" id="bg_color" value="transparent"  name="unit_bg_color" placeholder="transparent" class="colorPicker evo-cp0">
+                                        	<input type="text" id="bg_color" value="transparent"  name="unit_bg_color" placeholder="transparent" class="bg_color colorPicker evo-cp0">
                                         </div>
 
 									</div>
@@ -200,9 +200,9 @@ if( $registration_complete ) {
 								</div>
 
 									<div class="wdgt_hdn_cntnt_spkx_cntnr">
-										<input type="number" id="no_of_columns" value="1" name="no_of_columns" placeholder="1" readonly="" min="1" max="6">
+										<input type="number" id="no_of_columns" class="no_of_columns" value="1" name="no_of_columns" placeholder="1" readonly="" min="1" max="6">
 					                    <input type="hidden" id="mob_views" name="no_col_mob_view" value="1">
-                                        <div id="slider-range-min" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                        <div id="slider-range-min" class="slider-range-min ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
 						                <div class="ui-slider-range ui-widget-header ui-slider-range-min" style="width: 0%;"></div>
 										<a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 20%;"></a>
 					                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 20%;">

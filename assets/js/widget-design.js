@@ -245,13 +245,13 @@ $(".bg_color").wpColorPicker({
 $("#no_of_row,#no_of_columns").bind('blur',function() {
    var choose_style_row_column = $(this).val();
    if(choose_style_row_column<1) {
-     $(this).addClass('error_widget_val')
+     $(this).addClass('error_widget_val');
      return;
    } else {
-    $(this).removeClass('error_widget_val')
-   } 
-
+    $(this).removeClass('error_widget_val');
+   }
 });
+
 
 $("input[name='widget_layout_type']").click(function() {
   var style_val = $(this).val();
@@ -307,6 +307,17 @@ $(".sh_hide_wdgt_grph").click(function() {
 
 });
 
+$(".slider-range-min").slider({
+    range: "min",
+    value: 1,
+    min:   1,
+    max:   6,
+    change: function (event, ui) {
+        noofcolumn = $(this).parent().children().first();
+        noofcolumn.val(ui.value);
+    }
+});
+
 /** widget custom js ends here **/
 
     $('input[name="widget_install"]').click(function() {
@@ -327,13 +338,10 @@ $(".sh_hide_wdgt_grph").click(function() {
             }
         });
     });
-    
     $(".edit_cat_spnx_wdgt").click(function() {
         var text = $(this).text();
-        
         if(text == 'Edit Categories') {
-          
-         $(this).html("Close Categories");
+            $(this).html("Close Categories");
         } else {
 
           $(this).html('Edit Categories');
