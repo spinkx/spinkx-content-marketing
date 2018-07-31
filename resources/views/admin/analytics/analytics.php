@@ -10,7 +10,7 @@ $todaydate = $custom_date[2] * 1000;
 $custom_js = ' var client_url = "' . esc_url( SPINKX_CONTENT_PLUGIN_URL ) . '";';
 $custom_js .= 'jQuery(function() { jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: '.$todaydate.'});
 });';
-$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/js/' );
+$js_url = esc_url( SPINKX_CONTENT_DIST_URL . 'js/' );
 wp_enqueue_script( 'jquery-dashboard', $js_url . 'analytics.js' );
 // wp_enqueue_script( 'jquery-custom-js', $js_url . 'widget-design.js' );
 wp_add_inline_script( 'jquery-dashboard', $custom_js );
