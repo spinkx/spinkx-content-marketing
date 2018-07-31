@@ -197,6 +197,12 @@ function spinkx_cont_registration_css_js($path) {
  */
 function spinkx_cont_widget_css_js($path) {
 	$vendor = $path[1] . 'vendor/';
+	$css = 'scss';
+	if(SPINKX_CONTENT_PRODUCTION) {
+		$css = 'css';
+	}
+	wp_enqueue_style( 'css-add-widget', $path[0]  . 'css/add-widget.'.$css );
+	wp_enqueue_style( 'css-add-widget-preview', $path[0] . 'css/add-widget-preview.'.$css );
 	wp_enqueue_style( 'css-multiselect', $vendor . 'jQuery-multiselect/css/jquery.multiselect.css' );
 	wp_enqueue_style( 'wp-color-picker' );
 	$custom_css = ' .no-js #loader, .notice { display: none;  }

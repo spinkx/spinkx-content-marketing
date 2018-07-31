@@ -378,9 +378,13 @@ $(".sh_hide_wdgt_grph").click(function() {
 
     $( ".ajax_update_button" ).click(function( e ) {
         e.preventDefault();
-        var form_serialized_data = $(this).parents('form#SPINKX_create_form').serialize();
-        var main_widget_id = $('#main_widget_id').val();
 
+        var form_serialized_data = $(this).parents('form#SPINKX_create_form').serialize();
+        var main_widget_id = $(this).parents('form#SPINKX_create_form').find('#main_widget_id').val();
+        var web_enable = $('#playpauselp_' + main_widget_id).prop('checked');
+        var sponser_enable = $('#playpausead_' + main_widget_id).prop('checked');
+       var global_post = $('#playpausegp_' + main_widget_id).prop('checked');
+        form_serialized_data += '&web_enable='+web_enable+'&sponser_enable='+sponser_enable+'&global_post='+global_post;
         var page_url = window.location.href;
         var page_new_url = page_url.split("?")[0];
         var add_shortcode = $('#add_shortcode').val();
@@ -424,7 +428,6 @@ $(".sh_hide_wdgt_grph").click(function() {
         var add_shortcode = $('#add_shortcode').val();
         var wp_section = $('#wp_section').val();
         /*------------------------------------------------------------------------------*/
-        $('#bpopup_ajax_loading').bPopup( { modalClose: false } );
         $.ajax({
             url : ajaxurl,
             data : {

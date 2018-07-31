@@ -83,6 +83,7 @@ if( $registration_complete ) {
 						'body' => array('from_date' => $from_date, 'to_date' => $to_date, 'url' => SPINKX_CONTENT_PLUGIN_URL),
 					)
 				);
+
 				if (!is_wp_error($wp_output)) {
 					$result = json_decode($wp_output['body']);
 				}
@@ -108,7 +109,7 @@ if( $registration_complete ) {
            <div>
                 <div class="add_widget_button">+ Add New Widget</div>
 				<div id="add_new_widgetttt" style="display:none;margin-top: 26px;">
-					<?php require SPINKX_CONTENT_ADMIN_VIEW_DIR .  'widgets/new-widget.php'; ?>
+					<?php // require SPINKX_CONTENT_ADMIN_VIEW_DIR .  'widgets/new-widget.php'; ?>
 				</div>	
 		   </div> 
 	</div>				
@@ -519,7 +520,7 @@ if( $registration_complete ) {
 
 								<div class="design_unit_main_container_spnx">
 									<div class="design_unit_img_container">
-										 <img src="<?php  echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/wordpress-content-marketing-plugin.jpg">
+										 <img src="<?php echo  SPINKX_CONTENT_PLUGIN_URL?>assets/images/wordpress-content-marketing-plugin.jpg">
 									</div>
 									<div class="design_unit_content_container">
 										<div class="design_unit_site_view_container">
@@ -544,8 +545,6 @@ if( $registration_complete ) {
 								</div>
 
 
-
-
 						</div>
 					</div>
 				</div>
@@ -567,7 +566,7 @@ if( $registration_complete ) {
 				?>
 				<div class="clear" style="display: block; overflow: hidden;"></div>
 				<div id="update_new_widget" style="margin-top: 26px;">
-					<?php require SPINKX_CONTENT_ADMIN_VIEW_DIR .  'widgets/update-widget.php'; ?>
+					<?php // require SPINKX_CONTENT_ADMIN_VIEW_DIR .  'widgets/update-widget.php'; ?>
 				</div>
 			<?php } ?>
 	</div>
