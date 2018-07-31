@@ -111,13 +111,14 @@ jQuery( document ).ready(function() {
                         location: 'tr',
                         size: 'large'
                     });
-                    window.location.reload();
+                    jQuery(".modified-category-"+dataid).toggle();
                 } else {
                     jQuery.growl.error({
                         message: data.msg,
                         location: 'tr',
                         size: 'large'
                     });
+                    jQuery(".modified-category-"+dataid).toggle();
                 }
             },
             failure: function (data) {
@@ -127,11 +128,10 @@ jQuery( document ).ready(function() {
                     location: 'tr',
                     size: 'large'
                 });
-                console.log(data);
+                jQuery(".modified-category-"+dataid).toggle();
+                //console.log(data);
             }
         });
-
-       
     });
 
     /*jQuery("#sortby_local_reach").click(function () {
@@ -195,8 +195,11 @@ jQuery( document ).ready(function() {
                 jQuery('.se-pre-con').bPopup().close();
             }
         });
-    });    
-    
+    });
+    jQuery('.fnt-click-close-drn').click(function(){
+        jQuery(".modified-category-g").toggle()
+    });
+
 });
 function all_onoff(type){
    // var dataid = jQuery("#playpauseswitch_"+type+"_all").attr("data-id");
@@ -1134,7 +1137,7 @@ function submitVideoVariationForm(formObj) {
     return false;
 }
 function loadDT(startDate, endDate) {
-    //jQuery('.se-pre-con').bPopup( { modalClose: false } );
+    jQuery('.spnx_wdgt_wrapper').show();
     pt.from_date = startDate;
     pt.to_date = endDate;
     var table = jQuery("#bwki_sites_display").DataTable({
@@ -1159,7 +1162,7 @@ function loadDT(startDate, endDate) {
             "dataType": "jsonp",
             data: pt,
             complete: function(){
-                jQuery('.se-pre-con').bPopup().close();
+                jQuery('.spnx_wdgt_wrapper').hide();
                 jQuery('#wpcontent').css('height',jQuery('#bwki_sites_display').height()+250);
             },
         },
@@ -1182,6 +1185,8 @@ function modifiedcategory($id) {
         selectAll: true
     });
     jQuery(".modified-category-"+$id).toggle();
+   
+
 }
 
 function filterColumn ( i ) {

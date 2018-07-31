@@ -5,7 +5,7 @@ global $wpdb;
 $spnxAdminManage = new spnxAdminManage();
 $settings = get_option(SPINKX_CONTENT_LICENSE);
 $settings = maybe_unserialize($settings);
-$logo_url = SPINKX_CONTENT_PLUGIN_URL . 'assets/images/your_logo.png';
+$logo_url = SPINKX_CONTENT_DIST_URL . 'images/your_logo.png';
 if (  isset($settings) && $settings ) {
 	$site_id = isset($settings['site_id'])?$settings['site_id']:0;
 	$registeredemail = spnxHelper::getFilterVar( 'registeredemail' );
@@ -131,7 +131,7 @@ if ( ! $site_id ) {
 		?>
 <div class="spnx-reg-mn-cntainter">
 	<div class="text-spninks">
-		<div class="image-container-cls-reg-spnx"><img src="<?php echo esc_url( SPINKX_CONTENT_PLUGIN_URL ); ?>assets/images/spinkx-logo.png" /></div>
+		<div class="image-container-cls-reg-spnx"><img src="<?php echo esc_url( SPINKX_CONTENT_DIST_URL ); ?>spinkx-logo.png" /></div>
 		<div class="reg-lbl-txt">REGISTRATION</div>
 	</div>
 	<div>
@@ -266,7 +266,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 </script>
 <div class="spnx-reg-mn-cntainter">
 	<div class="text-spninks">
-	<div class="image-container-cls-reg-spnx"><img src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/spinkx-logo.png" /></div>
+	<div class="image-container-cls-reg-spnx"><img src="<?php echo SPINKX_CONTENT_DIST_URL?>images/spinkx-logo.png" /></div>
 	<div class="reg-lbl-txt">REGISTRATION</div>
     </div>
 	<form method="post" enctype="multipart/form-data">

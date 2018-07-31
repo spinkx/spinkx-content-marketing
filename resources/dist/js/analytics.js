@@ -1,4 +1,9 @@
 function get_stat_now(start, end){
+    jQuery('.spnx-thrd-chld-mn-cntr-grph').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+    jQuery('.lcl-hrzntl-cls').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+    jQuery('.lcl-hrzntl-cls-second').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+
+    
     try {
         $.ajax({
             beforeSend: function(){
@@ -17,7 +22,6 @@ function get_stat_now(start, end){
                 //jQuery('.se-pre-con').bPopup().close();
             },
             success: function(data){
-                jQuery('.se-pre-con').bPopup().close();
                 var data = JSON.parse(data);
                 spinkx_data = data
                 currency = spinkx_data.currency;
@@ -42,9 +46,10 @@ function get_stat_now(start, end){
                 jQuery('.credit-wallet-bal').text(spinkx_data.wallet_bal);
                 jQuery('.credit-points').text(spinkx_data.credit_points);
                 drawChart();
+                jQuery('.spnx_wdgt_wrapper').remove();
+
             },
             error: function(xhr, status, error){
-                jQuery('.se-pre-con').bPopup().close();   
                 jQuery.growl.error({ message: xhr.status,
                 location: 'tr',
                 size: 'large' });
@@ -53,7 +58,7 @@ function get_stat_now(start, end){
     } catch ( ex ) {
          jQuery.growl.error({ message: 'Something went wrong with the request. Data not loaded.',
                 location: 'tr',
-                size: 'large' });            
+                size: 'large' });
     }
 };
 
@@ -64,19 +69,19 @@ jQuery(document).ready(function() {
         window.scrollTo(0, 0);
         switch (id) {
             case 'widget_design':
-                var currentPage	=	'Widget Design';
+                var currentPage = 'Widget Design';
                 break;
             case 'content_play_list':
-                var currentPage	=	'Content Play List';
+                var currentPage = 'Content Play List';
                 break;
             case 'dashboard':
-                var currentPage	=	'Dashboard';
+                var currentPage = 'Dashboard';
                 break;
             case 'campaigns':
-                var currentPage	=	'Campaigns';
+                var currentPage = 'Campaigns';
                 break;
             case 'account_setup':
-                var currentPage	=	'Account Setup';
+                var currentPage = 'Account Setup';
                 break;
         }
         jQuery('#toplevel_page_spinkx-site-register ul li').removeClass( "current" );
@@ -164,8 +169,8 @@ jQuery(document).ready(function() {
             }
         });
     });
-
-
+    jQuery('.spnx_wdgt_wrapper').remove();
+    google.charts.setOnLoadCallback(drawChart);
 });
 function getpoints() {
     jQuery('#boostmodal').modal('hide');
@@ -176,13 +181,15 @@ function getpoints() {
     });
 }
 
-google.charts.setOnLoadCallback(drawChart);
+
 var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 function drawChart() {
     var startdate_arr = window.global_start_date.split('-');
     var enddate_arr =  window.global_end_date.split('-');
     var startdate = new Date(startdate_arr[0], startdate_arr[1]-1, startdate_arr[2]);
     var enddate = new Date(enddate_arr[0], enddate_arr[1]-1, enddate_arr[2]);
+    var timeDiff = Math.abs(enddate.getTime() - startdate.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     //Create Object Visualization
     var widget= new google.visualization.DataTable();
     var local_post= new google.visualization.DataTable();
@@ -241,6 +248,24 @@ function drawChart() {
     widget.addRows($widgetArr);
     local_post.addRows($lpArr);
     boost_post.addRows($bpArr);
+    if(diffDays >=  10) {
+        diffDays = 10;
+    } else {
+        diffDays = 1;
+    }
+    wid_point_size = parseInt($widgetArr.length/diffDays) + 1;
+    lp_point_size = parseInt($lpArr.length/diffDays) + 1;
+    bp_point_size = parseInt($bpArr.length/diffDays) + 1;
+    wd_ticks = lp_ticks = bp_ticks = [];
+    for(i = 1; i < wid_point_size; i++ ) {
+        wd_ticks[i-1] = i * diffDays;
+    }
+    for(i = 1; i < lp_point_size; i++ ) {
+        lp_ticks[i-1] = i * diffDays;
+    }
+    for(i = 1; i < bp_point_size; i++ ) {
+        bp_ticks[i-1] = i * diffDays;
+    }
     var widImpoptions = {
         tooltip: { isHtml: true },    // CSS styling affects only HTML tooltips.
         title: 'Widget Clicks / CTR',
@@ -249,7 +274,7 @@ function drawChart() {
         legend: { position: 'top', alignment: 'end' },
         pointsVisible: true,
         pointShape: 'circle',
-        pointSize: 3,
+        pointSize: wid_point_size,
         backgroundColor: 'transparent',
         chartArea: {
             left: "5%",
@@ -260,7 +285,7 @@ function drawChart() {
         vAxis: {minValue: 1},
         hAxis: {
             baselineColor: 'none',
-            ticks: [10, 20, 30],
+            ticks: wd_ticks,
             gridlines: {
                 color: 'transparent'
             },
@@ -270,6 +295,7 @@ function drawChart() {
 
     };
 
+
     var LPoptions = {
         tooltip: { isHtml: true },    // CSS styling affects only HTML tooltips.
         title: 'Local Post Clicks / CTR',
@@ -278,7 +304,7 @@ function drawChart() {
         legend: { position: 'top', alignment: 'end' },
         pointsVisible: true,
         pointShape: 'circle',
-        pointSize: 3,
+        pointSize: lp_point_size,
         backgroundColor: 'transparent',
         chartArea: {
             left: "5%",
@@ -289,7 +315,7 @@ function drawChart() {
         vAxis: {minValue: 1},
         hAxis: {
             baselineColor: 'none',
-            ticks: [10, 20, 30],
+            ticks: lp_ticks,
             gridlines: {
                 color: 'transparent'
             }
@@ -304,7 +330,7 @@ function drawChart() {
         legend: { position: 'top', alignment: 'end' },
         pointsVisible: true,
         pointShape: 'circle',
-        pointSize: 3,
+        pointSize: bp_point_size,
         backgroundColor: 'transparent',
         chartArea: {
             left: "5%",
@@ -315,7 +341,7 @@ function drawChart() {
         vAxis: {minValue: 1},
         hAxis: {
             baselineColor: 'none',
-            ticks: [10, 20, 30],
+            ticks: bp_ticks,
             gridlines: {
                 color: 'transparent'
             }

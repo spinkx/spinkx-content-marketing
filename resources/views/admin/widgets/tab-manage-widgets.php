@@ -520,7 +520,7 @@ if( $registration_complete ) {
 
 								<div class="design_unit_main_container_spnx">
 									<div class="design_unit_img_container">
-										 <img src="<?php echo  SPINKX_CONTENT_PLUGIN_URL?>assets/images/wordpress-content-marketing-plugin.jpg">
+										 <img src="<?php echo  SPINKX_CONTENT_DIST_URL?>images/wordpress-content-marketing-plugin.jpg">
 									</div>
 									<div class="design_unit_content_container">
 										<div class="design_unit_site_view_container">

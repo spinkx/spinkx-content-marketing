@@ -23,7 +23,7 @@ if( is_array($data)) {?>
                         SPINKX WALLET
                     </div>
                     <div class="ver-alg-fnt-awe-main" style="width:50px;">
-                        <img style="width: 100%;" src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/walletico.png">
+                        <img style="width: 100%;" src="<?php echo SPINKX_CONTENT_DIST_URL?>images/walletico.png">
                     </div>
                 </div>
                 <div class="spnx-thrd-chld-mn-cntr spnx-flex-center spnx-flex-new-cmn">
@@ -130,7 +130,7 @@ if( is_array($data)) {?>
                     </div>
                     <div class="points-cmn-cls-spnx">
                         <div class="wid-rev-point-icon-dv-cmn">
-                            <img style="width: 100%;" src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/eyeico.png" />
+                            <img style="width: 100%;" src="<?php echo SPINKX_CONTENT_DIST_URL?>images/eyeico.png" />
                         </div>
                         <span class="widget-views fnt-size-cmn-cls-spnx"><?php echo $data['wd_views']?></span>
                     </div>
@@ -141,7 +141,7 @@ if( is_array($data)) {?>
                     </div>
                     <div class="points-cmn-cls-spnx">
                         <div class="wid-rev-point-icon-dv-cmn">
-                            <img style="width: 100%;" src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/Clicksico.png" />
+                            <img style="width: 100%;" src="<?php echo SPINKX_CONTENT_DIST_URL?>images/Clicksico.png" />
                         </div>
                         <span class="widget-clicks fnt-size-cmn-cls-spnx"><?php echo $data['wd_clicks'] . ' | '.$data['wd_ctr']?>%</span>
                     </div>
@@ -152,7 +152,7 @@ if( is_array($data)) {?>
                     </div>
                     <div class="points-cmn-cls-spnx">
                         <div class="wid-rev-point-icon-dv-cmn">
-                            <img style="width: 100%;" src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/pointsico.png" />
+                            <img style="width: 100%;" src="<?php echo SPINKX_CONTENT_DIST_URL?>images/pointsico.png" />
                         </div>
                         <span class="total-pts-earn fnt-size-cmn-cls-spnx"><?php echo $data['tot_pts_earn']?></span>
                     </div>
@@ -163,7 +163,7 @@ if( is_array($data)) {?>
                     </div>
                     <div class="points-cmn-cls-spnx">
                         <div class="wid-rev-point-icon-dv-cmn">
-                            <img style="width: 100%;" src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/revenueico.png" />
+                            <img style="width: 100%;" src="<?php echo SPINKX_CONTENT_DIST_URL?>images/revenueico.png" />
                         </div>
                         <span class="total-money-earn fnt-size-cmn-cls-spnx"><?php echo $data['tot_money_earn']?></span>
                     </div>

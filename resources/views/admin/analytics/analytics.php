@@ -17,14 +17,7 @@ wp_add_inline_script( 'jquery-dashboard', $custom_js );
 ?>
 <div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>
 <div class="wrap">
-	<div class="bpopup" id="bpopup_ajax_loading" style="display: none;width:100px">
-			<div class="popup_div" style="display: block;" >
-				<img src="<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/images/loader.gif" alt="loading"/>
-			</div>
-		</div>
-
-
-	<!-- Main tabs here  -->
+    <!-- Main tabs here  -->
 	<div id="distributiontabs" style="width:100%;">
 		<?php spinkx_header_menu() ?>
 		<div class="wrap-inner" style="clear: both;">
