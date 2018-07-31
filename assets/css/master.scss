@@ -197,6 +197,13 @@ ul.nav.nav-tabs li:hover a{
 }
 .tab-contents {
     background: transparent;
+
+}
+#wpwrap {
+ position:relative;   
+}
+#wpbody-content {
+    position:relative;
 }
 #tabse .tab-contents {
     border: 1px solid #469FA1;
@@ -1536,6 +1543,7 @@ input[type=number]::-webkit-outer-spin-button {
     padding:13px 20px;
     margin-right:11px;
     box-sizing: border-box;
+    position:relative;
 
 }
 .spnx-thrd-chld-mn-cntr-views-clmn {
@@ -1565,6 +1573,7 @@ input[type=number]::-webkit-outer-spin-button {
     box-sizing: border-box;
     padding: 13px 20px;
     font-size: 13px;
+    position:relative;
 
 }
 .lcl-hrzntl-cls {
@@ -2580,6 +2589,8 @@ tr td div.camp-group-name {
     box-sizing: border-box;
     position: absolute;
     z-index: 99999999999;
+    top:0px;
+    bottom:0px;
 }
 
  /**.spnx_wdgt_wrapper .cssload-loader {
@@ -2600,7 +2611,7 @@ tr td div.camp-group-name {
     height: 80px;
     border-radius: 50%;
     background: rgb(0,0,0);
-    left: 46%;
+    left:37%;
     top:32%;
     position: absolute;
  }

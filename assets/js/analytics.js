@@ -1,7 +1,9 @@
 function get_stat_now(start, end){
-    jQuery('#widget_chart').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
-    jQuery('#lp_chart').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
-    jQuery('#bp_chart').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+    jQuery('.spnx-thrd-chld-mn-cntr-grph').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+    jQuery('.lcl-hrzntl-cls').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+    jQuery('.lcl-hrzntl-cls-second').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+
+    
     try {
         $.ajax({
             beforeSend: function(){
@@ -168,9 +170,6 @@ jQuery(document).ready(function() {
         });
     });
     jQuery('.spnx_wdgt_wrapper').remove();
-    jQuery('#widget_chart').prepend('<div class="spnx_wdgt_wrapper" style="left: 27%; top:30%;"><div class="cssload-loader"></div></div>');
-    jQuery('#lp_chart').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
-    jQuery('#bp_chart').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
     google.charts.setOnLoadCallback(drawChart);
 });
 function getpoints() {

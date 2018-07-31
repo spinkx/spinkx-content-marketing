@@ -597,6 +597,8 @@ div.wdgt_hdr_mn_hldr_spkx {
 	margin-right:15px;
 	background-color:white;
 	box-shadow:0 1px 15px 1px rgba(113,106,202,.08);
+	display:table;
+	min-height:383px;
 
 
 }
@@ -605,6 +607,10 @@ div.wdgt_hdr_mn_hldr_spkx {
     box-sizing: border-box;
 	background-color:white;
 	box-shadow:0 1px 15px 1px rgba(113,106,202,.08);
+	position:relative;
+	display:table;
+	min-height:383px;
+
 
 
 	
@@ -664,9 +670,10 @@ div.wdgt_hdr_mn_hldr_spkx {
 .grph_wdgt_cntnr, .grph_wdgt_cntnr_grp {
 	box-sizing: border-box;
     padding: 15px 35px;
+
 }
 .shrtcode_fnt_cls {
-	background-color: #3785c8;
+	background-color:#38889d;
     font-size: 13px !important;
     font-weight: bold;
     color: #ffffff;
@@ -733,6 +740,9 @@ div.wdgt_hdr_mn_hldr_spkx {
 .cntnt_dstr_cntnr {
 	display: flex;
 	justify-content:space-between;
+}
+.cntnt_dstr_cntnr_sh {
+	display:none;
 }
 
 .wdgt_edit_cmn_cls_spx {
@@ -895,9 +905,11 @@ span.wdgt_px_cmn_cls_spx {
 /** right side edit widget starts here **/
 
 
+/**
 .rght_cntnr_sb_cntnr {
    width:48%;
 }
+**/
 #tabsp .tabs-content {
 	border: none !important;
 	padding: 0px 50px;
