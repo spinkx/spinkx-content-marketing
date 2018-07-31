@@ -384,7 +384,7 @@ $(".sh_hide_wdgt_grph").click(function() {
         var web_enable = $('#playpauselp_' + main_widget_id).prop('checked');
         var sponser_enable = $('#playpausead_' + main_widget_id).prop('checked');
        var global_post = $('#playpausegp_' + main_widget_id).prop('checked');
-        form_serialized_data += '&web_enable='+web_enable+'&sponser_enable='+sponser_enable+'&global_post='+global_post;
+        form_serialized_data += '&web_enable='+web_enable+'&sponsor_enable='+sponser_enable+'&global_post='+global_post;
         var page_url = window.location.href;
         var page_new_url = page_url.split("?")[0];
         var add_shortcode = $('#add_shortcode').val();
