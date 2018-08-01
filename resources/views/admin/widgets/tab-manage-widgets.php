@@ -98,8 +98,7 @@ if( $registration_complete ) {
 					?>
 
 	<div class="wd_n_ad_nw_mn_cntnr">
-
-		   <div class="wi_mn_cntr_wd_spx" style="display: none;">
+        <div class="wi_mn_cntr_wd_spx" style="display: none;">
 			   	<input type="checkbox" name="widget_install" value="1" <?php echo $checked?>/>
 		        <span>Desktop Widget Install</span>
 		   </div>
@@ -110,8 +109,8 @@ if( $registration_complete ) {
                 <div class="add_widget_button">+ Add New Widget</div>
 				<div id="add_new_widgetttt" style="display:none;margin-top: 26px;">
 					<?php // require SPINKX_CONTENT_ADMIN_VIEW_DIR .  'widgets/new-widget.php'; ?>
-				</div>	
-		   </div> 
+				</div>
+           </div>
 	</div>				
 	<div class="ad_nw_wdgt_mn_cntainer" >
 

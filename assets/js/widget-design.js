@@ -1,7 +1,4 @@
 jQuery(document).ready(function($) {
-
-    
-
     $(".widget-checkbox").on("click", function(){
         var site_id = g_site_id;
         var widget_id = $(this).attr("data-id");
@@ -514,6 +511,35 @@ $(".slider-range-min").slider({
        }
          $(".sh_hide_wdgt_grph").trigger('click');
 
+    });
+    $('.ajax_update_button_cat').click(function(e) {
+        e.preventDefault();
+        var form_serialized_data = $(this).parents('form#SPINKX_category_form').serialize();
+        var main_widget_id = $(this).parents('form#SPINKX_category_form').find('#main_widget_id').val();
+        $.ajax({
+            url : ajaxurl,
+            data : {
+                'action': 'spinkx_cont_widget_categories',
+                'form_serialized_data' : form_serialized_data,
+                'main_widget_id' : main_widget_id,
+                'mode' : 'update',
+            },
+            type : 'post',
+            datatype : 'json',
+            success : function(data){
+                $('#bpopup_ajax_loading').bPopup().close();
+                $.growl.notice({ message: "Successfully Updated!",
+                    location: 'tr',
+                    size: 'large' });
+            },
+            failure : function(data){
+                console.log(data);
+                $('#bpopup_ajax_loading').bPopup().close();
+                $.growl.error({ message: "Failed to Update!",
+                    location: 'tr',
+                    size: 'large' });
+            }
+        });
     });
     $('#widget_data').show();
 });
