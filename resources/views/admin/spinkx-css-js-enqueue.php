@@ -409,8 +409,7 @@ function spinkx_header_menu() {
 		<li <?php echo ('spinkx_widget_design' === $page)?'class="active"':''?>><a href="?page=spinkx_widget_design">Widget Settings</a></li>
 		<li <?php echo ('spinkx_content_play_list' === $page)?'class="active"':''?>><a href="?page=spinkx_content_play_list">Free Boost Post</a></li>
 		<li <?php echo ('spinkx_campaigns' === $page)?'class="active"':''?>><a href="?page=spinkx_campaigns">Paid Campaigns</a></li>
-
-	</ul>
+    </ul>
 	<?php if ('spinkx_content_play_list' === $page) { ?>
 	<div class="spnx-sync" title="Post ReSync"><img  id="posts_<?php echo $site_id ?>" class="posts_sync" src="<?php echo SPINKX_CONTENT_CDN_URL; ?>media/sync-icon.png"  /></div>
 	<?php } ?>

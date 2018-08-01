@@ -53,7 +53,8 @@ final class spnxAdminManage
 		'withdraw_money_request',
         'notifications',
         'noti_updstatus',
-        'desktop_widget_install'
+        'desktop_widget_install',
+		'widget_categories'
         );
 
 
@@ -626,6 +627,17 @@ final class spnxAdminManage
             echo "Error in Save";
         }
 
+		wp_die();
+	}
+	function spinkx_cont_widget_categories() {
+		$post = spnxHelper::getFilterPost();
+		$post['mode'] = 'update';
+		$post['cuser_email'] = (new spnxAdminManage())->getCurrentUserEmail();
+		$url = esc_url( SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/update/categories' );
+		unset($post['action']);
+		$response = spnxHelper::doCurl( $url, $post );
+		$widget = json_decode($response, true);
+		echo $widget;
 		wp_die();
 	}
 	function spinkx_cont_widget_reset() {
