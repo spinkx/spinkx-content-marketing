@@ -636,8 +636,8 @@ final class spnxAdminManage
 		$url = esc_url( SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/update/categories' );
 		unset($post['action']);
 		$response = spnxHelper::doCurl( $url, $post );
-		$widget = json_decode($response, true);
-		echo $widget;
+		//$widget = json_decode($response, true);
+		echo $response;
 		wp_die();
 	}
 	function spinkx_cont_widget_reset() {
