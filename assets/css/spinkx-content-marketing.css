@@ -18,4 +18,9 @@
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale
 }
-.dashicons-spinkx-ico:before{content:'\0041';}
+.dashicons-spinkx-ico:before{
+    content: '\0041';
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+}

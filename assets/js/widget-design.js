@@ -1,11 +1,6 @@
 jQuery(document).ready(function($) {
-    render_saved_field();
 
-    function render_saved_field() {
-     $(".unit_border_width").each(function() {
-        $(this).blur();
-     });
-    }
+    
 
     $(".widget-checkbox").on("click", function(){
         var site_id = g_site_id;
@@ -300,6 +295,8 @@ $("#close_new_widget_create").click(function() {
 
 
 $(".sh_hide_wdgt_grph").click(function() {
+    $(this).parents('.wdgt_mn_cntnr_spkx').find('input').trigger('blur');
+    $(this).parents('.wdgt_mn_cntnr_spkx').find('select').trigger('change');
     var inner_text = $(this).text();
     if(inner_text=='Edit Widget') {
         $(this).html("Show Graph");
