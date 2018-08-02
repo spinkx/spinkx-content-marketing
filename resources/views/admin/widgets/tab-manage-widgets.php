@@ -199,7 +199,7 @@ if( $registration_complete ) {
                                         <div id="slider-range-min" class="slider-range-min ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
 						                <div class="ui-slider-range ui-widget-header ui-slider-range-min" style="width: 0%;"></div>
 										<a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 20%;"></a>
-					                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 20%;">
+					                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width:15%;">
 					                   </div>
 					                   </div>
 									</div>
