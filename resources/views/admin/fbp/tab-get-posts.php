@@ -74,7 +74,7 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 	<table id="bwki_sites_display" class="wp-list-table table-responsive " style="width:1024px;"><thead  style="border-bottom:1px solid #469fa1">
 		<tr>
 			<td  style="padding: 0px;text-align: right;">
-				<span class="duration-text-first-span-span-crnt">Current Points: <span id="credit_points_value"><?php echo $spnxAdminManage->spinkx_cont_get_credit_points();?></span></span>
+				<span class="duration-text-first-span-span-crnt">Current Points: <span id="credit_points_value" class="pts_mny_cmn_cls"><?php echo $spnxAdminManage->spinkx_cont_get_credit_points();?></span></span>
 				
 
 			</td>

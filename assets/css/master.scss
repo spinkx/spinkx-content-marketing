@@ -1398,10 +1398,10 @@ textarea.splcaheholder:-ms-input-placeholder { color: #337ab7; }
 }
 .duration-text-first-span-span-crnt {
     color: #0170b6;
-    font-size: 15px;
+    font-size: 12px;
     margin-left: 15px;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight:bold;
 }
 .duration-text-first-span-span-crnt i {
     margin-right:3px;
@@ -1494,8 +1494,9 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .label-pints-mny-cmn-cls {
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 3px;
+    color:#333;
 }
 .cmn-cls-spnx-tab {
     margin-right: 11px;
@@ -1527,19 +1528,33 @@ input[type=number]::-webkit-outer-spin-button {
 .points-cmn-cls-spnx {
     margin-top: 11px;
     margin-bottom: 7px;
+    color:#333;
+    font-size:13px;
 }
 .liceence-key-cls {
     clear: both;
 
 }
-.liceence-key-cls span {
-    font-size:11px;
+.liceence-key-cls span:first-child {
+    font-size:13px;
+    color:#333;
 }
+
 .points-cmn-cls-spnx i {
     margin-right: 20px;
 }
 .site-dtls-cmn-cls-spnx {
     margin-top: 11px;
+}
+.site-dtls-cmn-cls-spnx>div span:first-child,.liceence-key-cls span:nth-child(2) {
+    font-size:12px;
+    color:#333;
+
+}
+.site-dtls-cmn-cls-spnx>div span:nth-child(2) {
+ font-size:12px;
+  color:#333;
+
 }
 .site-dtls-cmn-cls-spnx span {
     font-size: 11px;
@@ -2164,11 +2179,10 @@ input[type=number]::-webkit-outer-spin-button {
     color:#fbfbfb !important;
     border: unset !important;
     margin-right: unset !important;
-    margin-left: 10px;
-    font-size: 9px;
+    font-size:12px;
     outline: none;
     cursor: pointer;
-    padding: 4px 10px;
+    padding: 4px 13px;
 }
 .buy-more-point:active {
     outline: 5px auto -webkit-focus-ring-color;
@@ -2314,10 +2328,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /** campaign css starts here **/
-
-.campaign_page {
-    padding: 20px 15px;
-}
 .cad-icons .landing_url { 
      font-size: 10px;
      height: 24px;
@@ -2681,13 +2691,12 @@ tr td div.camp-group-name {
  .wdgt_updt_btn_sub_cntnr a, .wdgt_updt_btn_sub_cntnr input, .modal_footer_cc_spnkx button , .calender-submit-cancel-btn button  {
     text-decoration: none !important;
     border: none !important;
-    color: white !important;
-    border-radius: 5px !important;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26) !important;
+    color: white !important;   
     transition: .25s all ease !important;
     cursor: pointer !important;
     text-transform: uppercase;
     width:unset !important;
+    height:unset !important;
     font-size: 11px;
 }
 .wdgt_updt_btn_sub_cntnr a, .wdgt_updt_btn_sub_cntnr input {
@@ -2778,6 +2787,7 @@ tr td div.camp-group-name {
  .calender-submit-cancel-btn button{
   text-transform: unset;
   padding: 2px 5px 3px 5px;
+  border-radius:unset !important;
 }
 .calender-submit-cancel-btn #drp-btn-apply {
     background-color:#23bf4a;
@@ -2811,3 +2821,11 @@ tr td div.camp-group-name {
 /** modal custom css ends here **/
 .ms-options-wrap > .ms-options > ul li.selected label { background: transparent !important;}
 .ms-options-wrap > .ms-options > ul li.selected label:hover { background: #efefef !important;}
+/**points money cmn cls **/
+.pts_mny_cmn_cls {
+    color:#333;
+    font-size:13px;
+}
+.camp-group-tr .camp-group-name {
+    font-size:12px;
+}

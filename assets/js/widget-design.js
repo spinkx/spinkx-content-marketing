@@ -292,6 +292,8 @@ $("#close_new_widget_create").click(function() {
 $(".sh_hide_wdgt_grph").click(function() {
     $(this).parents('.wdgt_mn_cntnr_spkx').find('input').trigger('blur');
     $(this).parents('.wdgt_mn_cntnr_spkx').find('select').trigger('change');
+
+
     var inner_text = $(this).text();
     if(inner_text=='Edit Widget') {
         $(this).html("Show Graph");

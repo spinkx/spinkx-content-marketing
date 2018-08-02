@@ -155,20 +155,26 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 	<table id="bwki_sites_display" class="wp-list-table table-responsive"  style="width:1024px;"><thead>
 		<tr>
 			<td style="padding: 0px;text-align: right;">
-			<span class="duration-text-first-span-span-crnt">Wallet Balance: <i class="fa <?php echo $currencyClass?>"></i><?php  printf('%.2f', $output['user_bal'])?></span>
+			
 				
             </td>
-            <td  style="padding: 0px;">
-            	&nbsp;&nbsp;&nbsp;<button class=" buy-more-point" id="add_money_wallet"  onclick="jQuery('#campaignmodaladdMoney').modal({
-    backdrop: 'static',
-    keyboard: false,
-    show: true
-})">Add Money to Wallet</button>
+            <td style="padding: 0px;">
+            	<span class="duration-text-first-span-span-crnt">
+            		Wallet Balance:
+            		<span class="pts_mny_cmn_cls">
+            		<i class="fa <?php echo $currencyClass?>"></i><?php  printf('%.2f', $output['user_bal'])?>
+            	    </span>
+            	</span>
             </td>
 
-			<td  style="padding: 0px;text-align: center;display: none;">
-				<span style=""><img src="<?php echo esc_url( SPINKX_CONTENT_DIST_URL ); ?>images/sort-icon.png" style="height: 15px; margin-right: 7px;"> <a href="#" id="sortby_global_reach">Views</a>|<a href="#" id="sortby_global_ctr">Engagement</a></span>
-				<span><img src="<?php echo esc_url( SPINKX_CONTENT_DIST_URL ); ?>images/sort-icon.png" style="height: 15px; margin-right: 7px;"><a href="#" id="sortby_local_reach">Views</a>|<a href="#" id="sortby_local_ctr">Engagement</a></span>
+			<td style="padding: 0px;">
+				<button class=" buy-more-point" id="add_money_wallet"  onclick="jQuery('#campaignmodaladdMoney').modal({
+				    backdrop: 'static',
+				    keyboard: false,
+				    show: true
+				})">Add Money to Wallet</button>
+				<span style="display: none;"><img src="<?php echo esc_url( SPINKX_CONTENT_DIST_URL ); ?>images/sort-icon.png" style="height: 15px; margin-right: 7px;"> <a href="#" id="sortby_global_reach">Views</a>|<a href="#" id="sortby_global_ctr">Engagement</a></span>
+				<span style="display: none;"><img src="<?php echo esc_url( SPINKX_CONTENT_DIST_URL ); ?>images/sort-icon.png" style="height: 15px; margin-right: 7px;"><a href="#" id="sortby_local_reach">Views</a>|<a href="#" id="sortby_local_ctr">Engagement</a></span>
 				</td>
 		</tr>
 		<tr style="background-color: #e4eff4 !important;height: 30px;font-size: 12px; color:#0170b6;">

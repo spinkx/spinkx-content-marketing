@@ -65,7 +65,8 @@ jQuery(document).ready(function($) {
         else {
             $('input[name=plugin-type]').parents('div.spnx-box-reg-cmn-cls').find('div.error-cmn-clas-spnx').css('display', 'none');
         }
-        if((!$("#image_attachment_id").val()) ||($("#image-preview").attr('src')=='')) {
+        var album = $("#image-preview").attr('src').split('/')
+        if(album[album.length-1]=='your_logo.png') {
             $(".reg_upload_file_type ").next().css('display','inline-block');
             flag=1;
         } else {
