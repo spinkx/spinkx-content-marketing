@@ -290,13 +290,18 @@ $("#close_new_widget_create").click(function() {
 
 
 $(".sh_hide_wdgt_grph").click(function() {
-    $(this).parents('.wdgt_mn_cntnr_spkx').find('input').trigger('blur');
-    $(this).parents('.wdgt_mn_cntnr_spkx').find('select').trigger('change');
-
-
     var inner_text = $(this).text();
     if(inner_text=='Edit Widget') {
         $(this).html("Show Graph");
+        $(this).parents('.wdgt_mn_cntnr_spkx').find('input').trigger('blur');
+        $(this).parents('.wdgt_mn_cntnr_spkx').find('select').trigger('change');
+        color_field = ['bg_color', 'unit_border_color','fg_color', 'unit_title_font_color', 'unit_excerpt_font_color'];
+        var parent = $(this).parents('.wdgt_mn_cntnr_spkx');
+        var color_val = null;
+        color_field.forEach(function(item) {
+            color_val  = $(parent).find( "." + item ).val();
+            $(parent).find( "." + item ).iris('color', color_val);
+        });
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.cntnt_dstr_cntnr_sh').css('display','flex');
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.graph-cmn-cls-spnx').hide();
        // $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
