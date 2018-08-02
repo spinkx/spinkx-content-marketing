@@ -231,14 +231,14 @@ function drawChart() {
         dd = ((startdate.getDate())>=10)? (startdate.getDate()) : '0' + (startdate.getDate());
         yyyy = startdate.getFullYear();
         $key = yyyy+"-"+mm+"-"+dd;
-
+        $keyDate = monthNames[parseInt(mm)] + ' ' + dd + ', ' + yyyy;
         widclkcounter++;
 
-        $widgetArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].wd.clicks * 1, showWidgetToolTip($key,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) , spinkx_data[$key].wd.ctr * 1, showWidgetToolTip($key,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) );
+        $widgetArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].wd.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) , spinkx_data[$key].wd.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) );
 
-        $lpArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].lp.clicks * 1, showWidgetToolTip($key,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) , spinkx_data[$key].lp.ctr * 1, showWidgetToolTip($key,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) );
+        $lpArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].lp.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) , spinkx_data[$key].lp.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) );
 
-        $bpArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].bp.clicks * 1, showWidgetToolTip($key,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) , spinkx_data[$key].bp.ctr * 1, showWidgetToolTip($key,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) );
+        $bpArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].bp.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) , spinkx_data[$key].bp.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) );
 
         counter++;
         var newDate = startdate.setDate(startdate.getDate() + 1);
