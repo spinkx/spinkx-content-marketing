@@ -119,7 +119,7 @@ if( $registration_complete ) {
         <form id="SPINKX_create_form" class="SPINKX_form" action="" method="post">
 		        <div class="wdgt_hdr_mn_hldr_spkx">
 					<span>
-						<i class="fas fa-mobile-alt"></i>
+						<i class="fas fa-desktop"></i>
 						<span class="lft_lbl_cls">Desktop Widget</span>
 					</span>
 			    </div>
