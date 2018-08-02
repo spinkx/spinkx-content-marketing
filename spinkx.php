@@ -528,9 +528,10 @@ function spinkx_cont_media_selector_print_scripts( ) {
                 event.preventDefault();
                 ptitle = 'Select a image to add campaign';
                 ptext= 'Add Campaign Image';
-                if($(this).attr('class') === 'reg-upload-logo') {
-                    ptitle = 'Select a image to add Logo';
-                    ptext= 'Add Logo';
+                console.log($(this).attr('class'));
+                if($(this).attr('class').indexOf('reg-upload-logo')) {
+                    ptitle = 'Select a image to add site icon';
+                    ptext= 'Add Site Icon';
                 }
 				// If the media frame already exists, reopen it.
 				if ( file_frame ) {
