@@ -8,10 +8,8 @@ jQuery(document).ready(function($){
     jQuery(document).on('click', function(event){
        $target = event.target;
        if($target.src == undefined) {
-          // console.log($($target).parents('div.bl-mn-dv-cntnr-ntf-br').next());
            if( ! ($target.className == 'ntf-mn-cntnr' ||  $target.className.indexOf('spinkx-mark-read') > 0 || $target.className == 'spinkx-notify-update-bubble')) {
              str = $target.src
-              console.log($target.className.indexOf('spinkx-mark-read'));
            //if(str.indexOf('notification-spnx.png') == -1) {
                jQuery('.ntf-mn-cntnr').hide();
            }
@@ -61,7 +59,6 @@ jQuery(document).ready(function($){
                 type: "POST",
                 data: {"id":[log_id]},
                 success: function (data) {
-                    console.log("success"+log_id);
                     data = JSON.parse(data);
                     if(data.status) {
                         spnx_notify_unread--;
@@ -76,7 +73,6 @@ jQuery(document).ready(function($){
                     }
                 },
                 error: function() {
-                    console.log("error"+log_id);
                     jQuery(divObj).attr('data-read','0');
                     jQuery(divObj).removeClass('spinkx-read-notify');
                 }
@@ -107,8 +103,6 @@ jQuery(document).ready(function($){
                         jQuery('.rnd-cmn-cls-dv-mn-cntr-rng').hide();
                         jQuery('.spinkx-notify-update-bubble').text(spnx_notify_unread).hide();
 
-                    } else {
-                        console.log('here');
                     }
                 },
                 error: function() {
