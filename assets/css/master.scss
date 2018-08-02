@@ -1967,15 +1967,12 @@ input[type=number]::-webkit-outer-spin-button {
     border: none;
     color: white;
     font-size: 12px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
     transition: .25s all ease;
     cursor: pointer;
     margin-left: 20px;
 }
 .continue-spnx-reg-button-cntnr button:hover{
     transform: translate3d(0,-2px,0);
-    box-shadow: 0 4px 4px rgba(0,0,0,.26);
 }
 .horizntal-align-cmn-cls-spnx-reg {
 
@@ -2565,10 +2562,9 @@ span.cpm-outer-main, .cad-icons .add-money-message {
 tr td div.camp-group-name {
     background-color: #d5e4eb !important;
     flex: 1 100%;
-    height: 30px;
+    height:29px;
     padding-top: 5px;
     padding-left: 15px;
-    border-radius: 5px;
     color: #0170b6;
     font-size: 14px;
     font-weight: bold;
@@ -2752,7 +2748,7 @@ tr td div.camp-group-name {
 }
 .cmn_cntnt_body_mdl i {
     margin-right:2px;
-    color:#337ab7;
+    color:#333;
 }
 .cmn_cntnt_body_mdl input {
     display: inline;
@@ -2828,4 +2824,31 @@ tr td div.camp-group-name {
 }
 .camp-group-tr .camp-group-name {
     font-size:12px;
+}
+.camp-group-name span {
+ position:relative;
+ top:2px;   
+}
+.camp-group-tr td {
+ padding:0px !important;   
+}
+.cmn_cls_rght_sts_cmp span:nth-child(2) {
+    margin-left:5px;
+}
+.cmn_cls_rght_sts_cmp span:nth-child(2) i,.ecpc_mr_cmn {
+    margin-right:2px;
+}
+.spnx-faq {
+    position: relative;
+    top: -11px;
+    left: -4px;
+    font-size: 13px;
+}
+#bwki_sites_display_length {
+    margin-left:6px;
+}
+.image-container-cls-reg-spnx a:focus, .spnx-menu-logo a:focus {
+    color: unset;
+    outline:unset;
+    box-shadow:unset;
 }
