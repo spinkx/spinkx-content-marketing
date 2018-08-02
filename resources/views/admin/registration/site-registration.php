@@ -266,7 +266,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 </script>
 <div class="spnx-reg-mn-cntainter">
 	<div class="text-spninks">
-	<div class="image-container-cls-reg-spnx"><img src="<?php echo SPINKX_CONTENT_DIST_URL?>images/spinkx-logo.png" /></div>
+	<div class="image-container-cls-reg-spnx"><a target="_blank" href="https://www.spinkx.com"><img src="<?php echo SPINKX_CONTENT_DIST_URL?>images/spinkx-logo.png" /></a></div>
 	<div class="reg-lbl-txt">REGISTRATION</div>
     </div>
 	<form method="post" enctype="multipart/form-data">
