@@ -42,6 +42,7 @@ function addParameter(url, parameterName, parameterValue, atStart){
 };
 var flag_reload = false;
 jQuery( document ).ready(function() {
+    jQuery('body').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
     jQuery(document).on("click","input.onoffswitch-checkbox",function() {
         var dataid = jQuery(this).attr("data-id");
         switch (dataid) {
@@ -126,7 +127,7 @@ function createAd(buttonObj, campaign_id, $data) {
         campaign_utm_source = $data.utm_source;
         campaign_utm_campaign = $data.utm_campaign;
         campaign_categories = $data.categories;
-        campaign_categories = campaign_categories;
+
 
         campaign_countries = $data.locations;
         campaign_budget_amount = $data.campaign_budget_amount;
@@ -167,16 +168,23 @@ function createAd(buttonObj, campaign_id, $data) {
     addhook_form += '<span class="cad-icons" style="height: 40px;" ><img src="' + SPINKX_CONTENT_DIST_URL + 'images/camp-icons/targeting.png" style="float: left; margin-top: 4px;"/><div class="targeting-categories">';
     addhook_form += '<select name="categories[]" id="categories"  multiple>';
     temp_str = '';
+    /*console.log(campaign_categories);
+    for(var i=0; i < campaign_categories.length; i++) campaign_categories[i] = parseInt(campaign_categories[i], 10);
+    console.log(campaign_categories);*/
+    $cat_arr = $data.category_id.split(',')
     for( var index in spinkxJs.categories) {
-        temp_str2 = ( campaign_categories.indexOf(index) >= 0 )?'selected="selected"':'';
+        temp_str2 = (  $cat_arr.indexOf(index) > -1 )?'selected="selected"':'';
         temp_str += '<option value="' + index + '" '+ temp_str2 +'>' + spinkxJs.categories[index] + '</option>';
     }
     addhook_form += temp_str;
     addhook_form += '</select></div>';
     addhook_form += '<div class="targeting-countries"><select name="locations[]" id="locations" multiple >';
     temp_str = '';
+
     for( var index in spinkxJs.countries) {
-        temp_str2 = ( campaign_countries.indexOf(index) > -1 )?'selected="selected"':'';
+        if(!spinkxJs.countries.hasOwnProperty(index)) continue;
+        item = spinkxJs.countries[index];
+        temp_str2 = ( campaign_countries.indexOf(item) > -1 )?'selected="selected"':'';
         temp_str += '<option value="' + index + '" '+ temp_str2 +'>' + spinkxJs.countries[index] + '</option>';
     }
     addhook_form += temp_str;
