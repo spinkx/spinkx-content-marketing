@@ -619,7 +619,7 @@ function drawChart() {
         item = spinkx_data[index];
         var widget = null;
         widget = new google.visualization.DataTable();
-        widget.addColumn('number', 'Day');
+        widget.addColumn('date', 'Day');
         widget.addColumn('number', 'Clicks');
         widget.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
         widget.addColumn('number', 'CTR');
@@ -641,9 +641,9 @@ function drawChart() {
             $key = yyyy + "-" + mm + "-" + dd;
             widclkcounter++;
             if (typeof item[$key] === 'undefined') {
-                $widgetArr[counter] = new Array(widclkcounter * 1, 0, showWidgetToolTip($key, 0, 0), 0, showWidgetToolTip($key, 0, 0));
+                $widgetArr[counter] = new Array(startdate, 0, showWidgetToolTip($key, 0, 0), 0, showWidgetToolTip($key, 0, 0));
             } else {
-                $widgetArr[counter] = new Array(widclkcounter * 1, item[$key].clicks * 1, showWidgetToolTip($key, item[$key].clicks, item[$key].ctr), item[$key].ctr * 1, showWidgetToolTip($key, item[$key].clicks, item[$key].ctr));
+                $widgetArr[counter] = new Array(startdate, item[$key].clicks * 1, showWidgetToolTip($key, item[$key].clicks, item[$key].ctr), item[$key].ctr * 1, showWidgetToolTip($key, item[$key].clicks, item[$key].ctr));
                 if(index == 1939) {
                     console.log($widgetArr);
                 }
@@ -680,8 +680,8 @@ function drawChart() {
             },
             vAxis: {minValue: 1},
             hAxis: {
+                format: 'M/d/yy',
                 baselineColor: 'none',
-                ticks: ticks,
                 gridlines: {
                     color: 'transparent'
                 },

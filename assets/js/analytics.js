@@ -196,21 +196,21 @@ function drawChart() {
     var boost_post = new google.visualization.DataTable();;
 
     //Add Column
-    widget.addColumn('number', 'Day');
+    widget.addColumn('date', 'Day');
     widget.addColumn('number', 'Clicks');
     widget.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
     widget.addColumn('number', 'CTR');
     widget.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
 
     //Add Column
-    local_post.addColumn('number', 'Day');
+    local_post.addColumn('date', 'Day');
     local_post.addColumn('number', 'Clicks');
     local_post.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
     local_post.addColumn('number', 'CTR');
     local_post.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
 
     //Add Column
-    boost_post.addColumn('number', 'Day');
+    boost_post.addColumn('date', 'Day');
     boost_post.addColumn('number', 'Clicks');
     boost_post.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
     boost_post.addColumn('number', 'CTR');
@@ -234,11 +234,11 @@ function drawChart() {
         $keyDate = monthNames[parseInt(mm)] + ' ' + dd + ', ' + yyyy;
         widclkcounter++;
 
-        $widgetArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].wd.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) , spinkx_data[$key].wd.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) );
+        $widgetArr[counter] = new Array(startdate, spinkx_data[$key].wd.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) , spinkx_data[$key].wd.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) );
 
-        $lpArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].lp.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) , spinkx_data[$key].lp.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) );
+        $lpArr[counter] = new Array(startdate, spinkx_data[$key].lp.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) , spinkx_data[$key].lp.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) );
 
-        $bpArr[counter] = new Array(widclkcounter * 1, spinkx_data[$key].bp.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) , spinkx_data[$key].bp.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) );
+        $bpArr[counter] = new Array(startdate, spinkx_data[$key].bp.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) , spinkx_data[$key].bp.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) );
 
         counter++;
         var newDate = startdate.setDate(startdate.getDate() + 1);
@@ -284,8 +284,8 @@ function drawChart() {
         },
         vAxis: {minValue: 1},
         hAxis: {
+            format: 'M/d/yy',
             baselineColor: 'none',
-            ticks: wd_ticks,
             gridlines: {
                 color: 'transparent'
             },
@@ -314,8 +314,8 @@ function drawChart() {
         },
         vAxis: {minValue: 1},
         hAxis: {
+            format: 'M/d/yy',
             baselineColor: 'none',
-            ticks: lp_ticks,
             gridlines: {
                 color: 'transparent'
             }
@@ -340,8 +340,8 @@ function drawChart() {
         },
         vAxis: {minValue: 1},
         hAxis: {
+            format: 'M/d/yy',
             baselineColor: 'none',
-            ticks: bp_ticks,
             gridlines: {
                 color: 'transparent'
             }
