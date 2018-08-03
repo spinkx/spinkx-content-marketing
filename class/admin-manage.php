@@ -1104,6 +1104,7 @@ final class spnxAdminManage
                 add_submenu_page('spinkx-site-register', 'Analytics | Spinkx', 'Analytics', 'manage_options', 'spinkx_analytics', array($this, 'spinkx_cont_show_page'));
                 add_submenu_page('spinkx-site-register', 'Registration | Spinkx', 'Registration', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'));
             } else {*/
+			add_submenu_page('spinkx-site-register', 'Dashboard | Spinkx', 'Dashboard', 'manage_options', 'spinkx-site-dashboard', array($this, 'spinkx_cont_show_page'));
                 add_submenu_page('spinkx-site-register', 'Registration | Spinkx', 'Registration', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'));
                 add_submenu_page('spinkx-site-register', 'Analytics | Spinkx', 'Analytics', 'manage_options', 'spinkx_analytics', array($this, 'spinkx_cont_show_page'));
             //}
@@ -1132,6 +1133,9 @@ final class spnxAdminManage
 				break;
 			case 'spinkx-site-register':
 				require SPINKX_CONTENT_ADMIN_VIEW_DIR.'registration/site-registration.php';
+				break;
+			case 'spinkx-site-dashboard':
+				require SPINKX_CONTENT_ADMIN_VIEW_DIR.'dashboard/site-dashboard.php';
 				break;
 		}
 	}
