@@ -180,11 +180,9 @@ function createAd(buttonObj, campaign_id, $data) {
     addhook_form += '</select></div>';
     addhook_form += '<div class="targeting-countries"><select name="locations[]" id="locations" multiple >';
     temp_str = '';
-
+    $loc_arr = $data.country_id.split(',')
     for( var index in spinkxJs.countries) {
-        if(!spinkxJs.countries.hasOwnProperty(index)) continue;
-        item = spinkxJs.countries[index];
-        temp_str2 = ( campaign_countries.indexOf(item) > -1 )?'selected="selected"':'';
+        temp_str2 = ( $loc_arr.indexOf(index) > -1 )?'selected="selected"':'';
         temp_str += '<option value="' + index + '" '+ temp_str2 +'>' + spinkxJs.countries[index] + '</option>';
     }
     addhook_form += temp_str;
