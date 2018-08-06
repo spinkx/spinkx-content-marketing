@@ -64,9 +64,9 @@ $custom_js .= '
 		var $ = jQuery.noConflict();
 		$(document).ready(function(){			
 			jQuery("#daterange").dateRangePicker({container: "#daterange-picker-container",numberOfMonths: 3,datepickerShowing: true, maxDate: "0D",minDate: new Date(2016, 8, 01),test: true,today: '.$todaydate.'}); });';
-$vendor = SPINKX_CONTENT_PLUGIN_URL.'/vendor/';
+$vendor = SPINKX_CONTENT_PLUGIN_URL.'vendor/';
 wp_enqueue_script( 'jquery-countdown-js', $vendor . 'jQuery-countdown/js/jquery.countdown.min.js' );
-wp_enqueue_script( 'jquery-custom-js',  SPINKX_CONTENT_DIST_URL . '/js/widget-design.js' , array('jquery-google-chart'), false, true);
+wp_enqueue_script( 'jquery-custom-js',  SPINKX_CONTENT_DIST_URL . 'js/widget-design.js' , array('jquery-google-chart'), false, true);
 wp_add_inline_script( 'jquery-custom-js', $custom_js );
 if( $registration_complete ) {
 	?>

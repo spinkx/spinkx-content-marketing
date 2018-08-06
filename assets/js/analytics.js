@@ -284,7 +284,7 @@ function drawChart() {
         },
         vAxis: {minValue: 1},
         hAxis: {
-            format: 'M/d/yy',
+            format: 'd MMM',
             baselineColor: 'none',
             gridlines: {
                 color: 'transparent'
@@ -314,7 +314,7 @@ function drawChart() {
         },
         vAxis: {minValue: 1},
         hAxis: {
-            format: 'M/d/yy',
+            format: 'd MMM',
             baselineColor: 'none',
             gridlines: {
                 color: 'transparent'
@@ -340,7 +340,7 @@ function drawChart() {
         },
         vAxis: {minValue: 1},
         hAxis: {
-            format: 'M/d/yy',
+            format: 'd MMM',
             baselineColor: 'none',
             gridlines: {
                 color: 'transparent'

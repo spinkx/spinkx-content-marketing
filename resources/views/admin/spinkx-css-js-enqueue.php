@@ -60,7 +60,7 @@ function spinkx_cont_js_var() {
 		}
 	} elseif ($page && $page === 'spinkx-site-dashboard') {
 		spinkx_cont_common_css_js( $page, $path );
-		spinkx_cont_acc_set_css_js($page, $path);
+
 	}
 
 }

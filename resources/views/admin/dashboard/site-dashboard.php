@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<div class="wdgt_lft_mn_cntnr_spkx cmn_mn_cntr_bx_cls">
 				 <div class="wdgt_hdr_mn_hldr_spkx">
 					<span>
-						<img src="http://localhost/wordpress/wp-content/plugins/spinkx-content-marketing/assets/images/widget.png" />
+						<img src="<?php echo SPINKX_CONTENT_DIST_URL?>images/widget.png" />
 						<span class="lft_lbl_cls">Widget</span>
 					</span>
 				 </div>
@@ -64,7 +64,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<div class="wdgt_lft_mn_cntnr_spkx cmn_mn_cntr_bx_cls">
 				 <div class="wdgt_hdr_mn_hldr_spkx">
 					<span>
-						<img src ="http://localhost/wordpress/wp-content/plugins/spinkx-content-marketing/assets/images/campaign.png" />
+						<img src ="<?php echo SPINKX_CONTENT_DIST_URL?>images/campaign.png" />
 						<span class="lft_lbl_cls">Campaign</span>
 					</span>
 				 </div>
@@ -104,7 +104,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<div class="wdgt_lft_mn_cntnr_spkx cmn_mn_cntr_bx_cls">
 				 <div class="wdgt_hdr_mn_hldr_spkx">
 					<span>
-						<img src="http://localhost/wordpress/wp-content/plugins/spinkx-content-marketing/assets/images/boostpost.png" />
+						<img src="<?php echo SPINKX_CONTENT_DIST_URL?>images/boostpost.png" />
 						<span class="lft_lbl_cls">Boost Post</span>
 					</span>
 				 </div>
@@ -146,7 +146,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<div class="wdgt_lft_mn_cntnr_spkx cmn_mn_cntr_bx_cls">
 				 <div class="wdgt_hdr_mn_hldr_spkx">
 					<span>
-						<img src ="http://localhost/wordpress/wp-content/plugins/spinkx-content-marketing/assets/images/notification.png" />
+						<img src ="<?php echo SPINKX_CONTENT_DIST_URL?>images/notification.png" />
 						<span class="lft_lbl_cls">Notification</span>
 					</span>
 				 </div>
@@ -171,7 +171,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<div class="wdgt_lft_mn_cntnr_spkx cmn_mn_cntr_bx_cls">
 				 <div class="wdgt_hdr_mn_hldr_spkx">
 					<span>
-						<img src="http://localhost/wordpress/wp-content/plugins/spinkx-content-marketing/assets/images/help.png" />
+						<img src="<?php echo SPINKX_CONTENT_DIST_URL?>images/help.png" />
 						<span class="lft_lbl_cls">Product Support</span>
 					</span>
 				 </div>
