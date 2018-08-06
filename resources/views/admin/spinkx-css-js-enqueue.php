@@ -94,9 +94,9 @@ function spinkx_cont_js_var() {
 			//spinkx_cont_common_css_js( $page );
 			spinkx_cont_campaign_form_set_css_js($path);
 		}
-	} elseif ( $page && $page === 'spinkx_options' ) {
+	} elseif ($page && $page === 'spinkx-site-dashboard') {
 		spinkx_cont_common_css_js( $page, $path );
-		spinkx_cont_acc_set_css_js();
+		spinkx_cont_acc_set_css_js($page, $path);
 	}
 
 }
@@ -401,6 +401,7 @@ function spinkx_header_menu() {
     $settings['due_date'] = isset($settings['due_date'])?$settings['due_date']:'0000-00-00 00:00:00';
     ?><div><div class="spnx-menu-logo"><span><a target="_blank" href="https://www.spinkx.com"><img src="<?php echo SPINKX_CONTENT_DIST_URL; ?>images/spinkx-logo.png" /></a></span></div>
 	<ul class="nav nav-tabs">
+        <li <?php echo ('spinkx-site-dashboard' === $page)?'class="active"':''?>><a href="?page=spinkx-site-dashboard">Dashboard</a></li>
         <?php if(  $settings['due_date'] == '0000-00-00 00:00:00'  ) {?>
 		<li <?php echo ('spinkx-site-register' === $page)?'class="active"':''?>><a href="?page=spinkx-site-register">Registration</a></li>
 		<?php } else { ?>
