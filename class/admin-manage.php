@@ -68,7 +68,7 @@ final class spnxAdminManage
 		    add_action( 'admin_menu', array( $this, 'spinkx_cont_spinkx_admin_menu' ) );
 		    add_action( 'admin_bar_menu', array( $this, 'spinkx_cont_show_notification' ) );
 		    add_action( 'admin_notices', array( $this, 'spinkx_cont_show_notice' ) ); // call spinkx_show_notice.
-		    add_action( 'admin_head', 'spinkx_cont_icon_css' );
+		   // add_action( 'admin_head', 'spinkx_cont_icon_css' );
 		    add_action( 'admin_enqueue_scripts', 'spinkx_cont_js_var' );
 		    //add_action('wp_dashboard_setup', array($this, 'spinkx_cont_add_dashboard_widgets')); // Call hook after admin dashboard setup.
 		    add_action( 'spinkx_views_update_hook', 'spinkx_views_update_function' );

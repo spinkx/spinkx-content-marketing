@@ -1,48 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-/**
- *
- * This function for add inline css on spinkx icon
- * spinkx_cont_icon_css()
- *
- * @return void
- * @internal param $void
- */
 
-function spinkx_cont_icon_css() {
-    echo '<style>';
-    $css = 'scss';
-    if( SPINKX_CONTENT_PRODUCTION ) {
-        $css = 'css';
-    }
-    readfile(SPINKX_CONTENT_DIST_DIR . 'css/spmenu-noti.'.$css);
-    echo '</style>';
-}
-
-/**
-*
-* This function for add inline css on spinkx icon
-* spinkx_cont_icon_css()
-*
- * @return void
-    * @internal param $void
-*/
-
-/**  function spinkx_admin_add_inline_js(){
-	echo "<script type='text/javascript'>\n";
-	echo "jQuery(document).ready(function(){jQuery(document).on('click', function(e) {
-           if (e.target.id =='#wp-admin-bar-spinkx_notification') {
-           alert('dfsdf');
-			jQuery('.ntf-mn-cntnr').toggle();
-		} else {
-			jQuery('.ntf-mn-cntnr').hide();
-		}
-	})});";
-	echo "\n</script>";
-}
- **/
 function spinkx_admin_add_inline_js(){
-	wp_register_style('spinkx_content_marketing_dashicons', SPINKX_CONTENT_DIST_URL .'css/spinkx-content-marketing.css');
+	$css = 'scss';
+	if( SPINKX_CONTENT_PRODUCTION ) {
+		$css = 'css';
+	}
+	wp_register_style('spinkx_content_marketing_dashicons', SPINKX_CONTENT_DIST_URL .'css/spinkx-content-marketing.'.$css);
 	wp_enqueue_style('spinkx_content_marketing_dashicons');
     wp_enqueue_script( 'spinkx-top-notifications', SPINKX_CONTENT_DIST_URL . 'js/common.js' );
 }
@@ -203,7 +167,6 @@ function spinkx_cont_widget_css_js($path) {
 		$css = 'css';
 	}
 	wp_enqueue_style( 'css-add-widget', $path[0]  . 'css/add-widget.'.$css );
-	wp_enqueue_style( 'css-add-widget-preview', $path[0] . 'css/add-widget-preview.'.$css );
 	wp_enqueue_style( 'css-multiselect', $vendor . 'jQuery-multiselect/css/jquery.multiselect.css' );
 	wp_enqueue_style( 'wp-color-picker' );
 	$custom_css = ' .no-js #loader, .notice { display: none;  }
@@ -235,7 +198,7 @@ function spinkx_cont_cp_css_js( $callFrom = null, $path ) {
 	// wp_enqueue_style( 'bootstrap', $css_url . 'bootstrap.min.css' , array('custom-style'));
 	wp_enqueue_style( 'css-powertrip', $vendor . 'jQuery-powertip/css/jquery.powertip.min.css' );
 	wp_enqueue_style( 'jquery-multiselect-css', $vendor . 'jQuery-multiselect/css/jquery.multiselect.css' );
-	wp_enqueue_style( 'growl', $path[0] . 'css/add-widget.'.$css , array( 'custom-style' ) );
+    wp_enqueue_style( 'growl', $path[0] . 'css/add-widget.'.$css , array( 'custom-style' ) );
 	$custom_css = ' ul li:before {content:none;} 
 	ul li, ol li { padding: 0px 0 0;}
 	.no-js #loader { display: none;  }
