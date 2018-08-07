@@ -42,7 +42,6 @@ function addParameter(url, parameterName, parameterValue, atStart){
 };
 var flag_reload = false;
 jQuery( document ).ready(function() {
-    jQuery('body').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
     jQuery(document).on("click","input.onoffswitch-checkbox",function() {
         var dataid = jQuery(this).attr("data-id");
         switch (dataid) {
@@ -478,6 +477,7 @@ jQuery(document).ready(function($){
     });
 
     $(document).on('click', '.cancelcampaign', function(){
+
        var result = confirm("Are you want to cancel this campaign and refund to wallet?", "Test");
        if (result) {
            cid = $(this).attr('data-id');
@@ -583,6 +583,8 @@ jQuery(document).ready(function($){
 });
 
 function cancelCampaign( cid ) {
+            jQuery('.spnx_wdgt_wrapper').show();
+
     var form_data = new FormData();
     form_data.append('action', 'spinkx_cont_campaign_refund_amount');
     form_data.append('cid', cid);
@@ -600,16 +602,22 @@ function cancelCampaign( cid ) {
                 jQuery.growl.error({ message: data.msg,
                     location: 'tr',
                     size: 'large' });
+               jQuery('.spnx_wdgt_wrapper').hide();
+ 
 
             } else {
                 jQuery.growl.notice({ message: data.msg,
                     location: 'tr',
                     size: 'large' });
+                   jQuery('.spnx_wdgt_wrapper').hide();
+ 
                 window.location.reload();
             }
         },
         failure : function(data){
             jQuery('.se-pre-con').bPopup().close();
+            jQuery('.spnx_wdgt_wrapper').hide();
+
         }
     });
     return false;
@@ -716,6 +724,7 @@ String.prototype.capitalize = function() {
 }
 
 function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_campaign_id ) {
+   jQuery('.spnx_wdgt_wrapper').show();
    jQuery('.se-pre-con').bPopup({modalClose: false});
     jQuery(buttonObj).parents('tr').hide();
     var formData = new FormData();
@@ -747,6 +756,8 @@ function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_c
                 jQuery(buttonObj).parents('tr').hide();
                 createVariation(buttonObj, parent_campaign_id, campaign_id, data)
             }
+               jQuery('.spnx_wdgt_wrapper').hide();
+
 
         },
         failure: function (data) {
@@ -756,6 +767,8 @@ function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_c
                 location: 'tr',
                 size: 'large'
             });
+               jQuery('.spnx_wdgt_wrapper').hide();
+
             console.log(data);
         }
     });
@@ -919,6 +932,8 @@ jQuery(document).ready(function($) {
 
 
 function changeCampaignStatus(the_element) {
+    jQuery('.spnx_wdgt_wrapper').show();
+
     var status = null;
     var user_id = null;
     var post_id = null;
@@ -964,6 +979,8 @@ function changeCampaignStatus(the_element) {
                         location: 'tr',
                         size: 'large'
                     });
+                    jQuery('.spnx_wdgt_wrapper').hide();
+
                 }
             jQuery('.se-pre-con').bPopup().close();
         },
@@ -974,6 +991,8 @@ function changeCampaignStatus(the_element) {
                 location: 'tr',
                 size: 'large'
             });
+          jQuery('.spnx_wdgt_wrapper').hide();
+  
         }
     });
 }

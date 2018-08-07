@@ -4,6 +4,7 @@ jQuery(document).ready(function($) {
         var widget_id = $(this).attr("data-id");
         var name = $(this).attr("name");
         var status = $(this).prop("checked");
+        jQuery(".spnx_wdgt_wrapper").show();
         $.ajax({
             url : ajaxurl,
             type : "get",
@@ -16,8 +17,13 @@ jQuery(document).ready(function($) {
                 "name": name
             },
             success : function(data){
+                $.growl.notice({ message: "Successfully Updated!",
+                        location: "tr",
+                        size: "large" });
+                jQuery('.spnx_wdgt_wrapper').hide();
+                }
 
-            }
+
         });
     });
     $(".mn-txt-cmn-dv").click(function() {
@@ -372,6 +378,9 @@ $(".slider-range-min").slider({
       //  $(".ajax_create_button").attr("disabled",false);
         $( ".ajax_create_button" ).click(function( e ) {
             e.preventDefault();
+
+            jQuery('.spnx_wdgt_wrapper').show();
+           
             var form_serialized_data = $(this).parents('form#SPINKX_create_form').serialize();
             var main_widget_id = $("#main_widget_id").val();
             var web_enable = true;
@@ -405,12 +414,15 @@ $(".slider-range-min").slider({
                     $.growl.error({ message: "Failed to Update !",
                         location: "tr",
                         size: "large" });
+                    jQuery('.spnx_wdgt_wrapper').hide();
+
                 }
             });
         });
 
     $( ".ajax_update_button" ).click(function( e ) {
         e.preventDefault();
+        jQuery('.spnx_wdgt_wrapper').show();
 
         var form_serialized_data = $(this).parents('form#SPINKX_create_form').serialize();
         var main_widget_id = $(this).parents('form#SPINKX_create_form').find('#main_widget_id').val();
@@ -437,6 +449,8 @@ $(".slider-range-min").slider({
                 $.growl.notice({ message: "Successfully Updated!",
                     location: 'tr',
                     size: 'large' });
+            jQuery('.spnx_wdgt_wrapper').hide();
+
             },
             failure : function(data){
                 console.log(data);
@@ -444,6 +458,8 @@ $(".slider-range-min").slider({
                 $.growl.error({ message: "Failed to Update!",
                     location: 'tr',
                     size: 'large' });
+            jQuery('.spnx_wdgt_wrapper').hide();
+
             }
         });
     });
@@ -451,6 +467,8 @@ $(".slider-range-min").slider({
 
     $( ".ajax_reset_button" ).click(function( e ) {
         e.preventDefault();
+            jQuery('.spnx_wdgt_wrapper').show();
+
         if($(this).attr("disabled")=='disabled')
             return false;
         var widget_name = $(this).parents('.grph_wdgt_cntnr_grp').find('form #widget_name').val();
@@ -484,12 +502,15 @@ $(".slider-range-min").slider({
                 $.growl.error({ message: "Failed to Update!",
                     location: 'tr',
                     size: 'large' });
+                jQuery('.spnx_wdgt_wrapper').hide();
+
             }
         });
     });
 
     $('a#ajax_cancel_button').click(function(e) {
         e.preventDefault();
+
         window.location.reload();
         return;
         var widget_name = $(this).parents('.grph_wdgt_cntnr_grp').find('#widget_name').val();
@@ -533,6 +554,8 @@ $(".slider-range-min").slider({
         e.preventDefault();
         var form_serialized_data = $(this).parents('form#SPINKX_category_form').serialize();
         var main_widget_id = $(this).parents('form#SPINKX_category_form').find('#main_widget_id').val();
+            jQuery('.spnx_wdgt_wrapper').show();
+
         $.ajax({
             url : ajaxurl,
             data : {
@@ -548,22 +571,24 @@ $(".slider-range-min").slider({
                 $.growl.notice({ message: "Successfully Updated!",
                     location: 'tr',
                     size: 'large' });
-            },
+            jQuery('.spnx_wdgt_wrapper').hide();
+              },
             failure : function(data){
                 console.log(data);
                 $('#bpopup_ajax_loading').bPopup().close();
                 $.growl.error({ message: "Failed to Update!",
                     location: 'tr',
                     size: 'large' });
+                jQuery('.spnx_wdgt_wrapper').hide();
+
             }
         });
     });
     $('#widget_data').show();
 });
-jQuery('.grph_wdgt_cntnr_grp').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
 function updatewidget(){
    // jQuery('.se-pre-con').bPopup( { modalClose: false } );
-    jQuery('.grph_wdgt_cntnr_grp').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
+    jQuery('.spnx_wdgt_wrapper').show();
     $.ajax({
         url : ajaxurl,
         type : "get",
@@ -691,7 +716,7 @@ function drawChart() {
         var widget_views_chart = new google.visualization.LineChart(document.getElementById('widget-chart-'+index));
         widget_views_chart.draw(widget, widImpoptions);
     }
-    jQuery('.spnx_wdgt_wrapper').remove();
+    jQuery('.spnx_wdgt_wrapper').hide();
 }
 
 function showWidgetToolTip($dt, $vw, $ctr) {
