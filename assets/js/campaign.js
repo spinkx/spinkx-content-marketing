@@ -118,7 +118,7 @@ function createAd(buttonObj, campaign_id, $data) {
         wallet_balance_amount =  Number(jQuery('#user-balance').text());
     }
     if(campaign_id) {
-        jQuery('.se-pre-con').bPopup().close();
+       // jQuery('.se-pre-con').bPopup().close();
         campaign_image = $data.ad_image_url;
         campaign_headline = $data.campaign_title;
         campaign_excerpt = $data.campaign_description;
@@ -171,7 +171,11 @@ function createAd(buttonObj, campaign_id, $data) {
     /*console.log(campaign_categories);
     for(var i=0; i < campaign_categories.length; i++) campaign_categories[i] = parseInt(campaign_categories[i], 10);
     console.log(campaign_categories);*/
-    $cat_arr = $data.category_id.split(',')
+    if(campaign_id) {
+        $cat_arr = $data.category_id.split(',');
+    } else {
+        $cat_arr = [];
+    }
     for( var index in spinkxJs.categories) {
         temp_str2 = (  $cat_arr.indexOf(index) > -1 )?'selected="selected"':'';
         temp_str += '<option value="' + index + '" '+ temp_str2 +'>' + spinkxJs.categories[index] + '</option>';
@@ -180,7 +184,11 @@ function createAd(buttonObj, campaign_id, $data) {
     addhook_form += '</select></div>';
     addhook_form += '<div class="targeting-countries"><select name="locations[]" id="locations" multiple >';
     temp_str = '';
-    $loc_arr = $data.country_id.split(',')
+    if(campaign_id) {
+        $loc_arr = $data.country_id.split(',');
+    } else {
+        $loc_arr = [];
+    }
     for( var index in spinkxJs.countries) {
         temp_str2 = ( $loc_arr.indexOf(index) > -1 )?'selected="selected"':'';
         temp_str += '<option value="' + index + '" '+ temp_str2 +'>' + spinkxJs.countries[index] + '</option>';
@@ -797,7 +805,6 @@ function createVariation(buttonObj, parent_campaign_id, campaign_id, $data) {
 
     addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn-cancle-spnx-main-cls"  style=" right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">CANCEL</button></div>';
     addhook_form += '</form></div>';
-    //jQuery('#button-create-ad').parents('tr').hide();
     jQuery(buttonObj).parents('tr').after('<tr><td colspan="3">'+addhook_form+'</td></tr>');
     imgHeightnew = jQuery('form.create-variation-form .playlist_img img').height();
     if(imgHeightnew>0) {
