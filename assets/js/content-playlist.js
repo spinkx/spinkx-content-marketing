@@ -90,6 +90,7 @@ jQuery( document ).ready(function() {
     });*/
 
     jQuery(document).on("click","button.updatecategories",function() {
+        jQuery('.spnx_wdgt_wrapper').show();
         var dataid = jQuery(this).attr('data-id');
         categories = jQuery('#bp_categories_'+dataid).val();
         var formData = new FormData();
@@ -111,6 +112,7 @@ jQuery( document ).ready(function() {
                         location: 'tr',
                         size: 'large'
                     });
+
                     jQuery(".modified-category-"+dataid).toggle();
                 } else {
                     jQuery.growl.error({
@@ -120,6 +122,8 @@ jQuery( document ).ready(function() {
                     });
                     jQuery(".modified-category-"+dataid).toggle();
                 }
+                jQuery('.spnx_wdgt_wrapper').hide();
+
             },
             failure: function (data) {
                 //jQuery('#ab_posts_pause_loading').bPopup().close();
@@ -128,6 +132,8 @@ jQuery( document ).ready(function() {
                     location: 'tr',
                     size: 'large'
                 });
+                jQuery('.spnx_wdgt_wrapper').hide();
+
                 jQuery(".modified-category-"+dataid).toggle();
                 //console.log(data);
             }
@@ -182,6 +188,8 @@ jQuery( document ).ready(function() {
 
     jQuery('.spnx-sync').click(function(){
         var sid = jQuery(this).attr('id');
+        jQuery('.spnx_wdgt_wrapper').show();
+
         jQuery('.se-pre-con').bPopup( { modalClose: false } );
         jQuery.ajax({
             url : ajaxurl,
@@ -203,6 +211,8 @@ jQuery( document ).ready(function() {
 });
 function all_onoff(type){
    // var dataid = jQuery("#playpauseswitch_"+type+"_all").attr("data-id");
+    jQuery('.spnx_wdgt_wrapper').show();
+
     changePostStatus(type);
 }
 
@@ -624,6 +634,8 @@ function updateCpm_bak() {
 }
 
 function changePostStatus(the_element) {
+    jQuery('.spnx_wdgt_wrapper').show();
+
     var status = null;
     var site_id = null;
     var post_id = null;
@@ -666,6 +678,7 @@ function changePostStatus(the_element) {
         datatype: 'json',
         success: function (data) {
             console.log(data);
+
             var data = JSON.parse(data);
             if (typeof the_element === 'string' || the_element instanceof String) {
                 if (data.error == 1) {
@@ -696,6 +709,7 @@ function changePostStatus(the_element) {
                         location: 'tr',
                         size: 'large'
                     });
+                    jQuery('.spnx_wdgt_wrapper').hide();
                 }
                 jQuery('.se-pre-con').bPopup().close();
                // window.location.reload();
@@ -718,6 +732,7 @@ function changePostStatus(the_element) {
                         location: 'tr',
                         size: 'large'
                     });
+                  jQuery('.spnx_wdgt_wrapper').hide();
                 }
             }
             jQuery('.se-pre-con').bPopup().close();
@@ -728,6 +743,7 @@ function changePostStatus(the_element) {
                 location: 'tr',
                 size: 'large'
             });
+           jQuery('.spnx_wdgt_wrapper').hide();
         }
     });
 }
