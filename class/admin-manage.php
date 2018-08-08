@@ -659,9 +659,15 @@ final class spnxAdminManage
         $post['cuser_email'] = (new spnxAdminManage())->getCurrentUserEmail();
 		$url = esc_url( SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/create' );
 		$response = spnxHelper::doCurl( $url, $post );
-		$response = json_decode($response);
+		$response = json_decode($response, true);
 		if( is_int($response) && $response > 0 ) {
 			add_option("spinkx_static_id", $response);
+		}
+		if(isset($response[0]['widget_id'])) {
+			// if(update_option('spnx_widget_list', $response)) {
+				echo true;
+				exit;
+			// }
 		}
 		echo $response;
 		exit;

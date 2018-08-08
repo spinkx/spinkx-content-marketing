@@ -1,26 +1,44 @@
 === Spinkx Content Marketing ===
 Contributors: spinkx
 Donate link: www.spinkx.com
-Tags: Content Marketing, Ad Revenue, Ad Widget, Ad Exchange, Native Ads
+Tags: Content Marketing, Ad Revenue, Traffic Exchange, Native Ads, Ad exchange
 Requires at least: 4.5
-Tested up to: 4.9.4
-Stable tag: 3.0
+Requires PHP: 5.6
+Tested up to: 4.9.8
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Content marketing plugin for ‘Bloggers & Marketers’ who want to grow their traffic for free and earn ad revenue. Advertisers & Ad agencies create globally targeted campaigns, displayed across Spinkx Network. Free Traffic Exchange, Traffic Building, SEO Backlinks, Advertising Campaigns, Trending Posts, Ad network, Native Ads, Monetisation & Ad Revenue on your sidebar widget.
+A content marketing plugin to 1. Grow your traffic INSTANTLY, 2. Boost your Google SEO & backlinks, 3. Monetize - native ads & affiliate ads. Advertisers & Ad agencies create globally targeted campaigns, displayed across Spinkx Network. Free Traffic Exchange, Traffic Building, SEO Backlinks, Advertising Campaigns, Trending Posts, Ad network, Native Ads, Monetization & Ad Revenue on your sidebar widget.
 
 == Description ==
-Spinkx Content Marketing Plugin, is for Bloggers who want to Grow their Traffic via 'Free Ad Exchange' and Earn Revenue from Advertisers. Content Marketeers can start getting their content discovered across Spinkx Network of websites, before SEO kicks in, Create SEO Backlinks in real-time and start getting customers to read your stories. Advertiser can take advantage of Bot-free traffic, low cost and high ROI native ads. Powerful AI (artificial intelligence) & ML (machine learning) over Google Cloud Infrastructures, are being used in Spinkx 'Distribution of Content' algorithms, to help reach the right content to the right audience at the right time. 
+
+SPINKX is a content marketing platform, built to help the entire Wordpress community of 75M+ sites generating over 22B page views per month.
+
+Spinkx serves as a catalyst when installed on your website, helping solve two major problems of the blogging industry; grow Traffic for free & to monetize.
+
+1. Automates and enhances SEO and Backlink creation, to help you rank faster in google organic search & other search engines.
+
+2. Brings free additional traffic to your site via a unique 'traffic exchange' mechanism of the Spinkx network.
+
+3. Creates a monetization stream to help the community of bloggers and content creator via native ads, affiliate & sponsored content.
+
+4. Delivers high quality paid traffic to advertisers and marketeers (bot  and fake click free)
+
+Spinkx uses AI to server the right content to the right user at the right time, delivering a CTR of upto 30% on the widget.
+
+Content marketeers can start getting their content discovered across Spinkx Network of websites in real time, create SEO Backlinks in real-time and start getting customers to read your stories.
+
+Advertiser can take advantage of Bot-free traffic, low cost and high ROI native ads. Powerful AI (artificial intelligence) & ML (machine learning) over Google Cloud Infrastructures, are being used in Spinkx 'Distribution of Content' algorithms, to help reach the right content to the right audience at the right time.
 
 == Plugin Features ==
 
-== 1. Free Ad Exchange, to grow your traffic in real time ==
+== 1. Free Traffic Exchange / Ad exchange, to grow your audience in real time ==
 
 = 1.1. Use ‘Free Boost Post’ feature, to get High Quality Traffic to your website. =
 Get Free Traffic to your website, by using *’Boost Post’*. When you Boost your Post the *Headlines, Image & Description* start displaying on the Spinkx widget of other user websites who use Spinkx plugin as well, helping build a global network of dynamic link exchange. The better your post headlines the more clicks you get back.
 
-= 1.2. Automated SEO Backlinks =
+= 1.2. Automate SEO Backlinks =
 When you boost your posts and they are visible on *other sites Spinkx widget*, you have automatically generated *Backlinks*. These work for enhancing your SEO, and the quality of the backlinks are such that they appear only on relevant category sites as your. You can choose the category of sites when you are Boosting Posts and the internal backlinks work too from your own sidebar (for which you don’t need to use Boost Post)
 
 = 1.3. Earn Free Boost Credit Points (Just like a game!) =
@@ -35,10 +53,10 @@ The Spinkx widget when placed on your *Sidebar or Below Post,* automatically dis
 
 = 1.6 'Auto Boost' starts distributing your blog stories across the network as soon as you hot the Publish Button. Faster than SEO can kick in, start growing your traffic.
 
-= 1.7 Powerful Analytics Dash board, to help you derive meaningful analysis out of Data. All in real time. 
- 
+= 1.7 Powerful Analytics Dash board, to help you derive meaningful analysis out of Data. All in real time.
 
-== 2. Ad Revenue & Monetisation. Native ads. ==
+
+== 2. Ad Revenue & Monetization. Native ads. Affiliate ads ==
 
 = 2.1. Earn the highest CPM in the industry. Real Time. =
 We share maximum of our revenue form sponsored content or affiliate campaigns. We run affiliate and native ad campaign for our clients, and when they are visible on your sidebar as “Sponsored Posts” you earn revenue. These campaigns may run on CPM or CPC and we share the revenue to you in real-time and you could totally transfer the money to your PayPal.
@@ -138,7 +156,19 @@ This plugin has been tested from WordPress version 4.5 onwards. Please backup yo
 
 == Changelog ==
 
-= 3.0
+= 3.1 =
+*Release date - 6 August, 2018*
+
+* Notification added
+* Widget analytics
+* Bug fixes & UI upgrade
+* Registration removed FB & gmail login
+* Added upload of logo
+* New Spinkx branding logo
+* Spinkx home page
+* Analytics dashboard update
+
+= 3.0 =
 *Release Date - 10 March, 2018*
 
 * Re-design of the databases from ground up, for faster calculations and delivery of content.

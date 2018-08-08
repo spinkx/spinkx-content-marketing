@@ -75,7 +75,7 @@ if( $registration_complete ) {
 		<?php
 			$tab = spnxHelper::getFilterVar('tab');
 			$widget_id = spnxHelper::getFilterVar('widget_id');
-			if (empty($tab) && empty($widget_id)) {
+            if (empty($tab) && empty($widget_id)) {
 				$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/fetch/' . $settings['site_id'] . '/' . md5($settings['license_code']);
 				$wp_output = wp_remote_post($url,
 					array(
@@ -86,7 +86,9 @@ if( $registration_complete ) {
 
 				if (!is_wp_error($wp_output)) {
 					$result = json_decode($wp_output['body']);
-				}
+				} else {
+					$result = '';
+                }
 
                 $checked = '';
 				if ('License Invalid' !== $result) {
@@ -474,10 +476,10 @@ if( $registration_complete ) {
 
 	
                     <?php } ?>
-					<?php echo $result[0];?>
+					<?php echo (is_array($result))?$result[0]:$result;?>
                 <script type="text/javascript" defer>
                     google.charts.load('current', {'packages': ['corechart']});
-                    var spinkx_data = <?php echo json_encode($result[1]); ?>;
+                    var spinkx_data = <?php echo is_array($result)?json_encode($result[1]):''; ?>;
                 </script>
 				<?php } else {
 					echo sprintf($result);
