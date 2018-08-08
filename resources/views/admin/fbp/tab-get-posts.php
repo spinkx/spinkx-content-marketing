@@ -256,17 +256,23 @@ if($settings['due_date']!='0000-00-00 00:00:00') {
 </div>
 <script>
     jQuery(document).ready(function($) {
-        jQuery('#buy_point').on('keyup', function(event){
+        jQuery('#buy_point').on('blur', function(event){
             var points = parseInt($(this).val());
             if(points === undefined || isNaN(points)) {
                 document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
                 alert('Please enter amount in a number.');
+                $("#payment-method-button").prop('disabled',true);
                 return;
             }
-            if (points < 100) {
+            else if (points < 100) {
                 document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
                 alert('A minimum of 100 points are required for a purchase.');
+                $("#payment-method-button").prop('disabled',true);
+
                 return;
+            } else {
+            	$("#payment-method-button").prop('disabled',false);
+
             }
             document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
             jQuery.ajax({
