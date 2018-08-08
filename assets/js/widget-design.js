@@ -664,11 +664,12 @@ function drawChart() {
             dd = ((startdate.getDate()) >= 10) ? (startdate.getDate()) : '0' + (startdate.getDate());
             yyyy = startdate.getFullYear();
             $key = yyyy + "-" + mm + "-" + dd;
+            $keyDate = monthNames[parseInt(mm) -1 ] + ' ' + dd + ', ' + yyyy;
             widclkcounter++;
             if (typeof item[$key] === 'undefined') {
-                $widgetArr[counter] = new Array(startdate, 0, showWidgetToolTip($key, 0, 0), 0, showWidgetToolTip($key, 0, 0));
+                $widgetArr[counter] = new Array(startdate, 0, showWidgetToolTip($keyDate, 0, 0), 0, showWidgetToolTip($keyDate, 0, 0));
             } else {
-                $widgetArr[counter] = new Array(startdate, item[$key].clicks * 1, showWidgetToolTip($key, item[$key].clicks, item[$key].ctr), item[$key].ctr * 1, showWidgetToolTip($key, item[$key].clicks, item[$key].ctr));
+                $widgetArr[counter] = new Array(startdate, item[$key].clicks * 1, showWidgetToolTip($keyDate, item[$key].clicks, item[$key].ctr), item[$key].ctr * 1, showWidgetToolTip($keyDate, item[$key].clicks, item[$key].ctr));
             }
             counter++;
             var newDate = startdate.setDate(startdate.getDate() + 1);

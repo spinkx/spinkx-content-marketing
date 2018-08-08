@@ -231,7 +231,7 @@ function drawChart() {
         dd = ((startdate.getDate())>=10)? (startdate.getDate()) : '0' + (startdate.getDate());
         yyyy = startdate.getFullYear();
         $key = yyyy+"-"+mm+"-"+dd;
-        $keyDate = monthNames[parseInt(mm)] + ' ' + dd + ', ' + yyyy;
+        $keyDate = monthNames[parseInt(mm) -1 ] + ' ' + dd + ', ' + yyyy;
         widclkcounter++;
 
         $widgetArr[counter] = new Array(startdate, spinkx_data[$key].wd.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) , spinkx_data[$key].wd.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) );

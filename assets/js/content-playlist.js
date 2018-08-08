@@ -677,8 +677,6 @@ function changePostStatus(the_element) {
         type: 'post',
         datatype: 'json',
         success: function (data) {
-            console.log(data);
-
             var data = JSON.parse(data);
             if (typeof the_element === 'string' || the_element instanceof String) {
                 if (data.error == 1) {
@@ -691,14 +689,14 @@ function changePostStatus(the_element) {
                 } else {
                     if(the_element === 'local') {
                         post_type = 'onoff_local';
-                        if (data.msg >= 1 && enabled == 1) {
+                        if (( data.msg == 1 || data.msg == 3 ) && enabled == 1) {
                             jQuery("input."+post_type).prop("checked", true);
                         } else {
                             jQuery("input."+post_type).prop("checked", false);
                         }
                     } else {
                         post_type = 'onoff_global';
-                        if (data.msg >= 1 && enabled == 1) {
+                        if ( ( data.msg == 1 || data.msg == 3 ) && enabled == 1) {
                             jQuery("input."+post_type).prop("checked", true);
                         } else {
                             jQuery("input."+post_type).prop("checked", false);
@@ -711,7 +709,6 @@ function changePostStatus(the_element) {
                     });
                     jQuery('.spnx_wdgt_wrapper').hide();
                 }
-                jQuery('.se-pre-con').bPopup().close();
                // window.location.reload();
             } else {
                 if (data.error == 1) {
@@ -735,7 +732,6 @@ function changePostStatus(the_element) {
                   jQuery('.spnx_wdgt_wrapper').hide();
                 }
             }
-            jQuery('.se-pre-con').bPopup().close();
         },
         failure: function (data) {
             jQuery.growl.error({
@@ -1156,6 +1152,7 @@ function loadDT(startDate, endDate) {
     jQuery('.spnx_wdgt_wrapper').show();
     pt.from_date = startDate;
     pt.to_date = endDate;
+    pt.url = SPINKX_CONTENT_DIST_URL;
     var table = jQuery("#bwki_sites_display").DataTable({
         "pageLength": pageLength,
         "serverSide": true,
