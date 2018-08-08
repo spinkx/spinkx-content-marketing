@@ -248,7 +248,7 @@ function spinkx_cont_cp_css_js( $callFrom = null, $path ) {
 	wp_enqueue_script( 'form-validator-js', esc_url( '//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js' ) );
 
 	wp_enqueue_script( 'jquery-lazyloading-js', $vendor . 'lazysizes/js/lazysizes.min.js' );
-	wp_enqueue_script( 'jquery-multiselect-js', $vendor . 'JQuery-multiselect/js/jquery.multiselect.js' );
+	wp_enqueue_script( 'jquery-multiselect-js', $vendor . 'jQuery-multiselect/js/jquery.multiselect.js' );
 	if( ! $callFrom ) {
 		wp_enqueue_script('jquery-variation-custom-js', $path[0] . 'js/content-playlist.js');
 	}
