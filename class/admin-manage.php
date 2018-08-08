@@ -648,8 +648,9 @@ final class spnxAdminManage
         $post['cuser_email'] = (new spnxAdminManage())->getCurrentUserEmail();
 		$post['mode'] = 'reset';
         $url = esc_url( SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/update' );
-		$response = spnxHelper::doCurl( $url, $post );
-        echo json_decode($response);
+		spnxHelper::doCurl( $url, $post );
+        //echo json_decode($response);
+        //error_log(print_r($response, true));
 		wp_die();
 	}
 
