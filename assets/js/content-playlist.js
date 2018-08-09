@@ -635,7 +635,7 @@ function updateCpm_bak() {
 
 function changePostStatus(the_element) {
     jQuery('.spnx_wdgt_wrapper').show();
-
+    console.log(the_element);
     var status = null;
     var site_id = null;
     var post_id = null;
@@ -663,7 +663,7 @@ function changePostStatus(the_element) {
          }
     }
     var enabled = status ? 1 : 0;
-    jQuery('.se-pre-con').bPopup({modalClose: false});
+    var msg = '';
     jQuery.ajax({
         url: ajaxurl,
         data: {
@@ -685,7 +685,11 @@ function changePostStatus(the_element) {
                         location: 'tr',
                         size: 'large'
                     });
-                    the_element.prop("checked", false);
+                    if ( enabled == 1 ) {
+                        jQuery("input."+post_type).prop("checked", true);
+                    } else {
+                        jQuery("input."+post_type).prop("checked", false);
+                    }
                 } else {
                     if(the_element === 'local') {
                         post_type = 'onoff_local';
@@ -707,8 +711,9 @@ function changePostStatus(the_element) {
                         location: 'tr',
                         size: 'large'
                     });
-                    jQuery('.spnx_wdgt_wrapper').hide();
+
                 }
+                jQuery('.spnx_wdgt_wrapper').hide();
                // window.location.reload();
             } else {
                 if (data.error == 1) {
@@ -717,7 +722,11 @@ function changePostStatus(the_element) {
                         location: 'tr',
                         size: 'large'
                     });
-                    the_element.prop("checked", false);
+                    if ( enabled == 1 ) {
+                        the_element.prop("checked", true);
+                    } else {
+                        the_element.prop("checked", false);
+                    }
                 } else {
                     if (data.msg == "active" || data.msg == 1 || data.msg == 3) {
                         the_element.prop("checked", true);
@@ -729,9 +738,11 @@ function changePostStatus(the_element) {
                         location: 'tr',
                         size: 'large'
                     });
-                  jQuery('.spnx_wdgt_wrapper').hide();
+
                 }
+                jQuery('.spnx_wdgt_wrapper').hide();
             }
+
         },
         failure: function (data) {
             jQuery.growl.error({
