@@ -722,7 +722,7 @@ function changePostStatus(the_element) {
                         location: 'tr',
                         size: 'large'
                     });
-                    if ( enabled == 1 ) {
+                    if ( enabled == 0 ) {
                         the_element.prop("checked", true);
                     } else {
                         the_element.prop("checked", false);
