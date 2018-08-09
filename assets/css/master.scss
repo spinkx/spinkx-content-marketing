@@ -316,6 +316,9 @@ hr {
 input[type="radio"] {
     display:block;
 }
+input[type="number"] {
+-moz-appearance:textfield;
+}
 input[type="radio"] + span {
     display:inline-block;
     width:19px;
@@ -2877,7 +2880,7 @@ div.wdgt_hdr_mn_hldr_spkx {
     background-color:white;
     box-shadow:0 1px 15px 1px rgba(113,106,202,.08);
     display:table;
-    min-height:383px;
+    height:383px;
     position:relative;
 }
 .wdgt_lft_mn_cntnr_spkx {
@@ -2885,7 +2888,7 @@ div.wdgt_hdr_mn_hldr_spkx {
     margin-right:15px;
 }
 .mp_cntnt_sub_hldr {
-    width:68%;
+    width:67% !important;
 }
 .mp_cntnt_sub_hldr div img {
     width:100%;
@@ -3001,7 +3004,9 @@ div.wdgt_hdr_mn_hldr_spkx {
   font-size:12px;
   height:24px;
   background:transparent;
+  -moz-appearance: textfield;
 }
+
 .lft_cntnr_sb_cntnr input[type=text] {
   width:50%;
   height:24px;

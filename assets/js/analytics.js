@@ -1,8 +1,5 @@
 function get_stat_now(start, end){
-    jQuery('.spnx-thrd-chld-mn-cntr-grph').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
-    jQuery('.lcl-hrzntl-cls').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
-    jQuery('.lcl-hrzntl-cls-second').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
-
+   jQuery('.spnx_wdgt_wrapper').show();
     
     try {
         $.ajax({
@@ -46,7 +43,7 @@ function get_stat_now(start, end){
                 jQuery('.credit-wallet-bal').text(spinkx_data.wallet_bal);
                 jQuery('.credit-points').text(spinkx_data.credit_points);
                 drawChart();
-                jQuery('.spnx_wdgt_wrapper').remove();
+                jQuery('.spnx_wdgt_wrapper').hide();
 
             },
             error: function(xhr, status, error){
@@ -135,17 +132,21 @@ jQuery(document).ready(function() {
 
     });
 
-    jQuery('#buy_point').on('keyup', function(event){
+    jQuery('#buy_point').on('blur', function(event){
         var points = parseInt($(this).val());
         if(points === undefined || isNaN(points)) {
             document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
             alert('Please enter amount in a number.');
+            $("#payment-method-button").prop('disabled',true);
             return;
         }
-        if (points < 100) {
+        else if (points < 100) {
             document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
             alert('A minimum of 100 points are required for a purchase.');
+            $("#payment-method-button").prop('disabled',true);
             return;
+        } else {
+            $("#payment-method-button").prop('disabled',false);
         }
         document.getElementById('payment-method-button').style.backgroundColor = 'lightblue';
         jQuery.ajax({
@@ -165,11 +166,11 @@ jQuery(document).ready(function() {
                 $('#amount').text(data.price);
                 $('#point_amount').val(data.price);
                 $('button#payment-method-button').prop('disabled', false);
-                document.getElementById('payment-method-button').style.backgroundColor = '#337ab7';
+                document.getElementById('payment-method-button').style.backgroundColor = '#23bf4a';
             }
         });
     });
-    jQuery('.spnx_wdgt_wrapper').remove();
+    jQuery('.spnx_wdgt_wrapper').hide();
     google.charts.setOnLoadCallback(drawChart);
 });
 function getpoints() {
