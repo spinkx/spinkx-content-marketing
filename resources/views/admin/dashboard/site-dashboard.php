@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             </iframe>
         </div>
     </div>
+
 <script>
     jQuery(document).ready(function($){
         $('#landing_url').load(function () {
@@ -19,3 +20,4 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
      // console.log($("#landing_url").contents());
     });
 </script>
+
