@@ -724,3 +724,7 @@ function showWidgetToolTip($dt, $vw, $ctr) {
     return '<div style="white-space: nowrap; padding:5px;"><b>Date </b>: ' + $dt + '<br>' +
         '<b>Clicks</b>: ' + $vw + '<br/><b>CTR</b>: ' + $ctr + '%</div>';
 }
+
+jQuery(window).on("resize", function (event) {
+    drawChart();
+});
