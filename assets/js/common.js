@@ -82,23 +82,11 @@ jQuery(document).ready(function($){
     jQuery('.spnkx_ds_nws_cntr span').on('click',function() {
      
      var text_val = $(this).text();
-     if(text_val == 'All') {
-        $(".active_spnx").removeClass('active_spnx');
-        $(this).addClass('active_spnx');
-        $(".all_spnkx_news_cls").show();
-        $(".video_spnkx_news_cls,.faq_spnkx_news_cls").hide();
-     }
-      if(text_val == 'Video') {
+        if(text_val == 'Spinkx Feature') {
         $(".active_spnx").removeClass('active_spnx');
         $(this).addClass('active_spnx');
         $(".all_spnkx_news_cls,.faq_spnkx_news_cls").hide();
         $(".video_spnkx_news_cls").show();
-     }
-     if(text_val == 'Faqs') {
-        $(".active_spnx").removeClass('active_spnx');
-        $(this).addClass('active_spnx');
-        $(".all_spnkx_news_cls,.video_spnkx_news_cls").hide();
-        $(".faq_spnkx_news_cls").show();
      }
 
     });
