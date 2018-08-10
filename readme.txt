@@ -157,7 +157,7 @@ This plugin has been tested from WordPress version 4.5 onwards. Please backup yo
 == Changelog ==
 
 = 3.1 =
-*Release date - 6 August, 2018*
+*Release date - 10 August, 2018*
 
 * Notification added
 * Widget analytics

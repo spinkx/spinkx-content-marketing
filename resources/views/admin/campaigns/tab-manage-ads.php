@@ -137,19 +137,18 @@ if( is_array( $settings ) && isset($settings['site_id']) && $settings['site_id']
 } else {
 
     $output =  array('error' => 'You are not a registered user. You can create a boost post after registration. Click Here to <a href="admin.php?page=spinkx-site-register">Register</a>');;
-}
-
-?>
+}?>
 <?php if($output['error'] === false) {?>
 	<div class="campaign_page col-sm-12 col-md-12">
 	<div style="float: right;display:none">Balance:<span id="user-balance"><i class="fa <?php echo $currencyClass?>"></i><?php echo $output['user_bal']?></span>
 
 	</div>
 <?php } else {
-
-	echo $output['error'];
-
-}	?>
+    echo $output['error']; ?>
+    <script>
+    jQuery('.spnx_wdgt_wrapper').hide();
+</script>
+<?php }	?>
 <?php if($output['error'] === false) {?>
 <div class="content_playlist_listing" style="display: none;">
 	<table id="bwki_sites_display" class="wp-list-table table-responsive"  style="width:1024px;"><thead>

@@ -11,7 +11,7 @@ Plugin URI: www.spinkx.com
 Description: Spinkx is a full featured Content Marketing suite & an ad network. 1) Free Traffic Exchange 2) Content Distribution 3) Monetisation 4) SEO backlinks 5) Run Affiliate Campaign 6) Content analytics and <a href="http://www.spinkx.com">more..</a>
 Author: SPINKX
 Author URI: www.spinkx.com
-Version: 3.0
+Version: 3.1
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 define( 'SPINKX_CONTENT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );

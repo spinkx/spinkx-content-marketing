@@ -60,7 +60,7 @@ $custom_js .= 'jQuery("#daterange").dateRangePicker({container: "#daterange-pick
 	loadDT(start.format(\'YYYY-MM-DD\'), end.format(\'YYYY-MM-DD\'));	
 	});';
 } else {
-    $custom_js .= '});';
+    $custom_js .= 'jQuery(\'.spnx_wdgt_wrapper\').hide(); });';
 }
 wp_enqueue_script( 'jquery-youtubeapi', 'https://www.youtube.com/iframe_api' );
 $vendor = SPINKX_CONTENT_PLUGIN_URL . '/vendor/';
