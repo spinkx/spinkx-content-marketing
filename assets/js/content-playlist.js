@@ -217,6 +217,7 @@ function all_onoff(type){
 }
 
 function getAttachmentData(buttonObj, ishook) {
+    if(!event.detail || event.detail == 1) {
     ishook = typeof ishook !== 'undefined' ? ishook : false;
     if(jQuery('.addhook_form').length) {
         console.log("Add Hook form already exists in DOM ");
@@ -249,17 +250,17 @@ function getAttachmentData(buttonObj, ishook) {
                     div.append(img);
                 }
                 var addhook_form = '<td> \
-						<div id="addhook_form_'+post_id+'" class="addhook_form form-group"><form name="frm_addhook_form_'+post_id+'" onsubmit="event.preventDefault(); return submitVariationForm(this);" method="post" class="frm_addhook_form" id="frm_addhook_form_'+post_id+'" enctype="multipart/form-data" data-ishook='+ishook+'>\
-							<div class="addhook_choose_image"><img  id="addhook_image_src_'+post_id+'" /></div> \
-							<div class="addhook_title"><input class="form-control" placeholder="Variation Headline" id="addhook_title_'+post_id+'" name="title"/></div> \
-							<div class="addhook_excerpt"><textarea id="addhook_excerpt_'+post_id+'" class="form-control" placeholder="Enter your Excerpt here" name="excerpt"></textarea></div>  \
-							<button  type="submit" class="button-cmn-class-bp-cmp-spnx"  style="float:right !important; margin-top:42px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
-							<button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn-cancle-spnx-main-cls"  style="float:right; margin:42px 10px 0 0; border-radius:0;  color:#fff; ">CANCEL</button>\
-							</form></div> \
-							</td>\
-							<td>\
-							<div class="addhook_images_selector">'+div.prop('outerHTML')+'</div> \
-							</td>';
+                        <div id="addhook_form_'+post_id+'" class="addhook_form form-group"><form name="frm_addhook_form_'+post_id+'" onsubmit="event.preventDefault(); return submitVariationForm(this);" method="post" class="frm_addhook_form" id="frm_addhook_form_'+post_id+'" enctype="multipart/form-data" data-ishook='+ishook+'>\
+                            <div class="addhook_choose_image"><img  id="addhook_image_src_'+post_id+'" /></div> \
+                            <div class="addhook_title"><input class="form-control" placeholder="Variation Headline" id="addhook_title_'+post_id+'" name="title"/></div> \
+                            <div class="addhook_excerpt"><textarea id="addhook_excerpt_'+post_id+'" class="form-control" placeholder="Enter your Excerpt here" name="excerpt"></textarea></div>  \
+                            <button  type="submit" class="button-cmn-class-bp-cmp-spnx"  style="float:right !important; margin-top:42px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button>\
+                            <button  onclick="jQuery(this).parents(\'tr\').prev().css(\'display\', \'\'); jQuery(this).parents(\'tr\').remove();" type="button" class="btn-cancle-spnx-main-cls"  style="float:right; margin:42px 10px 0 0; border-radius:0;  color:#fff; ">CANCEL</button>\
+                            </form></div> \
+                            </td>\
+                            <td>\
+                            <div class="addhook_images_selector">'+div.prop('outerHTML')+'</div> \
+                            </td>';
 
                 jQuery(buttonObj).parents('tr').after('<tr>'+addhook_form+'</tr>');
 
@@ -299,6 +300,7 @@ function getAttachmentData(buttonObj, ishook) {
             jQuery('#ab_posts_pause_loading').bPopup().close();
         }
     });
+ }
 }
 
 
