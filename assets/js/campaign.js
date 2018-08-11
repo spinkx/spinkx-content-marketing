@@ -973,10 +973,10 @@ function changeCampaignStatus(the_element) {
                         location: 'tr',
                         size: 'large'
                     });
-                    jQuery('.spnx_wdgt_wrapper').hide();
+                   
 
                 }
-            jQuery('.se-pre-con').bPopup().close();
+             jQuery('.spnx_wdgt_wrapper').hide();
         },
         failure: function (data) {
             jQuery('.se-pre-con').bPopup().close();
