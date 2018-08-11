@@ -363,7 +363,6 @@ function spinkx_header_menu() {
     $settings['due_date'] = isset($settings['due_date'])?$settings['due_date']:'0000-00-00 00:00:00';
     ?><div><div class="spnx-menu-logo"><span><a target="_blank" href="https://www.spinkx.com"><img src="<?php echo SPINKX_CONTENT_DIST_URL; ?>images/spinkx-logo.png" /></a></span></div>
 	<ul class="nav nav-tabs">
-        <li <?php echo ('spinkx-site-dashboard' === $page)?'class="active"':''?>><a href="?page=spinkx-site-dashboard">Dashboard</a></li>
         <?php if(  $settings['due_date'] == '0000-00-00 00:00:00'  ) {?>
 		<li <?php echo ('spinkx-site-register' === $page)?'class="active"':''?>><a href="?page=spinkx-site-register">Registration</a></li>
 		<?php } else { ?>

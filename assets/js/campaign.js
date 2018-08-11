@@ -450,10 +450,9 @@ jQuery(document).ready(function($){
         $campfirst = Number($('#camp-money-account-first').text()).toFixed(2);
         $('#camp-money-account').text($campfirst);
         if( $budget_amount > 0 ) {
-            $tax = ($budget_amount * 3 / 100).toFixed(2);
-            $('.parent-balance-span .without-percent-text').text('Add ' + $budget_amount + ' + ' + $tax + ' = '  );
-            $('#campain_balance_add').text( Math.round( ( $budget_amount * 1 + $tax * 1 )  ) );
-
+            $tax = 0.00;
+            $('.parent-balance-span .without-percent-text').text('Add ' );
+            $('#campain_balance_add').text( Math.round( ( $budget_amount * 1  )  ).toFixed(2) );
             $('.parent-balance-span').show();
         } else {
             $('#campain_balance_add').text(0);

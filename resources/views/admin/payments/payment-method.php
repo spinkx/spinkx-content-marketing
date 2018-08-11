@@ -225,7 +225,7 @@ http.send(params);
 	"description": "' . $row->description . '",
 	' . $display_currency . '
 	' . $display_amount . ' 
-	"image": "' . $row->site_logo_url . '",
+	"image": "' . SPINKX_CONTENT_DIST_URL . 'images/spinkx-logo.png",
 	"handler": paymentSuccessHandler,
 	"notes": {
 		"shopping_order_id": ' .  $settings['site_id'] . ',

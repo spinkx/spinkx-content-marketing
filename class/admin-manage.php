@@ -1108,7 +1108,7 @@ final class spnxAdminManage
 
 	            add_menu_page('Spinkx Dashboard', 'Spinkx', 'manage_options', 'spinkx-site-dashboard', array($this, 'spinkx_cont_show_page'), 'dashicons-spinkx-ico', '2.56');
 
-			add_submenu_page('spinkx-site-dashboard', 'Dashboard | Spinkx', 'Dashboard', 'manage_options', 'spinkx-site-dashboard', array($this, 'spinkx_cont_show_page'));
+			add_submenu_page('spinkx-site-dashboard', 'About | Spinkx', 'About Spinkx', 'manage_options', 'spinkx-site-dashboard', array($this, 'spinkx_cont_show_page'));
                 add_submenu_page('spinkx-site-dashboard', 'Registration | Spinkx', 'Registration', 'manage_options', 'spinkx-site-register', array($this, 'spinkx_cont_show_page'));
                 add_submenu_page('spinkx-site-dashboard', 'Analytics | Spinkx', 'Analytics', 'manage_options', 'spinkx_analytics', array($this, 'spinkx_cont_show_page'));
 

@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
        }
     });
     var spnx_notify_unread = 0;
-    function loadNotifications() {
+   // function loadNotifications() {
         jQuery.ajax({
             url: ajaxurl + '?action=spinkx_cont_notifications', async: false, success: function (data) {
                 jQuery('.rnd-cmn-cls-dv-mn-cntr-rng').hide();
@@ -49,10 +49,10 @@ jQuery(document).ready(function($){
                 }
             }
         });
-    }
+    //}
 
-   setTimeout(function(){
-        loadNotifications();
+   /* setTimeout(function(){
+      loadNotifications();
     },5000); // milliseconds */
     jQuery('.fst-cnt-cls-mn-dv').on('hover', function(e) {
         read_status = $(this).attr('data-read') * 1;

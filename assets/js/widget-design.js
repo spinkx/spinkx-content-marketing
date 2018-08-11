@@ -299,6 +299,7 @@ $(".sh_hide_wdgt_grph").click(function() {
     var inner_text = $(this).text();
     if(inner_text=='Edit Widget') {
         $(this).html("Show Graph");
+
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.cmn-hrzntl-cls-spn').hide();
         $(this).parents('.wdgt_mn_cntnr_spkx').find('input').trigger('blur');
         $(this).parents('.wdgt_mn_cntnr_spkx').find('select').trigger('change');
@@ -317,6 +318,7 @@ $(".sh_hide_wdgt_grph").click(function() {
         // $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
     } else {
         $(this).html("Edit Widget");
+        drawChart();
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.cmn-hrzntl-cls-spn').show();
 
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.cntnt_dstr_cntnr_sh').hide();
@@ -634,6 +636,7 @@ var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", 
 function drawChart() {
     var startdate_arr = window.global_start_date.split('-');
     var enddate_arr =  window.global_end_date.split('-');
+
     var timeDiff = diffDays = null;
     var startdate =null;
     var enddate = null;
@@ -658,6 +661,7 @@ function drawChart() {
         timeDiff = Math.abs(enddate.getTime() - startdate.getTime());
         diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
         var counter = widclkcounter = $key = 0;
+
         //var dateFormatter = new google.visualization.DateFormat({pattern: 'Y,M,d,H'});
         for (; startdate <= enddate;) {
             mm = ((startdate.getMonth() + 1) >= 10) ? (startdate.getMonth() + 1) : '0' + (startdate.getMonth() + 1);
@@ -665,15 +669,18 @@ function drawChart() {
             yyyy = startdate.getFullYear();
             $key = yyyy + "-" + mm + "-" + dd;
             $keyDate = monthNames[parseInt(mm) -1 ] + ' ' + dd + ', ' + yyyy;
+            $keyDate2 = new Date(yyyy, parseInt(mm) -1, dd);
             widclkcounter++;
             if (typeof item[$key] === 'undefined') {
-                $widgetArr[counter] = new Array(startdate, 0, showWidgetToolTip($keyDate, 0, 0), 0, showWidgetToolTip($keyDate, 0, 0));
+                $widgetArr[counter] = new Array($keyDate2, 0, showWidgetToolTip($keyDate, 0, 0), 0, showWidgetToolTip($keyDate, 0, 0));
             } else {
-                $widgetArr[counter] = new Array(startdate, item[$key].clicks * 1, showWidgetToolTip($keyDate, item[$key].clicks, item[$key].ctr), item[$key].ctr * 1, showWidgetToolTip($keyDate, item[$key].clicks, item[$key].ctr));
+                $widgetArr[counter] = new Array($keyDate2, item[$key].clicks * 1, showWidgetToolTip($keyDate, item[$key].clicks, item[$key].ctr), item[$key].ctr * 1, showWidgetToolTip($keyDate, item[$key].clicks, item[$key].ctr));
             }
             counter++;
+
             var newDate = startdate.setDate(startdate.getDate() + 1);
             startdate = new Date(newDate);
+
         }
         widget.addRows($widgetArr);
         if(diffDays >=  10) {
@@ -682,10 +689,8 @@ function drawChart() {
             diffDays = 1;
         }
         point_size = parseInt(counter/diffDays) + 1;
-        ticks = [];
-        for(i = 1; i < point_size; i++ ) {
-            ticks[i-1] = i * diffDays;
-        }
+
+
         var widImpoptions = {
             tooltip: {isHtml: true},    // CSS styling affects only HTML tooltips.
             width: '100%',
@@ -725,6 +730,6 @@ function showWidgetToolTip($dt, $vw, $ctr) {
         '<b>Clicks</b>: ' + $vw + '<br/><b>CTR</b>: ' + $ctr + '%</div>';
 }
 
-jQuery(window).on("resize", function (event) {
+jQuery(window).resize(function (event) {
     drawChart();
 });
