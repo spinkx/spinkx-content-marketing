@@ -174,7 +174,7 @@ if( $registration_complete ) {
 											</div>
 											<div>
 												<span class="mn_wdth_dstr_cmn_cls">No of Columns</span>
-												<input type="number" name="no_of_columns" id="no_of_columns" min="1" max="10" value="1">
+												<input type="number" name="no_of_columns_fw" id="no_of_columns_fw" min="1" max="10" value="1">
 											</div>
 
 
