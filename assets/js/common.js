@@ -86,7 +86,7 @@ jQuery(document).ready(function($){
             });
         }
     });
-   
+
     jQuery('.spinkx-mark-read').on('click', function(e) {
        // var arr = jQuery('.fst-cnt-cls-mn-dv');
         jQuery('.rnd-cmn-cls-dv-mn-cntr-rng').show();

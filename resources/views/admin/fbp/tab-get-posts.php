@@ -44,7 +44,7 @@ if($settings['due_date']=='0000-00-00 00:00:00') {
 
 	$url = esc_url(SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/site/get-auto-boost');
 	$auto_boost = json_decode(spnxHelper::doCurl($url, true), true);
-	$p = ['site_id' => $settings['site_id'], 'license_code' => $settings['license_code'], 'reg_email' => $settings['reg_email'], 'sortby2' => $sortby, 'post_type2' => $ptype, 'from_date' => $from_date, 'to_date' => $to_date, 'plg_url' => esc_url(SPINKX_CONTENT_PLUGIN_URL)];
+	$p = ['site_id' => $settings['site_id'], 'license_code' => $settings['license_code'], 'reg_email' => $settings['reg_email'], 'sortby2' => $sortby, 'post_type2' => $ptype, 'from_date' => $from_date, 'to_date' => $to_date, 'url' => esc_url(SPINKX_CONTENT_DIST_URL)];
 	$p = wp_json_encode($p);
 	$url = esc_url(SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/content-playlist');
 }
