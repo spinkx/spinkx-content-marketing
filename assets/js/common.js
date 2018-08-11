@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
     jQuery('#wp-admin-bar-spinkx_notification').hover(function () {
         jQuery('#wp-admin-bar-spinkx_notification .ab-item').css('background','transparent');
     })
-    jQuery('#wp-admin-bar-spinkx_notification span.img-cntnr-gf-mn-dv:gt(0), span.spinkx-notify-update-bubble').click(function(){
+    jQuery('#wp-admin-bar-spinkx_notification .spinkx-icon-admin-bar').on('click', function(){
         jQuery('.ntf-mn-cntnr').toggle();
     });
     jQuery(document).on('click', function(event){
