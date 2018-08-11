@@ -429,25 +429,25 @@ if( $registration_complete ) {
 
 								<div class="design_unit_main_container_spnx">
 									<div class="design_unit_img_container">
-										 <img src="<?php echo  SPINKX_CONTENT_DIST_URL?>images/wordpress-content-marketing-plugin.jpg">
+										 <img src="<?php echo  $result[2]->post_full_image;?>">
 									</div>
 									<div class="design_unit_content_container">
 										<div class="design_unit_site_view_container">
-											<span>spinkx_testing</span>
+											<span><?php echo $result[2]->site_name; ?></span>
 											<span>
 												<i class="fa fa-eye" aria-hidden="true"></i>
 												0.0d
 											</span>
 										</div>
 										<div class="design_unit_hdline_container hd_txt_id_spx_dv">
-											<h4 class="hd_txt_id_spx" id="hd_txt_id_spx">India</h4>
+											<h4 class="hd_txt_id_spx" id="hd_txt_id_spx"><?php echo  $result[2]->post_title;?></h4>
 										</div>
 										<div class="design_unit_text_continer">
 											<div id="excrpt_txt_id_spx" class="excerpt_txt_mn_cls excrpt_txt_id_spx">
-												India is a vast South Asian country with diverse terrain – from Himalayan peaks to Indian Ocean co...
+												<?php echo  $result[2]->post_excerpt;?>
 											</div>
 											<span class="excrpt_txt_id_spx_hidden" id="excrpt_txt_id_spx_hidden" style="display: none;">
-												India is a vast South Asian country with diverse terrain – from Himalayan peaks to Indian Ocean co...
+												<?php echo  $result[2]->post_excerpt;?>
 											</span>
 										</div>
 									</div>
