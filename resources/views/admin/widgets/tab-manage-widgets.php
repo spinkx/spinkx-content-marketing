@@ -125,33 +125,30 @@ if( $registration_complete ) {
 				<div class="grph_wdgt_cntnr">
 					<div class="cntnt_dstr_cntnr">
 						<div class="lft_cntnr_sb_cntnr">
+							<div class="mb_sd_cm_cl wd_nm_cmn_cls">
+										<span>Widget Name</span>
+										<input type="text" id="widget_name" value="My First Widget" name="widget_name" placeholder="Widget Name Here" required="">
+							</div>
 							<div class="cmn_wdgt_tb_mn_cntnr">
 								<div><i class="fas fa-tachometer-alt cmn_icn_dst"></i>Widget Styling
 								<i class="fas fa-chevron-right"></i>
 							    </div>
 								<div class="wdgt_hdn_cntnt_spkx_cntnr mr_wdt_dst_cmn_cls_spx_ws">
 									<div class="mb_sd_cm_cl">
-										<span>Widget Name</span>
-										<input type="text" id="widget_name" value="My First Widget" name="widget_name" placeholder="Widget Name Here" required="">
+									    <span class="nm_clm_cs">Number Of Columns</span>
+										<div class="no_clms_dv_sldr">
+											<input type="number" id="no_of_columns" class="no_of_columns" value="1" name="no_of_columns" placeholder="1" readonly="" min="1" max="6">
+						                    <input type="hidden" id="mob_views" name="no_col_mob_view" value="1">
+	                                        <div id="slider-range-min" class="slider-range-min ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+							                <div class="ui-slider-range ui-widget-header ui-slider-range-min" style="width: 0%;"></div>
+											<a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 20%;"></a>
+						                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width:15%;">
+						                   </div>
+						                   </div>
+					                    </div>
 									</div>
-									<div>
-										<span>Background Color</span>
-
-										 <div class="clr_pic_cmn_cls">
-                                        	<input type="text" id="bg_color" value="transparent"  name="unit_bg_color" placeholder="transparent" class="bg_color colorPicker evo-cp0">
-                                        </div>
-
-									</div>
-								</div>
-							</div>
-							<div class="cmn_wdgt_tb_mn_cntnr">
-								<div>
-									<i class="fas fa-eraser cmn_icn_dst"></i>Choose Style
-								    <i class="fas fa-chevron-right"></i>
-						        </div>
-								<div class="wdgt_hdn_cntnt_spkx_cntnr">
 									<div class="mb_sd_cm_cl">
-
+                                        <span>Choose Style</span>
 										<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" checked value="masonry">
 										<strong>Pinterest style </strong>
 									</div>
@@ -183,25 +180,15 @@ if( $registration_complete ) {
 
 										</div>
 									</div>
+									<div>
+										<span>Background Color</span>
 
-								</div>
-							</div>
-							<div class="cmn_wdgt_tb_mn_cntnr">
-								<div>
-									<i class="fas fa-columns cmn_icn_dst"></i>Number of Columns Desktop View
-								    <i class="fas fa-chevron-right"></i>
-								</div>
+										 <div class="clr_pic_cmn_cls">
+                                        	<input type="text" id="bg_color" value="transparent"  name="unit_bg_color" placeholder="transparent" class="bg_color colorPicker evo-cp0">
+                                        </div>
 
-									<div class="wdgt_hdn_cntnt_spkx_cntnr">
-										<input type="number" id="no_of_columns" class="no_of_columns" value="1" name="no_of_columns" placeholder="1" readonly="" min="1" max="6">
-					                    <input type="hidden" id="mob_views" name="no_col_mob_view" value="1">
-                                        <div id="slider-range-min" class="slider-range-min ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-						                <div class="ui-slider-range ui-widget-header ui-slider-range-min" style="width: 0%;"></div>
-										<a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 20%;"></a>
-					                   <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width:15%;">
-					                   </div>
-					                   </div>
 									</div>
+								</div>
 							</div>							
 							<div class="cmn_wdgt_tb_mn_cntnr">
 								<div>
@@ -456,9 +443,9 @@ if( $registration_complete ) {
 											<h4 class="hd_txt_id_spx" id="hd_txt_id_spx">India</h4>
 										</div>
 										<div class="design_unit_text_continer">
-											<span id="excrpt_txt_id_spx" class="excerpt_txt_mn_cls excrpt_txt_id_spx">
+											<div id="excrpt_txt_id_spx" class="excerpt_txt_mn_cls excrpt_txt_id_spx">
 												India is a vast South Asian country with diverse terrain – from Himalayan peaks to Indian Ocean co...
-											</span>
+											</div>
 											<span class="excrpt_txt_id_spx_hidden" id="excrpt_txt_id_spx_hidden" style="display: none;">
 												India is a vast South Asian country with diverse terrain – from Himalayan peaks to Indian Ocean co...
 											</span>
