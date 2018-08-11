@@ -2179,8 +2179,12 @@ input[type=number]::-webkit-outer-spin-button {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
 }
-.camp-group-name img {
-    margin-right: 10px;
+.camp-group-name i {
+    margin-right:5px;
+    font-size:18px;
+    vertical-align: middle;
+    color:#666;
+    margin-top:2px;
 }
 .notice-error, .notice-warning, .notice-success, .notice-info, .update-nag, .error, .updated {
     display: none !important;
@@ -2804,6 +2808,9 @@ tr td div.camp-group-name {
     color:#333;
     font-size:13px;
 }
+.camp-group-tr {
+    cursor:pointer;
+}
 .camp-group-tr .camp-group-name {
     font-size:12px;
 }
@@ -3093,6 +3100,15 @@ span.wdgt_px_cmn_cls_spx {
     border-radius: 15px;
     height: 4px;
 }
+.wd_nm_cmn_cls span {
+    font-weight:bold;
+    margin-right:10px;
+}
+.no_clms_dv_sldr {
+ display:inline-block;
+ margin-left:5px;   
+
+}
 /**slider css ends here **/
 .mb_sd_cm_cl {
   margin-bottom:10px;   
@@ -3210,6 +3226,7 @@ span.wdgt_px_cmn_cls_spx {
 }
 .design_unit_site_view_container span:nth-child(2) {
   float: right;
+  display:none;
 }
 .design_unit_hdline_container h4 {
     font-size: 14px;
@@ -3278,6 +3295,9 @@ span.wdgt_px_cmn_cls_spx {
 .dsh_ifrm body {
   background-color: #f3f6f8
 }
+.nm_clm_cs {
+    margin-bottom:8px;
+} 
 /** add new widget ends here **/
 
 /**new widget css ends here **/

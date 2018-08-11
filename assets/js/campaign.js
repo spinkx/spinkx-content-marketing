@@ -53,6 +53,7 @@ jQuery( document ).ready(function() {
                 changeCampaignStatus(jQuery(this));
         }
     });
+   
 
     jQuery("#sortby_local_reach").click(function () {
         var start = jQuery('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
@@ -74,16 +75,10 @@ jQuery( document ).ready(function() {
 
     });
     jQuery(document).on("click", 'table tbody tr.camp-group-tr', function(){
+       jQuery(this).find("i").toggleClass('fa-caret-down fa-caret-right');
        jQuery(this).nextUntil( ".camp-group-tr" ).toggle();
-        $img_object = jQuery(this).find('img');
-        $img_next = $img_object.attr('data-mark');
-        if($img_next == "right") {
-            jQuery($img_object).css('transform', 'rotate(270deg)')
-            jQuery($img_object).attr('data-mark', 'down');
-        } else {
-            jQuery($img_object).css('transform', 'rotate(0deg)')
-            jQuery($img_object).attr('data-mark', 'right');
-        }
+        
+       
     });
 
 });
