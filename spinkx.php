@@ -157,7 +157,7 @@ function spinkx_cont_server_plugin_deactivate( $network_wide ) {
 		$post = true;
 	}
 	$url = SPINKX_CONTENT_BAPI_URL. '/wp-json/spnx/v1/site/deactivate';
-	$result = spnxHelper::doCurl( $url, $post, false );
+    spnxHelper::doCurl( $url, $post, false );
 }
 function spinkx_cont_db_setup() {
     include_once 'includes/settings/db-setup.php';
