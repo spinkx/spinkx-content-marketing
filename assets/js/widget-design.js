@@ -436,11 +436,12 @@ $(".slider-range-min").slider({
 
     $( ".ajax_update_button" ).click(function( e ) {
         e.preventDefault();
-        jQuery('.spnx_wdgt_wrapper').show();
         if($(this).parents('.cntnt_dstr_cntnr').find('.error_widget_val').length>0) {
              alert("Please Check Error");
              return;
         }
+                jQuery('.spnx_wdgt_wrapper').show();
+
 
         var form_serialized_data = $(this).parents('form#SPINKX_create_form').serialize();
         var main_widget_id = $(this).parents('form#SPINKX_create_form').find('#main_widget_id').val();
