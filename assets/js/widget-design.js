@@ -330,7 +330,7 @@ $(".sh_hide_wdgt_grph").click(function() {
         // $(this).parents('.wdgt_mn_cntnr_spkx').find('.grph_wdgt_cntnr_grp').prepend('<div class="spnx_wdgt_wrapper"><div class="cssload-loader"></div></div>');
     } else {
         $(this).html("Edit Widget");
-        drawChart();
+
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.cmn-hrzntl-cls-spn').show();
 
         $(this).parents('.wdgt_mn_cntnr_spkx').find('.cntnt_dstr_cntnr_sh').hide();
