@@ -183,6 +183,9 @@ span.spinkx-notify-text-active{
 .bl-mn-dv-cntnr-ntf-br .img-cntnr-gf-mn-dv img{
   vertical-align: sub !important;
 }
+.show_ntf_cnr {
+ display:block !important; 
+}
 
 .rnd-cmn-cls-dv-mn-cntr-rng {
   border: 1px solid grey;
@@ -195,6 +198,8 @@ span.spinkx-notify-text-active{
   animation: spin 1.2s linear infinite;
   margin-top: 0px !important;
   position: absolute !important;
+  top:3px;
+  left:4px;
 }
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
@@ -204,6 +209,10 @@ span.spinkx-notify-text-active{
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.bl-mn-dv-cntnr-ntf-br {
+ background-color:red; 
 }
 .bl-mn-dv-cntnr-ntf-br span img {
   width: 15px !important;

@@ -2,16 +2,17 @@ jQuery(document).ready(function($){
     jQuery('#wp-admin-bar-spinkx_notification').hover(function () {
         jQuery('#wp-admin-bar-spinkx_notification .ab-item').css('background','transparent');
     })
-    jQuery('#wp-admin-bar-spinkx_notification .spinkx-icon-admin-bar').on('click', function(){
-        jQuery('.ntf-mn-cntnr').toggle();
+    jQuery('#wp-admin-bar-spinkx_notification .bl-mn-dv-cntnr-ntf-br').on('click', function(){
+        jQuery(".ntf-mn-cntnr").toggleClass('show_ntf_cnr');
     });
+   
     jQuery(document).on('click', function(event){
        $target = event.target;
        if($target.src == undefined) {
            if( ! ($target.className == 'ntf-mn-cntnr' ||  $target.className.indexOf('spinkx-mark-read') > 0 || $target.className == 'spinkx-notify-update-bubble')) {
              str = $target.src
            //if(str.indexOf('notification-spnx.png') == -1) {
-               jQuery('.ntf-mn-cntnr').hide();
+               jQuery('.ntf-mn-cntnr').removeClass('show_ntf_cnr');
            }
        }
     });
