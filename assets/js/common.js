@@ -9,7 +9,7 @@ jQuery(document).ready(function($){
     jQuery(document).on('click', function(event){
        $target = event.target;
        if($target.src == undefined) {
-           if( ! ($target.className == 'ntf-mn-cntnr' ||  $target.className.indexOf('spinkx-mark-read') > 0 || $target.className == 'spinkx-notify-update-bubble')) {
+           if( ! ($target.className == 'ntf-mn-cntnr' ||  $target.className.indexOf('spinkx-mark-read') > 0 || $target.className == 'spinkx-notify-update-bubble' || $target.className=='dashicons-spinkx-ico' || $target.className=='bl-mn-dv-cntnr-ntf-br')) {
              str = $target.src
            //if(str.indexOf('notification-spnx.png') == -1) {
                jQuery('.ntf-mn-cntnr').removeClass('show_ntf_cnr');
