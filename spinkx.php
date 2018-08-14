@@ -102,8 +102,8 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 				$data[$counter]['site_url'] = $temp;
 			}
 		}
-        $data[$counter++]['sflag'] = 'site_create';
-
+        $data[$counter]['sflag'] = 'site_create';
+        $counter++;
     }
 
 	$response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );

@@ -135,12 +135,16 @@ final class spnxAdminManage
 	}
 
 	function spinkx_cont_show_notice() {
+		/*if(isset($_GET['page']) && $_GET['page'] === 'spinkx-site-register' && strstr($str, 'You are not registered on Spinkx!')) {
+			return;
+		}*/
 		$settings = get_option( SPINKX_CONTENT_LICENSE );
 		$settings = maybe_unserialize( $settings );
 		$post = array();
 		if(!(isset($settings['site_id']) && isset($settings['reg_email']) &&$settings['license_code'])) {
 			return false;
 		}
+
 		$spnxAdminManage = new spnxAdminManage;
 		$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/site/check-license';
 		$response = spnxHelper::doCurl( $url, true );
