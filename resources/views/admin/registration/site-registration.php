@@ -337,7 +337,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				<div  class="label-cntnr-mn-cls-cmommon-sec">I would like to build my own Ad network. i want a White Labeled version of Spinkx. I can earn large commission from the network i build. </div>
 			</div>
             <div class="error-cmn-clas-spnx chck-radio-btn-error-cls">Please Select Your Goal</div>
-			<div class="spnx-knw-more-cmn-cls"><a href="#">Know More</a></div>
+			<div class="spnx-knw-more-cmn-cls"><a href="https://www.spinkx.com/use-case/" target="_blank">Know More</a></div>
 		</div>
 
 	</div>
@@ -449,8 +449,8 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 		<div class="lower-text-cmon-cls-spnx-reg">
              <span>
                  <span class="pls-note-cmn-cls-spnx">Please note:</span>
-                 <span class="lower-color-cmn-cls-spnx-reg">Edit may be reviewed for quality and can take up to 3 days to e published.</span>
-                    <span class="spnx-knw-more-cmn-cls lrn-more-spnx-reg"> <a href="#">Learn More</a></span>
+                 <span class="lower-color-cmn-cls-spnx-reg">Edit may be reviewed for quality and can take up to 3 days to published.</span>
+                    <span class="spnx-knw-more-cmn-cls lrn-more-spnx-reg"> <a href="https://www.spinkx.com/faqs/" target="_blank">Learn More</a></span>
 
              </span>
 		</div>
