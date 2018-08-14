@@ -168,12 +168,15 @@ function spinkx_cont_widget_css_js($path) {
 	wp_enqueue_style( 'css-add-widget', $path[0]  . 'css/add-widget.'.$css );
 	wp_enqueue_style( 'css-multiselect', $vendor . 'jQuery-multiselect/css/jquery.multiselect.css' );
 	wp_enqueue_style( 'wp-color-picker' );
-	
+	$custom_css = ' .no-js #loader, .notice { display: none;  }
+	.js #loader { display: block; position: absolute; left: 100px; top: 0; }	
+	 table.dataTable { border-collapse: collapse; border-spacing: 0px; }
+	 ';
 	wp_add_inline_style( 'master', $custom_css );
 	wp_enqueue_script( 'jquery-google-chart', $vendor . 'google-chart/loader.js' );
 	wp_enqueue_script( 'form-validator-js', esc_url( '//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js' ) );
     wp_enqueue_script( 'jquery-multiselect', $vendor . 'jQuery-multiselect/js/jquery.multiselect.js' );
-    wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+    wp_enqueue_script( 'wp-color-picker-alpha', plugins_url(     'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
 
 }
 
@@ -197,6 +200,8 @@ function spinkx_cont_cp_css_js( $callFrom = null, $path ) {
     wp_enqueue_style( 'growl', $path[0] . 'css/add-widget.'.$css , array( 'custom-style' ) );
 	$custom_css = ' ul li:before {content:none;} 
 	ul li, ol li { padding: 0px 0 0;}
+	.no-js #loader { display: none;  }
+	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.hook_add_class{ background-color:#e6e7e7; }
     .main{ /*background-color: !*#e4f4fa*! #F1F1F1 !important;*/ }
 	#clock span{ background-color: #469fa1; width:20px;	height:20px; margin:6px; padding:5px 7px; color:#fff; }
@@ -259,7 +264,8 @@ function spinkx_cont_cp_css_js( $callFrom = null, $path ) {
  */
 function spinkx_cont_dashboard_css_js($path) {
 	$vendor = $path[1] . 'vendor/';
-	
+	$custom_css = ' .no-js #loader { display: none;  }
+	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
 	.#wpwrap, .wrap, #wpcontent, #wpfooter { background-color: #319de4 !important;}';
 	wp_add_inline_style( 'master', $custom_css );
 	wp_enqueue_script( 'jquery-growl', $vendor . 'jQuery-growl/js/jquery.growl.js' );
@@ -278,7 +284,8 @@ function spinkx_cont_dashboard_css_js($path) {
  */
 function spinkx_cont_acc_set_css_js($path) {
 	$custom_css = ' #wpwrap { background-color: #f1f1f1; }
-	
+	.no-js #loader { display: none;  }
+	.js #loader { display: block; position: absolute; left: 100px; top: 0; }';
 	wp_add_inline_style( 'master', $custom_css );
 	//wp_enqueue_script( 'jquery-custom-js', $path[0] . 'js/widget-design.js' );
 }
@@ -296,6 +303,9 @@ function spinkx_cont_campaign_set_css_js($path) {
 	wp_enqueue_style( 'jquery-ui', $vendor . 'jQuery/css/jquery-ui.css' );
 	wp_enqueue_style( 'jquery-multiselect-css', $vendor . 'jQuery-multiselect/css/jquery.multiselect.css' );
 	wp_enqueue_style( 'bootstrap-datetimepicker-css', $vendor . 'bootstrap/css/bootstrap-datetimepicker.css' );
+	$custom_css = ' .no-js #loader { display: none;  }
+	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+	#dvLoading { background:url(' . $path[0] . 'campaigns/images/loader.gif) 50% 50% no-repeat rgba(255,255,255,0.15); height: 100px;
     width: 96px; position: fixed; z-index: 1100; left: 51%; top: 25%; margin: -25px 0 0 -25px; display: none; }
 	.form-group{ text-align: left; }
 	.form-group input[type="text"],
@@ -320,6 +330,10 @@ function spinkx_cont_campaign_set_css_js($path) {
  * @internal param void
  */
 function spinkx_cont_campaign_form_set_css_js() {
+	$custom_css = ' .no-js #loader { display: none;  }
+	.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+	#dvLoading { background:url(' . SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/images/loader.gif) 50% 50% no-repeat rgba(255,255,255,0.15); height: 100px;
+    width: 96px; position: fixed; z-index: 1100; left: 51%; top: 25%; margin: -25px 0 0 -25px; display: none; }
 	#wpfooter { display: none; } 
 	.small .modal-body {	overflow-y: auto; }
 	.form-group{ text-align: left; }
