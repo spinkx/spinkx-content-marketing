@@ -85,15 +85,15 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 	}
 	$data = array();
     $spinkx_version =  SPINKX_CONTENT_VERSION;
-
+    $counter = 0;
 	foreach ( $siteArr as $currentSite ) {
 		if ( $mflag ) {
 			switch_to_blog( $currentSite['blog_id'] );
 		}
-        $data['site_email'] = get_option( 'admin_email' );
-		$data['site_name'] = get_bloginfo( 'name' );
-		$data['site_url'] = get_site_url();
-		$data['spinkx_version'] = $spinkx_version;
+        $data[$counter]['site_email'] = get_option( 'admin_email' );
+		$data[$counter]['site_name'] = get_bloginfo( 'name' );
+		$data[$counter]['site_url'] = get_site_url();
+		$data[$counter]['spinkx_version'] = $spinkx_version;
 		$data['agree'] = 'on';
 		if ( class_exists( 'Domainmap_Utils' ) ) {
 			$obj = new Domainmap_Utils();
@@ -102,18 +102,17 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 				$data['site_url'] = $temp;
 			}
 		}
-        $data['sflag'] = 'site_create';
-        $response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );
-        if ( $response ) {
-            $output = json_decode($response, TRUE);
-            if (!isset($output['message'])) {
-                //$output['current_blog_id'] = $currentSite['blog_id'];
-                $s = maybe_serialize($output);
-                update_option(SPINKX_CONTENT_LICENSE, $s);
-            }
-        }
-
+        $data[$counter++]['sflag'] = 'site_create';
     }
+	$response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );
+	if ( $response ) {
+		$output = json_decode($response, TRUE);
+		if (!isset($output['message'])) {
+			//$output['current_blog_id'] = $currentSite['blog_id'];
+			$s = maybe_serialize($output);
+			update_option(SPINKX_CONTENT_LICENSE, $s);
+		}
+	}
 
 }
 
