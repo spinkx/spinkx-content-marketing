@@ -72,7 +72,7 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 	$site_id = false;
 	global $wpdb;
 	$spnxAdminManage = new spnxAdminManage();
-	$url = esc_url( SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/site/create' );
+	$url = esc_url( SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/site/create/new' );
 	$mflag = is_multisite();
 	if ( $mflag ) {
 		if(  $blog_id > 0 &&  $from == 'add_new_blog' ) {
@@ -103,18 +103,21 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 			}
 		}
         $data[$counter]['sflag'] = 'site_create';
+		$data[$counter]['blog'] = $currentSite['blog_id'];
         $counter++;
     }
 
 	$response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );
-	if ( $response ) {
+    if ( $response ) {
 		$output = json_decode($response, TRUE);
-		error_log(print_r($output, true));
-		/*if (!isset($output['message'])) {
-			//$output['current_blog_id'] = $currentSite['blog_id'];
-			$s = maybe_serialize($output);
-			update_option(SPINKX_CONTENT_LICENSE, $s);
-		}*/
+		foreach($output as $site) {
+			if ( ! isset( $site['message'] ) ) {
+				switch_to_blog( $site['blog'] );
+				unset($site['blog']);
+				$s = maybe_serialize( $site );
+				update_option( SPINKX_CONTENT_LICENSE, $s );
+			}
+		}
 	}
 
 }
