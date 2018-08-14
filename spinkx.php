@@ -110,14 +110,23 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 	$response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );
     if ( $response ) {
 		$output = json_decode($response, TRUE);
-		foreach($output as $site) {
-			if ( ! isset( $site['message'] ) ) {
-				switch_to_blog( $site['blog'] );
-				unset($site['blog']);
-				$s = maybe_serialize( $site );
-				update_option( SPINKX_CONTENT_LICENSE, $s );
-			}
-		}
+	    if ( $mflag ) {
+            foreach ( $output as $site ) {
+
+			    if ( ! isset( $site['message'] ) ) {
+				    switch_to_blog( $site['blog'] );
+				    unset( $site['blog'] );
+				    $s = maybe_serialize( $site );
+				    update_option( SPINKX_CONTENT_LICENSE, $s );
+			    }
+		    }
+	    } else {
+		    foreach ( $output as $site ) {
+			    unset( $site['blog'] );
+			    $s = maybe_serialize( $site );
+			    update_option( SPINKX_CONTENT_LICENSE, $s );
+		    }
+        }
 	}
 
 }
@@ -481,7 +490,7 @@ add_filter( 'widget_update_callback', function( $instance, $new, $old, $obj )
 {
     if( 'text' === $obj->id_base && ! empty( $instance['text'] ) )
     {
-        print_r($instance);
+       // print_r($instance);
 
     }
     return $instance;
