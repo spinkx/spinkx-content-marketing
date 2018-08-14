@@ -109,11 +109,12 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 	$response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );
 	if ( $response ) {
 		$output = json_decode($response, TRUE);
-		if (!isset($output['message'])) {
+		error_log(print_r($output, true));
+		/*if (!isset($output['message'])) {
 			//$output['current_blog_id'] = $currentSite['blog_id'];
 			$s = maybe_serialize($output);
 			update_option(SPINKX_CONTENT_LICENSE, $s);
-		}
+		}*/
 	}
 
 }

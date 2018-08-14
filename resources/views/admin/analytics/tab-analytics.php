@@ -98,9 +98,9 @@ if( is_array($data)) {?>
                             <div style="font-size: 10px;" class="purchase-plugin dashb-buy-points"><button id="payment-method-buttonpn" class="btn-primary pbuy-now" style="    color: #fff;
     background-color: #0170B9;">Buy Now</button></div>
                         <?php } else { ?>
-                            <div class="label-pints-mny-cmn-cls">
+                          <!--  <div class="label-pints-mny-cmn-cls">
                                 Valid for
-                            </div>
+                            </div> -->
                            <div ><span class="label-pints-mny-cmn-cls">Membership Expiry: </span><?php echo $data['due_date']?></div>
                         <?php  } ?>
                     <?php }  else { ?><div class="points-cmn-cls-spnx" style="width: 240px;font-size: 11px;font-weight: 600;">
