@@ -610,7 +610,7 @@ function updatewidget(){
         success : function(data){
             //console.log(data)
             data = JSON.parse(data);
-
+            spinkx_data = data;
             var update_data = data;
             $.each(data,function(key,stat) {
                 $.each(stat, function(k, s){
@@ -624,33 +624,39 @@ function updatewidget(){
                     }
                 });
             });
+            var sdata = [];
             $.each(update_data, function(key, stat){
                $.each(stat, function(k, s){
                    if(k > 0) {
                        (update_data[key]).splice(k, 3);
                        return false;
+                   } else if(k == 0) {
+                       sdata[key] =  update_data[key][0];
                    }
                 });
             });
-
-            drawChart();
+            drawChart(sdata);
         }
     });
 }
 
 var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-function drawChart() {
+function drawChart(update_data) {
     var startdate_arr = window.global_start_date.split('-');
     var enddate_arr =  window.global_end_date.split('-');
-
+    if(update_data !== undefined) {
+        spinkx_data = update_data;
+        console.log(spinkx_data);
+    }
     var timeDiff = diffDays = null;
     var startdate =null;
     var enddate = null;
     //Create Object Visualization
     $wd_counter = 0;
     for(var index in spinkx_data) {
-        if(!spinkx_data.hasOwnProperty(index)) continue;
+       // if(!spinkx_data.hasOwnProperty(index)) continue;
         item = spinkx_data[index];
+        console.log(item);
         var widget = null;
         widget = new google.visualization.DataTable();
         widget.addColumn('date', 'Day');
@@ -683,7 +689,6 @@ function drawChart() {
                 $widgetArr[counter] = new Array($keyDate2, item[$key].clicks * 1, showWidgetToolTip($keyDate, item[$key].clicks, item[$key].ctr), item[$key].ctr * 1, showWidgetToolTip($keyDate, item[$key].clicks, item[$key].ctr));
             }
             counter++;
-
             var newDate = startdate.setDate(startdate.getDate() + 1);
             startdate = new Date(newDate);
 
@@ -724,11 +729,11 @@ function drawChart() {
             },
 
         };
-
         var widget_views_chart = new google.visualization.LineChart(document.getElementById('widget-chart-'+index));
         widget_views_chart.draw(widget, widImpoptions);
     }
     jQuery('.spnx_wdgt_wrapper').hide();
+
 }
 
 function showWidgetToolTip($dt, $vw, $ctr) {
