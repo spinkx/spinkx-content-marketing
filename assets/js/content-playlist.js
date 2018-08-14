@@ -126,7 +126,6 @@ jQuery( document ).ready(function() {
 
             },
             failure: function (data) {
-                //jQuery('#ab_posts_pause_loading').bPopup().close();
                 jQuery.growl.error({
                     message: " Request to server failed, kind;y retry or contact support ! ",
                     location: 'tr',
@@ -189,18 +188,14 @@ jQuery( document ).ready(function() {
     jQuery('.spnx-sync').click(function(){
         var sid = jQuery(this).attr('id');
         jQuery('.spnx_wdgt_wrapper').show();
-
-        jQuery('.se-pre-con').bPopup( { modalClose: false } );
         jQuery.ajax({
             url : ajaxurl,
             data: {'action': 'spinkx_cont_update_post_sync_cpl'},
             type : 'get',
             success : function(data){
-            jQuery('.se-pre-con').bPopup().close();
             window.location.reload();
             },
             failure : function(data){
-                jQuery('.se-pre-con').bPopup().close();
             }
         });
     });
@@ -229,7 +224,6 @@ function getAttachmentData(buttonObj, ishook) {
     } else {
         var post_id = jQuery(buttonObj).parents('tr').find('td .main').attr('global_pid');
     }
-    jQuery('.se-pre-con').bPopup( { modalClose: false } );
     jQuery.ajax({
         url : ajaxurl,
         data : {
@@ -239,7 +233,6 @@ function getAttachmentData(buttonObj, ishook) {
         type : 'get',
         datatype : 'json',
         success : function(data){
-            jQuery('.se-pre-con').bPopup().close();
             data = JSON.parse(data)
             if(data['success']) {
                 if(ishook){
@@ -297,7 +290,6 @@ function getAttachmentData(buttonObj, ishook) {
             jQuery.growl.error({ message: "HTTP Request failed !",
                 location: 'tr',
                 size: 'large' });
-            jQuery('#ab_posts_pause_loading').bPopup().close();
         }
     });
  }
@@ -305,7 +297,6 @@ function getAttachmentData(buttonObj, ishook) {
 
 
 function submitVariationForm(formObj) {
-    jQuery('.se-pre-con').bPopup( { modalClose: false } );
     var formData = new FormData(formObj);
     formData.append('site_id',  g_site_id);
     var idArr = jQuery(formObj).attr('id').split("_");
@@ -336,12 +327,10 @@ function submitVariationForm(formObj) {
             success : function(data){
                 //console.log(data);
                 if(data == 'success') {
-                    jQuery('.se-pre-con').bPopup().close();
                     window.location.reload();
                 }
             },
             failure : function(data){
-                jQuery('.se-pre-con').bPopup().close();
             }
         });
     }
@@ -379,7 +368,6 @@ function showHooks(v){
         jQuery(v).removeClass( "show_toggled_on" );
     } else {
 
-        jQuery('#ab_posts_pause_loading').bPopup( { modalClose: false } );
         jQuery.ajax({
             url : ajaxurl,
             data : {
@@ -395,10 +383,8 @@ function showHooks(v){
             success : function(data){
                 jQueryparent_tr.addClass( 'show_toggled_on' );
                 jQuery( data ).insertAfter(jQueryparent_tr.closest('tr'));
-                jQuery('#ab_posts_pause_loading').bPopup().close();
             },
             failure : function(data){
-                jQuery('#ab_posts_pause_loading').bPopup().close();
             }
         });
     }
@@ -424,7 +410,6 @@ function ab_submit(v){
     formData.append("parent_post_id", post_id);
     formData.append("global_pid", global_pid);
     formData.append("site_id", site_id);
-    jQuery('.se-pre-con').bPopup( { modalClose: false } );
     jQuery.ajax({
         type : "POST",
         url : SPINKX_CONTENT_PLUGIN_URL + 'assets/campaigns/campajx.php?hooks=on',
@@ -433,7 +418,6 @@ function ab_submit(v){
         contentType: false,
         processData: false,
         success:function(data){
-            jQuery('.se-pre-con').bPopup().close();
             jQuery('input[type="text"], textarea ,file').val('');
             jQuery('#error_'+row_id).html(data);
             //jQuery('#add_'+post_id).hide();
@@ -476,13 +460,11 @@ function deleteAB(v){
             keyboard: false })
         .one('click', '#delete', function (e) {
             //delete here
-            jQuery('.se-pre-con').bPopup( { modalClose: false } );
             jQuery.ajax({
                 type : "POST",
                 url : SPINKX_CONTENT_PLUGIN_URL + 'includes/settings/ajax/deleteHook.php',
                 data : {id:ab_id},
                 success:function(data){
-                    jQuery('.se-pre-con').bPopup().close();
                     jQuery('.removechilds' ).remove();
                     jQuery('#toggle_'+row_id+'.ab-show-all').removeClass( "show_toggled_on" );
                     jQuery('#toggle_'+row_id+'.ab-show-all').trigger("click");
@@ -503,7 +485,6 @@ function editAB_submit(v){
     var row_id = jQuery('.main[parent_post_id='+parent_id+']').attr('row_id');
     formData.append("ab_id",ab_id);
     formdata.append('action', 'spinkx_cont_edit_hook');
-    jQuery('.se-pre-con').bPopup( { modalClose: false } );
     jQuery.ajax({
         type : "POST",
         url : ajaxurl,
@@ -512,7 +493,6 @@ function editAB_submit(v){
         contentType: false,
         processData: false,
         success:function(data){
-            jQuery('.se-pre-con').bPopup().close();
             jQuery('.removechilds' ).remove();
             jQuery('#toggle_'+row_id+'.ab-show-all').removeClass( "show_toggled_on" );
             jQuery('#toggle_'+row_id+'.ab-show-all').trigger("click");
@@ -584,7 +564,6 @@ function get_stat_now(start, end){
                 jQuery('#post_'+key+ ' span.playlist_post_views_value_g' ).html(stat.total_global_clicks);
                 jQuery('#post_'+key+ ' span.playlist_post_ctr_value_g' ).html(stat.total_global_ctr);
             });
-            jQuery('.se-pre-con').bPopup().close();
         }
     });
 };
@@ -764,7 +743,6 @@ function changeAbStatus(v) {
     var parent_class = jQuery(v);
     var child_class = jQuery(v).children();
     var row_id = jQuery(v).parent('td').parent('tr').attr("row_id");
-    jQuery('.se-pre-con').bPopup({modalClose: false});
     jQuery.ajax({
         url: ajaxurl,
         data: {
@@ -776,7 +754,6 @@ function changeAbStatus(v) {
         type: 'post',
         datatype: 'json',
         success: function (data) {
-            jQuery('.se-pre-con').bPopup().close();
             if (data == "active") {
 
                 parent_class.removeClass('off_danger');
@@ -808,7 +785,6 @@ function upload(v) {
     var row_id = jQuery('.main[parent_post_id=' + parent_id + ']').attr('row_id');
     formData.append("ab_id", ab_id);
     formData.append("type", "image_only");
-    jQuery('.se-pre-con').bPopup({modalClose: false});
     jQuery.ajax({
         type: "POST",
         url: SPINKX_CONTENT_PLUGIN_URL + 'assets/campaigns/campajx.php?hooks=on',
@@ -817,7 +793,6 @@ function upload(v) {
         contentType: false,
         processData: false,
         success: function (data) {
-            jQuery('.se-pre-con').bPopup().close();
             jQuery('input[type="file"]').val('');
             alert(data);
             //jQuery('#add_'+post_id).hide();
@@ -953,7 +928,6 @@ function boost_submit(formObj) {
             }
         },
         failure: function (data) {
-            //jQuery('#ab_posts_pause_loading').bPopup().close();
             jQuery.growl.error({
                 message: " Request to server failed, kind;y retry or contact support ! ",
                 location: 'tr',
@@ -1091,7 +1065,6 @@ function onYouTubeIframeAPIReady(id, video_id, is_edit) {
 
 }
 function submitVideoVariationForm(formObj) {
-    jQuery('.se-pre-con').bPopup( { modalClose: false } );
     var formData = new FormData(formObj);
     formData.append('site_id',  g_site_id);
     var idArr = jQuery(formObj).attr('id').split("_");
@@ -1111,7 +1084,6 @@ function submitVideoVariationForm(formObj) {
             jQuery.growl.error({ message: 'video url missing',
                 location: 'tr',
                 size: 'large' });
-            jQuery('.se-pre-con').bPopup().close();
             return false;
         }
         var img = jQuery("#addhook_video_url_"+post_id);
@@ -1135,7 +1107,6 @@ function submitVideoVariationForm(formObj) {
             success : function(data){
 
                 if(data == 'success') {
-                    jQuery('.se-pre-con').bPopup().close();
                     jQuery.growl.notice({ message: "Video Saved",
                         location: 'tr',
                         size: 'large' });
@@ -1144,11 +1115,9 @@ function submitVideoVariationForm(formObj) {
                     jQuery.growl.error({ message: data,
                         location: 'tr',
                         size: 'large' });
-                    jQuery('.se-pre-con').bPopup().close();
                 }
             },
             failure : function(data){
-                jQuery('.se-pre-con').bPopup().close();
             }
         });
     }
@@ -1156,8 +1125,6 @@ function submitVideoVariationForm(formObj) {
         jQuery.growl.error({ message: "One of the fields is empty !",
             location: 'tr',
             size: 'large' });
-        jQuery('.se-pre-con').bPopup().close();
-        //console.log("one of the fields is empty");
     }
     return false;
 }
@@ -1177,7 +1144,6 @@ function loadDT(startDate, endDate) {
         },
         "ajax": {
             beforeSend: function(){
-               // jQuery('.se-pre-con').bPopup( { modalClose: false } );
             },
             headers: {
                 "Accept" : "application/json; charset=utf-8",

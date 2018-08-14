@@ -354,7 +354,6 @@ $(".slider-range-min").slider({
 
     $('input[name="widget_install"]').click(function() {
         var is_check = $(this).is(':checked');
-        jQuery('.se-pre-con').bPopup( { modalClose: false } );
         $.ajax({
             url: ajaxurl,
             type: "POST",
@@ -365,7 +364,6 @@ $(".slider-range-min").slider({
                 "is_check": is_check,
             },
             success: function (data) {
-                jQuery('.se-pre-con').bPopup().close();
                 alert(data);
             }
         });
@@ -406,7 +404,6 @@ $(".slider-range-min").slider({
             var add_shortcode = $("#add_shortcode").val();
             var wp_section = $("#wp_section").val();
             /*------------------------------------------------------------------------------*/
-            $("#bpopup_ajax_loading").bPopup( { modalClose: false } );
             $.ajax({
                 url : ajaxurl,
                 data : {
@@ -424,7 +421,6 @@ $(".slider-range-min").slider({
                         location.reload();
                 },
                 failure : function(data){
-                    $("#bpopup_ajax_loading").bPopup().close();
                     $.growl.error({ message: "Failed to Update !",
                         location: "tr",
                         size: "large" });
@@ -464,7 +460,6 @@ $(".slider-range-min").slider({
             type : 'post',
             datatype : 'json',
             success : function(data){
-                $('#bpopup_ajax_loading').bPopup().close();
                 $.growl.notice({ message: "Successfully Updated!",
                     location: 'tr',
                     size: 'large' });
@@ -473,7 +468,6 @@ $(".slider-range-min").slider({
             },
             failure : function(data){
                 console.log(data);
-                $('#bpopup_ajax_loading').bPopup().close();
                 $.growl.error({ message: "Failed to Update!",
                     location: 'tr',
                     size: 'large' });
@@ -510,14 +504,12 @@ $(".slider-range-min").slider({
             type : 'post',
             datatype : 'json',
             success : function(data){
-                $('#bpopup_ajax_loading').bPopup().close();
                 $.growl.notice({ message: "Successfully Reset!",
                     location: 'tr',
                     size: 'large' });
                 window.location.reload();
             },
             failure : function(data){
-                $('#bpopup_ajax_loading').bPopup().close();
                 $.growl.error({ message: "Failed to Update!",
                     location: 'tr',
                     size: 'large' });
@@ -586,7 +578,6 @@ $(".slider-range-min").slider({
             type : 'post',
             datatype : 'json',
             success : function(data){
-                $('#bpopup_ajax_loading').bPopup().close();
                 $.growl.notice({ message: "Successfully Updated!",
                     location: 'tr',
                     size: 'large' });
@@ -594,7 +585,6 @@ $(".slider-range-min").slider({
               },
             failure : function(data){
                 console.log(data);
-                $('#bpopup_ajax_loading').bPopup().close();
                 $.growl.error({ message: "Failed to Update!",
                     location: 'tr',
                     size: 'large' });
@@ -606,7 +596,6 @@ $(".slider-range-min").slider({
     $('#widget_data').show();
 });
 function updatewidget(){
-   // jQuery('.se-pre-con').bPopup( { modalClose: false } );
     jQuery('.spnx_wdgt_wrapper').show();
     $.ajax({
         url : ajaxurl,
