@@ -94,16 +94,18 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 		$data[$counter]['site_name'] = get_bloginfo( 'name' );
 		$data[$counter]['site_url'] = get_site_url();
 		$data[$counter]['spinkx_version'] = $spinkx_version;
-		$data['agree'] = 'on';
+		$data[$counter]['agree'] = 'on';
 		if ( class_exists( 'Domainmap_Utils' ) ) {
 			$obj = new Domainmap_Utils();
 			$temp = $obj->get_mapped_domain();
 			if ( $temp ) {
-				$data['site_url'] = $temp;
+				$data[$counter]['site_url'] = $temp;
 			}
 		}
         $data[$counter++]['sflag'] = 'site_create';
+
     }
+
 	$response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );
 	if ( $response ) {
 		$output = json_decode($response, TRUE);
