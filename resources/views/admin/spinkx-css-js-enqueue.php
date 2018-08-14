@@ -176,7 +176,7 @@ function spinkx_cont_widget_css_js($path) {
 	wp_enqueue_script( 'jquery-google-chart', $vendor . 'google-chart/loader.js' );
 	wp_enqueue_script( 'form-validator-js', esc_url( '//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js' ) );
     wp_enqueue_script( 'jquery-multiselect', $vendor . 'jQuery-multiselect/js/jquery.multiselect.js' );
-    wp_enqueue_script( 'wp-color-picker-alpha', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+    wp_enqueue_script( 'wp-color-picker-alpha', plugins_url(     'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
 
 }
 
