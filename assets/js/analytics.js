@@ -4,7 +4,6 @@ function get_stat_now(start, end){
     try {
         $.ajax({
             beforeSend: function(){
-               // jQuery('.se-pre-con').bPopup( { modalClose: false } );
             },
             url : ajaxurl,
             type: 'get',
@@ -16,7 +15,6 @@ function get_stat_now(start, end){
                 'to_date' : end,
             },
             complete: function(){
-                //jQuery('.se-pre-con').bPopup().close();
             },
             success: function(data){
                 var data = JSON.parse(data);
@@ -94,7 +92,6 @@ jQuery(document).ready(function() {
                 try {
                     $.ajax({
                         beforeSend: function () {
-                            jQuery('.se-pre-con').bPopup({modalClose: false});
                         },
                         url: ajaxurl,
                         type: 'get',
@@ -103,15 +100,12 @@ jQuery(document).ready(function() {
                             'action': 'spinkx_cont_withdraw_money_request',
                         },
                         complete: function () {
-                            jQuery('.se-pre-con').bPopup().close();
                         },
                         success: function (data) {
-                            jQuery('.se-pre-con').bPopup().close();
                             var data = JSON.parse(data);
                             alert(data.msg);
                         },
                         error: function (xhr, status, error) {
-                            jQuery('.se-pre-con').bPopup().close();
                             jQuery.growl.error({
                                 message: xhr.status,
                                 location: 'tr',

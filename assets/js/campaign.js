@@ -112,7 +112,6 @@ function createAd(buttonObj, campaign_id, $data) {
         wallet_balance_amount =  Number(jQuery('#user-balance').text());
     }
     if(campaign_id) {
-       // jQuery('.se-pre-con').bPopup().close();
         campaign_image = $data.ad_image_url;
         campaign_headline = $data.campaign_title;
         campaign_excerpt = $data.campaign_description;
@@ -591,7 +590,6 @@ function cancelCampaign( cid ) {
         processData: false,
         success : function(data){
             data = JSON.parse(data);
-            jQuery('.se-pre-con').bPopup().close();
             if( data.error ) {
                 jQuery.growl.error({ message: data.msg,
                     location: 'tr',
@@ -609,7 +607,6 @@ function cancelCampaign( cid ) {
             }
         },
         failure : function(data){
-            jQuery('.se-pre-con').bPopup().close();
             jQuery('.spnx_wdgt_wrapper').hide();
 
         }
@@ -648,19 +645,16 @@ function saveCampaign(field_name, field_value) {
         processData: false,
         beforeSend: function(){
             if( 0 === first_time_call) {
-                jQuery('.se-pre-con').bPopup({modalClose: false});
             }
         },
         success: function (data) {
             data = JSON.parse(data);
-           jQuery('.se-pre-con').bPopup().close();
           if( data instanceof Object && data.c_id > 0) {
               c_id = data.c_id;
               first_time_call = 1;
           }
         },
         failure: function (data) {
-            jQuery('.se-pre-con').bPopup().close();
             jQuery.growl.error({
                 message: " Request to server failed, kind;y retry or contact support ! ",
                 location: 'tr',
@@ -719,7 +713,6 @@ String.prototype.capitalize = function() {
 
 function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_campaign_id ) {
    jQuery('.spnx_wdgt_wrapper').show();
-   jQuery('.se-pre-con').bPopup({modalClose: false});
     jQuery(buttonObj).parents('tr').hide();
     var formData = new FormData();
     formData.append('action', 'spinkx_cont_campaign_get_data');
@@ -735,12 +728,9 @@ function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_c
         contentType: false,
         processData: false,
         beforeSend: function(){
-            //jQuery('.se-pre-con').bPopup({modalClose: false});
         },
         success: function (data) {
-          jQuery('.se-pre-con').bPopup().close();
             data = JSON.parse(data);
-            jQuery('.se-pre-con').bPopup().close();
             if( undefined === campaign_type) {
                 createAd(buttonObj, campaign_id, data)
             } else if( 'video' === campaign_type) {
@@ -755,7 +745,6 @@ function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_c
 
         },
         failure: function (data) {
-            jQuery('.se-pre-con').bPopup().close();
             jQuery.growl.error({
                 message: " Request to server failed, kindly retry or contact support ! ",
                 location: 'tr',
@@ -778,7 +767,6 @@ function createVariation(buttonObj, parent_campaign_id, campaign_id, $data) {
     var campaign_call_to_action = 0;
 
     if(campaign_id) {
-        jQuery('.se-pre-con').bPopup().close();
         campaign_image = $data.ad_image_url;
         campaign_headline = $data.campaign_title;
         campaign_excerpt = $data.campaign_description;
@@ -940,7 +928,6 @@ function changeCampaignStatus(the_element) {
     post_type = temp[0];
 
     var enabled = status ? 1 : 0;
-    jQuery('.se-pre-con').bPopup({modalClose: false});
     jQuery.ajax({
         url: ajaxurl,
         data: {
@@ -953,7 +940,6 @@ function changeCampaignStatus(the_element) {
         type: 'post',
         datatype: 'json',
         success: function (data) {
-            jQuery('.se-pre-con').bPopup().close();
             var data = JSON.parse(data);
                 if (data.error == 1) {
                     jQuery.growl.error({
@@ -979,7 +965,6 @@ function changeCampaignStatus(the_element) {
              jQuery('.spnx_wdgt_wrapper').hide();
         },
         failure: function (data) {
-            jQuery('.se-pre-con').bPopup().close();
             jQuery.growl.error({
                 message: " Request to server failed !",
                 location: 'tr',
@@ -1004,7 +989,6 @@ function createVideoVariation(buttonObj, parent_campaign_id, campaign_id, $data)
     var video_url = '';
 
     if(campaign_id) {
-        jQuery('.se-pre-con').bPopup().close();
         campaign_headline = $data.campaign_title;
         campaign_excerpt = $data.campaign_description;
         campaign_call_to_action = $data.call_to_action;
@@ -1124,7 +1108,6 @@ function onYouTubeIframeAPIReady(id, video_id, is_edit) {
 
 }
 function submitVideoVariationForm(formObj) {
-    jQuery('.se-pre-con').bPopup( { modalClose: false } );
     var formData = new FormData(formObj);
     formData.append('site_id',  g_site_id);
     var idArr = jQuery(formObj).attr('id').split("_");
@@ -1143,7 +1126,6 @@ function submitVideoVariationForm(formObj) {
             jQuery.growl.error({ message: 'video url missing',
                 location: 'tr',
                 size: 'large' });
-            jQuery('.se-pre-con').bPopup().close();
             return false;
         }
         var img = jQuery("#addhook_video_url_"+post_id);
@@ -1167,7 +1149,6 @@ function submitVideoVariationForm(formObj) {
             success : function(data){
 
                 if(data == 'success') {
-                    jQuery('.se-pre-con').bPopup().close();
                     jQuery.growl.notice({ message: "Video Saved",
                         location: 'tr',
                         size: 'large' });
@@ -1176,18 +1157,15 @@ function submitVideoVariationForm(formObj) {
                     jQuery.growl.error({ message: data,
                         location: 'tr',
                         size: 'large' });
-                    jQuery('.se-pre-con').bPopup().close();
                 }
             },
             failure : function(data){
-                jQuery('.se-pre-con').bPopup().close();
             }
         });
     } else {
         jQuery.growl.error({ message: "One of the fields is empty !",
             location: 'tr',
             size: 'large' });
-        jQuery('.se-pre-con').bPopup().close();
         //console.log("one of the fields is empty");
     }
     return false;
@@ -1207,7 +1185,6 @@ function loadDT(startDate,endDate) {
         },
         "ajax": {
             beforeSend: function(){
-                //jQuery('.se-pre-con').bPopup( { modalClose: false } );
             },
             headers: {
                 "Accept" : "application/json; charset=utf-8",
