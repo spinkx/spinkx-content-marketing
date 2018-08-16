@@ -8,3 +8,4 @@ node_modules/
 env.prod.json
 package-lock.json
 tsconfig.json
+resources/dist/

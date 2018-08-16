@@ -80,7 +80,7 @@ if( $registration_complete ) {
 				$wp_output = wp_remote_post($url,
 					array(
 						'method' => 'GET',
-						'body' => array('from_date' => $from_date, 'to_date' => $to_date, 'url' => SPINKX_CONTENT_DIST_URL),
+						'body' => array('from_date' => $from_date, 'to_date' => $to_date, 'url' => SPINKX_CONTENT_DIST_URL, 'timeout' => 300),
 					)
 				);
 
