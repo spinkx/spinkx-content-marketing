@@ -760,7 +760,9 @@ function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_c
 
 function createVariation(buttonObj, parent_campaign_id, campaign_id, $data) {
     //console.log( campaign_id )
-    var campaign_image = SPINKX_CONTENT_DIST_URL + 'images/becreative.jpg';
+    var length_variation = jQuery(buttonObj).parents('tr').next().find('.create-variation-main-div').length;
+    if(length_variation==0) {
+         var campaign_image = SPINKX_CONTENT_DIST_URL + 'images/becreative.jpg';
     var campaign_headline = '';
     var campaign_excerpt = '';
     var call_to_action_arr = ['Call to Action', 'None', 'Apply Now', 'Book Now','Contact Us', 'Download', 'Know More', 'Shop Now', 'Sign Up', 'Reserve', 'Participate'];
@@ -808,7 +810,7 @@ function createVariation(buttonObj, parent_campaign_id, campaign_id, $data) {
     else {
         jQuery('form.create-variation-form>div').css('height',(340+'px'));
     }
-
+}
 }
 
 jQuery(document).ready(function($) {

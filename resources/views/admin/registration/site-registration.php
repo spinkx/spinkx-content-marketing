@@ -276,7 +276,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 
 			<div class="cmn-cls-verticl-bus-spnx-reg-sitename">
                 <div style="width:40px; height: 40px; margin-bottom: 10px; display: inline-block; margin-right: 24px;">
-	                <img  alt="" id="image-preview"  style="width: 40px; height: 40px; object-fit:contain;" src="<?php echo $logo_url?>">
+	                <img  alt="" id="image-preview"  style="width: 40px; height:40px; object-fit:cover;" src="<?php echo $logo_url?>">
 	                <input type="hidden" name="image_attachment_id" id="image_attachment_id">
                 </div>
                 <span class="reg_upload_file_type catog-des-cmn-cls-spnx-reg reg-upload-logo">
