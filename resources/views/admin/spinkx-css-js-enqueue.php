@@ -119,7 +119,6 @@ function spinkx_cont_common_css_js( $page, $path  ) {
 		}
         wp_enqueue_script( 'growl-js', $vendor . 'jQuery-growl/js/jquery.growl.js' );
 		wp_enqueue_script( 'moment-js', $vendor.'moment/js/moment.min.js' );
-		wp_enqueue_script( 'jquery-bpopup', $vendor . 'bpopup/js/jquery.bpopup.min.js' );
 		wp_enqueue_script( 'jquery-daterange-picker-js', $vendor . 'jQuery-daterange-picker/js/jquery-daterange-picker.js' );
 		$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/dataTables/' );
 		wp_enqueue_script( 'jquery-datatables', $vendor . 'dataTables/jquery.dataTables.min.js' );
@@ -264,7 +263,6 @@ function spinkx_cont_dashboard_css_js($path) {
 	wp_add_inline_style( 'master', $custom_css );
 	wp_enqueue_script( 'jquery-growl', $vendor . 'jQuery-growl/js/jquery.growl.js' );
 	wp_enqueue_script( 'jquery-google-chart', $vendor . 'google-chart/loader.js' );
-	wp_enqueue_script( 'jquery-bpopup', $vendor . 'bpopup/js/jquery.bpopup.min.js' );
 
 }
 

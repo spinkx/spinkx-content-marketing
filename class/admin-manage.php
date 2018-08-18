@@ -392,7 +392,7 @@ final class spnxAdminManage
 
 	function spinkx_cont_change_widget_status(){
 		global $wpdb;
-		$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/activation/';
+		$url = SPINKX_CONTENT_BAPI_URL.'/wp-json/spnx/v1/widget/activation/';
 		$get = spnxHelper::getFilterGet();
         $output = spnxHelper::doCurl( $url, $get, false );
 		if( $output ) {
