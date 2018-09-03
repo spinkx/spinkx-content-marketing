@@ -238,7 +238,7 @@ add_action( 'wp_head', function(){
 	<script>
     var spnx_server_base_url = '<?php echo SPINKX_CONTENT_API_URL?>/';
     var server_base_url = spnx_server_base_url;
-    var assetsurl = '<?php echo SPINKX_CONTENT_PLUGIN_URL?>assets/';
+    var assetsurl = '<?php echo SPINKX_CONTENT_DIST_URL?>assets/';
     var sx_id = "";
     var post_src_id = <?php echo $post->ID?>;
     var spnx_pcat = <?php echo json_encode($categories)?>;
@@ -542,8 +542,7 @@ function spinkx_cont_media_selector_print_scripts( ) {
                 event.preventDefault();
                 ptitle = 'Select a image to add campaign';
                 ptext= 'Add Campaign Image';
-                console.log($(this).attr('class'));
-                if($(this).attr('class').indexOf('reg-upload-logo')) {
+                if($(this).attr('class').indexOf('reg-upload-logo') >=0 ) {
                     ptitle = 'Select a image to add site icon';
                     ptext= 'Add Site Icon';
                 }

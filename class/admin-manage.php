@@ -678,7 +678,7 @@ final class spnxAdminManage
 		exit;
 	}
 
-	function spinkx_cont_campaign_ajax() {
+	/* function spinkx_cont_campaign_ajax() {
 
 		$action_arr = array('remove', 'edit', 'addStatus', 'changeStatus', 'view', 'receive');
 		$mode = spnxHelper::getFilterVar( 'mode', INPUT_POST);
@@ -707,11 +707,11 @@ final class spnxAdminManage
 
 			} elseif (!empty($post['imageurl'])) {
 				$name = basename($post['imageurl']);
-				$location = SPINKX_CONTENT_PLUGIN_DIR . 'assets/campaigns/AddImage/' . $name;
+				$location = SPINKX_CONTENT_DIST_DIR . 'assets/campaigns/AddImage/' . $name;
 				$upload = file_put_contents($location, file_get_contents($post['imageurl']));
 				unset($post['imageurl']);
 				if ($upload) {
-					$post['image_url'] = SPINKX_CONTENT_PLUGIN_URL . "assets/campaigns/AddImage/" . $name;
+					$post['image_url'] = SPINKX_CONTENT_DIST_URL . "assets/campaigns/AddImage/" . $name;
 				}
 			}
 			$hooks = spnxHelper::getFilterVar( 'hooks' );
@@ -733,7 +733,7 @@ final class spnxAdminManage
 
 		}
 		wp_die();
-	}
+	}*/
 	/*
 	 * to post inforation to the facebook
 	 * @param id : int containing id for add_id
@@ -1414,13 +1414,13 @@ final class spnxAdminManage
 
 	public function spinkx_cont_content_add( $content ) {
 		$content .= '<div id="spinkx_cont_aritcle_end"></div>';
-		if ( is_single() ) {
+		/*if ( is_single() ) {
 			$spinkx_static_id = get_option('spinkx_static_id');
 			if ( $spinkx_static_id && $spinkx_static_id > 0) {
 				//$shortcode_render = do_shortcode('[spinkx id="'.$spinkx_static_id.'"]');
 				//$content .= '<br/><br />' . $shortcode_render;
 			}
-		}
+		}*/
 		return $content;
 	}
 

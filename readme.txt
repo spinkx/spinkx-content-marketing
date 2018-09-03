@@ -5,7 +5,7 @@ Tags: Content Marketing, Ad Revenue, Traffic Exchange, Native Ads, Ad exchange
 Requires at least: 4.5
 Requires PHP: 5.6
 Tested up to: 4.9.8
-Stable tag: 3.1
+Stable tag: 3.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

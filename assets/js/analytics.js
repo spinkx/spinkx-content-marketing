@@ -1,6 +1,6 @@
 function get_stat_now(start, end){
-   jQuery('.spnx_wdgt_wrapper').show();
-    
+    jQuery('.spnx_wdgt_wrapper').show();
+
     try {
         $.ajax({
             beforeSend: function(){
@@ -46,19 +46,19 @@ function get_stat_now(start, end){
             },
             error: function(xhr, status, error){
                 jQuery.growl.error({ message: xhr.status,
-                location: 'tr',
-                size: 'large' });
+                    location: 'tr',
+                    size: 'large' });
             },
         });
     } catch ( ex ) {
-         jQuery.growl.error({ message: 'Something went wrong with the request. Data not loaded.',
-                location: 'tr',
-                size: 'large' });
+        jQuery.growl.error({ message: 'Something went wrong with the request. Data not loaded.',
+            location: 'tr',
+            size: 'large' });
     }
 };
 
 jQuery(document).ready(function() {
-   jQuery(".nav-tabs a").click(function(){
+    jQuery(".nav-tabs a").click(function(){
         var id =	jQuery(this).attr("href").substr(1);
         window.location.hash = id;
         window.scrollTo(0, 0);
@@ -88,41 +88,41 @@ jQuery(document).ready(function() {
     $=jQuery;
     $('.withdraw-money').click(function(){
         $wall_bal = parseFloat($('.credit-wallet-bal').text()).toFixed(2);
-            if (spinkx_data.wallet_bal >= spinkx_data.min_bal) {
-                try {
-                    $.ajax({
-                        beforeSend: function () {
-                        },
-                        url: ajaxurl,
-                        type: 'get',
-                        datatype: 'json',
-                        data: {
-                            'action': 'spinkx_cont_withdraw_money_request',
-                        },
-                        complete: function () {
-                        },
-                        success: function (data) {
-                            var data = JSON.parse(data);
-                            alert(data.msg);
-                        },
-                        error: function (xhr, status, error) {
-                            jQuery.growl.error({
-                                message: xhr.status,
-                                location: 'tr',
-                                size: 'large'
-                            });
-                        },
-                    });
-                } catch (ex) {
-                    jQuery.growl.error({
-                        message: 'Something went wrong with the request. Your request not loaded.',
-                        location: 'tr',
-                        size: 'large'
-                    });
-                }
-            } else {
-                alert('Sorry you cannot withdraw money at this point. We have a minimum payout of ' + spinkx_data.currencyEnglish + ' ' + spinkx_data.min_bal + '. We request you to wait till you collect the minimum payout amount.');
+        if (spinkx_data.wallet_bal >= spinkx_data.min_bal) {
+            try {
+                $.ajax({
+                    beforeSend: function () {
+                    },
+                    url: ajaxurl,
+                    type: 'get',
+                    datatype: 'json',
+                    data: {
+                        'action': 'spinkx_cont_withdraw_money_request',
+                    },
+                    complete: function () {
+                    },
+                    success: function (data) {
+                        var data = JSON.parse(data);
+                        alert(data.msg);
+                    },
+                    error: function (xhr, status, error) {
+                        jQuery.growl.error({
+                            message: xhr.status,
+                            location: 'tr',
+                            size: 'large'
+                        });
+                    },
+                });
+            } catch (ex) {
+                jQuery.growl.error({
+                    message: 'Something went wrong with the request. Your request not loaded.',
+                    location: 'tr',
+                    size: 'large'
+                });
             }
+        } else {
+            alert('Sorry you cannot withdraw money at this point. We have a minimum payout of ' + spinkx_data.currencyEnglish + ' ' + spinkx_data.min_bal + '. We request you to wait till you collect the minimum payout amount.');
+        }
 
     });
 
@@ -185,6 +185,8 @@ function drawChart() {
     var enddate = new Date(enddate_arr[0], enddate_arr[1]-1, enddate_arr[2]);
     var timeDiff = Math.abs(enddate.getTime() - startdate.getTime());
     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+
     //Create Object Visualization
     var widget= new google.visualization.DataTable();
     var local_post= new google.visualization.DataTable();
@@ -216,6 +218,7 @@ function drawChart() {
     var dataWidImp = [];
     var dataWidClk=[];
     $key = '';
+
     $widgetArr = new Array();
     $lpArr = new Array();
     $bpArr = new Array();
@@ -223,23 +226,21 @@ function drawChart() {
     //var dateFormatter = new google.visualization.DateFormat({pattern: 'Y,M,d,H'});
     for (; startdate <= enddate;  ) {
         mm = ((startdate.getMonth()+1)>=10)?(startdate.getMonth()+1):'0'+(startdate.getMonth()+1);
-        dd = ((startdate.getDate())>=10)? (startdate.getDate()) : '0' + (startdate.getDate());
+        dd = ((startdate.getDate())>=10)?(startdate.getDate()) : '0' + (startdate.getDate());
         yyyy = startdate.getFullYear();
         $key = yyyy+"-"+mm+"-"+dd;
-        $keyDate = monthNames[parseInt(mm) -1 ] + ' ' + dd + ', ' + yyyy;
+        var keyDate2 = new Date($key);
+        $keyDate = monthNames[parseInt(mm) - 1] + ' ' + dd + ', ' + yyyy;
         widclkcounter++;
-
-        $widgetArr[counter] = new Array(startdate, spinkx_data[$key].wd.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) , spinkx_data[$key].wd.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) );
-
-        $lpArr[counter] = new Array(startdate, spinkx_data[$key].lp.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) , spinkx_data[$key].lp.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) );
-
-        $bpArr[counter] = new Array(startdate, spinkx_data[$key].bp.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) , spinkx_data[$key].bp.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) );
+        $widgetArr[counter] = new Array(keyDate2, spinkx_data[$key].wd.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) , spinkx_data[$key].wd.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].wd.clicks, spinkx_data[$key].wd.ctr ) );
+        $lpArr[counter] = new Array(keyDate2, spinkx_data[$key].lp.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) , spinkx_data[$key].lp.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].lp.clicks, spinkx_data[$key].lp.ctr ) );
+        $bpArr[counter] = new Array(keyDate2, spinkx_data[$key].bp.clicks * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) , spinkx_data[$key].bp.ctr * 1, showWidgetToolTip($keyDate,  spinkx_data[$key].bp.clicks, spinkx_data[$key].bp.ctr ) );
 
         counter++;
         var newDate = startdate.setDate(startdate.getDate() + 1);
         startdate = new Date(newDate);
     }
-
+    console.log($widgetArr);
     widget.addRows($widgetArr);
     local_post.addRows($lpArr);
     boost_post.addRows($bpArr);
@@ -248,19 +249,10 @@ function drawChart() {
     } else {
         diffDays = 1;
     }
-    wid_point_size = parseInt($widgetArr.length/diffDays) + 1;
-    lp_point_size = parseInt($lpArr.length/diffDays) + 1;
-    bp_point_size = parseInt($bpArr.length/diffDays) + 1;
+    wid_point_size = parseInt($widgetArr.length/diffDays) ;
+    lp_point_size = parseInt($lpArr.length/diffDays) ;
+    bp_point_size = parseInt($bpArr.length/diffDays);
     wd_ticks = lp_ticks = bp_ticks = [];
-    for(i = 1; i < wid_point_size; i++ ) {
-        wd_ticks[i-1] = i * diffDays;
-    }
-    for(i = 1; i < lp_point_size; i++ ) {
-        lp_ticks[i-1] = i * diffDays;
-    }
-    for(i = 1; i < bp_point_size; i++ ) {
-        bp_ticks[i-1] = i * diffDays;
-    }
     var widImpoptions = {
         tooltip: { isHtml: true },    // CSS styling affects only HTML tooltips.
         title: 'Widget Clicks / CTR',
@@ -305,7 +297,7 @@ function drawChart() {
             left: "5%",
             top: "15%",
             height: "75%",
-            width: "90%"
+            width: "89%"
         },
         vAxis: {minValue: 1},
         hAxis: {
@@ -331,7 +323,7 @@ function drawChart() {
             left: "5%",
             top: "15%",
             height: "75%",
-            width: "90%"
+            width: "89%"
         },
         vAxis: {minValue: 1},
         hAxis: {
@@ -360,21 +352,21 @@ jQuery(window).on("resize", function (event) {
 });
 
 function pluginPayment(transaction) {
-     var http = new XMLHttpRequest();
-     var url = spinkx_server_baseurl + '/wp-json/spnx/v1/payment-method/charge';
-     var params = 'razorpay_payment_id='+transaction.razorpay_payment_id+'&amount=' + transaction.amount;
-     http.open('POST', url, true);
-     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-     http.onreadystatechange = function() {//Call a function when the state changes.
-         if (http.readyState === 4 && http.status === 200) {
+    var http = new XMLHttpRequest();
+    var url = spinkx_server_baseurl + '/wp-json/spnx/v1/payment-method/charge';
+    var params = 'razorpay_payment_id='+transaction.razorpay_payment_id+'&amount=' + transaction.amount;
+    http.open('POST', url, true);
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if (http.readyState === 4 && http.status === 200) {
             data = JSON.parse(http.responseText);
             if (data.status == 0){
                 alert('Error:' + data.msg);
             } else {
-                 alert(data.msg);
+                alert(data.msg);
             }
             window.location.reload()
-         }
-     }
-     http.send(params);
+        }
+    }
+    http.send(params);
 }

@@ -84,32 +84,25 @@ function spinkx_cont_common_css_js( $page, $path  ) {
 	$vendor = $path[1] . 'vendor/';
 	wp_enqueue_style( 'bootstrap', $vendor.'bootstrap/css/bootstrap.min.css' );
 	wp_enqueue_style( 'font-awesome', $vendor . 'fontawesome/css/fontawesome-all.min.css' );
-	$css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/styles/' );
-	if ( $page !== 'spinkx_campaigns' ) {
+    if ( $page !== 'spinkx_campaigns' ) {
 		wp_enqueue_style( 'jquery-ui', $vendor . 'jQuery/css/jquery-ui.css' );
 
 	}
 	if ( $page !== 'spinkx_options' ) {
 		wp_enqueue_style( 'growl', $vendor . 'jQuery-growl/css/jquery.growl.css' );
-		/*if ( $page !== 'spinkx_campaigns' ) {
-			wp_enqueue_style('select2', $css_url . 'select2.css');
-		}*/
-		wp_enqueue_style( 'date-range-picker', esc_url( '//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css' ) );
+        wp_enqueue_style( 'date-range-picker', esc_url( '//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css' ) );
 	}
-	$css_url = esc_url( $vendor . 'dataTables/' );
 	wp_enqueue_style( 'datatables', $vendor . 'dataTables/jquery.dataTables.min.css' );
-	$css_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/styles/' );
 	wp_enqueue_style( 'jquery-daterange-picker', $vendor . 'jQuery-daterange-picker/css/jquery-daterange-picker.css' );
 	wp_enqueue_style( 'master', $path[0] . 'css/master.'.$css );
 	/**
 	 * JS Loading
 	 */
-	$js_url = esc_url( SPINKX_CONTENT_DIST_URL . 'js/' );
 	wp_enqueue_script( 'smooch-js', $vendor .'smooch/js/smooch.min.js' );
 
 	wp_add_inline_script('smooch-js', "Smooch.init({ appId: '585e57e650cedf70007fab2e' });");
 	wp_enqueue_script( 'jquery-ui-js', $vendor . 'jQuery/js/jquery-ui.js' );
-	$js_url = esc_url( SPINKX_CONTENT_PLUGIN_URL . 'assets/campaigns/js/' );
+
 	wp_enqueue_script( 'bootstrap-js', $vendor . 'bootstrap/js/bootstrap.min.js' );
 
 
@@ -305,7 +298,6 @@ function spinkx_cont_campaign_set_css_js($path) {
 	wp_enqueue_script( 'jquery-moment-js', $vendor . 'moment/js/moment.min.js' );
 	wp_enqueue_script( 'jquery-datetimepicker-js', $vendor . 'bootstrap/js/bootstrap-datetimepicker.js' );
 	wp_enqueue_script( 'jquery-campaign', $path[0] . 'js/campaign.js' );
-	$js_url = esc_url( SPINKX_CONTENT_DIST_URL . 'js/' );
 	wp_enqueue_script( 'jquery-multiselect-js', $vendor . 'jQuery-multiselect/js/jquery.multiselect.js' );
 }
 
