@@ -502,7 +502,7 @@ $plugin_type_id = isset($dropdown->selected_site->plugin_type_id)?$dropdown->sel
 				<div class="pin-code-main-cntnr">
 					<div class="catog-des-cmn-cls-spnx-reg">Zip code</div>
 					<div>
-						<input class="awsome_input-spnx-reg" type="number" id="zip_code_number" name="bussiness_zip" value="<?php  echo $business_pincode;?>">
+						<input class="awsome_input-spnx-reg" type="text" id="zip_code_number" name="bussiness_zip" value="<?php  echo $business_pincode;?>">
 						<span class="awsome_input_border-spnx-reg"></span>
 						<div class="error-cmn-clas-spnx">Please Enter Valid Zip code</div>
 					</div>

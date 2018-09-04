@@ -195,14 +195,14 @@ $(".unit_border_radius").bind('blur',function() {
 
 });
 
-$("#img_crop_width").bind('blur',function() {
+$(".img_crop_width").bind('blur',function() {
    var img_crop_width = $(this).val();
-   $(".design_unit_main_container_spnx").css('width',+img_crop_width+'px');
+   $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_main_container_spnx").css('width',+img_crop_width+'px');
 
 });
-$("#img_crop_height").bind('blur',function() {
+$(".img_crop_height").bind('blur',function() {
    var img_crop_height = $(this).val();
-   $(".design_unit_main_container_spnx").css('height',+img_crop_height+'px');
+   $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_main_container_spnx").css('height',+img_crop_height+'px');
 });
 
 $(".unit_title_font_color").wpColorPicker({
@@ -259,9 +259,9 @@ $("#no_of_row,#no_of_columns").bind('blur',function() {
 $("input[name='widget_layout_type']").click(function() {
   var style_val = $(this).val();
   if(style_val=='fixed-width') {
-   $(".cmn_cls_unit_wdth_hght").show();
+   $(this).parents('.cntnt_dstr_cntnr').find(".cmn_cls_unit_wdth_hght").show();
   } else {
-    $(".cmn_cls_unit_wdth_hght").hide();
+   $(this).parents('.cntnt_dstr_cntnr').find(".cmn_cls_unit_wdth_hght").hide();
   }
 
 });
