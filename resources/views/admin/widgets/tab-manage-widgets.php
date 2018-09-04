@@ -148,9 +148,38 @@ if( $registration_complete ) {
 					                    </div>
 									</div>
 									<div class="mb_sd_cm_cl">
-                                        <span>Choose Style</span>
-										<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" checked value="masonry">
-										<strong>Pinterest style </strong>
+                                        <span class="spnx_choose_style">Choose Style</span>
+                                        <div class="clr_pic_cmn_cls">
+                                        	<div class="mb_sd_cm_cl">
+                                        		<input type="radio" id="widget_layout_type" class="widget_layout_masonary" name="widget_layout_type" checked value="masonry">
+										        <strong>Pinterest style </strong>
+                                        	</div>
+                                        	<div>
+                                        		 <input type="radio" id="widget_layout_type" class="widget_layout_fixed" name="widget_layout_type" value="fixed-width">
+										         <strong>Fixed Width &amp; Height </strong>
+                                        	</div>
+                                        	<div id="widget-fixed-input" class="wdget_fxd_hgt_cntnr mb_sd_cm_cl cmn_cls_unit_wdth_hght" >
+												<div>
+													<span class="mn_wdth_dstr_cmn_cls">No of Row</span>
+													<input type="number" name="no_of_row" id="no_of_row" min="1" max="10" value="1">
+												</div>
+												<div>
+													<span class="mn_wdth_dstr_cmn_cls">No of Columns</span>
+													<input type="number" name="no_of_columns_fw" id="no_of_columns_fw" min="1" max="10" value="1">
+												</div>
+											</div>
+											<div class="mb_sd_cm_cl cmn_cls_unit_wdth_hght wdget_fxd_hgt_cntnr">
+												<span>Width</span>
+												<input id="img_crop_width" type="number" value="236" name="img_crop_width" placeholder="236" class="img_crop_width">
+												<span class="wdgt_px_cmn_cls_spx"> px</span>
+									        </div>
+											<div class="mb_sd_cm_cl cmn_cls_unit_wdth_hght wdget_fxd_hgt_cntnr">
+												<span>Height</span>
+												<input id="img_crop_height" type="number" value="300" name="img_crop_height" placeholder="300" class="img_crop_height">
+												<span class="wdgt_px_cmn_cls_spx">px</span>
+											</div>
+                                        </div>
+                                        
 									</div>
 									<div class="mb_sd_cm_cl" style="display: none;">
 										<div>
@@ -163,23 +192,7 @@ if( $registration_complete ) {
 										</div>
 										
 									</div>
-									<div style="display: none;">
-										<input type="radio" id="widget_layout_type" class="widget_layout_fixed" name="widget_layout_type" value="fixed-width">
-										<strong>Fixed Width &amp; Height </strong>
-
-										<div id="widget-fixed-input" class="wdget_fxd_hgt_cntnr" style="display: none">
-											<div>
-												<span class="mn_wdth_dstr_cmn_cls">No of Row</span>
-												<input type="number" name="no_of_row" id="no_of_row" min="1" max="10" value="1">
-											</div>
-											<div>
-												<span class="mn_wdth_dstr_cmn_cls">No of Columns</span>
-												<input type="number" name="no_of_columns_fw" id="no_of_columns_fw" min="1" max="10" value="1">
-											</div>
-
-
-										</div>
-									</div>
+									
 									<div>
 										<span>Background Color</span>
 
@@ -239,16 +252,7 @@ if( $registration_complete ) {
 										<input type="number" max="40" min="4" name="unit_spacing" value="20" id="unit_spacing" class="unit_spacing">
 										 <span class="wdgt_px_cmn_cls_spx">px</span>
 									</div>
-									<div class="mb_sd_cm_cl cmn_cls_unit_wdth_hght">
-										<span>Width</span>
-										<input id="img_crop_width" type="number" value="236" name="img_crop_width" placeholder="236">
-										<span class="wdgt_px_cmn_cls_spx"> px</span>
-									</div>
-									<div class="mb_sd_cm_cl cmn_cls_unit_wdth_hght">
-										<span>Height</span>
-										<input id="img_crop_height" type="number" value="300" name="img_crop_height" placeholder="300" readonly="readonly" style="cursor: not-allowed;">
-										<span class="wdgt_px_cmn_cls_spx">px</span>
-									</div>
+									
 									<div>
 										<span>Foreground Color</span>
 										<div class="clr_pic_cmn_cls">

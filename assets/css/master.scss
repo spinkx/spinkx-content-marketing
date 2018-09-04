@@ -2079,7 +2079,7 @@ input[type=number]::-webkit-outer-spin-button {
     vertical-align: sub;
 }
 .text-spninks {
-    align-items: center;
+    align-items:center;
     display: flex;
     justify-content: space-between;
     width:55.5%;
@@ -3063,7 +3063,7 @@ span.wdgt_px_cmn_cls_spx {
     margin-left:3px;
 }
 .wdget_fxd_hgt_cntnr {
-    margin-left:30px;
+    margin-left:2px;
     margin-top:10px;
 }
 .wdget_fxd_hgt_cntnr>div:first-child {
@@ -3296,6 +3296,9 @@ span.wdgt_px_cmn_cls_spx {
 }
 .nm_clm_cs {
     margin-bottom:8px;
+}
+.spnx_choose_style {
+ vertical-align:top;   
 } 
 /** add new widget ends here **/
 
