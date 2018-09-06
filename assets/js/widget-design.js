@@ -37,6 +37,17 @@ jQuery(document).ready(function($) {
         $(".limit_post_main_dv").hide();
      }
     });
+    $(".limit_posts").bind('blur',function() {
+     var value = $(this).val();
+     //alert(value);
+     if(value>20 || value<1) {
+       $(this).addClass('error_widget_val')
+       return;
+       } else {
+          $(this).removeClass('error_widget_val');
+       }
+
+    });
     $(".mn-txt-cmn-dv").click(function() {
         if(!$(this).children('i').hasClass('activewidget')) {
             $('.cmn-cls-cntnr .mn-txt-cmn-dv >i').removeClass('activewidget');
@@ -400,6 +411,10 @@ $(".slider-range-min").slider({
 
       //  $(".ajax_create_button").attr("disabled",false);
         $( ".ajax_create_button" ).click(function( e ) {
+             if($(this).parents('.cntnt_dstr_cntnr').find('.error_widget_val').length>0) {
+             alert("Please Check Error");
+             return;
+             }
             e.preventDefault();
 
             jQuery('.spnx_wdgt_wrapper').show();
