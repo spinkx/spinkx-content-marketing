@@ -3300,6 +3300,18 @@ span.wdgt_px_cmn_cls_spx {
 .spnx_choose_style {
  vertical-align:top;   
 } 
+.on_off_switch_align .onoffswitch {
+    float:unset;
+    display:inline-block;
+    vertical-align:middle;
+}
+.mr_wdt_dst_cmn_cls_spx_ws nav {
+    display:inline-block;
+    width:90px;
+}
+.limit_post_main_dv {
+ display:none;   
+}
 /** add new widget ends here **/
 
 /**new widget css ends here **/
