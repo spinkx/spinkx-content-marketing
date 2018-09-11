@@ -297,6 +297,7 @@ function getAttachmentData(buttonObj, ishook) {
 
 
 function submitVariationForm(formObj) {
+    jQuery('.spnx_wdgt_wrapper').show();
     var formData = new FormData(formObj);
     formData.append('site_id',  g_site_id);
     var idArr = jQuery(formObj).attr('id').split("_");
@@ -326,15 +327,26 @@ function submitVariationForm(formObj) {
             processData: false,
             success : function(data){
                 //console.log(data);
-                if(data == 'success') {
+                jQuery('.spnx_wdgt_wrapper').hide();
+                data = JSON.parse(data);
+                if(data.success) {
+                    jQuery.growl.notice({ message: data.message,
+                        location: 'tr',
+                        size: 'large' });
                     window.location.reload();
+                } else {
+                    jQuery.growl.error({ message: data.message,
+                        location: 'tr',
+                        size: 'large' });
                 }
             },
             failure : function(data){
+                jQuery('.spnx_wdgt_wrapper').hide();
             }
         });
     }
     else{
+        jQuery('.spnx_wdgt_wrapper').hide();
         jQuery.growl.error({ message: "One of the fields is empty !",
             location: 'tr',
             size: 'large' });
@@ -1065,6 +1077,7 @@ function onYouTubeIframeAPIReady(id, video_id, is_edit) {
 
 }
 function submitVideoVariationForm(formObj) {
+    jQuery('.spnx_wdgt_wrapper').show();
     var formData = new FormData(formObj);
     formData.append('site_id',  g_site_id);
     var idArr = jQuery(formObj).attr('id').split("_");
@@ -1105,6 +1118,7 @@ function submitVideoVariationForm(formObj) {
             contentType: false,
             processData: false,
             success : function(data){
+                jQuery('.spnx_wdgt_wrapper').hide();
                 data = JSON.parse(data);
                 if(data.success) {
                     jQuery.growl.notice({ message: data.message,
@@ -1118,14 +1132,17 @@ function submitVideoVariationForm(formObj) {
                 }
             },
             failure : function(data){
+                jQuery('.spnx_wdgt_wrapper').hide();
             }
         });
     }
     else{
+        jQuery('.spnx_wdgt_wrapper').hide();
         jQuery.growl.error({ message: "One of the fields is empty !",
             location: 'tr',
             size: 'large' });
     }
+
     return false;
 }
 function loadDT(startDate, endDate) {

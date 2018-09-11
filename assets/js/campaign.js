@@ -760,53 +760,56 @@ function get_data_from_campaign( buttonObj, campaign_id, campaign_type, parent_c
 
 function createVariation(buttonObj, parent_campaign_id, campaign_id, $data) {
     //console.log( campaign_id )
-    var campaign_image = SPINKX_CONTENT_DIST_URL + 'images/becreative.jpg';
-    var campaign_headline = '';
-    var campaign_excerpt = '';
-    var call_to_action_arr = ['Call to Action', 'None', 'Apply Now', 'Book Now','Contact Us', 'Download', 'Know More', 'Shop Now', 'Sign Up', 'Reserve', 'Participate'];
-    var campaign_call_to_action = 0;
+    var length_variation = jQuery(buttonObj).parents('tr').next().find('.create-variation-main-div').length;
+    if(length_variation==0 ) {
+        var campaign_image = SPINKX_CONTENT_DIST_URL + 'images/becreative.jpg';
+        var campaign_headline = '';
+        var campaign_excerpt = '';
+        var call_to_action_arr = ['Call to Action', 'None', 'Apply Now', 'Book Now', 'Contact Us', 'Download', 'Know More', 'Shop Now', 'Sign Up', 'Reserve', 'Participate'];
+        var campaign_call_to_action = 0;
 
-    if(campaign_id) {
-        campaign_image = $data.ad_image_url;
-        campaign_headline = $data.campaign_title;
-        campaign_excerpt = $data.campaign_description;
-        campaign_call_to_action = $data.call_to_action;
-    }
-    var addhook_form='<div class="create-variation-main-div"><form class="create-variation-form" method="post" enctype="multipart/form-data" id="c_form_new25">';
-    addhook_form += '<div style="background-color: #fff;height:335px; border-radius: 10px;float: left; display: inline-block;width:175px; ">';
-    addhook_form += '<div style="display: inline;float: left;">';
-    addhook_form += '<div class="create-ad-field create-ad-image" style="height: auto;float: left;position: absolute;margin: 7px;">';
-    addhook_form += '<span class="playlist_img" style="height: auto;margin-bottom: 6px;">';
-    addhook_form += '<img  src="'+campaign_image+'" alt="" id="image-preview" class="manage-height-spnx" style="height:auto;"/></span>';
-    addhook_form += '<input type="hidden" name="image_attachment_id" id="image_attachment_id">';
-    addhook_form += '<div class="create-ad-field create-ad-headline" style="margin-bottom: 5px;display: block; position: relative;padding: 2px;">';
-    addhook_form += '<textarea class="form-control form-control2 splcaheholder" placeholder="This is your Campaign Headline. Click here to edit" id="campaign_title" name="campaign_title" style="height: 28px;line-height: 12px; margin-top: 5px; font-weight: 700;color: #337ab7;resize: none;width:155px;" rows="2" cols="30" maxlength="65">'+campaign_headline+'</textarea>';
-    addhook_form +=  '<textarea id="campaign_description" class="form-control form-control2" placeholder="Introduce your campaign with a description ... Click here to edit" name="campaign_description" style="height:35px;line-height: 11px;resize: none;overflow: hidden;width:155px;" maxlength="100">'+campaign_excerpt+'</textarea>';
-    addhook_form += '<select name="call_to_action" id="call-to-action">';
-    temp_str = '';
-    for( var index in call_to_action_arr) {
-        temp_str2 = ( index == campaign_call_to_action )?'selected="selected"':'';
-        temp_str += '<option value="' + index + '" '+ temp_str2 +'>' + call_to_action_arr[index] + '</option>';
-    }
-    addhook_form += temp_str;
-    addhook_form += '</select>';
-    addhook_form += '</div></div></div></div>';
-    addhook_form += '<input type="hidden" id="parent-campaign-id" name="parent_campaign_id" value="'+parent_campaign_id+'"/>';
-    if( undefined === campaign_id ) {
-        addhook_form += '<input type="hidden" id="campaign-id" name="c_id" value="0"/>';
-    } else {
-        addhook_form += '<input type="hidden" id="campaign-id" name="c_id" value="'+campaign_id+'"/>';
-    }
+        if (campaign_id) {
+            campaign_image = $data.ad_image_url;
+            campaign_headline = $data.campaign_title;
+            campaign_excerpt = $data.campaign_description;
+            campaign_call_to_action = $data.call_to_action;
+        }
+        var addhook_form = '<div class="create-variation-main-div"><form class="create-variation-form" method="post" enctype="multipart/form-data" id="c_form_new25">';
+        addhook_form += '<div style="background-color: #fff;height:335px; border-radius: 10px;float: left; display: inline-block;width:175px; ">';
+        addhook_form += '<div style="display: inline;float: left;">';
+        addhook_form += '<div class="create-ad-field create-ad-image" style="height: auto;float: left;position: absolute;margin: 7px;">';
+        addhook_form += '<span class="playlist_img" style="height: auto;margin-bottom: 6px;">';
+        addhook_form += '<img  src="' + campaign_image + '" alt="" id="image-preview" class="manage-height-spnx" style="height:auto;"/></span>';
+        addhook_form += '<input type="hidden" name="image_attachment_id" id="image_attachment_id">';
+        addhook_form += '<div class="create-ad-field create-ad-headline" style="margin-bottom: 5px;display: block; position: relative;padding: 2px;">';
+        addhook_form += '<textarea class="form-control form-control2 splcaheholder" placeholder="This is your Campaign Headline. Click here to edit" id="campaign_title" name="campaign_title" style="height: 28px;line-height: 12px; margin-top: 5px; font-weight: 700;color: #337ab7;resize: none;width:155px;" rows="2" cols="30" maxlength="65">' + campaign_headline + '</textarea>';
+        addhook_form += '<textarea id="campaign_description" class="form-control form-control2" placeholder="Introduce your campaign with a description ... Click here to edit" name="campaign_description" style="height:35px;line-height: 11px;resize: none;overflow: hidden;width:155px;" maxlength="100">' + campaign_excerpt + '</textarea>';
+        addhook_form += '<select name="call_to_action" id="call-to-action">';
+        temp_str = '';
+        for (var index in call_to_action_arr) {
+            temp_str2 = ( index == campaign_call_to_action ) ? 'selected="selected"' : '';
+            temp_str += '<option value="' + index + '" ' + temp_str2 + '>' + call_to_action_arr[index] + '</option>';
+        }
+        addhook_form += temp_str;
+        addhook_form += '</select>';
+        addhook_form += '</div></div></div></div>';
+        addhook_form += '<input type="hidden" id="parent-campaign-id" name="parent_campaign_id" value="' + parent_campaign_id + '"/>';
+        if (undefined === campaign_id) {
+            addhook_form += '<input type="hidden" id="campaign-id" name="c_id" value="0"/>';
+        } else {
+            addhook_form += '<input type="hidden" id="campaign-id" name="c_id" value="' + campaign_id + '"/>';
+        }
 
-    addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn-cancle-spnx-main-cls"  style=" right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, '+campaign_id+')">CANCEL</button></div>';
-    addhook_form += '</form></div>';
-    jQuery(buttonObj).parents('tr').after('<tr><td colspan="3">'+addhook_form+'</td></tr>');
-    imgHeightnew = jQuery('form.create-variation-form .playlist_img img').height();
-    if(imgHeightnew>0) {
-        jQuery('form.create-variation-form>div').css('height',(imgHeightnew+107+'px'));
-    }
-    else {
-        jQuery('form.create-variation-form>div').css('height',(340+'px'));
+        addhook_form += '<div style="margin-left: 10px;display: inline-block;"><button  type="submit" class="button-cmn-class-bp-cmp-spnx" name="add_camp" style="float:right !important; margin-top:19px; color:#fff; background-color:#1dbd45;">SAVE &amp; ACTIVATE</button><button  type="button" class="btn-cancle-spnx-main-cls"  style=" right !important; margin:19px 10px 0 0; border-radius:0;  color:#fff; " onclick="deleteCampaignMain(this, ' + campaign_id + ')">CANCEL</button></div>';
+        addhook_form += '</form></div>';
+        jQuery(buttonObj).parents('tr').after('<tr><td colspan="3">' + addhook_form + '</td></tr>');
+        imgHeightnew = jQuery('form.create-variation-form .playlist_img img').height();
+        if (imgHeightnew > 0) {
+            jQuery('form.create-variation-form>div').css('height', (imgHeightnew + 107 + 'px'));
+        }
+        else {
+            jQuery('form.create-variation-form>div').css('height', (340 + 'px'));
+        }
     }
 
 }
