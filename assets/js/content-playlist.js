@@ -1105,14 +1105,14 @@ function submitVideoVariationForm(formObj) {
             contentType: false,
             processData: false,
             success : function(data){
-
-                if(data == 'success') {
-                    jQuery.growl.notice({ message: "Video Saved",
+                data = JSON.parse(data);
+                if(data.success) {
+                    jQuery.growl.notice({ message: data.message,
                         location: 'tr',
                         size: 'large' });
                     window.location.reload();
                 } else {
-                    jQuery.growl.error({ message: data,
+                    jQuery.growl.error({ message: data.message,
                         location: 'tr',
                         size: 'large' });
                 }

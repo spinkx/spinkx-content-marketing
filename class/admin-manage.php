@@ -219,13 +219,16 @@ final class spnxAdminManage
 
 	function spinkx_cont_save_hook() {
 		$post = spnxHelper::getFilterPost();
-		if(isset( $post['image_aid'])) {
-			$post['post_full_image'] = wp_get_attachment_image_src( $post['image_aid'],'full' )[0];
+
+		 if(isset( $post['image_aid'])) {
+			 $post['post_full_image'] = wp_get_attachment_image_src( $post['image_aid'], 'full' )[0];
+		 }
 			//$post['post_thumbnail'] = wp_get_attachment_image_src( $post['image_aid'],'full' )[0];
 			$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/content-playlist/variation/save';
 			$output = spnxHelper::doCurl( $url, $post );
-			echo json_decode($output);
-		}
+
+			echo $output;
+		// }
 		exit;
 	}
 
