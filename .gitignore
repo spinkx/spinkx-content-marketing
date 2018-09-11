@@ -9,3 +9,6 @@ env.prod.json
 package-lock.json
 tsconfig.json
 resources/dist/
+assets/fjs
+assets/media
+assets/css/unit-static-styles.css

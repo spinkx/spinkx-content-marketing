@@ -106,10 +106,13 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 		$data[$counter]['blog'] = $currentSite['blog_id'];
         $counter++;
     }
-
+    error_log(print_r($data, true));
 	$response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );
     if ( $response ) {
 		$output = json_decode($response, TRUE);
+		error_log('response');
+		error_log(print_r($response, true));
+
 	    if ( $mflag ) {
             foreach ( $output as $site ) {
 
@@ -196,8 +199,9 @@ add_action( 'wp_head', function(){
     $license = get_option( SPINKX_CONTENT_LICENSE );
     $license_arr = maybe_unserialize( $license );
 	$widget_list = get_option('spnx_widget_list');
+    $spnx_widget_list_updated = get_option('spnx_widget_list_updated');
 	$md = new SpnxMobileDetect;
-	if($widget_list) {
+	if($widget_list && $spnx_widget_list_updated) {
 		$widget_list = maybe_unserialize($widget_list);
 	} else {
 		if(!$spnxAdminManage->update_widget_list()) {
@@ -217,10 +221,13 @@ add_action( 'wp_head', function(){
     $deviceType = ($md->isMobile() ? ($md->isTablet() ? 'tablet' : 'phone') : 'desktop');
 
 		foreach ($widget_list as $widget) {
-		if( $deviceType == 'desktop' && $widget['is_mobile']) {
-			//continue;
-		} 
-		$spnxwdArr[] =array("w"=>$widget['widget_id'], "c"=>$license_arr['license_code'], "s"=>$license_arr['site_id'], "p"=>0, "is_mobile" => (boolean)$widget['is_mobile'] );
+			$is_mobile = (boolean)$widget['is_mobile'];
+		if( $deviceType == 'desktop' && $is_mobile === false ) {
+			$spnxwdArr[] =array("w"=>$widget['widget_id'], "c"=>$license_arr['license_code'], "s"=>$license_arr['site_id'], "p"=>0, "is_mobile" => $is_mobile, 'f' => $widget['fixed'] );
+		} else if( $deviceType != 'desktop' && $is_mobile === true ) {
+			$spnxwdArr[] =array("w"=>$widget['widget_id'], "c"=>$license_arr['license_code'], "s"=>$license_arr['site_id'], "p"=>0, "is_mobile" => $is_mobile, 'f' => $widget['fixed'] );
+		}
+
 	}
 	if(is_object($post)) {
 		$catArray = get_the_category($post->ID);
@@ -236,18 +243,78 @@ add_action( 'wp_head', function(){
 	}
     ?>   
 	<script>
-    var spnx_server_base_url = '<?php echo SPINKX_CONTENT_API_URL?>/';
+    var spnx_server_base_url = '<?= SPINKX_CONTENT_API_URL?>/';
     var server_base_url = spnx_server_base_url;
-    var assetsurl = '<?php echo SPINKX_CONTENT_DIST_URL?>assets/';
+    var assetsurl = '<?= SPINKX_CONTENT_DIST_URL?>';
+    var spnx_cdn_url = '<?= SPINKX_CONTENT_DIST_URL?>';
     var sx_id = "";
-    var post_src_id = <?php echo $post->ID?>;
-    var spnx_pcat = <?php echo json_encode($categories)?>;
-    var spnxWdArr = <?php echo json_encode($spnxwdArr)?>;
-    var admin_ajax_url= '<?php echo admin_url('admin-ajax.php' ) ?>';
-    (function(d,s){var spnxl=!0;c=document.createElement('script');c.async=!0;c.src='//storage.googleapis.com/spinkx/js/spnx_init.min.js';d.head.appendChild(c);d.head.addEventListener("load",function(event){if(event.target.nodeName==="SCRIPT"){if(event.target.getAttribute("src").indexOf('embeds.js')!=-1){if(undefined!==window.spnx){csx_id=window.spnx.getId();if(undefined!=csx_id){sx_id=csx_id;spnx.setId('sx_id',sx_id,15);
-        spnx.initialize(spnxWdArr);}
-	    b=document.createElement('script');b.async=!0;b.src='//storage.googleapis.com/spinkx/js/spinkxut.js';d.head.appendChild(b); }}
-	    if(event.target.getAttribute("src").indexOf('spinkxut.js')!=-1){if(spnxl&&sx_id){spnxl=!0}}}},!0)}(document,'script'));
+    var post_src_id = <?= $post->ID?>;
+    var spnx_pcat = <?= json_encode($categories)?>;
+    var spnxWdArr = <?= json_encode($spnxwdArr)?>;
+    var admin_ajax_url= '<?= admin_url('admin-ajax.php' ) ?>';
+   <?php  if(SPINKX_CONTENT_PRODUCTION) { ?>
+        (function (d, s) {
+            var spnxl = !0;
+            c = document.createElement('script');
+            c.async = !0;
+            c.src =  '<?= SPINKX_CONTENT_CDN_URL?>js/spnx_init.min.js';
+            d.head.appendChild(c);
+            d.head.addEventListener("load", function (event) {
+                if (event.target.nodeName === "SCRIPT") {
+                    if (event.target.getAttribute("src").indexOf('embeds.js') != -1) {
+                        if (undefined !== window.spnx) {
+                            csx_id = window.spnx.getId();
+                            if (undefined != csx_id) {
+                                sx_id = csx_id;
+                                spnx.setId('sx_id', sx_id, 15);
+                                spnx.initialize(spnxWdArr);
+                            }
+                            b = document.createElement('script');
+                            b.async = !0;
+                            b.src = '<?= SPINKX_CONTENT_CDN_URL?>js/spinkxut.js';
+                            d.head.appendChild(b);
+                        }
+                    }
+                    if (event.target.getAttribute("src").indexOf('spinkxut.js') != -1) {
+                        if (spnxl && sx_id) {
+                            spnxl = !0
+                        }
+                    }
+                }
+            }, !0)
+        }(document, 'script'));
+   <?php  } else { ?>
+        (function (d, s) {
+            var spnxl = !0;
+            c = document.createElement('script');
+            c.async = !0;
+            c.src =  assetsurl +  'fjs/spnx_init.min.js';
+            d.head.appendChild(c);
+            d.head.addEventListener("load", function (event) {
+                if (event.target.nodeName === "SCRIPT") {
+                    if (event.target.getAttribute("src").indexOf('embeds.js') != -1) {
+                        if (undefined !== window.spnx) {
+                            csx_id = window.spnx.getId();
+                            if (undefined != csx_id) {
+                                sx_id = csx_id;
+                                spnx.setId('sx_id', sx_id, 15);
+                                spnx.initialize(spnxWdArr);
+                            }
+                            b = document.createElement('script');
+                            b.async = !0;
+                            b.src = assetsurl + 'fjs/spinkxut.js';
+                            d.head.appendChild(b);
+                        }
+                    }
+                    if (event.target.getAttribute("src").indexOf('spinkxut.js') != -1) {
+                        if (spnxl && sx_id) {
+                            spnxl = !0
+                        }
+                    }
+                }
+            }, !0)
+        }(document, 'script'));
+   <?php  } ?>
 </script><?php }});
 function spinkx_cont_bot_detection() {
 	if (preg_match('/bot|crawl|curl|dataprovider|search|get|spider|find|java|majesticsEO|google|yahoo|teoma|contaxe|yandex|libwww-perl|facebookexternalhit/i', $_SERVER['HTTP_USER_AGENT'])) {

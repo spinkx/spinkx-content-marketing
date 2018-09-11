@@ -349,7 +349,7 @@ function spinkx_header_menu() {
 		<li <?php echo ('spinkx_campaigns' === $page)?'class="active"':''?>><a href="?page=spinkx_campaigns">Paid Campaigns</a></li>
     </ul>
 	<?php if ('spinkx_content_play_list' === $page) { ?>
-	<div class="spnx-sync" title="Post ReSync"><img  id="posts_<?php echo $site_id ?>" class="posts_sync" src="<?php echo SPINKX_CONTENT_CDN_URL; ?>media/sync-icon.png"  /></div>
+	<div class="spnx-sync" title="Post ReSync"><img  id="posts_<?php echo $site_id ?>" class="posts_sync" src="<?php echo SPINKX_CONTENT_DIST_URL; ?>images/sync-icon.png"  /></div>
 	<?php } ?>
 
 	<?php  if ('edit-widget' !== $tab ) { ?>

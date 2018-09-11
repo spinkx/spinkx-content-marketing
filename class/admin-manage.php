@@ -406,11 +406,13 @@ final class spnxAdminManage
 		$curl_url = SPINKX_CONTENT_API_URL . '/wp-json/spnx/v1/widget/list';
 		$widget_list = spnxHelper::doCurl($curl_url, true, false);
         $widget_list = json_decode($widget_list, true);
-		if(!( is_array($widget_list) && count($widget_list))) {
+		error_log(print_r($widget_list, true));
+		if(!(is_array($widget_list) && count($widget_list))) {
 			return;
 		}
         if(isset($widget_list[0]['widget_id'])) {
 			if(update_option('spnx_widget_list', maybe_serialize($widget_list))) {
+				update_option('spnx_widget_list_updated' , 1);
 				return true;
 			}
 		}
