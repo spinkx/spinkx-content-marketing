@@ -86,7 +86,7 @@ if( is_array($data)) {?>
                         <div ><span class="label-pints-mny-cmn-cls">Site :</span> <span><?php echo $data['surl']?></span></div>
                         <div ><span class="label-pints-mny-cmn-cls">User : </span><span><?php echo $data['uname']?></span></div>
                     </div>
-                    <div class="liceence-key-cls"><span class="label-pints-mny-cmn-cls">License Key:</span> <span > <?php echo $data['lkey']?></span></div>
+                    <div class="liceence-key-cls"><span class="label-pints-mny-cmn-cls">License Key:</span> <span class="license_spn_cntnr"> <?php echo $data['lkey']; ?></span></div>
                 </div>
                 <div class="spnx-thrd-chld-mn-cntr spnx-flex-end">
 

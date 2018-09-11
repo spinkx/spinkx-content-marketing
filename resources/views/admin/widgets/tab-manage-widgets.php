@@ -460,14 +460,13 @@ if( $registration_complete ) {
 											</span>
 										</div>
 										<div class="design_unit_hdline_container hd_txt_id_spx_dv">
-											<h4 class="hd_txt_id_spx" id="hd_txt_id_spx"><?php echo  $result[2]->post_title;?></h4>
+											<h4 class="hd_txt_id_spx" id="hd_txt_id_spx"><?php echo $result[2]->post_title;?></h4>
 										</div>
 										<div class="design_unit_text_continer">
-											<div id="excrpt_txt_id_spx" class="excerpt_txt_mn_cls excrpt_txt_id_spx">
-												<?php echo  $result[2]->post_excerpt;?>
+											<div id="excrpt_txt_id_spx" class="excerpt_txt_mn_cls excrpt_txt_id_spx"><?php echo $result[2]->post_excerpt;?>
 											</div>
 											<span class="excrpt_txt_id_spx_hidden" id="excrpt_txt_id_spx_hidden" style="display: none;">
-												<?php echo  $result[2]->post_excerpt;?>
+												<?php echo $result[2]->post_excerpt;?>
 											</span>
 										</div>
 									</div>
