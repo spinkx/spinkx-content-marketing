@@ -224,7 +224,7 @@ $(".img_crop_width").bind('blur',function() {
 });
 $(".img_crop_height").bind('blur',function() {
    var img_crop_height = $(this).val();
-   $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_main_container_spnx").css('height',+img_crop_height+'px');
+ //  $(this).parents('.cntnt_dstr_cntnr').find(".design_unit_main_container_spnx").css('height',+img_crop_height+'px');
 });
 
 $(".unit_title_font_color").wpColorPicker({
