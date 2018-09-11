@@ -106,12 +106,10 @@ function spinkx_cont_site_registration( $blog_id = 0, $from = false ) {
 		$data[$counter]['blog'] = $currentSite['blog_id'];
         $counter++;
     }
-    error_log(print_r($data, true));
+
 	$response = spnxHelper::doCurl( $url, $data, true, array(), 5000 );
     if ( $response ) {
 		$output = json_decode($response, TRUE);
-		error_log('response');
-		error_log(print_r($response, true));
 
 	    if ( $mflag ) {
             foreach ( $output as $site ) {
