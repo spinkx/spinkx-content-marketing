@@ -434,7 +434,7 @@ if( $registration_complete ) {
 							</div>
 							<div class="wdgt_updt_btn_mn_cntnr">
 								<div class="wdgt_updt_btn_sub_cntnr">
-                                    <input  style="background-color: #23bf4a;" type="submit" name="update" id="ajax_create_button" class="button ajax_create_button" alt="Update" value="Save" />
+                                    <input  style="background-color: #23bf4a;" type="button" name="update" id="ajax_create_button" class="button ajax_create_button" alt="Update" value="Save" />
 									<!--<a id="ajax_update_button" class="button ajax_update_button" alt="Update" href="javascript:;void(0)">Save</a> -->
 									<a id="close_new_widget_create" class="button" alt="Update" href="javascript:;void(0)">Cancel</a>
 									<!--  SPINKX AJAX Update Settings Ends Here  -->
