@@ -16,15 +16,24 @@ jQuery(document).ready(function($) {
                 "status": status,
                 "name": name
             },
-            success : function(data){
-                $.growl.notice({ message: "Successfully Updated!",
+            success : function(data) {
+                data = JSON.parse(data);
+                if (data.success) {
+                    $.growl.notice({
+                        message: data.msg,
                         location: "tr",
-                        size: "large" });
-                jQuery('.spnx_wdgt_wrapper').hide();
+                        size: "large"
+                    });
+                    jQuery('.spnx_wdgt_wrapper').hide();
+                } else {
+                    $.growl.error({
+                        message: data.msg,
+                        location: "tr",
+                        size: "large"
+                    });
+                    jQuery('.spnx_wdgt_wrapper').hide();
                 }
-
-
-        });
+            }});
     });
 
     $(".infinite_loader").click(function() {

@@ -398,17 +398,22 @@ final class spnxAdminManage
 		$url = SPINKX_CONTENT_BAPI_URL . '/wp-json/spnx/v1/widget/activation/';
 		$get = spnxHelper::getFilterGet();
         $output = spnxHelper::doCurl( $url, $get, false );
-		if( $output ) {
-			$this->update_widget_list();
+		$output = json_decode($output, true);
+		if( isset($output['data']) && is_array($output['data'])) {
+			if(isset($output['data'][0]['widget_id'])) {
+				if(update_option('spnx_widget_list', maybe_serialize($output['data']))) {
+					update_option('spnx_widget_list_updated' , 1);
+				}
+			}
+			unset($output['data']);
 		}
-		echo $output;
-		wp_die();
+		echo json_encode($output);
+		exit;
 	}
 
 	public function update_widget_list() {
 		$curl_url = SPINKX_CONTENT_API_URL . '/wp-json/spnx/v1/widget/list';
 		$widget_list = spnxHelper::doCurl($curl_url, true, false);
-        $widget_list = json_decode($widget_list, true);
         $widget_list = json_decode($widget_list, true);
 		if(!(is_array($widget_list) && count($widget_list))) {
 			return;
